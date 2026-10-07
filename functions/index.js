@@ -80,7 +80,8 @@ exports.sendNewOrderNotification = onDocumentCreated(
       tokens: tokens
     };
 
-    const response = await getMessaging().sendEachForMulticast(message);
+    const response =
+      await getMessaging().sendEachForMulticast(message);
 
     console.log(
       `Notifications sent: ${response.successCount}`
@@ -90,7 +91,6 @@ exports.sendNewOrderNotification = onDocumentCreated(
       `Notifications failed: ${response.failureCount}`
     );
 
-    // Remove invalid/expired tokens
     const cleanupPromises = [];
 
     response.responses.forEach((result, index) => {
