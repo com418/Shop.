@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LuxeStore — Fashion, Perfumes & Accessories</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#fff8fa">
+
+<title>LuxeStore — Fashion, Beauty & Fragrance</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
 
 *{
   box-sizing:border-box;
@@ -15,33 +17,40 @@
 }
 
 :root{
-  --bg:#faf9f7;
-  --card:#ffffff;
-  --text:#171717;
-  --muted:#777;
-  --line:#e9e5df;
-  --dark:#111;
-  --gold:#b58a45;
-  --gold2:#d7b574;
-  --soft:#f2eee7;
-  --danger:#c62828;
-  --shadow:0 12px 35px rgba(0,0,0,.08);
+  --pink:#d98b9c;
+  --pink-dark:#b9677a;
+  --pink-light:#fbecef;
+  --cream:#fffaf7;
+  --white:#ffffff;
+  --gold:#b99662;
+  --gold-light:#e5d0aa;
+  --text:#292326;
+  --muted:#857b7e;
+  --line:#eee2e5;
+  --soft:#f8f1f2;
+  --black:#211c1f;
+  --danger:#c94d62;
+  --shadow:0 15px 45px rgba(80,40,50,.09);
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-  font-family:Inter,Arial,sans-serif;
-  background:var(--bg);
+  font-family:"DM Sans",Arial,sans-serif;
+  background:var(--cream);
   color:var(--text);
   min-height:100vh;
 }
 
-button,input{
+button,input,textarea{
   font:inherit;
 }
 
 button{
-  cursor:pointer;
   border:0;
+  cursor:pointer;
 }
 
 a{
@@ -49,59 +58,113 @@ a{
   text-decoration:none;
 }
 
-/* HEADER */
+svg{
+  display:block;
+}
+
+
+/* =========================
+   SVG
+========================= */
+
+svg defs{
+  display:none;
+}
+
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar{
+  background:var(--black);
+  color:#fff;
+  text-align:center;
+  padding:9px 15px;
+  font-size:11px;
+  letter-spacing:.6px;
+}
+
+.topbar span{
+  color:#f2c4ce;
+}
+
+
+/* =========================
+   HEADER
+========================= */
 
 header{
   position:sticky;
   top:0;
   z-index:100;
-  background:rgba(250,249,247,.94);
-  backdrop-filter:blur(15px);
+  background:rgba(255,250,247,.94);
+  backdrop-filter:blur(18px);
   border-bottom:1px solid var(--line);
 }
 
 .nav{
-  max-width:1200px;
+  max-width:1250px;
+  height:78px;
+  padding:0 22px;
   margin:auto;
-  height:72px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 20px;
 }
 
-.logo{
+.brand{
   display:flex;
   align-items:center;
   gap:10px;
+}
+
+.brand-mark{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:var(--pink-light);
+  color:var(--pink-dark);
+  display:grid;
+  place-items:center;
+}
+
+.brand-mark svg{
+  width:23px;
+  height:23px;
+}
+
+.brand-name{
   font-family:"Playfair Display",serif;
   font-size:25px;
   font-weight:700;
+  letter-spacing:-.5px;
 }
 
-.logo svg{
-  width:35px;
-  height:35px;
+.brand-name em{
+  color:var(--pink-dark);
+  font-style:italic;
 }
 
 .nav-actions{
   display:flex;
+  gap:7px;
   align-items:center;
-  gap:8px;
 }
 
 .icon-btn{
-  width:42px;
-  height:42px;
+  width:43px;
+  height:43px;
   border-radius:50%;
   background:transparent;
+  color:var(--text);
   display:grid;
   place-items:center;
   position:relative;
 }
 
 .icon-btn:hover{
-  background:var(--soft);
+  background:var(--pink-light);
 }
 
 .icon-btn svg{
@@ -111,133 +174,238 @@ header{
 
 .cart-count{
   position:absolute;
-  top:1px;
   right:0;
-  width:18px;
+  top:0;
+  min-width:18px;
   height:18px;
-  background:var(--dark);
-  color:white;
-  font-size:10px;
-  border-radius:50%;
+  padding:0 4px;
+  border-radius:20px;
+  background:var(--pink-dark);
+  color:#fff;
+  font-size:9px;
   display:grid;
   place-items:center;
 }
 
-/* HERO */
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
-  max-width:1200px;
-  margin:25px auto 0;
-  padding:0 20px;
+  max-width:1250px;
+  margin:20px auto 0;
+  padding:0 22px;
 }
 
 .hero-box{
-  min-height:390px;
-  border-radius:28px;
-  overflow:hidden;
+  min-height:520px;
   position:relative;
+  overflow:hidden;
+  border-radius:32px;
   background:
-    radial-gradient(circle at 80% 20%,rgba(215,181,116,.35),transparent 30%),
-    linear-gradient(135deg,#171717,#302a22);
-  color:white;
+    radial-gradient(circle at 88% 20%,rgba(229,208,170,.45),transparent 25%),
+    radial-gradient(circle at 70% 90%,rgba(217,139,156,.24),transparent 30%),
+    linear-gradient(120deg,#fbecef,#fffaf7 60%,#f5e7df);
   display:flex;
   align-items:center;
-  padding:55px;
-}
-
-.hero-decoration{
-  position:absolute;
-  right:-80px;
-  bottom:-130px;
-  width:430px;
-  height:430px;
-  border:1px solid rgba(255,255,255,.16);
-  border-radius:50%;
-}
-
-.hero-decoration:after{
-  content:"";
-  position:absolute;
-  inset:45px;
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:50%;
+  padding:65px;
 }
 
 .hero-content{
-  max-width:600px;
   position:relative;
-  z-index:2;
+  z-index:3;
+  max-width:620px;
 }
 
-.eyebrow{
-  color:#e5c98d;
-  text-transform:uppercase;
-  letter-spacing:3px;
-  font-size:12px;
+.hero-small{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--pink-dark);
+  font-size:11px;
   font-weight:700;
-  margin-bottom:15px;
+  text-transform:uppercase;
+  letter-spacing:2.5px;
+  margin-bottom:20px;
+}
+
+.hero-small:before{
+  content:"";
+  width:28px;
+  height:1px;
+  background:var(--pink-dark);
 }
 
 .hero h1{
   font-family:"Playfair Display",serif;
-  font-size:clamp(42px,7vw,70px);
-  line-height:1;
-  margin-bottom:18px;
+  font-size:clamp(48px,7vw,78px);
+  line-height:.98;
+  letter-spacing:-2px;
+  max-width:620px;
 }
 
-.hero p{
-  color:#d5d5d5;
-  max-width:520px;
-  line-height:1.7;
-  margin-bottom:28px;
+.hero h1 em{
+  color:var(--pink-dark);
+  font-style:italic;
+  font-weight:500;
 }
 
-.hero-btn{
-  background:white;
-  color:#111;
-  padding:14px 22px;
+.hero-text{
+  max-width:500px;
+  color:var(--muted);
+  line-height:1.8;
+  margin:22px 0 30px;
+  font-size:15px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:11px;
+  flex-wrap:wrap;
+}
+
+.primary-btn{
+  padding:15px 23px;
+  background:var(--black);
+  color:white;
+  border-radius:14px;
+  font-weight:700;
+  box-shadow:0 8px 20px rgba(33,28,31,.15);
+}
+
+.secondary-btn{
+  padding:15px 23px;
+  background:rgba(255,255,255,.65);
+  border:1px solid var(--line);
+  color:var(--text);
   border-radius:14px;
   font-weight:700;
 }
 
-/* SEARCH */
+.hero-art{
+  position:absolute;
+  right:4%;
+  bottom:-70px;
+  width:420px;
+  height:520px;
+  z-index:2;
+}
 
-.search-wrap{
-  max-width:1200px;
+.hero-circle{
+  position:absolute;
+  width:370px;
+  height:370px;
+  right:15px;
+  top:60px;
+  border-radius:50%;
+  border:1px solid rgba(185,150,98,.3);
+}
+
+.hero-circle:after{
+  content:"";
+  position:absolute;
+  inset:25px;
+  border:1px solid rgba(185,150,98,.2);
+  border-radius:50%;
+}
+
+.bottle{
+  position:absolute;
+  right:100px;
+  bottom:80px;
+  width:125px;
+  height:250px;
+  background:linear-gradient(100deg,#f0d4da,#fff7f4,#e4bbc4);
+  border-radius:25px 25px 20px 20px;
+  box-shadow:20px 30px 50px rgba(120,60,70,.18);
+  border:1px solid rgba(255,255,255,.8);
+}
+
+.bottle:before{
+  content:"";
+  position:absolute;
+  width:58px;
+  height:48px;
+  left:33px;
+  top:-45px;
+  border-radius:8px 8px 2px 2px;
+  background:#c5a06b;
+}
+
+.bottle:after{
+  content:"LUXE";
+  position:absolute;
+  left:22px;
+  right:22px;
+  top:100px;
+  padding:11px 2px;
+  text-align:center;
+  font-family:"Playfair Display",serif;
+  color:#8d6d42;
+  border-top:1px solid rgba(141,109,66,.25);
+  border-bottom:1px solid rgba(141,109,66,.25);
+  font-size:14px;
+}
+
+.flower{
+  position:absolute;
+  left:15px;
+  bottom:20px;
+  width:110px;
+  height:110px;
+  color:rgba(185,150,98,.55);
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-area{
+  max-width:1250px;
   margin:25px auto 0;
-  padding:0 20px;
+  padding:0 22px;
 }
 
 .search{
-  height:54px;
+  height:57px;
   background:white;
   border:1px solid var(--line);
-  border-radius:17px;
+  border-radius:18px;
+  padding:0 18px;
   display:flex;
   align-items:center;
-  padding:0 17px;
-  gap:10px;
+  gap:11px;
+  box-shadow:0 5px 18px rgba(80,40,50,.03);
 }
 
 .search svg{
   width:20px;
-  color:#888;
+  color:#a49398;
 }
 
 .search input{
   border:0;
   outline:0;
-  width:100%;
   background:transparent;
   color:var(--text);
+  width:100%;
 }
 
-/* CATEGORIES */
+.search input::placeholder{
+  color:#aaa0a3;
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
 
 .categories{
-  max-width:1200px;
-  margin:20px auto;
-  padding:0 20px;
+  max-width:1250px;
+  margin:18px auto 0;
+  padding:0 22px;
   display:flex;
   gap:9px;
   overflow-x:auto;
@@ -249,44 +417,63 @@ header{
 }
 
 .category{
-  white-space:nowrap;
-  padding:11px 17px;
-  border:1px solid var(--line);
-  border-radius:100px;
   background:white;
-  color:#555;
+  border:1px solid var(--line);
+  padding:11px 18px;
+  border-radius:100px;
+  white-space:nowrap;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:600;
 }
 
 .category.active{
-  background:#111;
+  background:var(--pink-dark);
+  border-color:var(--pink-dark);
   color:white;
-  border-color:#111;
 }
 
-/* PRODUCTS */
+
+/* =========================
+   SECTION
+========================= */
 
 .section{
-  max-width:1200px;
-  margin:35px auto 100px;
-  padding:0 20px;
+  max-width:1250px;
+  margin:50px auto 100px;
+  padding:0 22px;
 }
 
-.section-heading{
+.section-head{
   display:flex;
   align-items:end;
   justify-content:space-between;
-  margin-bottom:20px;
+  margin-bottom:23px;
 }
 
-.section-heading h2{
+.section-kicker{
+  color:var(--pink-dark);
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:2.5px;
+  margin-bottom:5px;
+}
+
+.section-head h2{
   font-family:"Playfair Display",serif;
-  font-size:30px;
+  font-size:34px;
 }
 
-.section-heading span{
+.product-count{
   color:var(--muted);
-  font-size:13px;
+  font-size:12px;
 }
+
+
+/* =========================
+   PRODUCTS
+========================= */
 
 .products{
   display:grid;
@@ -295,145 +482,289 @@ header{
 }
 
 .product{
-  background:var(--card);
+  background:white;
   border:1px solid var(--line);
-  border-radius:20px;
+  border-radius:22px;
   overflow:hidden;
-  transition:.25s;
+  transition:.3s;
 }
 
 .product:hover{
-  transform:translateY(-4px);
+  transform:translateY(-5px);
   box-shadow:var(--shadow);
 }
 
 .product-image{
-  height:250px;
-  background:linear-gradient(135deg,#eee8de,#d8c8af);
+  height:285px;
+  background:
+    radial-gradient(circle at 50% 20%,#fff,#f8e8eb 65%,#f0d8dc);
   position:relative;
   display:grid;
   place-items:center;
   overflow:hidden;
 }
 
+.product-image:after{
+  content:"";
+  position:absolute;
+  width:170px;
+  height:170px;
+  border-radius:50%;
+  border:1px solid rgba(185,150,98,.18);
+}
+
+.product-image svg{
+  position:relative;
+  z-index:2;
+  width:120px;
+  height:120px;
+  color:#ba8792;
+}
+
 .product-image img{
   width:100%;
   height:100%;
   object-fit:cover;
-}
-
-.product-image svg{
-  width:115px;
-  height:115px;
-  opacity:.72;
+  position:relative;
+  z-index:3;
 }
 
 .badge{
   position:absolute;
-  top:12px;
   left:12px;
-  background:#111;
+  top:12px;
+  z-index:5;
+  background:var(--black);
   color:white;
-  padding:6px 9px;
   border-radius:8px;
-  font-size:10px;
-  font-weight:700;
+  padding:6px 9px;
+  font-size:9px;
+  letter-spacing:.5px;
+  font-weight:800;
 }
 
-.heart{
+.favorite{
   position:absolute;
-  right:10px;
-  top:10px;
-  width:37px;
-  height:37px;
-  border-radius:50%;
+  right:11px;
+  top:11px;
+  z-index:5;
+  width:38px;
+  height:38px;
   background:rgba(255,255,255,.9);
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:50%;
   display:grid;
   place-items:center;
 }
 
-.heart svg{
+.favorite svg{
   width:18px;
   height:18px;
+  color:#7e7074;
 }
 
 .product-info{
-  padding:16px;
+  padding:17px;
 }
 
 .product-category{
-  color:var(--gold);
+  color:var(--pink-dark);
   text-transform:uppercase;
-  letter-spacing:1px;
-  font-size:10px;
-  font-weight:700;
+  font-size:9px;
+  letter-spacing:1.5px;
+  font-weight:800;
 }
 
 .product-name{
+  margin-top:6px;
+  font-size:14px;
   font-weight:700;
-  margin:6px 0;
 }
 
 .product-bottom{
+  margin-top:15px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  margin-top:13px;
 }
 
 .price{
+  font-size:14px;
   font-weight:800;
 }
 
 .add{
-  width:39px;
-  height:39px;
-  border-radius:12px;
-  background:#111;
-  color:white;
+  width:40px;
+  height:40px;
+  border-radius:13px;
+  background:var(--pink-light);
+  color:var(--pink-dark);
   display:grid;
   place-items:center;
+  transition:.2s;
+}
+
+.add:hover{
+  background:var(--pink-dark);
+  color:white;
 }
 
 .add svg{
   width:18px;
 }
 
-/* EMPTY */
+
+/* =========================
+   EMPTY
+========================= */
 
 .empty{
   display:none;
   text-align:center;
-  padding:60px 20px;
-  color:#777;
+  padding:70px 20px;
+  color:var(--muted);
 }
 
-/* CART DRAWER */
+.empty-icon{
+  margin:auto auto 15px;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:var(--pink-light);
+  display:grid;
+  place-items:center;
+}
+
+.empty-icon svg{
+  width:27px;
+}
+
+
+/* =========================
+   PROMO STRIP
+========================= */
+
+.promo{
+  max-width:1250px;
+  margin:-40px auto 80px;
+  padding:0 22px;
+}
+
+.promo-box{
+  background:var(--black);
+  color:white;
+  border-radius:24px;
+  padding:27px 30px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.promo h3{
+  font-family:"Playfair Display",serif;
+  font-size:25px;
+}
+
+.promo p{
+  color:#bdb4b6;
+  font-size:12px;
+  margin-top:5px;
+}
+
+.promo button{
+  background:#f7e4e8;
+  color:#8f5362;
+  padding:12px 18px;
+  border-radius:12px;
+  font-weight:800;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  background:#211c1f;
+  color:white;
+  padding:55px 22px 90px;
+}
+
+.footer{
+  max-width:1250px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:40px;
+}
+
+.footer-brand{
+  font-family:"Playfair Display",serif;
+  font-size:30px;
+}
+
+.footer-brand em{
+  color:#e2aab6;
+}
+
+.footer-text{
+  max-width:380px;
+  color:#aaa0a3;
+  line-height:1.7;
+  margin-top:12px;
+  font-size:13px;
+}
+
+.footer h4{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  margin-bottom:15px;
+  color:#e8d1d5;
+}
+
+.footer-links{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  color:#aaa0a3;
+  font-size:13px;
+}
+
+
+/* =========================
+   CART
+========================= */
 
 .overlay{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.45);
+  background:rgba(30,20,23,.45);
   z-index:300;
-  display:none;
+  opacity:0;
+  visibility:hidden;
+  transition:.25s;
 }
 
 .overlay.show{
-  display:block;
+  opacity:1;
+  visibility:visible;
 }
 
 .cart{
   position:fixed;
-  right:0;
   top:0;
+  right:0;
   bottom:0;
-  width:min(430px,100%);
-  background:#fff;
+  width:min(440px,100%);
+  background:white;
   z-index:301;
   transform:translateX(100%);
   transition:.3s;
   display:flex;
   flex-direction:column;
+  box-shadow:-15px 0 45px rgba(0,0,0,.12);
 }
 
 .cart.show{
@@ -441,23 +772,30 @@ header{
 }
 
 .cart-header{
-  padding:20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  padding:21px;
   border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
 .cart-header h3{
   font-family:"Playfair Display",serif;
-  font-size:24px;
+  font-size:26px;
 }
 
 .close{
-  width:38px;
-  height:38px;
+  width:39px;
+  height:39px;
   border-radius:50%;
-  background:var(--soft);
+  background:var(--pink-light);
+  color:var(--pink-dark);
+  display:grid;
+  place-items:center;
+}
+
+.close svg{
+  width:18px;
 }
 
 .cart-items{
@@ -469,37 +807,41 @@ header{
 .cart-item{
   display:flex;
   gap:12px;
-  margin-bottom:17px;
   padding-bottom:17px;
+  margin-bottom:17px;
   border-bottom:1px solid var(--line);
 }
 
-.cart-item-img{
-  width:70px;
-  height:70px;
-  border-radius:12px;
-  background:var(--soft);
+.cart-img{
+  width:75px;
+  height:75px;
+  border-radius:13px;
+  background:var(--pink-light);
+  display:grid;
+  place-items:center;
   overflow:hidden;
+  flex-shrink:0;
 }
 
-.cart-item-img img{
+.cart-img img{
   width:100%;
   height:100%;
   object-fit:cover;
 }
 
-.cart-item-info{
+.cart-info{
   flex:1;
 }
 
-.cart-item-name{
+.cart-name{
   font-weight:700;
-  font-size:14px;
+  font-size:13px;
 }
 
-.cart-item-price{
-  margin-top:5px;
-  font-weight:700;
+.cart-price{
+  margin-top:4px;
+  font-weight:800;
+  font-size:13px;
 }
 
 .qty{
@@ -513,14 +855,15 @@ header{
   width:27px;
   height:27px;
   border-radius:8px;
-  background:var(--soft);
+  background:var(--pink-light);
+  color:var(--pink-dark);
 }
 
 .remove{
+  margin-top:6px;
   color:var(--danger);
-  font-size:11px;
   background:none;
-  margin-top:7px;
+  font-size:10px;
 }
 
 .cart-footer{
@@ -531,31 +874,34 @@ header{
 .total{
   display:flex;
   justify-content:space-between;
-  font-weight:800;
   font-size:18px;
-  margin-bottom:15px;
+  font-weight:800;
+  margin-bottom:14px;
 }
 
 .checkout{
   width:100%;
-  background:#111;
+  background:var(--black);
   color:white;
-  padding:15px;
+  padding:16px;
   border-radius:14px;
   font-weight:800;
 }
 
-/* MODAL */
+
+/* =========================
+   CHECKOUT MODAL
+========================= */
 
 .modal-overlay{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.55);
+  background:rgba(25,18,20,.58);
   z-index:500;
   display:none;
   align-items:center;
   justify-content:center;
-  padding:20px;
+  padding:18px;
 }
 
 .modal-overlay.show{
@@ -563,24 +909,24 @@ header{
 }
 
 .modal{
-  width:min(500px,100%);
-  max-height:90vh;
+  width:min(510px,100%);
+  max-height:92vh;
   overflow:auto;
   background:white;
   border-radius:25px;
   padding:25px;
 }
 
-.modal-title{
+.modal-head{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   margin-bottom:20px;
 }
 
-.modal-title h3{
+.modal-head h3{
   font-family:"Playfair Display",serif;
-  font-size:27px;
+  font-size:28px;
 }
 
 .form-group{
@@ -589,18 +935,27 @@ header{
 
 .form-group label{
   display:block;
-  font-size:12px;
-  font-weight:700;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1px;
   margin-bottom:7px;
+  color:#756b6e;
 }
 
 .form-group input,
 .form-group textarea{
   width:100%;
   border:1px solid var(--line);
-  padding:13px;
   border-radius:12px;
+  padding:13px;
   outline:none;
+  color:var(--text);
+  background:#fff;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+  border-color:var(--pink);
 }
 
 .form-group textarea{
@@ -610,159 +965,234 @@ header{
 
 .order-btn{
   width:100%;
+  background:#25a05a;
+  color:white;
   padding:15px;
   border-radius:13px;
-  background:#111;
-  color:white;
   font-weight:800;
-  margin-top:5px;
 }
 
-/* MOBILE NAV */
+
+/* =========================
+   MOBILE NAV
+========================= */
 
 .mobile-nav{
   display:none;
 }
 
-/* FOOTER */
 
-footer{
-  background:#111;
-  color:white;
-  padding:50px 20px;
-}
-
-.footer-inner{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  gap:30px;
-}
-
-.footer-logo{
-  font-family:"Playfair Display",serif;
-  font-size:28px;
-}
-
-.footer-text{
-  color:#aaa;
-  margin-top:10px;
-  max-width:400px;
-  line-height:1.7;
-}
-
-.footer-links{
-  display:flex;
-  gap:20px;
-  color:#bbb;
-}
-
-/* DARK MODE */
+/* =========================
+   DARK MODE
+========================= */
 
 body.dark{
-  --bg:#0d0d0d;
-  --card:#151515;
-  --text:#f4f4f4;
-  --muted:#999;
-  --line:#292929;
-  --soft:#202020;
+  --cream:#110e10;
+  --white:#181416;
+  --text:#f7f1f3;
+  --muted:#aaa0a3;
+  --line:#30282b;
+  --soft:#211b1e;
+  --black:#f7f1f3;
+}
+
+body.dark .topbar{
+  background:#080708;
 }
 
 body.dark header{
-  background:rgba(13,13,13,.94);
+  background:rgba(17,14,16,.94);
+}
+
+body.dark .brand-name,
+body.dark .section-head h2,
+body.dark .cart-header h3,
+body.dark .modal-head h3{
+  color:#f7f1f3;
+}
+
+body.dark .icon-btn{
+  color:#f7f1f3;
 }
 
 body.dark .search,
 body.dark .category,
-body.dark .heart,
+body.dark .product,
 body.dark .modal,
 body.dark .cart{
-  background:#151515;
+  background:#181416;
 }
 
-body.dark .category.active,
-body.dark .add,
-body.dark .checkout,
-body.dark .order-btn{
-  background:#f4f4f4;
-  color:#111;
+body.dark .primary-btn,
+body.dark .checkout{
+  background:#f7f1f3;
+  color:#211c1f;
 }
 
-/* RESPONSIVE */
+body.dark .hero-box{
+  background:
+    radial-gradient(circle at 88% 20%,rgba(229,208,170,.12),transparent 25%),
+    linear-gradient(120deg,#241c20,#171416);
+}
 
-@media(max-width:900px){
+body.dark .secondary-btn{
+  background:#211b1e;
+  border-color:#382e31;
+  color:#f7f1f3;
+}
+
+body.dark .form-group input,
+body.dark .form-group textarea{
+  background:#211b1e;
+  color:#fff;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:950px){
+
   .products{
     grid-template-columns:repeat(3,1fr);
   }
+
+  .hero-art{
+    right:-40px;
+    opacity:.55;
+  }
+
+  .footer{
+    grid-template-columns:1fr 1fr;
+  }
 }
+
 
 @media(max-width:650px){
 
-  .nav{
-    height:64px;
+  .topbar{
+    font-size:9px;
   }
 
-  .logo{
-    font-size:22px;
+  .nav{
+    height:66px;
+    padding:0 15px;
+  }
+
+  .brand-name{
+    font-size:21px;
+  }
+
+  .brand-mark{
+    width:34px;
+    height:34px;
+  }
+
+  .hero{
+    padding:0 14px;
+    margin-top:14px;
   }
 
   .hero-box{
-    min-height:430px;
-    padding:32px 25px;
-    border-radius:22px;
+    min-height:500px;
+    padding:38px 24px;
+    border-radius:25px;
+    align-items:flex-start;
   }
 
   .hero h1{
-    font-size:46px;
+    font-size:47px;
+    letter-spacing:-1.5px;
+  }
+
+  .hero-text{
+    font-size:13px;
+  }
+
+  .hero-art{
+    right:-90px;
+    bottom:-90px;
+    transform:scale(.8);
+    opacity:.7;
+  }
+
+  .search-area,
+  .categories,
+  .section,
+  .promo{
+    padding-left:15px;
+    padding-right:15px;
   }
 
   .products{
     grid-template-columns:repeat(2,1fr);
-    gap:12px;
+    gap:11px;
   }
 
   .product-image{
-    height:190px;
+    height:210px;
   }
 
   .product-info{
-    padding:12px;
+    padding:13px;
   }
 
   .product-name{
-    font-size:14px;
+    font-size:13px;
   }
 
   .price{
-    font-size:14px;
+    font-size:13px;
   }
 
-  .footer-inner{
+  .add{
+    width:36px;
+    height:36px;
+  }
+
+  .section{
+    margin-top:38px;
+    margin-bottom:75px;
+  }
+
+  .section-head h2{
+    font-size:28px;
+  }
+
+  .promo{
+    margin-top:-15px;
+    margin-bottom:55px;
+  }
+
+  .promo-box{
     flex-direction:column;
+    align-items:flex-start;
+    padding:24px;
   }
 
-  .footer-links{
-    flex-wrap:wrap;
+  .footer{
+    grid-template-columns:1fr;
+    gap:28px;
   }
 
   .mobile-nav{
     position:fixed;
-    bottom:0;
     left:0;
     right:0;
-    height:68px;
-    background:rgba(255,255,255,.96);
+    bottom:0;
+    height:67px;
+    background:rgba(255,250,247,.96);
     border-top:1px solid var(--line);
     z-index:200;
     display:flex;
-    justify-content:space-around;
     align-items:center;
-    backdrop-filter:blur(15px);
+    justify-content:space-around;
+    backdrop-filter:blur(16px);
   }
 
   body.dark .mobile-nav{
-    background:rgba(15,15,15,.96);
+    background:rgba(17,14,16,.96);
   }
 
   .mobile-nav button{
@@ -771,7 +1201,7 @@ body.dark .order-btn{
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:3px;
+    gap:4px;
     font-size:9px;
   }
 
@@ -780,421 +1210,900 @@ body.dark .order-btn{
     height:21px;
   }
 
-  footer{
-    padding-bottom:100px;
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *{
+    scroll-behavior:auto!important;
+    transition:none!important;
   }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- SVG SYMBOLS -->
+<!-- =========================
+     SVG SYMBOLS
+========================= -->
 
 <svg width="0" height="0" style="position:absolute">
-<symbol id="logo" viewBox="0 0 100 100">
-  <path d="M22 30h56l-7 48H29z" fill="none" stroke="currentColor" stroke-width="6"/>
-  <path d="M36 31c0-13 28-13 28 0" fill="none" stroke="currentColor" stroke-width="6"/>
+
+<symbol id="bag" viewBox="0 0 24 24">
+  <path d="M5 8h14l-1 12H6z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"/>
+  <path d="M9 8V6a3 3 0 0 1 6 0v2"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"/>
 </symbol>
 
 <symbol id="search" viewBox="0 0 24 24">
-  <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
-  <path d="M16.5 16.5L21 21" fill="none" stroke="currentColor" stroke-width="2"/>
-</symbol>
-
-<symbol id="bag" viewBox="0 0 24 24">
-  <path d="M5 8h14l-1 12H6z" fill="none" stroke="currentColor" stroke-width="2"/>
-  <path d="M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="2"/>
-</symbol>
-
-<symbol id="sun" viewBox="0 0 24 24">
-  <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
-  <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4" stroke="currentColor" stroke-width="2"/>
-</symbol>
-
-<symbol id="moon" viewBox="0 0 24 24">
-  <path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5z" fill="none" stroke="currentColor" stroke-width="2"/>
+  <circle cx="11" cy="11" r="7"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"/>
+  <path d="M16.5 16.5L21 21"
+        stroke="currentColor"
+        stroke-width="1.8"/>
 </symbol>
 
 <symbol id="heart" viewBox="0 0 24 24">
-  <path d="M20.8 8.7c0 5.2-8.8 10-8.8 10s-8.8-4.8-8.8-10A4.7 4.7 0 0 1 12 6a4.7 4.7 0 0 1 8.8 2.7z" fill="none" stroke="currentColor" stroke-width="2"/>
+  <path d="M20.8 8.7c0 5.2-8.8 10-8.8 10s-8.8-4.8-8.8-10A4.7 4.7 0 0 1 12 6a4.7 4.7 0 0 1 8.8 2.7z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"/>
 </symbol>
 
 <symbol id="plus" viewBox="0 0 24 24">
-  <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2"/>
+  <path d="M12 5v14M5 12h14"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"/>
 </symbol>
 
 <symbol id="close" viewBox="0 0 24 24">
-  <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2"/>
+  <path d="M6 6l12 12M18 6L6 18"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"/>
+</symbol>
+
+<symbol id="moon" viewBox="0 0 24 24">
+  <path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"/>
+</symbol>
+
+<symbol id="sun" viewBox="0 0 24 24">
+  <circle cx="12" cy="12" r="4"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"/>
+  <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"
+        stroke="currentColor"
+        stroke-width="1.8"/>
 </symbol>
 
 <symbol id="home" viewBox="0 0 24 24">
-  <path d="M3 11l9-8 9 8v9H5v-9z" fill="none" stroke="currentColor" stroke-width="2"/>
+  <path d="M3 11l9-8 9 8v9H5v-9z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"/>
 </symbol>
 
 <symbol id="user" viewBox="0 0 24 24">
-  <circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
-  <path d="M4 21c1-5 15-5 16 0" fill="none" stroke="currentColor" stroke-width="2"/>
+  <circle cx="12" cy="8" r="4"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"/>
+  <path d="M4 21c1-5 15-5 16 0"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"/>
 </symbol>
+
+<symbol id="dress" viewBox="0 0 100 100">
+  <path d="M39 14h22l5 17 14 16-13 9-8-9 7 39H34l7-39-8 9-13-9 14-16z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linejoin="round"/>
+</symbol>
+
+<symbol id="perfume" viewBox="0 0 100 100">
+  <rect x="31" y="29" width="38" height="56" rx="8"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"/>
+  <rect x="40" y="18" width="20" height="11" rx="3"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"/>
+  <path d="M43 49h14"
+        stroke="currentColor"
+        stroke-width="2"/>
+  <path d="M44 57h12"
+        stroke="currentColor"
+        stroke-width="2"/>
+</symbol>
+
+<symbol id="bagIcon" viewBox="0 0 100 100">
+  <path d="M18 35h64l-6 48H24z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"/>
+  <path d="M34 35c0-18 32-18 32 0"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"/>
+</symbol>
+
+<symbol id="shoe" viewBox="0 0 100 100">
+  <path d="M13 67c17 0 23-18 27-34l12 7c4 3 7 8 13 12l20 13c7 5 4 13-5 13H17c-8 0-10-7-4-11z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"/>
+</symbol>
+
+<symbol id="watch" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="26"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"/>
+  <path d="M50 35v16l11 7"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"/>
+  <path d="M41 24h18M41 76h18"
+        stroke="currentColor"
+        stroke-width="5"/>
+</symbol>
+
+<symbol id="jewelry" viewBox="0 0 100 100">
+  <circle cx="50" cy="57" r="22"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"/>
+  <path d="M31 42c7-14 31-14 38 0"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"/>
+  <circle cx="50" cy="31" r="8"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"/>
+</symbol>
+
 </svg>
 
+
+<!-- =========================
+     TOP BAR
+========================= -->
+
+<div class="topbar">
+  ✦ FREE DELIVERY AVAILABLE ON SELECTED ORDERS
+  <span> • SHOP WITH US TODAY</span>
+</div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
-  <div class="nav">
 
-    <a class="logo" href="#">
-      <svg><use href="#logo"></use></svg>
-      LuxeStore
-    </a>
+<div class="nav">
 
-    <div class="nav-actions">
+  <a href="#" class="brand">
 
-      <button class="icon-btn" onclick="toggleTheme()" aria-label="Theme">
-        <svg id="themeIcon"><use href="#moon"></use></svg>
-      </button>
-
-      <button class="icon-btn" onclick="openCart()" aria-label="Cart">
-        <svg><use href="#bag"></use></svg>
-        <span class="cart-count" id="cartCount">0</span>
-      </button>
-
+    <div class="brand-mark">
+      <svg>
+        <use href="#bag"></use>
+      </svg>
     </div>
+
+    <div class="brand-name">
+      Luxe<em>Store</em>
+    </div>
+
+  </a>
+
+
+  <div class="nav-actions">
+
+    <button class="icon-btn"
+            onclick="toggleTheme()"
+            aria-label="Theme">
+
+      <svg id="themeIcon">
+        <use href="#moon"></use>
+      </svg>
+
+    </button>
+
+
+    <button class="icon-btn"
+            onclick="openCart()"
+            aria-label="Shopping bag">
+
+      <svg>
+        <use href="#bag"></use>
+      </svg>
+
+      <span class="cart-count"
+            id="cartCount">
+        0
+      </span>
+
+    </button>
+
   </div>
+
+</div>
+
 </header>
 
-<main>
+
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero">
-  <div class="hero-box">
 
-    <div class="hero-decoration"></div>
+<div class="hero-box">
 
-    <div class="hero-content">
-      <div class="eyebrow">New Collection</div>
+  <div class="hero-content">
 
-      <h1>Style that speaks for you.</h1>
+    <div class="hero-small">
+      New Season
+    </div>
 
-      <p>
-        Discover clothing, premium perfumes, accessories and everyday luxury
-        carefully selected for your personal style.
-      </p>
+    <h1>
+      Your style,
+      <br>
+      your <em>signature.</em>
+    </h1>
 
-      <button class="hero-btn" onclick="scrollToProducts()">
+    <p class="hero-text">
+      Discover beautiful fashion, irresistible fragrances,
+      handbags, jewelry and accessories carefully selected
+      for the woman who loves to stand out.
+    </p>
+
+    <div class="hero-buttons">
+
+      <button class="primary-btn"
+              onclick="scrollToProducts()">
         Shop Collection
       </button>
+
+      <button class="secondary-btn"
+              onclick="selectCategory('Perfumes')">
+        Explore Perfumes
+      </button>
+
     </div>
 
   </div>
+
+
+  <div class="hero-art">
+
+    <div class="hero-circle"></div>
+
+    <div class="bottle"></div>
+
+    <svg class="flower"
+         viewBox="0 0 100 100">
+
+      <path d="M50 90C45 65 35 45 15 35"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"/>
+
+      <path d="M49 70C60 53 75 47 88 50"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"/>
+
+      <circle cx="15" cy="35" r="8"
+              fill="none"
+              stroke="currentColor"/>
+
+      <circle cx="88" cy="50" r="8"
+              fill="none"
+              stroke="currentColor"/>
+
+    </svg>
+
+  </div>
+
+</div>
+
 </section>
 
-<div class="search-wrap">
+
+<!-- =========================
+     SEARCH
+========================= -->
+
+<div class="search-area">
+
   <div class="search">
-    <svg><use href="#search"></use></svg>
+
+    <svg>
+      <use href="#search"></use>
+    </svg>
+
     <input
       id="searchInput"
       type="search"
-      placeholder="Search clothes, perfumes, bags..."
-      oninput="searchProducts()"
+      placeholder="Search for dresses, perfumes, bags..."
+      oninput="renderProducts()"
     >
+
   </div>
+
 </div>
 
-<div class="categories" id="categories"></div>
 
-<section class="section" id="shop">
+<!-- =========================
+     CATEGORIES
+========================= -->
 
-  <div class="section-heading">
+<div class="categories"
+     id="categories">
+</div>
+
+
+<!-- =========================
+     PRODUCTS
+========================= -->
+
+<section class="section"
+         id="shop">
+
+  <div class="section-head">
+
     <div>
-      <div class="eyebrow" style="margin-bottom:5px;">Our Store</div>
-      <h2>Featured Collection</h2>
+
+      <div class="section-kicker">
+        Curated for you
+      </div>
+
+      <h2>
+        Shop the collection
+      </h2>
+
     </div>
 
-    <span id="productCount"></span>
+    <div class="product-count"
+         id="productCount">
+    </div>
+
   </div>
 
-  <div class="products" id="products"></div>
 
-  <div class="empty" id="empty">
-    <h3>No products found</h3>
-    <p>Try another search or category.</p>
+  <div class="products"
+       id="products">
+  </div>
+
+
+  <div class="empty"
+       id="empty">
+
+    <div class="empty-icon">
+
+      <svg>
+        <use href="#search"></use>
+      </svg>
+
+    </div>
+
+    <h3>
+      Nothing found
+    </h3>
+
+    <p>
+      Try searching for another product.
+    </p>
+
   </div>
 
 </section>
 
-</main>
+
+<!-- =========================
+     PROMO
+========================= -->
+
+<section class="promo">
+
+<div class="promo-box">
+
+  <div>
+
+    <h3>
+      A little luxury never hurts. ✨
+    </h3>
+
+    <p>
+      Find something beautiful for yourself or someone special.
+    </p>
+
+  </div>
+
+  <button onclick="scrollToProducts()">
+    Shop Now
+  </button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-  <div class="footer-inner">
+<div class="footer">
 
-    <div>
-      <div class="footer-logo">LuxeStore</div>
+  <div>
 
-      <div class="footer-text">
-        Fashion, fragrances and accessories designed to help you look and
-        feel your best.
-      </div>
+    <div class="footer-brand">
+      Luxe<em>Store</em>
     </div>
 
+    <p class="footer-text">
+      Fashion, beauty and fragrance for women who love
+      effortless elegance and personal style.
+    </p>
+
+  </div>
+
+
+  <div>
+
+    <h4>
+      Shop
+    </h4>
+
     <div class="footer-links">
-      <a href="#">Instagram</a>
-      <a href="#">WhatsApp</a>
-      <a href="#">Contact</a>
+
+      <a href="#shop">
+        Clothing
+      </a>
+
+      <a href="#shop">
+        Perfumes
+      </a>
+
+      <a href="#shop">
+        Bags
+      </a>
+
+      <a href="#shop">
+        Accessories
+      </a>
+
     </div>
 
   </div>
 
+
+  <div>
+
+    <h4>
+      Connect
+    </h4>
+
+    <div class="footer-links">
+
+      <a href="#">
+        Instagram
+      </a>
+
+      <a href="#">
+        WhatsApp
+      </a>
+
+      <a href="#">
+        Contact Us
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
 </footer>
 
-<!-- MOBILE NAV -->
+
+<!-- =========================
+     MOBILE NAV
+========================= -->
 
 <div class="mobile-nav">
 
   <button onclick="scrollToTop()">
-    <svg><use href="#home"></use></svg>
+
+    <svg>
+      <use href="#home"></use>
+    </svg>
+
     Home
+
   </button>
+
 
   <button onclick="scrollToProducts()">
-    <svg><use href="#bag"></use></svg>
+
+    <svg>
+      <use href="#bag"></use>
+    </svg>
+
     Shop
+
   </button>
+
 
   <button onclick="openCart()">
-    <svg><use href="#bag"></use></svg>
-    Cart
+
+    <svg>
+      <use href="#bag"></use>
+    </svg>
+
+    Bag
+
   </button>
 
+
   <button onclick="toggleTheme()">
-    <svg><use href="#moon"></use></svg>
+
+    <svg>
+      <use href="#moon"></use>
+    </svg>
+
     Theme
+
   </button>
 
 </div>
 
-<!-- CART -->
 
-<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<!-- =========================
+     CART
+========================= -->
 
-<div class="cart" id="cart">
+<div class="overlay"
+     id="overlay"
+     onclick="closeCart()">
+</div>
+
+
+<div class="cart"
+     id="cart">
 
   <div class="cart-header">
-    <h3>Your Bag</h3>
 
-    <button class="close" onclick="closeCart()">
-      <svg width="18"><use href="#close"></use></svg>
+    <h3>
+      Your Bag
+    </h3>
+
+    <button class="close"
+            onclick="closeCart()">
+
+      <svg>
+        <use href="#close"></use>
+      </svg>
+
     </button>
+
   </div>
 
-  <div class="cart-items" id="cartItems"></div>
+
+  <div class="cart-items"
+       id="cartItems">
+  </div>
+
 
   <div class="cart-footer">
 
     <div class="total">
-      <span>Total</span>
-      <span id="cartTotal">₦0</span>
+
+      <span>
+        Total
+      </span>
+
+      <span id="cartTotal">
+        ₦0
+      </span>
+
     </div>
 
-    <button class="checkout" onclick="openCheckout()">
+    <button class="checkout"
+            onclick="openCheckout()">
+
       Continue to Checkout
+
     </button>
 
   </div>
 
 </div>
 
-<!-- CHECKOUT -->
 
-<div class="modal-overlay" id="checkoutModal">
+<!-- =========================
+     CHECKOUT
+========================= -->
+
+<div class="modal-overlay"
+     id="checkoutModal">
 
   <div class="modal">
 
-    <div class="modal-title">
+    <div class="modal-head">
 
-      <h3>Checkout</h3>
+      <h3>
+        Complete Order
+      </h3>
 
-      <button class="close" onclick="closeCheckout()">
-        <svg width="18"><use href="#close"></use></svg>
+      <button class="close"
+              onclick="closeCheckout()">
+
+        <svg>
+          <use href="#close"></use>
+        </svg>
+
       </button>
 
     </div>
 
-    <div class="form-group">
-      <label>FULL NAME</label>
-      <input id="customerName" placeholder="Your name">
-    </div>
 
     <div class="form-group">
-      <label>PHONE NUMBER</label>
-      <input id="customerPhone" placeholder="08012345678">
+
+      <label>
+        FULL NAME
+      </label>
+
+      <input
+        id="customerName"
+        placeholder="Your full name"
+      >
+
     </div>
+
 
     <div class="form-group">
-      <label>DELIVERY ADDRESS</label>
-      <textarea id="customerAddress" placeholder="Where should we deliver your order?"></textarea>
+
+      <label>
+        PHONE NUMBER
+      </label>
+
+      <input
+        id="customerPhone"
+        placeholder="08012345678"
+      >
+
     </div>
+
 
     <div class="form-group">
-      <label>ADDITIONAL NOTE</label>
-      <textarea id="customerNote" placeholder="Size, colour or other request..."></textarea>
+
+      <label>
+        DELIVERY ADDRESS
+      </label>
+
+      <textarea
+        id="customerAddress"
+        placeholder="Enter your delivery address">
+      </textarea>
+
     </div>
 
-    <button class="order-btn" onclick="sendWhatsAppOrder()">
+
+    <div class="form-group">
+
+      <label>
+        SIZE / COLOUR / SPECIAL REQUEST
+      </label>
+
+      <textarea
+        id="customerNote"
+        placeholder="Example: Medium, pink...">
+      </textarea>
+
+    </div>
+
+
+    <button class="order-btn"
+            onclick="sendWhatsAppOrder()">
+
       Order via WhatsApp
+
     </button>
 
   </div>
 
 </div>
 
+
 <script>
 
-/* =========================================
+/* ========================================
    STORE SETTINGS
    CHANGE THESE FOR EACH CLIENT
-========================================= */
+======================================== */
 
 const STORE = {
 
-  name: "LuxeStore",
+  name:"LuxeStore",
 
-  whatsapp: "2348000000000",
+  whatsapp:"2348000000000",
 
-  currency: "₦",
-
-  instagram: "#"
+  currency:"₦"
 
 };
 
 
-/* =========================================
+/* ========================================
    PRODUCTS
-========================================= */
+======================================== */
 
 const products = [
 
   {
     id:1,
-    name:"Classic Black Shirt",
+    name:"Elegant Satin Dress",
     category:"Clothing",
-    price:25000,
-    badge:"BEST SELLER",
+    price:45000,
+    badge:"NEW",
+    icon:"dress",
     image:""
   },
 
   {
     id:2,
-    name:"Luxury Floral Dress",
-    category:"Clothing",
-    price:45000,
-    badge:"NEW",
+    name:"Classic Pink Handbag",
+    category:"Bags",
+    price:55000,
+    badge:"POPULAR",
+    icon:"bagIcon",
     image:""
   },
 
   {
     id:3,
-    name:"Premium Leather Bag",
-    category:"Bags",
-    price:55000,
-    badge:"POPULAR",
+    name:"Signature Rose Perfume",
+    category:"Perfumes",
+    price:30000,
+    badge:"BEST SELLER",
+    icon:"perfume",
     image:""
   },
 
   {
     id:4,
-    name:"Classic Wrist Watch",
+    name:"Gold Elegance Watch",
     category:"Watches",
-    price:35000,
+    price:65000,
     badge:"",
+    icon:"watch",
     image:""
   },
 
   {
     id:5,
-    name:"Signature Oud Perfume",
-    category:"Perfumes",
-    price:30000,
-    badge:"HOT",
+    name:"Luxury Pearl Necklace",
+    category:"Jewelry",
+    price:28000,
+    badge:"NEW",
+    icon:"jewelry",
     image:""
   },
 
   {
     id:6,
-    name:"Elegant Gold Necklace",
-    category:"Jewelry",
-    price:18000,
+    name:"Classic White Sneakers",
+    category:"Shoes",
+    price:60000,
     badge:"",
+    icon:"shoe",
     image:""
   },
 
   {
     id:7,
-    name:"Premium Sneakers",
-    category:"Shoes",
-    price:60000,
-    badge:"NEW",
+    name:"Vanilla Glow Perfume",
+    category:"Perfumes",
+    price:28000,
+    badge:"HOT",
+    icon:"perfume",
     image:""
   },
 
   {
     id:8,
-    name:"Designer Sunglasses",
-    category:"Accessories",
-    price:22000,
+    name:"Soft Luxury Blouse",
+    category:"Clothing",
+    price:32000,
     badge:"",
+    icon:"dress",
     image:""
   },
 
   {
     id:9,
-    name:"Vanilla Mist Perfume",
-    category:"Perfumes",
-    price:28000,
-    badge:"BEST SELLER",
+    name:"Mini Shoulder Bag",
+    category:"Bags",
+    price:42000,
+    badge:"",
+    icon:"bagIcon",
     image:""
   },
 
   {
     id:10,
-    name:"Oversized Hoodie",
-    category:"Clothing",
-    price:32000,
+    name:"Delicate Gold Bracelet",
+    category:"Jewelry",
+    price:18000,
     badge:"",
+    icon:"jewelry",
     image:""
   },
 
   {
     id:11,
-    name:"Mini Shoulder Bag",
-    category:"Bags",
-    price:42000,
-    badge:"NEW",
+    name:"Everyday Chic Watch",
+    category:"Watches",
+    price:38000,
+    badge:"",
+    icon:"watch",
     image:""
   },
 
   {
     id:12,
-    name:"Luxury Bracelet",
-    category:"Jewelry",
-    price:15000,
-    badge:"",
+    name:"Premium Nude Heels",
+    category:"Shoes",
+    price:48000,
+    badge:"NEW",
+    icon:"shoe",
     image:""
   }
 
 ];
 
 
-/* =========================================
+/* ========================================
    STATE
-========================================= */
+======================================== */
 
-let selectedCategory = "All";
+let selectedCategory="All";
 
-let cart = JSON.parse(localStorage.getItem("luxestoreCart") || "[]");
+let cart=JSON.parse(
+  localStorage.getItem("luxestoreCart") || "[]"
+);
 
 
-/* =========================================
-   HELPERS
-========================================= */
+/* ========================================
+   MONEY
+======================================== */
 
 function money(value){
 
@@ -1204,72 +2113,65 @@ function money(value){
 }
 
 
-function saveCart(){
-
-  localStorage.setItem(
-    "luxestoreCart",
-    JSON.stringify(cart)
-  );
-
-}
-
-
-/* =========================================
+/* ========================================
    CATEGORIES
-========================================= */
+======================================== */
 
 function renderCategories(){
 
-  const categories = [
+  const categories=[
     "All",
-    ...new Set(products.map(p => p.category))
+    ...new Set(products.map(p=>p.category))
   ];
 
-  const box = document.getElementById("categories");
+  document.getElementById("categories").innerHTML=
+    categories.map(category=>`
 
-  box.innerHTML = categories.map(category => `
+      <button
+        class="category ${category===selectedCategory?"active":""}"
+        onclick="selectCategory('${category}')"
+      >
+        ${category}
+      </button>
 
-    <button
-      class="category ${category === selectedCategory ? "active":""}"
-      onclick="selectCategory('${category}')"
-    >
-      ${category}
-    </button>
-
-  `).join("");
+    `).join("");
 
 }
 
 
 function selectCategory(category){
 
-  selectedCategory = category;
+  selectedCategory=category;
 
   renderCategories();
 
   renderProducts();
 
+  scrollToProducts();
+
 }
 
 
-/* =========================================
+/* ========================================
    PRODUCTS
-========================================= */
+======================================== */
 
 function renderProducts(){
 
-  const search =
-    document.getElementById("searchInput").value
+  const search=
+    document.getElementById("searchInput")
+    .value
     .toLowerCase()
     .trim();
 
-  const filtered = products.filter(product => {
 
-    const categoryMatch =
-      selectedCategory === "All" ||
-      product.category === selectedCategory;
+  const filtered=products.filter(product=>{
 
-    const searchMatch =
+    const categoryMatch=
+      selectedCategory==="All" ||
+      product.category===selectedCategory;
+
+    const searchMatch=
       product.name.toLowerCase().includes(search) ||
       product.category.toLowerCase().includes(search);
 
@@ -1278,29 +2180,32 @@ function renderProducts(){
   });
 
 
-  const box = document.getElementById("products");
-
-  const empty = document.getElementById("empty");
-
-  document.getElementById("productCount").textContent =
-    filtered.length + " products";
+  document.getElementById("productCount").textContent=
+    filtered.length+" items";
 
 
-  if(filtered.length === 0){
+  const box=
+    document.getElementById("products");
 
-    box.innerHTML = "";
+  const empty=
+    document.getElementById("empty");
 
-    empty.style.display = "block";
+
+  if(filtered.length===0){
+
+    box.innerHTML="";
+
+    empty.style.display="block";
 
     return;
 
   }
 
 
-  empty.style.display = "none";
+  empty.style.display="none";
 
 
-  box.innerHTML = filtered.map(product => `
+  box.innerHTML=filtered.map(product=>`
 
     <article class="product">
 
@@ -1311,24 +2216,18 @@ function renderProducts(){
 
           ?
 
-          `<img src="${product.image}" alt="${product.name}">`
+          `<img
+             src="${product.image}"
+             alt="${product.name}"
+           >`
 
           :
 
-          `
-          <svg viewBox="0 0 100 100">
-            <rect x="22" y="25" width="56" height="55"
-              rx="5"
-              fill="none"
-              stroke="#8c7758"
-              stroke-width="3"/>
-            <path d="M35 25v-8h30v8"
-              fill="none"
-              stroke="#8c7758"
-              stroke-width="3"/>
-          </svg>
-          `
+          `<svg>
+             <use href="#${product.icon}"></use>
+           </svg>`
         }
+
 
         ${
           product.badge
@@ -1338,14 +2237,20 @@ function renderProducts(){
           ""
         }
 
+
         <button
-          class="heart"
-          onclick="favoriteProduct(${product.id})"
+          class="favorite"
+          onclick="favoriteProduct('${product.name}')"
         >
-          <svg><use href="#heart"></use></svg>
+
+          <svg>
+            <use href="#heart"></use>
+          </svg>
+
         </button>
 
       </div>
+
 
       <div class="product-info">
 
@@ -1357,17 +2262,23 @@ function renderProducts(){
           ${product.name}
         </div>
 
+
         <div class="product-bottom">
 
           <div class="price">
             ${money(product.price)}
           </div>
 
+
           <button
             class="add"
             onclick="addToCart(${product.id})"
           >
-            <svg><use href="#plus"></use></svg>
+
+            <svg>
+              <use href="#plus"></use>
+            </svg>
+
           </button>
 
         </div>
@@ -1381,26 +2292,20 @@ function renderProducts(){
 }
 
 
-function searchProducts(){
-
-  renderProducts();
-
-}
-
-
-/* =========================================
+/* ========================================
    CART
-========================================= */
+======================================== */
 
 function addToCart(id){
 
-  const product = products.find(p => p.id === id);
+  const product=
+    products.find(p=>p.id===id);
 
-  if(!product) return;
+  if(!product)return;
 
 
-  const existing =
-    cart.find(item => item.id === id);
+  const existing=
+    cart.find(item=>item.id===id);
 
 
   if(existing){
@@ -1410,11 +2315,19 @@ function addToCart(id){
   }else{
 
     cart.push({
+
       id:product.id,
+
       name:product.name,
+
       price:product.price,
+
       image:product.image,
+
+      icon:product.icon,
+
       qty:1
+
     });
 
   }
@@ -1429,19 +2342,21 @@ function addToCart(id){
 }
 
 
-function updateQuantity(id, change){
+function updateQuantity(id,change){
 
-  const item = cart.find(i => i.id === id);
+  const item=
+    cart.find(i=>i.id===id);
 
-  if(!item) return;
-
-
-  item.qty += change;
+  if(!item)return;
 
 
-  if(item.qty <= 0){
+  item.qty+=change;
 
-    cart = cart.filter(i => i.id !== id);
+
+  if(item.qty<=0){
+
+    cart=
+      cart.filter(i=>i.id!==id);
 
   }
 
@@ -1455,7 +2370,8 @@ function updateQuantity(id, change){
 
 function removeItem(id){
 
-  cart = cart.filter(item => item.id !== id);
+  cart=
+    cart.filter(i=>i.id!==id);
 
   saveCart();
 
@@ -1464,31 +2380,65 @@ function removeItem(id){
 }
 
 
+function saveCart(){
+
+  localStorage.setItem(
+    "luxestoreCart",
+    JSON.stringify(cart)
+  );
+
+}
+
+
 function updateCart(){
 
-  const count =
-    cart.reduce((total,item) => total + item.qty,0);
+  const count=
+    cart.reduce(
+      (sum,item)=>sum+item.qty,
+      0
+    );
 
-  document.getElementById("cartCount").textContent =
-    count;
+
+  document.getElementById("cartCount")
+    .textContent=count;
 
 
-  const items =
+  const box=
     document.getElementById("cartItems");
 
 
-  if(cart.length === 0){
+  if(cart.length===0){
 
-    items.innerHTML = `
+    box.innerHTML=`
 
-      <div style="text-align:center;padding:60px 10px;color:#888">
+      <div style="
+        text-align:center;
+        padding:70px 15px;
+        color:#92878b;
+      ">
 
-        <div style="font-size:45px;margin-bottom:15px">🛍️</div>
+        <div style="
+          width:65px;
+          height:65px;
+          margin:auto auto 15px;
+          border-radius:50%;
+          background:#fbecef;
+          display:grid;
+          place-items:center;
+          font-size:27px;
+        ">
+          ♡
+        </div>
 
-        <h3>Your bag is empty</h3>
+        <h3>
+          Your bag is empty
+        </h3>
 
-        <p style="margin-top:8px">
-          Add something you love.
+        <p style="
+          margin-top:7px;
+          font-size:13px;
+        ">
+          Add something beautiful.
         </p>
 
       </div>
@@ -1497,81 +2447,95 @@ function updateCart(){
 
   }else{
 
-    items.innerHTML = cart.map(item => `
+    box.innerHTML=
+      cart.map(item=>`
 
-      <div class="cart-item">
+        <div class="cart-item">
 
-        <div class="cart-item-img">
+          <div class="cart-img">
 
-          ${
-            item.image
+            ${
+              item.image
 
-            ?
+              ?
 
-            `<img src="${item.image}" alt="">`
+              `<img
+                src="${item.image}"
+                alt=""
+              >`
 
-            :
+              :
 
-            `<div style="
-              height:100%;
-              display:grid;
-              place-items:center;
-              font-size:25px;
-            ">🛍️</div>`
-          }
+              `<svg style="
+                width:45px;
+                height:45px;
+                color:#c18491;
+              ">
+                <use href="#${item.icon || "bag"}"></use>
+              </svg>`
+            }
+
+          </div>
+
+
+          <div class="cart-info">
+
+            <div class="cart-name">
+              ${item.name}
+            </div>
+
+            <div class="cart-price">
+              ${money(item.price)}
+            </div>
+
+
+            <div class="qty">
+
+              <button
+                onclick="updateQuantity(${item.id},-1)"
+              >
+                −
+              </button>
+
+              <strong>
+                ${item.qty}
+              </strong>
+
+              <button
+                onclick="updateQuantity(${item.id},1)"
+              >
+                +
+              </button>
+
+            </div>
+
+
+            <button
+              class="remove"
+              onclick="removeItem(${item.id})"
+            >
+              Remove
+            </button>
+
+          </div>
 
         </div>
 
-        <div class="cart-item-info">
-
-          <div class="cart-item-name">
-            ${item.name}
-          </div>
-
-          <div class="cart-item-price">
-            ${money(item.price)}
-          </div>
-
-          <div class="qty">
-
-            <button onclick="updateQuantity(${item.id},-1)">
-              −
-            </button>
-
-            <strong>${item.qty}</strong>
-
-            <button onclick="updateQuantity(${item.id},1)">
-              +
-            </button>
-
-          </div>
-
-          <button
-            class="remove"
-            onclick="removeItem(${item.id})"
-          >
-            Remove
-          </button>
-
-        </div>
-
-      </div>
-
-    `).join("");
+      `).join("");
 
   }
 
 
-  const total =
+  const total=
     cart.reduce(
-      (sum,item) =>
-        sum + item.price * item.qty,
+      (sum,item)=>
+        sum+(item.price*item.qty),
       0
     );
 
 
-  document.getElementById("cartTotal").textContent =
-    money(total);
+  document.getElementById("cartTotal")
+    .textContent=money(total);
 
 }
 
@@ -1598,19 +2562,20 @@ function closeCart(){
 }
 
 
-/* =========================================
+/* ========================================
    CHECKOUT
-========================================= */
+======================================== */
 
 function openCheckout(){
 
-  if(cart.length === 0){
+  if(cart.length===0){
 
-    alert("Your cart is empty.");
+    alert("Your bag is empty.");
 
     return;
 
   }
+
 
   closeCart();
 
@@ -1630,65 +2595,71 @@ function closeCheckout(){
 
 function sendWhatsAppOrder(){
 
-  const name =
-    document.getElementById("customerName").value.trim();
+  const name=
+    document.getElementById("customerName")
+    .value.trim();
 
-  const phone =
-    document.getElementById("customerPhone").value.trim();
+  const phone=
+    document.getElementById("customerPhone")
+    .value.trim();
 
-  const address =
-    document.getElementById("customerAddress").value.trim();
+  const address=
+    document.getElementById("customerAddress")
+    .value.trim();
 
-  const note =
-    document.getElementById("customerNote").value.trim();
+  const note=
+    document.getElementById("customerNote")
+    .value.trim();
 
 
   if(!name || !phone || !address){
 
-    alert("Please fill in your name, phone number and delivery address.");
+    alert(
+      "Please enter your name, phone number and address."
+    );
 
     return;
 
   }
 
 
-  let message =
+  let message=
     `Hello ${STORE.name}! 👋%0A%0A`;
 
-  message +=
-    `I would like to place an order:%0A%0A`;
+  message+=
+    `I'd like to place an order:%0A%0A`;
 
 
-  cart.forEach(item => {
+  cart.forEach(item=>{
 
-    message +=
-      `• ${item.name} x${item.qty} — ${money(item.price * item.qty)}%0A`;
+    message+=
+      `• ${item.name} x${item.qty} — ${money(item.price*item.qty)}%0A`;
 
   });
 
 
-  const total =
+  const total=
     cart.reduce(
-      (sum,item) =>
-        sum + item.price * item.qty,
+      (sum,item)=>
+        sum+(item.price*item.qty),
       0
     );
 
 
-  message +=
+  message+=
     `%0A*Total: ${money(total)}*%0A%0A`;
 
-  message +=
-    `Customer: ${name}%0A`;
+  message+=
+    `Name: ${name}%0A`;
 
-  message +=
+  message+=
     `Phone: ${phone}%0A`;
 
-  message +=
+  message+=
     `Address: ${address}%0A`;
 
-  message +=
-    `Note: ${note || "None"}`;
+  message+=
+    `Request: ${note || "None"}`;
 
 
   window.open(
@@ -1699,37 +2670,31 @@ function sendWhatsAppOrder(){
 }
 
 
-/* =========================================
-   FAVORITES
-========================================= */
+/* ========================================
+   FAVORITE
+======================================== */
 
-function favoriteProduct(id){
+function favoriteProduct(name){
 
-  const product =
-    products.find(p => p.id === id);
-
-  if(product){
-
-    alert(
-      product.name +
-      " added to your favorites ❤️"
-    );
-
-  }
+  alert(
+    `${name} added to your wishlist ♡`
+  );
 
 }
 
 
-/* =========================================
+/* ========================================
    THEME
-========================================= */
+======================================== */
 
 function toggleTheme(){
 
   document.body.classList.toggle("dark");
 
-  const dark =
+
+  const dark=
     document.body.classList.contains("dark");
+
 
   localStorage.setItem(
     "luxestoreDark",
@@ -1737,41 +2702,43 @@ function toggleTheme(){
   );
 
 
-  document.getElementById("themeIcon").innerHTML =
-    dark
-    ?
-    '<use href="#sun"></use>'
-    :
-    '<use href="#moon"></use>';
+  document.getElementById("themeIcon")
+    .innerHTML=
+      dark
+      ?
+      '<use href="#sun"></use>'
+      :
+      '<use href="#moon"></use>';
 
 }
 
 
 function loadTheme(){
 
-  const dark =
-    localStorage.getItem("luxestoreDark") === "1";
+  const dark=
+    localStorage.getItem("luxestoreDark")==="1";
+
 
   if(dark){
 
     document.body.classList.add("dark");
 
-    document.getElementById("themeIcon").innerHTML =
-      '<use href="#sun"></use>';
+    document.getElementById("themeIcon")
+      .innerHTML=
+        '<use href="#sun"></use>';
 
   }
 
 }
 
 
-/* =========================================
+/* ========================================
    NAVIGATION
-========================================= */
+======================================== */
 
 function scrollToProducts(){
 
-  document
-    .getElementById("shop")
+  document.getElementById("shop")
     .scrollIntoView({
       behavior:"smooth"
     });
@@ -1789,9 +2756,9 @@ function scrollToTop(){
 }
 
 
-/* =========================================
+/* ========================================
    START
-========================================= */
+======================================== */
 
 renderCategories();
 
