@@ -2,236 +2,228 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fff4f8">
 <title>LuxeStore — Fashion & Beauty</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
-
-*{box-sizing:border-box;margin:0;padding:0}
-
 :root{
-  --pink:#f7a8c4;
-  --deep:#3c1628;
-  --cream:#fff8f5;
-  --white:#fff;
-  --text:#2b2025;
-  --muted:#8d7d84;
-  --line:#f0dfe5;
-  --shadow:0 15px 45px rgba(92,42,62,.10);
+  --pink:#e83e73;
+  --pink2:#ff6f9d;
+  --rose:#fff0f5;
+  --cream:#fffaf7;
+  --text:#251d21;
+  --muted:#7b6e74;
+  --card:#ffffff;
+  --border:#f0dfe6;
+  --shadow:0 18px 45px rgba(170,70,105,.12);
+  --green:#16a36a;
+  --red:#e53950;
 }
 
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-  font-family:"DM Sans",sans-serif;
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
   background:var(--cream);
   color:var(--text);
 }
+button,input,textarea,select{font:inherit}
+button{cursor:pointer;border:0}
 
-button,input{font:inherit}
-
-button{cursor:pointer}
-
-svg{
-  width:22px;
-  height:22px;
-  stroke:currentColor;
-  fill:none;
-  stroke-width:1.8;
-  stroke-linecap:round;
-  stroke-linejoin:round;
+.container{
+  width:min(1180px,92%);
+  margin:auto;
 }
-
-/* HEADER */
 
 header{
   position:sticky;
   top:0;
   z-index:100;
-  background:rgba(255,248,245,.94);
+  background:rgba(255,250,247,.92);
   backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--line);
+  border-bottom:1px solid var(--border);
 }
 
 .nav{
-  max-width:1200px;
-  margin:auto;
-  height:72px;
-  padding:0 18px;
+  height:70px;
   display:flex;
   align-items:center;
   justify-content:space-between;
 }
 
 .logo{
-  font-family:"Playfair Display",serif;
-  font-size:27px;
-  color:var(--deep);
-  font-weight:700;
-}
-
-.logo span{color:var(--pink)}
-
-.nav-actions{
   display:flex;
   align-items:center;
   gap:10px;
+  font-weight:900;
+  font-size:21px;
+  color:var(--pink);
 }
 
-.icon-btn{
-  width:43px;
-  height:43px;
-  border:1px solid var(--line);
-  background:white;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  color:var(--deep);
+.logo svg{
+  width:34px;
+  height:34px;
 }
 
-/* HERO */
+.navlinks{
+  display:flex;
+  gap:25px;
+}
+
+.navlinks a{
+  color:var(--text);
+  text-decoration:none;
+  font-weight:700;
+  font-size:14px;
+}
 
 .hero{
-  max-width:1200px;
-  margin:auto;
-  padding:40px 18px 20px;
-}
-
-.hero-box{
   position:relative;
   overflow:hidden;
-  min-height:390px;
-  border-radius:32px;
-  background:linear-gradient(135deg,#ffe8f0,#fff4ef);
-  padding:45px 28px;
-  display:flex;
+  padding:75px 0 65px;
+  background:
+    radial-gradient(circle at 10% 20%,#ffd7e5 0,transparent 28%),
+    radial-gradient(circle at 90% 10%,#ffe6d5 0,transparent 28%),
+    linear-gradient(135deg,#fff5f8,#fffaf7);
+}
+
+.heroGrid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:40px;
   align-items:center;
-}
-
-.hero-content{
-  position:relative;
-  z-index:3;
-  max-width:570px;
-}
-
-.eyebrow{
-  color:#b65a7d;
-  font-weight:700;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  font-size:12px;
-  margin-bottom:12px;
 }
 
 .hero h1{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(42px,8vw,75px);
-  line-height:.98;
-  color:var(--deep);
-  margin-bottom:20px;
+  font-size:clamp(42px,7vw,76px);
+  line-height:.95;
+  margin:15px 0;
+  letter-spacing:-4px;
 }
+
+.hero h1 span{color:var(--pink)}
 
 .hero p{
-  color:#745e67;
-  max-width:480px;
+  color:var(--muted);
+  max-width:560px;
+  font-size:17px;
   line-height:1.7;
-  margin-bottom:25px;
 }
 
-.shop-btn{
-  border:0;
-  background:var(--deep);
+.heroButtons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:25px;
+}
+
+.primary{
+  background:linear-gradient(135deg,var(--pink),var(--pink2));
   color:white;
-  padding:15px 23px;
-  border-radius:30px;
-  display:inline-flex;
+  padding:15px 22px;
+  border-radius:18px;
+  font-weight:900;
+  box-shadow:0 12px 30px rgba(232,62,115,.25);
+}
+
+.secondary{
+  background:white;
+  color:var(--text);
+  padding:15px 22px;
+  border-radius:18px;
+  font-weight:900;
+  border:1px solid var(--border);
+}
+
+.heroArt{
+  min-height:360px;
+  position:relative;
+  display:flex;
+  justify-content:center;
   align-items:center;
-  gap:8px;
-  font-weight:700;
 }
 
-.hero-circle{
-  position:absolute;
+.heroCircle{
+  width:310px;
+  height:310px;
   border-radius:50%;
-  filter:blur(1px);
+  background:linear-gradient(135deg,#ffd1df,#fff);
+  box-shadow:var(--shadow);
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-.circle1{
-  width:300px;
-  height:300px;
-  background:#f7b7cc;
-  right:-60px;
-  top:-80px;
+.heroCircle svg{
+  width:190px;
+  height:190px;
 }
 
-.circle2{
-  width:220px;
-  height:220px;
-  background:#fff;
-  right:120px;
-  bottom:-100px;
-}
-
-.floating-flower{
+.floatBubble{
   position:absolute;
-  right:35px;
-  top:35px;
-  width:95px;
-  height:95px;
-  color:#b65a7d;
+  padding:12px 15px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  font-size:12px;
+  font-weight:900;
   animation:float 4s ease-in-out infinite;
 }
 
-@keyframes float{
-  0%,100%{transform:translateY(0) rotate(0)}
-  50%{transform:translateY(-12px) rotate(5deg)}
-}
+.b1{top:20px;right:10px}
+.b2{bottom:35px;left:0;animation-delay:1s}
 
-/* CATEGORIES */
+@keyframes float{
+  50%{transform:translateY(-10px)}
+}
 
 .section{
-  max-width:1200px;
-  margin:auto;
-  padding:35px 18px;
+  padding:65px 0;
 }
 
-.section-title{
+.sectionTitle{
   display:flex;
   justify-content:space-between;
   align-items:end;
-  margin-bottom:20px;
+  gap:15px;
+  margin-bottom:25px;
 }
 
-.section-title h2{
-  font-family:"Playfair Display",serif;
-  color:var(--deep);
+.sectionTitle h2{
+  margin:0;
   font-size:30px;
+}
+
+.sectionTitle p{
+  margin:5px 0 0;
+  color:var(--muted);
 }
 
 .categories{
   display:flex;
   gap:10px;
   overflow-x:auto;
-  padding-bottom:8px;
+  padding:5px 0 15px;
 }
 
-.categories::-webkit-scrollbar{display:none}
-
-.category{
-  white-space:nowrap;
-  padding:11px 18px;
-  border-radius:30px;
-  border:1px solid var(--line);
+.cat{
+  flex:0 0 auto;
   background:white;
-  color:#654d58;
+  border:1px solid var(--border);
+  padding:12px 17px;
+  border-radius:999px;
+  font-weight:800;
+  color:var(--text);
 }
 
-.category.active{
-  background:var(--deep);
-  color:white;
-  border-color:var(--deep);
+.cat.active{
+  background:var(--pink);
+  color:#fff;
+  border-color:var(--pink);
 }
-
-/* PRODUCTS */
 
 .products{
   display:grid;
@@ -240,345 +232,364 @@ header{
 }
 
 .product{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:22px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:24px;
   overflow:hidden;
-  box-shadow:var(--shadow);
-  position:relative;
+  box-shadow:0 8px 25px rgba(50,20,30,.04);
 }
 
-.product-image{
+.productImg{
   height:245px;
-  background:#f8e9ee;
+  background:linear-gradient(135deg,#fff0f5,#f8e8ed);
+  display:flex;
+  justify-content:center;
+  align-items:center;
   position:relative;
   overflow:hidden;
 }
 
-.product-image img{
+.productImg img{
   width:100%;
   height:100%;
   object-fit:cover;
 }
 
-.stock-badge{
-  position:absolute;
-  top:12px;
-  left:12px;
-  padding:7px 10px;
-  border-radius:20px;
-  background:white;
+.productImg svg{
+  width:80px;
+  height:80px;
+}
+
+.productBody{
+  padding:17px;
+}
+
+.productCategory{
+  color:var(--pink);
   font-size:11px;
-  font-weight:800;
-  box-shadow:0 5px 18px rgba(0,0,0,.08);
-}
-
-.stock-badge.low{
-  color:#b54855;
-}
-
-.stock-badge.sold{
-  color:white;
-  background:#6c5860;
-}
-
-.product-body{
-  padding:16px;
-}
-
-.product-category{
-  font-size:11px;
-  color:#ad7289;
-  font-weight:700;
+  font-weight:900;
   text-transform:uppercase;
   letter-spacing:1px;
 }
 
-.product-name{
-  margin:7px 0;
-  font-weight:700;
-  color:var(--deep);
+.productName{
+  margin:6px 0;
   font-size:17px;
+  font-weight:900;
 }
 
-.product-description{
+.productDesc{
   color:var(--muted);
-  font-size:13px;
-  line-height:1.5;
-  min-height:38px;
-}
-
-.product-bottom{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin-top:15px;
+  font-size:12px;
+  min-height:34px;
 }
 
 .price{
-  font-weight:800;
-  color:var(--deep);
+  font-size:19px;
+  font-weight:950;
+  margin:13px 0;
 }
 
-.add-btn{
-  border:0;
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  background:var(--deep);
+.stock{
+  display:inline-flex;
+  padding:7px 10px;
+  border-radius:999px;
+  background:#ecfbf4;
+  color:var(--green);
+  font-size:11px;
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+.stock.low{
+  background:#fff0f1;
+  color:var(--red);
+}
+
+.stock.sold{
+  background:#eeeeee;
+  color:#777;
+}
+
+.addBtn{
+  width:100%;
+  padding:13px;
+  border-radius:15px;
+  background:#251d21;
   color:white;
-  display:grid;
-  place-items:center;
+  font-weight:900;
 }
 
-.add-btn:disabled{
+.addBtn:disabled{
   background:#ddd;
-  color:#999;
+  color:#888;
   cursor:not-allowed;
 }
 
-/* LOADING */
-
-.loading{
+.empty{
+  grid-column:1/-1;
+  padding:60px 20px;
   text-align:center;
-  padding:50px 20px;
   color:var(--muted);
 }
 
-/* FLOATING UI */
-
-.floating-cart{
+.floatingCart{
   position:fixed;
-  right:18px;
-  bottom:90px;
-  z-index:200;
-  width:58px;
-  height:58px;
+  right:20px;
+  bottom:22px;
+  width:62px;
+  height:62px;
   border-radius:50%;
-  border:0;
-  background:var(--deep);
+  background:var(--pink);
   color:white;
-  box-shadow:0 12px 30px rgba(60,22,40,.25);
-  display:grid;
-  place-items:center;
+  z-index:150;
+  box-shadow:0 14px 30px rgba(232,62,115,.35);
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-.cart-count{
+.floatingCart svg{width:27px;height:27px}
+
+.cartCount{
   position:absolute;
-  right:-3px;
-  top:-4px;
-  min-width:21px;
-  height:21px;
-  padding:0 5px;
-  background:#ef6d98;
-  border:2px solid white;
-  border-radius:20px;
-  font-size:10px;
-  font-weight:800;
-  display:grid;
-  place-items:center;
+  right:-2px;
+  top:-3px;
+  background:#111;
+  color:#fff;
+  width:23px;
+  height:23px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:900;
 }
 
 .whatsapp{
   position:fixed;
-  left:18px;
-  bottom:25px;
-  z-index:200;
-  width:54px;
-  height:54px;
+  left:20px;
+  bottom:22px;
+  width:55px;
+  height:55px;
   border-radius:50%;
   background:#25d366;
   color:white;
-  display:grid;
-  place-items:center;
-  box-shadow:0 10px 25px rgba(37,211,102,.25);
+  z-index:150;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 12px 25px rgba(37,211,102,.25);
 }
 
-.floating-label{
+.whatsapp svg{width:27px;height:27px}
+
+.newBadge{
   position:fixed;
   right:18px;
-  bottom:160px;
-  z-index:190;
+  top:90px;
+  z-index:90;
   background:white;
-  color:var(--deep);
-  border:1px solid var(--line);
-  padding:9px 13px;
-  border-radius:20px;
-  font-size:11px;
-  font-weight:700;
+  padding:11px 15px;
+  border-radius:999px;
   box-shadow:var(--shadow);
-  animation:float 4s ease-in-out infinite;
+  border:1px solid var(--border);
+  font-size:11px;
+  font-weight:900;
+  color:var(--pink);
 }
 
-/* CART */
-
-.cart-panel{
+.modal{
   position:fixed;
-  right:0;
-  top:0;
-  width:min(420px,100%);
-  height:100%;
+  inset:0;
+  z-index:300;
+  background:rgba(20,10,15,.55);
+  backdrop-filter:blur(8px);
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+}
+
+.modal.show{display:flex}
+
+.modalBox{
   background:white;
-  z-index:500;
-  transform:translateX(100%);
-  transition:.3s ease;
-  box-shadow:-15px 0 45px rgba(0,0,0,.12);
+  width:min(650px,100%);
+  max-height:92vh;
+  overflow:auto;
+  border-radius:30px 30px 0 0;
+  padding:25px;
+}
+
+.modalHead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:20px;
+}
+
+.modalHead h3{
+  margin:0;
+  font-size:24px;
+}
+
+.close{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#f5eef1;
+}
+
+.cartItems{
   display:flex;
   flex-direction:column;
+  gap:12px;
 }
 
-.cart-panel.open{
-  transform:translateX(0);
-}
-
-.cart-head{
-  padding:22px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid var(--line);
-}
-
-.cart-head h3{
-  font-family:"Playfair Display",serif;
-  font-size:25px;
-  color:var(--deep);
-}
-
-.cart-items{
-  flex:1;
-  overflow:auto;
-  padding:18px;
-}
-
-.cart-item{
+.cartItem{
   display:flex;
   gap:12px;
-  padding:12px 0;
-  border-bottom:1px solid var(--line);
+  align-items:center;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:10px;
 }
 
-.cart-item img{
+.cartItem img,
+.cartPlaceholder{
   width:65px;
   height:65px;
-  object-fit:cover;
   border-radius:14px;
+  object-fit:cover;
+  background:#fff0f5;
 }
 
-.cart-item-info{flex:1}
+.cartInfo{flex:1}
 
-.cart-item-name{
-  font-weight:700;
-  color:var(--deep);
-  font-size:14px;
-}
+.cartInfo strong{display:block}
 
-.cart-item-price{
-  font-size:13px;
+.cartInfo small{
   color:var(--muted);
-  margin-top:4px;
 }
 
 .qty{
   display:flex;
   align-items:center;
   gap:8px;
-  margin-top:7px;
 }
 
 .qty button{
-  border:1px solid var(--line);
-  background:white;
-  width:25px;
-  height:25px;
-  border-radius:50%;
+  width:30px;
+  height:30px;
+  border-radius:10px;
+  background:#f7edf1;
+  font-weight:900;
 }
 
-.cart-foot{
-  padding:20px;
-  border-top:1px solid var(--line);
-}
-
-.total{
+.totalBox{
+  margin-top:20px;
+  padding:17px;
+  background:#fff5f8;
+  border-radius:18px;
   display:flex;
   justify-content:space-between;
-  margin-bottom:15px;
-  font-weight:800;
-  color:var(--deep);
+  font-weight:950;
 }
 
-.checkout{
+.checkoutForm{
+  display:none;
+  margin-top:20px;
+}
+
+.checkoutForm.show{display:block}
+
+.field{
+  margin-bottom:14px;
+}
+
+.field label{
+  display:block;
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:7px;
+}
+
+.field input,
+.field textarea{
   width:100%;
-  border:0;
-  padding:15px;
-  background:var(--deep);
-  color:white;
+  border:1px solid var(--border);
   border-radius:15px;
-  font-weight:800;
+  padding:14px;
+  outline:none;
+  background:#fff;
 }
 
-/* MOBILE */
+.field textarea{
+  min-height:85px;
+  resize:vertical;
+}
 
-@media(max-width:850px){
-  .products{
-    grid-template-columns:repeat(2,1fr);
-  }
+.notice{
+  padding:13px;
+  border-radius:14px;
+  background:#fff7e8;
+  color:#805c17;
+  font-size:12px;
+  line-height:1.5;
+  margin:15px 0;
+}
 
-  .product-image{
-    height:210px;
-  }
+.success{
+  text-align:center;
+  padding:30px 10px;
+}
+
+.successIcon{
+  width:75px;
+  height:75px;
+  border-radius:50%;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#e9fbf2;
+  color:#16a36a;
+}
+
+.successIcon svg{
+  width:40px;
+  height:40px;
+}
+
+footer{
+  padding:45px 0;
+  background:#251d21;
+  color:white;
+  text-align:center;
+}
+
+footer p{
+  color:#cdbfc4;
+}
+
+@media(max-width:900px){
+  .products{grid-template-columns:repeat(2,1fr)}
+  .heroGrid{grid-template-columns:1fr}
+  .heroArt{min-height:290px}
+  .navlinks{display:none}
 }
 
 @media(max-width:520px){
-  .nav{height:64px}
-
-  .logo{font-size:23px}
-
-  .hero{
-    padding-top:20px;
-  }
-
-  .hero-box{
-    min-height:430px;
-    padding:35px 23px;
-  }
-
-  .hero h1{
-    font-size:46px;
-  }
-
-  .hero p{
-    font-size:14px;
-  }
-
-  .products{
-    gap:11px;
-  }
-
-  .product{
-    border-radius:17px;
-  }
-
-  .product-image{
-    height:185px;
-  }
-
-  .product-body{
-    padding:12px;
-  }
-
-  .product-name{
-    font-size:14px;
-  }
-
-  .product-description{
-    font-size:11px;
-  }
-
-  .price{
-    font-size:13px;
-  }
+  .products{gap:12px}
+  .productImg{height:190px}
+  .productBody{padding:13px}
+  .productName{font-size:15px}
+  .price{font-size:16px}
+  .hero{padding:50px 0}
+  .hero h1{letter-spacing:-2px}
+  .heroCircle{width:245px;height:245px}
+  .newBadge{display:none}
 }
 </style>
 </head>
@@ -586,134 +597,189 @@ header{
 <body>
 
 <header>
-  <div class="nav">
-    <div class="logo">Luxe<span>Store</span></div>
-
-    <div class="nav-actions">
-      <button class="icon-btn" onclick="scrollToProducts()" aria-label="Shop">
-        <svg viewBox="0 0 24 24">
-          <circle cx="9" cy="20" r="1"></circle>
-          <circle cx="18" cy="20" r="1"></circle>
-          <path d="M3 4h2l2.5 11h10L20 7H6"></path>
-        </svg>
-      </button>
+  <div class="container nav">
+    <div class="logo">
+      <svg viewBox="0 0 64 64" fill="none">
+        <path d="M32 55C20 45 9 37 9 23C9 15 15 9 23 9c5 0 8 3 9 6 1-3 4-6 9-6 8 0 14 6 14 14 0 14-11 22-23 32Z" fill="#e83e73"/>
+        <path d="M20 27c7-3 17-3 24 0" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+      LuxeStore
     </div>
+
+    <nav class="navlinks">
+      <a href="#shop">Shop</a>
+      <a href="#categories">Categories</a>
+      <a href="#about">About</a>
+    </nav>
   </div>
 </header>
 
-<main>
+<div class="newBadge">✦ New arrivals</div>
 
 <section class="hero">
-  <div class="hero-box">
-
-    <div class="hero-circle circle1"></div>
-    <div class="hero-circle circle2"></div>
-
-    <svg class="floating-flower" viewBox="0 0 100 100">
-      <path d="M50 50c-22-8-30-24-18-34 9-7 20 1 18 17 2-16 14-24 23-17 12 10 4 26-18 34 22-8 38-1 35 12-3 12-18 12-35-4 17 16 17 31 5 35-13 4-20-12-15-35-5 23-18 39-29 34-12-5-8-20 9-34-17 14-32 14-35 2-3-13 13-20 35-12z"></path>
-      <circle cx="50" cy="50" r="5"></circle>
-    </svg>
-
-    <div class="hero-content">
-      <div class="eyebrow">Curated for her</div>
-      <h1>Elegance<br>in every detail.</h1>
+  <div class="container heroGrid">
+    <div>
+      <div style="color:#e83e73;font-weight:950;font-size:13px">FASHION • BEAUTY • ACCESSORIES</div>
+      <h1>Find your<br><span>signature style.</span></h1>
       <p>
-        Discover beautiful fashion, perfumes, bags, shoes,
-        jewelry and accessories made to elevate your everyday style.
+        Discover beautiful clothing, perfumes, bags, shoes, jewelry,
+        watches and accessories made to elevate your everyday look.
       </p>
 
-      <button class="shop-btn" onclick="scrollToProducts()">
-        Shop collection
-        <svg viewBox="0 0 24 24">
-          <path d="M5 12h14"></path>
-          <path d="m13 6 6 6-6 6"></path>
+      <div class="heroButtons">
+        <button class="primary" onclick="document.getElementById('shop').scrollIntoView()">Shop now</button>
+        <button class="secondary" onclick="openCart()">View cart</button>
+      </div>
+    </div>
+
+    <div class="heroArt">
+      <div class="heroCircle">
+        <svg viewBox="0 0 200 200" fill="none">
+          <path d="M58 65c5-18 19-28 42-28s37 10 42 28l20 80H38l20-80Z" fill="#fff"/>
+          <path d="M75 67c2-18 10-29 25-29s23 11 25 29" stroke="#e83e73" stroke-width="6"/>
+          <path d="M67 91c18 10 48 10 66 0" stroke="#ff6f9d" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="80" cy="110" r="5" fill="#e83e73"/>
+          <circle cx="120" cy="110" r="5" fill="#e83e73"/>
         </svg>
-      </button>
+      </div>
+
+      <div class="floatBubble b1">♡ Curated for you</div>
+      <div class="floatBubble b2">✦ Fresh styles</div>
     </div>
   </div>
 </section>
 
 <section class="section" id="shop">
+  <div class="container">
 
-  <div class="section-title">
-    <h2>Shop collection</h2>
-  </div>
-
-  <div class="categories">
-    <button class="category active" onclick="filterCategory('All',this)">All</button>
-    <button class="category" onclick="filterCategory('Clothing',this)">Clothing</button>
-    <button class="category" onclick="filterCategory('Perfumes',this)">Perfumes</button>
-    <button class="category" onclick="filterCategory('Bags',this)">Bags</button>
-    <button class="category" onclick="filterCategory('Shoes',this)">Shoes</button>
-    <button class="category" onclick="filterCategory('Jewelry',this)">Jewelry</button>
-    <button class="category" onclick="filterCategory('Watches',this)">Watches</button>
-    <button class="category" onclick="filterCategory('Accessories',this)">Accessories</button>
-  </div>
-
-  <div id="products" class="products">
-    <div class="loading">Loading collection...</div>
-  </div>
-
-</section>
-
-</main>
-
-<!-- FLOATING UI -->
-
-<div class="floating-label">✨ New arrivals</div>
-
-<button class="floating-cart" onclick="openCart()" aria-label="Cart">
-  <svg viewBox="0 0 24 24">
-    <circle cx="9" cy="20" r="1"></circle>
-    <circle cx="18" cy="20" r="1"></circle>
-    <path d="M3 4h2l2.5 11h10L20 7H6"></path>
-  </svg>
-  <span class="cart-count" id="cartCount">0</span>
-</button>
-
-<a class="whatsapp"
-   href="https://wa.me/2340000000000?text=Hello%20LuxeStore%20%F0%9F%8C%B8"
-   aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24">
-    <path d="M20 11.5a8.5 8.5 0 0 1-12.7 7.4L3 20l1.2-4.1A8.5 8.5 0 1 1 20 11.5z"></path>
-    <path d="M8.5 8.5c.4 2.4 2.1 4.6 4.5 5.5"></path>
-  </svg>
-</a>
-
-<!-- CART -->
-
-<div class="cart-panel" id="cartPanel">
-
-  <div class="cart-head">
-    <h3>Your bag</h3>
-
-    <button class="icon-btn" onclick="closeCart()">
-      <svg viewBox="0 0 24 24">
-        <path d="m6 6 12 12"></path>
-        <path d="m18 6-12 12"></path>
-      </svg>
-    </button>
-  </div>
-
-  <div class="cart-items" id="cartItems">
-    <p style="color:#999;text-align:center;padding:30px">
-      Your bag is empty.
-    </p>
-  </div>
-
-  <div class="cart-foot">
-
-    <div class="total">
-      <span>Total</span>
-      <span id="cartTotal">₦0</span>
+    <div class="sectionTitle">
+      <div>
+        <h2>Shop the collection</h2>
+        <p>Fresh pieces added regularly.</p>
+      </div>
     </div>
 
-    <button class="checkout" onclick="checkout()">
-      Checkout on WhatsApp
-    </button>
+    <div class="categories" id="categories">
+      <button class="cat active" onclick="filterCategory('All',this)">All</button>
+      <button class="cat" onclick="filterCategory('Clothing',this)">Clothing</button>
+      <button class="cat" onclick="filterCategory('Perfumes',this)">Perfumes</button>
+      <button class="cat" onclick="filterCategory('Bags',this)">Bags</button>
+      <button class="cat" onclick="filterCategory('Shoes',this)">Shoes</button>
+      <button class="cat" onclick="filterCategory('Jewelry',this)">Jewelry</button>
+      <button class="cat" onclick="filterCategory('Watches',this)">Watches</button>
+      <button class="cat" onclick="filterCategory('Accessories',this)">Accessories</button>
+    </div>
+
+    <div class="products" id="products">
+      <div class="empty">Loading products…</div>
+    </div>
 
   </div>
+</section>
 
+<section class="section" id="about">
+  <div class="container">
+    <div style="background:#fff0f5;border-radius:30px;padding:35px">
+      <h2>Made for your everyday glow ✨</h2>
+      <p style="color:#7b6e74;line-height:1.7">
+        LuxeStore brings fashion and beauty essentials together in one
+        beautiful shopping experience.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <strong>LuxeStore</strong>
+    <p>Fashion • Beauty • Accessories</p>
+    <small>© 2026 LuxeStore. All rights reserved.</small>
+  </div>
+</footer>
+
+<button class="whatsapp" onclick="openWhatsApp()">
+  <svg viewBox="0 0 24 24" fill="none">
+    <path d="M20 4a10 10 0 0 0-16 12L3 21l5-1a10 10 0 0 0 12-16Z" stroke="white" stroke-width="2"/>
+    <path d="M8 8c.5 3 3 5.5 6 6l1.5-1.5-2-1-1 1c-1.5-.5-2.5-1.5-3-3l1-1-1-2L8 8Z" fill="white"/>
+  </svg>
+</button>
+
+<button class="floatingCart" onclick="openCart()">
+  <svg viewBox="0 0 24 24" fill="none">
+    <path d="M4 5h2l2 11h9l2-8H7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="10" cy="20" r="1.5" fill="white"/>
+    <circle cx="17" cy="20" r="1.5" fill="white"/>
+  </svg>
+  <span class="cartCount" id="cartCount">0</span>
+</button>
+
+<!-- CART MODAL -->
+<div class="modal" id="cartModal" onclick="backgroundClose(event,'cartModal')">
+  <div class="modalBox">
+    <div class="modalHead">
+      <h3>Your cart 🛍️</h3>
+      <button class="close" onclick="closeModal('cartModal')">✕</button>
+    </div>
+
+    <div id="cartContent"></div>
+
+    <div id="checkoutForm" class="checkoutForm">
+      <h3>Delivery details</h3>
+
+      <div class="field">
+        <label>FULL NAME</label>
+        <input id="customerName" placeholder="Your full name">
+      </div>
+
+      <div class="field">
+        <label>PHONE NUMBER</label>
+        <input id="customerPhone" type="tel" placeholder="08012345678">
+      </div>
+
+      <div class="field">
+        <label>DELIVERY ADDRESS</label>
+        <textarea id="customerAddress" placeholder="Where should we deliver your order?"></textarea>
+      </div>
+
+      <div class="field">
+        <label>NOTE (OPTIONAL)</label>
+        <textarea id="customerNote" placeholder="Size, colour or other request"></textarea>
+      </div>
+
+      <div class="notice">
+        Stock is reserved immediately when you place the order.
+        If an item is unavailable, the order will not be created.
+      </div>
+
+      <button class="primary" style="width:100%" onclick="placeOrder()" id="placeOrderBtn">
+        Place order
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER SUCCESS -->
+<div class="modal" id="successModal">
+  <div class="modalBox">
+    <div class="success">
+      <div class="successIcon">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <h2>Order created 🎉</h2>
+      <p id="successText" style="color:#7b6e74"></p>
+
+      <button class="primary" style="width:100%" onclick="openOrderWhatsApp()">
+        Send order to WhatsApp
+      </button>
+
+      <button class="secondary" style="width:100%;margin-top:10px" onclick="closeModal('successModal')">
+        Done
+      </button>
+    </div>
+  </div>
 </div>
 
 <script type="module">
@@ -723,7 +789,10 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebas
 import {
   getFirestore,
   collection,
-  onSnapshot
+  onSnapshot,
+  doc,
+  runTransaction,
+  serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -740,381 +809,603 @@ const db = getFirestore(app);
 
 let products = [];
 let cart = [];
-let currentCategory = "All";
+let activeCategory = "All";
+let latestOrder = null;
 
-function money(value){
-  return "₦" + Number(value || 0).toLocaleString();
+/* CHANGE THIS TO YOUR REAL WHATSAPP NUMBER */
+const WHATSAPP_NUMBER = "2340000000000";
+
+const money = value =>
+  "₦" + Number(value || 0).toLocaleString("en-NG");
+
+function escapeHTML(value){
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function placeholderSVG(){
+  return `
+  <svg viewBox="0 0 100 100" fill="none">
+    <circle cx="50" cy="50" r="45" fill="#ffe0ea"/>
+    <path d="M28 62c10-18 34-18 44 0" stroke="#e83e73" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="39" cy="42" r="5" fill="#e83e73"/>
+    <circle cx="61" cy="42" r="5" fill="#e83e73"/>
+  </svg>`;
 }
 
 function stockLabel(stock){
-
   stock = Number(stock || 0);
 
   if(stock <= 0){
-    return {
-      text:"Sold out",
-      className:"sold"
-    };
+    return {text:"Sold out",className:"sold"};
   }
 
   if(stock === 1){
-    return {
-      text:"⚡ Last one",
-      className:"low"
-    };
+    return {text:"⚡ Last one",className:"low"};
   }
 
   if(stock <= 3){
-    return {
-      text:`🔥 Only ${stock} left`,
-      className:"low"
-    };
+    return {text:`🔥 Only ${stock} left`,className:"low"};
   }
 
   if(stock <= 5){
-    return {
-      text:`Only ${stock} left`,
-      className:"low"
-    };
+    return {text:`Only ${stock} left`,className:"low"};
   }
 
-  return {
-    text:`${stock} left`,
-    className:""
-  };
+  return {text:`${stock} left`,className:""};
 }
+
+window.filterCategory = function(category,button){
+  activeCategory = category;
+
+  document.querySelectorAll(".cat")
+    .forEach(x=>x.classList.remove("active"));
+
+  if(button) button.classList.add("active");
+
+  renderProducts();
+};
+
+onSnapshot(collection(db,"products"),snapshot=>{
+
+  products = snapshot.docs.map(d=>({
+    id:d.id,
+    ...d.data()
+  }));
+
+  renderProducts();
+  refreshCartAgainstStock();
+
+},error=>{
+  console.error(error);
+
+  document.getElementById("products").innerHTML = `
+    <div class="empty">
+      Unable to load products.<br>
+      Check your Firebase Firestore setup.
+    </div>`;
+});
 
 function renderProducts(){
 
-  const container = document.getElementById("products");
+  const box = document.getElementById("products");
 
   let list = products;
 
-  if(currentCategory !== "All"){
-    list = products.filter(
-      p => String(p.category || "").toLowerCase() === currentCategory.toLowerCase()
+  if(activeCategory !== "All"){
+    list = products.filter(p =>
+      String(p.category || "") === activeCategory
     );
   }
 
   if(!list.length){
-    container.innerHTML = `
-      <div class="loading" style="grid-column:1/-1">
-        No products available in this category yet.
-      </div>
-    `;
+    box.innerHTML = `
+      <div class="empty">
+        No products in this category yet ✨
+      </div>`;
     return;
   }
 
-  container.innerHTML = list.map(p => {
+  box.innerHTML = list.map(product=>{
 
-    const stock = Number(p.stock || 0);
+    const stock = Number(product.stock || 0);
     const badge = stockLabel(stock);
 
     return `
       <article class="product">
 
-        <div class="product-image">
+        <div class="productImg">
+          ${
+            product.image
+            ? `<img src="${product.image}" alt="${escapeHTML(product.name)}">`
+            : placeholderSVG()
+          }
+        </div>
 
-          <img
-            src="${p.image || 'https://placehold.co/600x700/f8e9ee/6c4657?text=LuxeStore'}"
-            alt="${escapeHtml(p.name || 'Product')}"
-          >
+        <div class="productBody">
 
-          <div class="stock-badge ${badge.className}">
+          <div class="productCategory">
+            ${escapeHTML(product.category || "Collection")}
+          </div>
+
+          <div class="productName">
+            ${escapeHTML(product.name || "Product")}
+          </div>
+
+          <div class="productDesc">
+            ${escapeHTML(product.description || "")}
+          </div>
+
+          <div class="price">
+            ${money(product.price)}
+          </div>
+
+          <div class="stock ${badge.className}">
             ${badge.text}
           </div>
 
-        </div>
-
-        <div class="product-body">
-
-          <div class="product-category">
-            ${escapeHtml(p.category || "Collection")}
-          </div>
-
-          <div class="product-name">
-            ${escapeHtml(p.name || "Untitled product")}
-          </div>
-
-          <div class="product-description">
-            ${escapeHtml(p.description || "Beautifully selected for you.")}
-          </div>
-
-          <div class="product-bottom">
-
-            <div class="price">
-              ${money(p.price)}
-            </div>
-
-            <button
-              class="add-btn"
-              ${stock <= 0 ? "disabled" : ""}
-              onclick="addToCart('${p.id}')"
-              aria-label="Add to cart"
-            >
-              <svg viewBox="0 0 24 24">
-                <path d="M12 5v14"></path>
-                <path d="M5 12h14"></path>
-              </svg>
-            </button>
-
-          </div>
+          <button
+            class="addBtn"
+            ${stock <= 0 ? "disabled" : ""}
+            onclick="addToCart('${product.id}')"
+          >
+            ${stock <= 0 ? "Sold out" : "Add to cart"}
+          </button>
 
         </div>
-
       </article>
     `;
 
   }).join("");
 }
 
-function escapeHtml(value){
-
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-
-}
-
-onSnapshot(
-  collection(db,"products"),
-  snapshot => {
-
-    products = snapshot.docs.map(d => ({
-      id:d.id,
-      ...d.data()
-    }));
-
-    renderProducts();
-    renderCart();
-
-  },
-  error => {
-
-    console.error(error);
-
-    document.getElementById("products").innerHTML = `
-      <div class="loading" style="grid-column:1/-1">
-        Unable to load products.<br>
-        Please check your Firebase Firestore rules.
-      </div>
-    `;
-
-  }
-);
-
-window.filterCategory = function(category,button){
-
-  currentCategory = category;
-
-  document.querySelectorAll(".category")
-    .forEach(x => x.classList.remove("active"));
-
-  button.classList.add("active");
-
-  renderProducts();
-
-};
-
 window.addToCart = function(id){
 
-  const product = products.find(p => p.id === id);
+  const product = products.find(p=>p.id===id);
 
   if(!product) return;
 
   const stock = Number(product.stock || 0);
 
   if(stock <= 0){
-    alert("This product is sold out.");
+    alert("Sorry, this product is sold out.");
     return;
   }
 
-  const existing = cart.find(x => x.id === id);
+  const existing = cart.find(i=>i.id===id);
 
   if(existing){
 
-    if(existing.quantity >= stock){
+    if(existing.qty >= stock){
       alert(`Only ${stock} left in stock.`);
       return;
     }
 
-    existing.quantity++;
+    existing.qty++;
 
   }else{
 
     cart.push({
-      id,
+      id:product.id,
       name:product.name,
       price:Number(product.price || 0),
       image:product.image || "",
-      quantity:1
+      qty:1
     });
 
   }
 
-  renderCart();
+  saveCart();
+  updateCartCount();
 
-  document.getElementById("cartPanel").classList.add("open");
-
+  alert(`${product.name} added to your cart 🛍️`);
 };
 
-window.changeQuantity = function(id,change){
+function saveCart(){
+  localStorage.setItem("luxestore_cart",JSON.stringify(cart));
+}
 
-  const item = cart.find(x => x.id === id);
-
-  const product = products.find(x => x.id === id);
-
-  if(!item || !product) return;
-
-  const stock = Number(product.stock || 0);
-
-  item.quantity += change;
-
-  if(item.quantity > stock){
-    item.quantity = stock;
-    alert(`Only ${stock} left in stock.`);
+function loadCart(){
+  try{
+    cart = JSON.parse(localStorage.getItem("luxestore_cart") || "[]");
+  }catch{
+    cart = [];
   }
+}
 
-  if(item.quantity <= 0){
-    cart = cart.filter(x => x.id !== id);
-  }
+function updateCartCount(){
+
+  const count = cart.reduce((sum,item)=>sum + Number(item.qty || 0),0);
+
+  document.getElementById("cartCount").textContent = count;
+}
+
+function refreshCartAgainstStock(){
+
+  cart = cart.filter(item=>{
+    const product = products.find(p=>p.id===item.id);
+
+    if(!product) return false;
+
+    const stock = Number(product.stock || 0);
+
+    if(stock <= 0) return false;
+
+    if(item.qty > stock){
+      item.qty = stock;
+    }
+
+    return true;
+  });
+
+  saveCart();
+  updateCartCount();
+}
+
+window.openCart = function(){
 
   renderCart();
 
+  document.getElementById("cartModal")
+    .classList.add("show");
 };
 
 function renderCart(){
 
-  const container = document.getElementById("cartItems");
-  const count = document.getElementById("cartCount");
-  const totalEl = document.getElementById("cartTotal");
-
-  const totalQuantity = cart.reduce(
-    (sum,item) => sum + item.quantity,
-    0
-  );
-
-  count.textContent = totalQuantity;
+  const box = document.getElementById("cartContent");
+  const form = document.getElementById("checkoutForm");
 
   if(!cart.length){
 
-    container.innerHTML = `
-      <p style="color:#999;text-align:center;padding:30px">
-        Your bag is empty.
-      </p>
-    `;
+    box.innerHTML = `
+      <div class="empty">
+        Your cart is empty 🛍️
+      </div>`;
 
-    totalEl.textContent = "₦0";
-
+    form.classList.remove("show");
     return;
   }
 
   let total = 0;
 
-  container.innerHTML = cart.map(item => {
+  box.innerHTML = cart.map(item=>{
 
-    const product = products.find(p => p.id === item.id);
+    const product = products.find(p=>p.id===item.id);
+    const stock = Number(product?.stock || 0);
 
-    if(!product) return "";
-
-    const stock = Number(product.stock || 0);
-
-    const itemTotal = item.price * item.quantity;
-
-    total += itemTotal;
+    const subtotal = item.price * item.qty;
+    total += subtotal;
 
     return `
-      <div class="cart-item">
+      <div class="cartItem">
 
-        <img
-          src="${item.image || 'https://placehold.co/100x100/f8e9ee/6c4657?text=Luxe'}"
-          alt=""
-        >
+        ${
+          item.image
+          ? `<img src="${item.image}" alt="">`
+          : `<div class="cartPlaceholder"></div>`
+        }
 
-        <div class="cart-item-info">
+        <div class="cartInfo">
+          <strong>${escapeHTML(item.name)}</strong>
+          <small>${money(item.price)} each</small>
+        </div>
 
-          <div class="cart-item-name">
-            ${escapeHtml(item.name)}
-          </div>
+        <div class="qty">
 
-          <div class="cart-item-price">
-            ${money(item.price)}
-          </div>
+          <button onclick="changeQty('${item.id}',-1)">
+            −
+          </button>
 
-          <div class="qty">
+          <strong>${item.qty}</strong>
 
-            <button onclick="changeQuantity('${item.id}',-1)">
-              −
-            </button>
-
-            <strong>${item.quantity}</strong>
-
-            <button
-              onclick="changeQuantity('${item.id}',1)"
-              ${item.quantity >= stock ? "disabled" : ""}
-            >
-              +
-            </button>
-
-          </div>
+          <button
+            onclick="changeQty('${item.id}',1)"
+            ${item.qty >= stock ? "disabled" : ""}
+          >
+            +
+          </button>
 
         </div>
+
+        <button
+          onclick="removeFromCart('${item.id}')"
+          style="background:none;color:#e53950;font-size:18px"
+        >
+          ×
+        </button>
 
       </div>
     `;
 
   }).join("");
 
-  totalEl.textContent = money(total);
+  box.innerHTML += `
+    <div class="totalBox">
+      <span>Total</span>
+      <span>${money(total)}</span>
+    </div>
+  `;
 
+  form.classList.add("show");
 }
 
-window.openCart = function(){
-  document.getElementById("cartPanel").classList.add("open");
+window.changeQty = function(id,change){
+
+  const item = cart.find(i=>i.id===id);
+
+  if(!item) return;
+
+  const product = products.find(p=>p.id===id);
+
+  if(!product) return;
+
+  const stock = Number(product.stock || 0);
+
+  item.qty += change;
+
+  if(item.qty <= 0){
+    cart = cart.filter(i=>i.id!==id);
+  }
+
+  if(item.qty > stock){
+    item.qty = stock;
+    alert(`Only ${stock} left in stock.`);
+  }
+
+  saveCart();
+  updateCartCount();
+  renderCart();
 };
 
-window.closeCart = function(){
-  document.getElementById("cartPanel").classList.remove("open");
+window.removeFromCart = function(id){
+
+  cart = cart.filter(i=>i.id!==id);
+
+  saveCart();
+  updateCartCount();
+  renderCart();
 };
 
-window.scrollToProducts = function(){
-  document.getElementById("shop").scrollIntoView({
-    behavior:"smooth"
-  });
+window.closeModal = function(id){
+  document.getElementById(id).classList.remove("show");
 };
 
-window.checkout = function(){
+window.backgroundClose = function(event,id){
+
+  if(event.target.id === id){
+    closeModal(id);
+  }
+};
+
+function calculateTotal(){
+
+  return cart.reduce(
+    (sum,item)=>sum + item.price * item.qty,
+    0
+  );
+}
+
+window.placeOrder = async function(){
 
   if(!cart.length){
-    alert("Your bag is empty.");
+    alert("Your cart is empty.");
     return;
   }
 
-  let message = "Hello LuxeStore 🌸%0A%0AI would like to order:%0A%0A";
+  const name = document.getElementById("customerName").value.trim();
+  const phone = document.getElementById("customerPhone").value.trim();
+  const address = document.getElementById("customerAddress").value.trim();
+  const note = document.getElementById("customerNote").value.trim();
 
-  cart.forEach(item => {
+  if(!name || !phone || !address){
 
-    message += `• ${encodeURIComponent(item.name)} x${item.quantity} — ${encodeURIComponent(money(item.price * item.quantity))}%0A`;
+    alert("Please enter your name, phone number and delivery address.");
+
+    return;
+  }
+
+  const btn = document.getElementById("placeOrderBtn");
+
+  btn.disabled = true;
+  btn.textContent = "Checking stock…";
+
+  const orderRef = doc(collection(db,"orders"));
+
+  try{
+
+    await runTransaction(db,async(transaction)=>{
+
+      const productSnapshots = [];
+
+      /*
+        IMPORTANT:
+        All Firestore reads happen before any writes.
+      */
+
+      for(const item of cart){
+
+        const productRef = doc(db,"products",item.id);
+
+        const snap = await transaction.get(productRef);
+
+        if(!snap.exists()){
+          throw new Error(`Product "${item.name}" no longer exists.`);
+        }
+
+        productSnapshots.push({
+          item,
+          ref:productRef,
+          snap
+        });
+      }
+
+      for(const data of productSnapshots){
+
+        const currentStock =
+          Number(data.snap.data().stock || 0);
+
+        if(currentStock < data.item.qty){
+
+          throw new Error(
+            `Not enough stock for "${data.item.name}". Only ${currentStock} left.`
+          );
+        }
+      }
+
+      const orderItems = [];
+
+      for(const data of productSnapshots){
+
+        const currentStock =
+          Number(data.snap.data().stock || 0);
+
+        const newStock =
+          currentStock - data.item.qty;
+
+        transaction.update(
+          data.ref,
+          {
+            stock:newStock,
+            updatedAt:serverTimestamp()
+          }
+        );
+
+        orderItems.push({
+          productId:data.item.id,
+          name:data.item.name,
+          price:data.item.price,
+          quantity:data.item.qty,
+          image:data.item.image || ""
+        });
+      }
+
+      transaction.set(orderRef,{
+
+        customer:{
+          name,
+          phone,
+          address,
+          note
+        },
+
+        items:orderItems,
+
+        total:calculateTotal(),
+
+        status:"pending",
+
+        stockReserved:true,
+
+        createdAt:serverTimestamp(),
+        updatedAt:serverTimestamp()
+
+      });
+
+    });
+
+    latestOrder = {
+      id:orderRef.id,
+      name,
+      phone,
+      address,
+      note,
+      items:JSON.parse(JSON.stringify(cart)),
+      total:calculateTotal()
+    };
+
+    cart = [];
+
+    saveCart();
+    updateCartCount();
+
+    closeModal("cartModal");
+
+    document.getElementById("successText").innerHTML =
+      `Order <strong>#${orderRef.id.slice(0,8).toUpperCase()}</strong> has been created successfully.<br><br>Your stock has been reserved.`;
+
+    document.getElementById("successModal")
+      .classList.add("show");
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(error.message || "Unable to create order. Please try again.");
+
+    refreshCartAgainstStock();
+    renderCart();
+
+  }finally{
+
+    btn.disabled = false;
+    btn.textContent = "Place order";
+
+  }
+};
+
+window.openOrderWhatsApp = function(){
+
+  if(!latestOrder) return;
+
+  let message =
+`Hello LuxeStore 👋
+
+I just placed an order.
+
+Order ID: #${latestOrder.id.slice(0,8).toUpperCase()}
+
+Customer:
+${latestOrder.name}
+
+Phone:
+${latestOrder.phone}
+
+Delivery address:
+${latestOrder.address}
+
+Items:
+`;
+
+  latestOrder.items.forEach(item=>{
+
+    message +=
+`\n• ${item.name} × ${item.qty} — ${money(item.price * item.qty)}`;
 
   });
 
-  const total = cart.reduce(
-    (sum,item) => sum + item.price * item.quantity,
-    0
-  );
+  message +=
+`\n\nTotal: ${money(latestOrder.total)}`;
 
-  message += `%0ATotal: ${encodeURIComponent(money(total))}%0A%0A`;
-  message += "Please confirm availability and delivery details.";
+  if(latestOrder.note){
+    message += `\n\nNote: ${latestOrder.note}`;
+  }
 
-  window.open(
-    `https://wa.me/2340000000000?text=${message}`,
-    "_blank"
-  );
+  message +=
+`\n\nPlease confirm my order. Thank you ❤️`;
 
+  const url =
+    `https://wa.me/${07067087764}?text=${encodeURIComponent(message)}`;
+
+  window.open(url,"_blank");
 };
+
+window.openWhatsApp = function(){
+
+  const url =
+    `https://wa.me/${07067087764}?text=${encodeURIComponent(
+      "Hello LuxeStore 👋 I would like to make an enquiry."
+    )}`;
+
+  window.open(url,"_blank");
+};
+
+loadCart();
+updateCartCount();
+refreshCartAgainstStock();
 
 </script>
 
