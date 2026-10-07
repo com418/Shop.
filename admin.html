@@ -2,20 +2,36 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+
 <title>LuxeStore Admin</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
 }
 
+:root{
+  --pink:#f29abb;
+  --pink2:#ffdce8;
+  --deep:#381524;
+  --bg:#fff8f5;
+  --card:#fff;
+  --text:#2c2026;
+  --muted:#8d7d84;
+  --line:#f0dfe5;
+  --danger:#dc5365;
+  --shadow:0 15px 45px rgba(72,29,48,.10);
+}
+
 body{
-  font-family:Arial, sans-serif;
-  background:#fff7fa;
-  color:#351d28;
+  font-family:"DM Sans",sans-serif;
+  background:var(--bg);
+  color:var(--text);
 }
 
 button,input,select,textarea{
@@ -24,299 +40,414 @@ button,input,select,textarea{
 
 button{
   cursor:pointer;
-  border:0;
 }
 
-:root{
-  --pink:#e91e63;
-  --light:#fff0f5;
-  --dark:#351d28;
-  --muted:#8b6f7a;
-  --white:#fff;
-  --border:#f2dce5;
-  --green:#16834b;
-  --red:#d9304f;
-}
-
-/* SVG */
 svg{
-  width:22px;
-  height:22px;
+  width:21px;
+  height:21px;
   fill:none;
   stroke:currentColor;
-  stroke-width:2;
+  stroke-width:1.8;
   stroke-linecap:round;
   stroke-linejoin:round;
 }
 
-/* Layout */
-.app{
-  display:flex;
-  min-height:100vh;
-}
+/* SIDEBAR */
 
 .sidebar{
-  width:250px;
-  background:#fff;
-  border-right:1px solid var(--border);
-  padding:25px 18px;
   position:fixed;
+  left:0;
   top:0;
   bottom:0;
-  left:0;
+  width:245px;
+  background:white;
+  border-right:1px solid var(--line);
+  padding:24px 16px;
+  z-index:100;
 }
 
 .logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-size:24px;
-  font-weight:800;
+  font-family:"Playfair Display",serif;
+  font-size:27px;
+  color:var(--deep);
+  padding:0 12px 28px;
+}
+
+.logo span{
   color:var(--pink);
-  margin-bottom:35px;
 }
 
-.logo svg{
-  width:30px;
-  height:30px;
-}
-
-.nav{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-}
-
-.nav button{
+.side-link{
+  width:100%;
   display:flex;
   align-items:center;
   gap:12px;
-  width:100%;
-  padding:13px;
-  border-radius:12px;
+  padding:13px 14px;
+  border:0;
   background:transparent;
-  color:#765563;
+  border-radius:13px;
+  color:#806d75;
+  margin-bottom:5px;
   text-align:left;
 }
 
-.nav button:hover,
-.nav button.active{
-  background:var(--light);
-  color:var(--pink);
+.side-link.active{
+  background:var(--pink2);
+  color:var(--deep);
+  font-weight:700;
 }
+
+/* MAIN */
 
 .main{
-  margin-left:250px;
-  width:calc(100% - 250px);
-  padding:25px;
+  margin-left:245px;
+  min-height:100vh;
 }
 
+/* TOPBAR */
+
 .topbar{
+  height:75px;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+  padding:0 28px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  margin-bottom:25px;
+  position:sticky;
+  top:0;
+  z-index:90;
 }
 
-.topbar h1{
-  font-size:28px;
+.top-title h1{
+  font-family:"Playfair Display",serif;
+  color:var(--deep);
+  font-size:25px;
+}
+
+.top-title p{
+  color:var(--muted);
+  font-size:12px;
 }
 
 .top-actions{
   display:flex;
-  gap:10px;
+  gap:8px;
 }
 
-.icon-btn{
+.circle-btn{
   width:42px;
   height:42px;
+  border:1px solid var(--line);
+  background:white;
   border-radius:50%;
-  background:#fff;
-  border:1px solid var(--border);
   display:grid;
   place-items:center;
+  color:var(--deep);
 }
 
-.primary{
-  background:var(--pink);
-  color:white;
-  padding:12px 18px;
-  border-radius:12px;
-  font-weight:700;
+/* CONTENT */
+
+.content{
+  padding:28px;
+  max-width:1500px;
+  margin:auto;
 }
 
-.secondary{
-  background:#fff;
-  color:var(--dark);
-  padding:12px 18px;
-  border:1px solid var(--border);
-  border-radius:12px;
+.welcome{
+  position:relative;
+  overflow:hidden;
+  padding:28px;
+  border-radius:25px;
+  background:linear-gradient(135deg,#ffe4ee,#fff1eb);
+  margin-bottom:25px;
 }
 
-/* Cards */
+.welcome h2{
+  font-family:"Playfair Display",serif;
+  color:var(--deep);
+  font-size:30px;
+  margin-bottom:8px;
+}
+
+.welcome p{
+  color:#80616e;
+  font-size:14px;
+}
+
+.welcome-flower{
+  position:absolute;
+  right:35px;
+  top:20px;
+  width:90px;
+  color:#c66c8d;
+  animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-9px)}
+}
+
+/* STATS */
+
 .stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:16px;
+  gap:15px;
   margin-bottom:25px;
 }
 
 .stat{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:20px;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:19px;
+  box-shadow:var(--shadow);
 }
 
 .stat-top{
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
 }
 
 .stat-icon{
-  width:45px;
-  height:45px;
-  border-radius:14px;
-  background:var(--light);
-  color:var(--pink);
+  width:42px;
+  height:42px;
+  border-radius:13px;
   display:grid;
   place-items:center;
+  background:var(--pink2);
+  color:var(--deep);
 }
 
-.stat p{
+.stat-number{
+  margin-top:14px;
+  font-size:26px;
+  font-weight:800;
+  color:var(--deep);
+}
+
+.stat-label{
   color:var(--muted);
-  font-size:14px;
-  margin-bottom:7px;
+  font-size:12px;
 }
 
-.stat h2{
-  font-size:25px;
-}
+/* TOOLBAR */
 
-/* Sections */
-.section{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:18px;
-  margin-bottom:22px;
-  overflow:hidden;
-}
-
-.section-head{
-  padding:18px 20px;
+.toolbar{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:15px;
+  margin-bottom:20px;
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid var(--border);
-}
-
-.section-head h2{
-  font-size:19px;
-}
-
-/* Table */
-.table-wrap{
-  overflow-x:auto;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:700px;
-}
-
-th,td{
-  padding:15px 20px;
-  text-align:left;
-  border-bottom:1px solid #f7e8ee;
-}
-
-th{
-  color:#8b6f7a;
-  font-size:13px;
-}
-
-td{
-  font-size:14px;
-}
-
-.product-cell{
-  display:flex;
-  align-items:center;
   gap:12px;
 }
 
-.product-img{
-  width:50px;
-  height:50px;
-  border-radius:12px;
-  object-fit:cover;
-  background:#fff0f5;
+.search{
+  flex:1;
+  max-width:450px;
+  position:relative;
 }
 
-.badge{
-  display:inline-block;
-  padding:6px 10px;
-  border-radius:30px;
-  font-size:12px;
+.search input{
+  width:100%;
+  border:1px solid var(--line);
+  background:#fffafa;
+  padding:13px 15px 13px 43px;
+  border-radius:14px;
+  outline:none;
+}
+
+.search svg{
+  position:absolute;
+  left:14px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#a48691;
+}
+
+.add-product{
+  border:0;
+  background:var(--deep);
+  color:white;
+  padding:12px 18px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  gap:7px;
   font-weight:700;
 }
 
-.badge-green{
-  background:#e7f8ef;
-  color:var(--green);
+/* PRODUCTS */
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
 }
 
-.badge-red{
-  background:#ffe9ed;
-  color:var(--red);
+.product{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+
+.product-image{
+  height:230px;
+  position:relative;
+  background:#f8e8ee;
+}
+
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.stock{
+  position:absolute;
+  left:12px;
+  top:12px;
+  padding:7px 10px;
+  border-radius:20px;
+  background:white;
+  color:var(--deep);
+  font-size:11px;
+  font-weight:800;
+}
+
+.stock.low{
+  color:#bb4d5d;
+}
+
+.stock.out{
+  background:#5e5055;
+  color:white;
+}
+
+.product-body{
+  padding:15px;
+}
+
+.product-category{
+  color:#b65f80;
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.product-name{
+  margin-top:6px;
+  color:var(--deep);
+  font-weight:800;
+}
+
+.product-price{
+  margin-top:7px;
+  font-weight:800;
+  color:#49313b;
 }
 
 .actions{
   display:flex;
-  gap:7px;
+  gap:8px;
+  margin-top:14px;
 }
 
-.small-btn{
-  width:36px;
-  height:36px;
-  border-radius:10px;
-  display:grid;
-  place-items:center;
-  background:#fff0f5;
-  color:var(--pink);
+.action{
+  flex:1;
+  height:40px;
+  border:1px solid var(--line);
+  background:white;
+  border-radius:11px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:6px;
+  color:var(--deep);
 }
 
-.small-btn.delete{
-  color:var(--red);
-  background:#fff0f2;
+.action.delete{
+  color:var(--danger);
 }
 
-/* Empty */
 .empty{
-  padding:45px 20px;
+  grid-column:1/-1;
   text-align:center;
+  padding:70px 20px;
   color:var(--muted);
 }
 
-.empty svg{
-  width:45px;
-  height:45px;
-  color:var(--pink);
-  margin-bottom:10px;
+/* FLOATING ADMIN */
+
+.floating-add{
+  position:fixed;
+  right:20px;
+  bottom:25px;
+  width:58px;
+  height:58px;
+  border:0;
+  border-radius:50%;
+  background:var(--deep);
+  color:white;
+  display:grid;
+  place-items:center;
+  box-shadow:0 15px 35px rgba(56,21,36,.28);
+  z-index:200;
 }
 
-/* Modal */
+.floating-status{
+  position:fixed;
+  right:20px;
+  bottom:95px;
+  padding:9px 13px;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:20px;
+  box-shadow:var(--shadow);
+  font-size:11px;
+  font-weight:700;
+  color:var(--deep);
+  z-index:190;
+}
+
+.floating-spark{
+  position:fixed;
+  pointer-events:none;
+  color:#e9a0b8;
+  opacity:.45;
+}
+
+.spark1{
+  left:270px;
+  top:130px;
+}
+
+.spark2{
+  right:40px;
+  top:180px;
+}
+
+/* MODAL */
+
 .modal{
-  display:none;
   position:fixed;
   inset:0;
-  background:rgba(35,15,25,.55);
-  z-index:100;
-  padding:20px;
+  background:rgba(37,19,27,.48);
+  backdrop-filter:blur(8px);
+  display:none;
   align-items:center;
   justify-content:center;
+  padding:18px;
+  z-index:500;
 }
 
 .modal.show{
@@ -324,12 +455,12 @@ td{
 }
 
 .modal-box{
-  background:#fff;
-  width:min(560px,100%);
-  max-height:90vh;
+  width:min(600px,100%);
+  max-height:92vh;
   overflow:auto;
-  border-radius:22px;
-  padding:25px;
+  background:white;
+  border-radius:25px;
+  padding:22px;
 }
 
 .modal-head{
@@ -340,131 +471,203 @@ td{
 }
 
 .modal-head h2{
-  font-size:22px;
+  font-family:"Playfair Display",serif;
+  color:var(--deep);
 }
 
 .close{
-  width:38px;
-  height:38px;
+  width:40px;
+  height:40px;
   border-radius:50%;
-  background:#fff0f5;
-  color:var(--pink);
+  border:1px solid var(--line);
+  background:white;
 }
 
 .form-group{
-  margin-bottom:15px;
+  margin-bottom:14px;
 }
 
 .form-group label{
   display:block;
-  margin-bottom:7px;
-  font-size:13px;
+  font-size:12px;
   font-weight:700;
+  color:#6f5962;
+  margin-bottom:7px;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea{
   width:100%;
+  border:1px solid var(--line);
+  border-radius:13px;
   padding:13px;
-  border:1px solid var(--border);
-  border-radius:12px;
   outline:none;
-  background:#fff;
+  background:#fffafa;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-  border-color:var(--pink);
-}
-
-textarea{
+.form-group textarea{
   min-height:90px;
   resize:vertical;
 }
 
-.form-actions{
-  display:flex;
-  gap:10px;
-  margin-top:20px;
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
 }
 
-.form-actions button{
-  flex:1;
-}
-
-/* Loading */
-.loading{
-  padding:35px;
+.image-picker{
+  border:2px dashed #e7c5d2;
+  border-radius:17px;
+  padding:20px;
   text-align:center;
-  color:var(--muted);
+  background:#fff8fb;
 }
 
-/* Mobile */
-.mobile-header{
+.image-picker input{
   display:none;
 }
 
-@media(max-width:900px){
+.upload-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:11px 15px;
+  border-radius:12px;
+  background:var(--pink2);
+  color:var(--deep);
+  font-weight:700;
+}
 
-  .sidebar{
-    display:none;
-  }
+.preview{
+  margin-top:12px;
+  display:none;
+}
 
-  .mobile-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:15px;
-    background:#fff;
-    border-bottom:1px solid var(--border);
-    position:sticky;
-    top:0;
-    z-index:20;
-  }
+.preview img{
+  width:100%;
+  max-height:200px;
+  object-fit:cover;
+  border-radius:14px;
+}
 
-  .mobile-logo{
-    font-weight:800;
-    color:var(--pink);
-    font-size:20px;
-  }
+.save{
+  width:100%;
+  border:0;
+  background:var(--deep);
+  color:white;
+  padding:15px;
+  border-radius:14px;
+  font-weight:800;
+  margin-top:5px;
+}
 
-  .main{
-    margin-left:0;
-    width:100%;
-    padding:16px;
-    padding-bottom:90px;
+/* MOBILE */
+
+.mobile-nav{
+  display:none;
+}
+
+@media(max-width:1050px){
+
+  .products{
+    grid-template-columns:repeat(3,1fr);
   }
 
   .stats{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .topbar h1{
-    font-size:23px;
+}
+
+@media(max-width:750px){
+
+  .sidebar{
+    display:none;
   }
 
-  .topbar .primary{
-    padding:10px 13px;
+  .main{
+    margin-left:0;
+    padding-bottom:75px;
   }
 
-  .bottom-nav{
+  .topbar{
+    padding:0 16px;
+  }
+
+  .content{
+    padding:18px 14px;
+  }
+
+  .top-title h1{
+    font-size:21px;
+  }
+
+  .welcome{
+    padding:23px;
+  }
+
+  .welcome h2{
+    font-size:26px;
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .stat{
+    padding:14px;
+  }
+
+  .toolbar{
+    flex-direction:column;
+  }
+
+  .search{
+    max-width:none;
+  }
+
+  .add-product{
+    justify-content:center;
+  }
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+    gap:11px;
+  }
+
+  .product-image{
+    height:185px;
+  }
+
+  .product-body{
+    padding:12px;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  .mobile-nav{
+    display:flex;
     position:fixed;
     left:0;
     right:0;
     bottom:0;
-    background:#fff;
-    border-top:1px solid var(--border);
-    display:flex;
+    height:65px;
+    background:white;
+    border-top:1px solid var(--line);
+    z-index:300;
     justify-content:space-around;
-    padding:10px 5px;
-    z-index:50;
+    align-items:center;
   }
 
-  .bottom-nav button{
+  .mobile-nav button{
+    border:0;
     background:none;
-    color:#8b6f7a;
+    color:#9b818c;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -472,352 +675,390 @@ textarea{
     font-size:10px;
   }
 
-  .bottom-nav button.active{
-    color:var(--pink);
+  .mobile-nav button:first-child{
+    color:var(--deep);
+    font-weight:800;
   }
 
 }
 
-@media(min-width:901px){
-  .bottom-nav{
-    display:none;
+@media(max-width:450px){
+
+  .row{
+    grid-template-columns:1fr;
   }
+
+  .product-image{
+    height:170px;
+  }
+
+  .product-name{
+    font-size:14px;
+  }
+
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
-
 <!-- SIDEBAR -->
+
 <aside class="sidebar">
 
   <div class="logo">
+    Luxe<span>Store</span>
+  </div>
+
+  <button class="side-link active">
     <svg viewBox="0 0 24 24">
-      <path d="M12 3l2.2 5.1L20 9l-4.2 3.8L17 19l-5-2.8L7 19l1.2-6.2L4 9l5.8-.9L12 3z"/>
+      <rect x="3" y="3" width="7" height="7"></rect>
+      <rect x="14" y="3" width="7" height="7"></rect>
+      <rect x="3" y="14" width="7" height="7"></rect>
+      <rect x="14" y="14" width="7" height="7"></rect>
     </svg>
-    LuxeStore
-  </div>
+    Dashboard
+  </button>
 
-  <div class="nav">
-
-    <button class="active">
-      <svg viewBox="0 0 24 24">
-        <rect x="3" y="3" width="7" height="7"/>
-        <rect x="14" y="3" width="7" height="7"/>
-        <rect x="3" y="14" width="7" height="7"/>
-        <rect x="14" y="14" width="7" height="7"/>
-      </svg>
-      Dashboard
-    </button>
-
-    <button onclick="scrollToProducts()">
-      <svg viewBox="0 0 24 24">
-        <path d="M6 7h12l1 14H5L6 7z"/>
-        <path d="M9 7a3 3 0 016 0"/>
-      </svg>
-      Products
-    </button>
-
-    <button onclick="scrollToOrders()">
-      <svg viewBox="0 0 24 24">
-        <path d="M4 5h16v14H4z"/>
-        <path d="M8 9h8M8 13h5"/>
-      </svg>
-      Orders
-    </button>
-
-    <button>
-      <svg viewBox="0 0 24 24">
-        <circle cx="9" cy="8" r="3"/>
-        <circle cx="17" cy="9" r="2"/>
-        <path d="M3 20c0-3 2.5-5 6-5s6 2 6 5"/>
-        <path d="M15 15c3 0 5 2 5 5"/>
-      </svg>
-      Customers
-    </button>
-
-    <button onclick="openStore()">
-      <svg viewBox="0 0 24 24">
-        <path d="M3 10l2-6h14l2 6"/>
-        <path d="M4 10v10h16V10"/>
-        <path d="M9 20v-6h6v6"/>
-      </svg>
-      View Store
-    </button>
-
-  </div>
+  <button class="side-link" onclick="openAdd()">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 5v14"></path>
+      <path d="M5 12h14"></path>
+    </svg>
+    Add Product
+  </button>
 
 </aside>
 
-<!-- MOBILE HEADER -->
-<div class="mobile-header">
-  <div class="mobile-logo">LuxeStore</div>
-
-  <button class="icon-btn" onclick="openStore()">
-    <svg viewBox="0 0 24 24">
-      <path d="M3 12s3-6 9-6 9 6 9 6-3 6-9 6-9-6-9-6z"/>
-      <circle cx="12" cy="12" r="2"/>
-    </svg>
-  </button>
-</div>
-
 <!-- MAIN -->
+
 <main class="main">
 
-  <div class="topbar">
+<header class="topbar">
 
-    <div>
-      <h1>Dashboard</h1>
-      <p style="color:#8b6f7a;margin-top:5px;">
-        Welcome back to LuxeStore ✨
-      </p>
-    </div>
+  <div class="top-title">
+    <h1>Admin Dashboard</h1>
+    <p>Manage your LuxeStore collection</p>
+  </div>
 
-    <div class="top-actions">
+  <div class="top-actions">
 
-      <button class="icon-btn" onclick="toggleTheme()">
-        <svg viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="4"/>
-          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
-        </svg>
-      </button>
-
-      <button class="primary" onclick="openProductModal()">
-        + Add Product
-      </button>
-
-    </div>
+    <button class="circle-btn" onclick="loadProducts()">
+      <svg viewBox="0 0 24 24">
+        <path d="M20 11a8 8 0 0 0-14.9-4"></path>
+        <path d="M4 5v4h4"></path>
+        <path d="M4 13a8 8 0 0 0 14.9 4"></path>
+        <path d="M20 19v-4h-4"></path>
+      </svg>
+    </button>
 
   </div>
 
-  <!-- STATS -->
-  <section class="stats">
+</header>
 
-    <div class="stat">
-      <div class="stat-top">
-        <div>
-          <p>Total Sales</p>
-          <h2>₦0</h2>
-        </div>
+<div class="content">
 
-        <div class="stat-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M12 2v20"/>
-            <path d="M17 6H9.5a3.5 3.5 0 000 7H14a3.5 3.5 0 010 7H6"/>
-          </svg>
-        </div>
+<section class="welcome">
+
+  <h2>Welcome back, LuxeStore ✨</h2>
+
+  <p>
+    Keep your products, stock and collection looking beautiful.
+  </p>
+
+  <svg class="welcome-flower" viewBox="0 0 100 100">
+    <path d="M50 50c-22-8-30-24-18-34 9-7 20 1 18 17 2-16 14-24 23-17 12 10 4 26-18 34 22-8 38-1 35 12-3 12-18 12-35-4 17 16 17 31 5 35-13 4-20-12-15-35-5 23-18 39-29 34-12-5-8-20 9-34-17 14-32 14-35 2-3-13 13-20 35-12z"></path>
+    <circle cx="50" cy="50" r="5"></circle>
+  </svg>
+
+</section>
+
+<!-- STATS -->
+
+<section class="stats">
+
+  <div class="stat">
+    <div class="stat-top">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M6 3h12l2 5H4z"></path>
+          <path d="M5 8v12h14V8"></path>
+          <path d="M9 12h6"></path>
+        </svg>
       </div>
     </div>
 
-    <div class="stat">
-      <div class="stat-top">
-        <div>
-          <p>Orders</p>
-          <h2 id="orderCount">0</h2>
-        </div>
+    <div class="stat-number" id="totalProducts">0</div>
+    <div class="stat-label">Products</div>
+  </div>
 
-        <div class="stat-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M6 7h12l1 14H5L6 7z"/>
-            <path d="M9 7a3 3 0 016 0"/>
-          </svg>
-        </div>
+  <div class="stat">
+    <div class="stat-top">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M3 6h18"></path>
+          <path d="M6 6v14h12V6"></path>
+          <path d="M8 6V3h8v3"></path>
+        </svg>
       </div>
     </div>
 
-    <div class="stat">
-      <div class="stat-top">
-        <div>
-          <p>Products</p>
-          <h2 id="productCount">0</h2>
-        </div>
+    <div class="stat-number" id="totalStock">0</div>
+    <div class="stat-label">Items in stock</div>
+  </div>
 
-        <div class="stat-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M4 7h16v14H4z"/>
-            <path d="M8 7V5a4 4 0 018 0v2"/>
-          </svg>
-        </div>
+  <div class="stat">
+    <div class="stat-top">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M12 7v10"></path>
+          <path d="M8.5 10c0-2 7-2 7 0s-7 2-7 4 7 2 7 0"></path>
+        </svg>
       </div>
     </div>
 
-    <div class="stat">
-      <div class="stat-top">
-        <div>
-          <p>Customers</p>
-          <h2 id="customerCount">0</h2>
-        </div>
+    <div class="stat-number" id="stockValue">₦0</div>
+    <div class="stat-label">Stock value</div>
+  </div>
 
-        <div class="stat-icon">
-          <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="8" r="3"/>
-            <path d="M5 21c0-4 3-6 7-6s7 2 7 6"/>
-          </svg>
-        </div>
+  <div class="stat">
+    <div class="stat-top">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 19h16"></path>
+          <path d="M6 16V9"></path>
+          <path d="M12 16V5"></path>
+          <path d="M18 16v-3"></path>
+        </svg>
       </div>
     </div>
 
-  </section>
+    <div class="stat-number" id="categories">0</div>
+    <div class="stat-label">Categories</div>
+  </div>
 
-  <!-- PRODUCTS -->
-  <section class="section" id="productsSection">
+</section>
 
-    <div class="section-head">
+<!-- TOOLBAR -->
 
-      <h2>Products</h2>
+<section class="toolbar">
 
-      <button class="secondary" onclick="openProductModal()">
-        + Add Product
-      </button>
+  <div class="search">
 
-    </div>
+    <svg viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="7"></circle>
+      <path d="m20 20-4-4"></path>
+    </svg>
 
-    <div id="productsContainer">
+    <input
+      id="search"
+      placeholder="Search products..."
+      oninput="renderProducts()"
+    >
 
-      <div class="loading">
-        Loading products...
-      </div>
+  </div>
 
-    </div>
+  <button class="add-product" onclick="openAdd()">
 
-  </section>
+    <svg viewBox="0 0 24 24">
+      <path d="M12 5v14"></path>
+      <path d="M5 12h14"></path>
+    </svg>
 
-  <!-- ORDERS -->
-  <section class="section" id="ordersSection">
+    Add Product
 
-    <div class="section-head">
-      <h2>Recent Orders</h2>
-    </div>
+  </button>
 
-    <div class="empty">
+</section>
 
-      <svg viewBox="0 0 24 24">
-        <path d="M4 4h16v16H4z"/>
-        <path d="M8 9h8M8 13h6"/>
-      </svg>
+<!-- PRODUCTS -->
 
-      <p>No orders yet.</p>
+<section id="products" class="products">
 
-    </div>
+  <div class="empty">
+    Loading products...
+  </div>
 
-  </section>
-
-</main>
+</section>
 
 </div>
 
-<!-- MOBILE NAV -->
-<div class="bottom-nav">
+</main>
 
-  <button class="active">
+<!-- FLOATING UI -->
+
+<div class="floating-status">
+  ✨ Store is live
+</div>
+
+<svg class="floating-spark spark1" width="28" height="28" viewBox="0 0 24 24">
+  <path d="M12 2l1.7 6.3L20 10l-6.3 1.7L12 18l-1.7-6.3L4 10l6.3-1.7z"></path>
+</svg>
+
+<svg class="floating-spark spark2" width="30" height="30" viewBox="0 0 24 24">
+  <path d="M12 2l1.7 6.3L20 10l-6.3 1.7L12 18l-1.7-6.3L4 10l6.3-1.7z"></path>
+</svg>
+
+<button class="floating-add" onclick="openAdd()">
+
+  <svg viewBox="0 0 24 24">
+    <path d="M12 5v14"></path>
+    <path d="M5 12h14"></path>
+  </svg>
+
+</button>
+
+<!-- MOBILE NAV -->
+
+<nav class="mobile-nav">
+
+  <button>
     <svg viewBox="0 0 24 24">
-      <rect x="3" y="3" width="7" height="7"/>
-      <rect x="14" y="3" width="7" height="7"/>
-      <rect x="3" y="14" width="7" height="7"/>
-      <rect x="14" y="14" width="7" height="7"/>
+      <rect x="3" y="3" width="7" height="7"></rect>
+      <rect x="14" y="3" width="7" height="7"></rect>
+      <rect x="3" y="14" width="7" height="7"></rect>
+      <rect x="14" y="14" width="7" height="7"></rect>
     </svg>
     Home
   </button>
 
-  <button onclick="scrollToProducts()">
+  <button onclick="openAdd()">
     <svg viewBox="0 0 24 24">
-      <path d="M6 7h12l1 14H5L6 7z"/>
-    </svg>
-    Products
-  </button>
-
-  <button onclick="openProductModal()">
-    <svg viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="9"/>
-      <path d="M12 8v8M8 12h8"/>
+      <path d="M12 5v14"></path>
+      <path d="M5 12h14"></path>
     </svg>
     Add
   </button>
 
-  <button onclick="scrollToOrders()">
+</nav>
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+<div class="modal-box">
+
+<div class="modal-head">
+
+  <h2 id="modalTitle">Add Product</h2>
+
+  <button class="close" onclick="closeModal()">
+
     <svg viewBox="0 0 24 24">
-      <path d="M4 5h16v14H4z"/>
-      <path d="M8 9h8M8 13h5"/>
+      <path d="m6 6 12 12"></path>
+      <path d="m18 6-12 12"></path>
     </svg>
-    Orders
+
   </button>
 
 </div>
 
-<!-- PRODUCT MODAL -->
-<div class="modal" id="productModal">
+<input type="hidden" id="productId">
 
-  <div class="modal-box">
+<div class="form-group">
 
-    <div class="modal-head">
+<label>Product name</label>
 
-      <h2 id="modalTitle">Add Product</h2>
+<input id="name" placeholder="e.g. Pink Luxury Dress">
 
-      <button class="close" onclick="closeProductModal()">×</button>
+</div>
 
-    </div>
+<div class="row">
 
-    <form id="productForm">
+<div class="form-group">
 
-      <div class="form-group">
-        <label>Product Name</label>
-        <input id="productName" required placeholder="e.g. Luxury Pink Dress">
-      </div>
+<label>Category</label>
 
-      <div class="form-group">
-        <label>Category</label>
+<select id="category">
 
-        <select id="productCategory" required>
+<option>Clothing</option>
+<option>Perfumes</option>
+<option>Bags</option>
+<option>Shoes</option>
+<option>Jewelry</option>
+<option>Watches</option>
+<option>Accessories</option>
 
-          <option value="">Choose category</option>
-          <option>Clothing</option>
-          <option>Perfumes</option>
-          <option>Bags</option>
-          <option>Shoes</option>
-          <option>Jewelry</option>
-          <option>Watches</option>
-          <option>Accessories</option>
+</select>
 
-        </select>
+</div>
 
-      </div>
+<div class="form-group">
 
-      <div class="form-group">
-        <label>Price (₦)</label>
-        <input id="productPrice" type="number" required placeholder="45000">
-      </div>
+<label>Price (₦)</label>
 
-      <div class="form-group">
-        <label>Image URL</label>
-        <input id="productImage" placeholder="https://example.com/image.jpg">
-      </div>
+<input id="price" type="number" placeholder="25000">
 
-      <div class="form-group">
-        <label>Description</label>
-        <textarea id="productDescription" placeholder="Describe this product..."></textarea>
-      </div>
+</div>
 
-      <div class="form-actions">
+</div>
 
-        <button type="button" class="secondary" onclick="closeProductModal()">
-          Cancel
-        </button>
+<div class="form-group">
 
-        <button type="submit" class="primary">
-          Save Product
-        </button>
+<label>Stock quantity</label>
 
-      </div>
+<input
+  id="stock"
+  type="number"
+  min="0"
+  placeholder="10"
+>
 
-    </form>
+</div>
 
+<div class="form-group">
+
+<label>Description</label>
+
+<textarea
+  id="description"
+  placeholder="Describe the product..."
+></textarea>
+
+</div>
+
+<div class="form-group">
+
+<label>Product image</label>
+
+<div class="image-picker">
+
+  <label class="upload-btn">
+
+    <svg viewBox="0 0 24 24">
+      <path d="M12 16V4"></path>
+      <path d="m7 9 5-5 5 5"></path>
+      <path d="M5 20h14"></path>
+    </svg>
+
+    Choose from iPhone Photos
+
+    <input
+      id="imageInput"
+      type="file"
+      accept="image/*"
+      onchange="previewImage(event)"
+    >
+
+  </label>
+
+  <div class="preview" id="preview">
+    <img id="previewImg" alt="Preview">
   </div>
 
 </div>
 
-<!-- FIREBASE -->
+</div>
+
+<button class="save" onclick="saveProduct()">
+  Save Product
+</button>
+
+</div>
+
+</div>
+
 <script type="module">
 
 import { initializeApp }
@@ -828,13 +1069,11 @@ import {
   collection,
   addDoc,
   getDocs,
+  updateDoc,
   deleteDoc,
   doc,
-  updateDoc,
   serverTimestamp
-}
-from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
-
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBLx6RK5sRIduaKiDSTAGlKPmfUH7iDSBM",
@@ -846,237 +1085,331 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
 const db = getFirestore(app);
 
-let editingId = null;
+let allProducts = [];
+let selectedImage = "";
 
+function money(value){
+  return "₦" + Number(value || 0).toLocaleString();
+}
 
-/* LOAD PRODUCTS */
-
-async function loadProducts(){
-
-  const container = document.getElementById("productsContainer");
-
-  container.innerHTML = `
-    <div class="loading">Loading products...</div>
-  `;
+window.loadProducts = async function(){
 
   try{
 
-    const snapshot = await getDocs(collection(db,"products"));
+    const snapshot = await getDocs(
+      collection(db,"products")
+    );
 
-    document.getElementById("productCount").textContent =
-      snapshot.size;
+    allProducts = snapshot.docs.map(d => ({
+      id:d.id,
+      ...d.data()
+    }));
 
-    if(snapshot.empty){
-
-      container.innerHTML = `
-        <div class="empty">
-          <p>No products yet.</p>
-          <p style="margin-top:5px;">
-            Add your first product above ✨
-          </p>
-        </div>
-      `;
-
-      return;
-    }
-
-    let html = `
-      <div class="table-wrap">
-      <table>
-
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Category</th>
-          <th>Price</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-
-      <tbody>
-    `;
-
-    snapshot.forEach(item=>{
-
-      const p = item.data();
-
-      const image = p.image ||
-        "https://via.placeholder.com/100x100/fff0f5/e91e63?text=Luxe";
-
-      html += `
-
-        <tr>
-
-          <td>
-
-            <div class="product-cell">
-
-              <img
-                class="product-img"
-                src="${escapeHtml(image)}"
-                onerror="this.src='https://via.placeholder.com/100x100/fff0f5/e91e63?text=Luxe'"
-              >
-
-              <div>
-
-                <strong>
-                  ${escapeHtml(p.name || "Unnamed Product")}
-                </strong>
-
-                <div style="font-size:12px;color:#8b6f7a;margin-top:4px;">
-                  ${escapeHtml(p.description || "")}
-                </div>
-
-              </div>
-
-            </div>
-
-          </td>
-
-          <td>
-            ${escapeHtml(p.category || "-")}
-          </td>
-
-          <td>
-            ₦${Number(p.price || 0).toLocaleString()}
-          </td>
-
-          <td>
-
-            <span class="badge badge-green">
-              Active
-            </span>
-
-          </td>
-
-          <td>
-
-            <div class="actions">
-
-              <button
-                class="small-btn"
-                onclick='editProduct("${item.id}", ${JSON.stringify(p).replace(/'/g,"&#39;")})'
-              >
-                ✎
-              </button>
-
-              <button
-                class="small-btn delete"
-                onclick="deleteProduct('${item.id}')"
-              >
-                ×
-              </button>
-
-            </div>
-
-          </td>
-
-        </tr>
-
-      `;
-
-    });
-
-    html += `
-      </tbody>
-      </table>
-      </div>
-    `;
-
-    container.innerHTML = html;
+    renderProducts();
+    updateStats();
 
   }catch(error){
 
     console.error(error);
 
-    container.innerHTML = `
+    document.getElementById("products").innerHTML = `
       <div class="empty">
-        <p style="color:#d9304f;">
-          Could not load products.
-        </p>
-
-        <p style="margin-top:8px;font-size:13px;">
-          ${escapeHtml(error.message)}
-        </p>
+        Could not load products.<br><br>
+        ${error.message}
       </div>
     `;
 
   }
 
-}
+};
 
+window.renderProducts = function(){
 
-/* SAVE PRODUCT */
+  const container = document.getElementById("products");
 
-document.getElementById("productForm")
-.addEventListener("submit", async function(e){
+  const search =
+    document.getElementById("search").value
+      .toLowerCase()
+      .trim();
 
-  e.preventDefault();
+  const list = allProducts.filter(p => {
 
-  const name =
-    document.getElementById("productName").value.trim();
+    return (
+      String(p.name || "").toLowerCase().includes(search) ||
+      String(p.category || "").toLowerCase().includes(search)
+    );
 
-  const category =
-    document.getElementById("productCategory").value;
+  });
 
-  const price =
-    Number(document.getElementById("productPrice").value);
+  if(!list.length){
 
-  const image =
-    document.getElementById("productImage").value.trim();
-
-  const description =
-    document.getElementById("productDescription").value.trim();
-
-  if(!name || !category || !price){
-
-    alert("Please fill in the required fields.");
+    container.innerHTML = `
+      <div class="empty">
+        No products found.
+      </div>
+    `;
 
     return;
   }
 
+  container.innerHTML = list.map(p => {
+
+    const stock = Number(p.stock || 0);
+
+    let stockClass = "";
+
+    if(stock <= 3 && stock > 0){
+      stockClass = "low";
+    }
+
+    if(stock <= 0){
+      stockClass = "out";
+    }
+
+    return `
+      <article class="product">
+
+        <div class="product-image">
+
+          <img
+            src="${p.image || 'https://placehold.co/600x700/f8e8ee/6c4657?text=LuxeStore'}"
+            alt=""
+          >
+
+          <div class="stock ${stockClass}">
+            ${stock <= 0 ? "Sold out" : `${stock} left`}
+          </div>
+
+        </div>
+
+        <div class="product-body">
+
+          <div class="product-category">
+            ${escapeHtml(p.category || "Collection")}
+          </div>
+
+          <div class="product-name">
+            ${escapeHtml(p.name || "Untitled")}
+          </div>
+
+          <div class="product-price">
+            ${money(p.price)}
+          </div>
+
+          <div class="actions">
+
+            <button
+              class="action"
+              onclick="editProduct('${p.id}')"
+            >
+
+              <svg viewBox="0 0 24 24">
+                <path d="M4 20h4L19 9l-4-4L4 16z"></path>
+                <path d="m13 6 4 4"></path>
+              </svg>
+
+              Edit
+
+            </button>
+
+            <button
+              class="action delete"
+              onclick="deleteProduct('${p.id}')"
+            >
+
+              <svg viewBox="0 0 24 24">
+                <path d="M4 7h16"></path>
+                <path d="M10 11v6"></path>
+                <path d="M14 11v6"></path>
+                <path d="M6 7l1 14h10l1-14"></path>
+                <path d="M9 7V4h6v3"></path>
+              </svg>
+
+              Delete
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+    `;
+
+  }).join("");
+
+};
+
+function updateStats(){
+
+  const totalProducts = allProducts.length;
+
+  const totalStock = allProducts.reduce(
+    (sum,p) => sum + Number(p.stock || 0),
+    0
+  );
+
+  const stockValue = allProducts.reduce(
+    (sum,p) =>
+      sum +
+      Number(p.stock || 0) *
+      Number(p.price || 0),
+    0
+  );
+
+  const categories = new Set(
+    allProducts.map(p => p.category)
+  ).size;
+
+  document.getElementById("totalProducts").textContent =
+    totalProducts;
+
+  document.getElementById("totalStock").textContent =
+    totalStock.toLocaleString();
+
+  document.getElementById("stockValue").textContent =
+    money(stockValue);
+
+  document.getElementById("categories").textContent =
+    categories;
+
+}
+
+window.openAdd = function(){
+
+  document.getElementById("modalTitle").textContent =
+    "Add Product";
+
+  document.getElementById("productId").value = "";
+
+  document.getElementById("name").value = "";
+
+  document.getElementById("category").value = "Clothing";
+
+  document.getElementById("price").value = "";
+
+  document.getElementById("stock").value = "";
+
+  document.getElementById("description").value = "";
+
+  selectedImage = "";
+
+  document.getElementById("imageInput").value = "";
+
+  document.getElementById("preview").style.display = "none";
+
+  document.getElementById("modal").classList.add("show");
+
+};
+
+window.closeModal = function(){
+
+  document.getElementById("modal").classList.remove("show");
+
+};
+
+window.previewImage = function(event){
+
+  const file = event.target.files[0];
+
+  if(!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function(e){
+
+    selectedImage = e.target.result;
+
+    document.getElementById("previewImg").src =
+      selectedImage;
+
+    document.getElementById("preview").style.display =
+      "block";
+
+  };
+
+  reader.readAsDataURL(file);
+
+};
+
+window.saveProduct = async function(){
+
+  const id =
+    document.getElementById("productId").value;
+
+  const name =
+    document.getElementById("name").value.trim();
+
+  const category =
+    document.getElementById("category").value;
+
+  const price =
+    Number(document.getElementById("price").value);
+
+  const stock =
+    Number(document.getElementById("stock").value);
+
+  const description =
+    document.getElementById("description").value.trim();
+
+  if(!name){
+    alert("Please enter a product name.");
+    return;
+  }
+
+  if(!price || price < 0){
+    alert("Please enter a valid price.");
+    return;
+  }
+
+  if(stock < 0 || Number.isNaN(stock)){
+    alert("Please enter a valid stock quantity.");
+    return;
+  }
+
+  const data = {
+
+    name,
+    category,
+    price,
+    stock,
+    description,
+
+    updatedAt:serverTimestamp()
+
+  };
+
+  if(selectedImage){
+    data.image = selectedImage;
+  }
+
   try{
 
-    if(editingId){
+    if(id){
 
       await updateDoc(
-        doc(db,"products",editingId),
-        {
-          name,
-          category,
-          price,
-          image,
-          description,
-          updatedAt:serverTimestamp()
-        }
+        doc(db,"products",id),
+        data
       );
 
       alert("Product updated successfully ✨");
 
     }else{
 
+      data.createdAt = serverTimestamp();
+
       await addDoc(
         collection(db,"products"),
-        {
-          name,
-          category,
-          price,
-          image,
-          description,
-          createdAt:serverTimestamp(),
-          updatedAt:serverTimestamp()
-        }
+        data
       );
 
       alert("Product added successfully 🎉");
 
     }
 
-    closeProductModal();
+    closeModal();
 
     await loadProducts();
 
@@ -1085,20 +1418,82 @@ document.getElementById("productForm")
     console.error(error);
 
     alert(
-      "Firebase error: " + error.message
+      "Could not save product.\n\n" +
+      error.message
     );
 
   }
 
-});
+};
 
+window.editProduct = function(id){
 
-/* DELETE */
+  const product =
+    allProducts.find(p => p.id === id);
+
+  if(!product){
+    alert("Product not found.");
+    return;
+  }
+
+  document.getElementById("modalTitle").textContent =
+    "Edit Product";
+
+  document.getElementById("productId").value =
+    product.id;
+
+  document.getElementById("name").value =
+    product.name || "";
+
+  document.getElementById("category").value =
+    product.category || "Clothing";
+
+  document.getElementById("price").value =
+    product.price || "";
+
+  document.getElementById("stock").value =
+    product.stock ?? 0;
+
+  document.getElementById("description").value =
+    product.description || "";
+
+  selectedImage = product.image || "";
+
+  if(product.image){
+
+    document.getElementById("previewImg").src =
+      product.image;
+
+    document.getElementById("preview").style.display =
+      "block";
+
+  }else{
+
+    document.getElementById("preview").style.display =
+      "none";
+
+  }
+
+  document.getElementById("modal").classList.add("show");
+
+};
 
 window.deleteProduct = async function(id){
 
-  const confirmed =
-    confirm("Delete this product?");
+  const product =
+    allProducts.find(p => p.id === id);
+
+  if(!product){
+
+    alert("Product not found.");
+
+    return;
+
+  }
+
+  const confirmed = confirm(
+    `Are you sure you want to delete "${product.name}"?\n\nThis cannot be undone.`
+  );
 
   if(!confirmed) return;
 
@@ -1108,14 +1503,16 @@ window.deleteProduct = async function(id){
       doc(db,"products",id)
     );
 
-    alert("Product deleted.");
+    alert("Product deleted successfully! 🗑️");
 
-    loadProducts();
+    await loadProducts();
 
   }catch(error){
 
+    console.error(error);
+
     alert(
-      "Could not delete product: " +
+      "Could not delete product.\n\n" +
       error.message
     );
 
@@ -1123,116 +1520,16 @@ window.deleteProduct = async function(id){
 
 };
 
-
-/* EDIT */
-
-window.editProduct = function(id,p){
-
-  editingId = id;
-
-  document.getElementById("modalTitle")
-    .textContent = "Edit Product";
-
-  document.getElementById("productName")
-    .value = p.name || "";
-
-  document.getElementById("productCategory")
-    .value = p.category || "";
-
-  document.getElementById("productPrice")
-    .value = p.price || "";
-
-  document.getElementById("productImage")
-    .value = p.image || "";
-
-  document.getElementById("productDescription")
-    .value = p.description || "";
-
-  openProductModal();
-
-};
-
-
-/* MODAL */
-
-window.openProductModal = function(){
-
-  document
-    .getElementById("productModal")
-    .classList.add("show");
-
-};
-
-window.closeProductModal = function(){
-
-  document
-    .getElementById("productModal")
-    .classList.remove("show");
-
-  editingId = null;
-
-  document.getElementById("modalTitle")
-    .textContent = "Add Product";
-
-  document.getElementById("productForm")
-    .reset();
-
-};
-
-
-/* NAVIGATION */
-
-window.scrollToProducts = function(){
-
-  document
-    .getElementById("productsSection")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
-};
-
-window.scrollToOrders = function(){
-
-  document
-    .getElementById("ordersSection")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
-};
-
-window.openStore = function(){
-
-  window.location.href = "index.html";
-
-};
-
-
-/* THEME */
-
-window.toggleTheme = function(){
-
-  document.body.classList.toggle("dark");
-
-};
-
-
-/* HTML SAFETY */
-
 function escapeHtml(value){
 
-  return String(value || "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 
 }
-
-
-/* START */
 
 loadProducts();
 
