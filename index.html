@@ -2,478 +2,236 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#fff8fa">
-
-<title>LuxeStore — Fashion, Beauty & Fragrance</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>LuxeStore — Fashion & Beauty</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --pink:#d98b9c;
-  --pink-dark:#b9677a;
-  --pink-light:#fbecef;
-  --cream:#fffaf7;
-  --white:#ffffff;
-  --gold:#b99662;
-  --gold-light:#e5d0aa;
-  --text:#292326;
-  --muted:#857b7e;
-  --line:#eee2e5;
-  --soft:#f8f1f2;
-  --black:#211c1f;
-  --danger:#c94d62;
-  --shadow:0 15px 45px rgba(80,40,50,.09);
-}
-
-html{
-  scroll-behavior:smooth;
+  --pink:#f7a8c4;
+  --deep:#3c1628;
+  --cream:#fff8f5;
+  --white:#fff;
+  --text:#2b2025;
+  --muted:#8d7d84;
+  --line:#f0dfe5;
+  --shadow:0 15px 45px rgba(92,42,62,.10);
 }
 
 body{
-  font-family:"DM Sans",Arial,sans-serif;
+  font-family:"DM Sans",sans-serif;
   background:var(--cream);
   color:var(--text);
-  min-height:100vh;
 }
 
-button,input,textarea{
-  font:inherit;
-}
+button,input{font:inherit}
 
-button{
-  border:0;
-  cursor:pointer;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
+button{cursor:pointer}
 
 svg{
-  display:block;
+  width:22px;
+  height:22px;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
-
-/* =========================
-   SVG
-========================= */
-
-svg defs{
-  display:none;
-}
-
-
-/* =========================
-   TOP BAR
-========================= */
-
-.topbar{
-  background:var(--black);
-  color:#fff;
-  text-align:center;
-  padding:9px 15px;
-  font-size:11px;
-  letter-spacing:.6px;
-}
-
-.topbar span{
-  color:#f2c4ce;
-}
-
-
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header{
   position:sticky;
   top:0;
   z-index:100;
-  background:rgba(255,250,247,.94);
+  background:rgba(255,248,245,.94);
   backdrop-filter:blur(18px);
   border-bottom:1px solid var(--line);
 }
 
 .nav{
-  max-width:1250px;
-  height:78px;
-  padding:0 22px;
+  max-width:1200px;
   margin:auto;
+  height:72px;
+  padding:0 18px;
   display:flex;
   align-items:center;
   justify-content:space-between;
 }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.brand-mark{
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  background:var(--pink-light);
-  color:var(--pink-dark);
-  display:grid;
-  place-items:center;
-}
-
-.brand-mark svg{
-  width:23px;
-  height:23px;
-}
-
-.brand-name{
+.logo{
   font-family:"Playfair Display",serif;
-  font-size:25px;
+  font-size:27px;
+  color:var(--deep);
   font-weight:700;
-  letter-spacing:-.5px;
 }
 
-.brand-name em{
-  color:var(--pink-dark);
-  font-style:italic;
-}
+.logo span{color:var(--pink)}
 
 .nav-actions{
   display:flex;
-  gap:7px;
   align-items:center;
+  gap:10px;
 }
 
 .icon-btn{
   width:43px;
   height:43px;
+  border:1px solid var(--line);
+  background:white;
   border-radius:50%;
-  background:transparent;
-  color:var(--text);
   display:grid;
   place-items:center;
-  position:relative;
+  color:var(--deep);
 }
 
-.icon-btn:hover{
-  background:var(--pink-light);
-}
-
-.icon-btn svg{
-  width:21px;
-  height:21px;
-}
-
-.cart-count{
-  position:absolute;
-  right:0;
-  top:0;
-  min-width:18px;
-  height:18px;
-  padding:0 4px;
-  border-radius:20px;
-  background:var(--pink-dark);
-  color:#fff;
-  font-size:9px;
-  display:grid;
-  place-items:center;
-}
-
-
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
-  max-width:1250px;
-  margin:20px auto 0;
-  padding:0 22px;
+  max-width:1200px;
+  margin:auto;
+  padding:40px 18px 20px;
 }
 
 .hero-box{
-  min-height:520px;
   position:relative;
   overflow:hidden;
+  min-height:390px;
   border-radius:32px;
-  background:
-    radial-gradient(circle at 88% 20%,rgba(229,208,170,.45),transparent 25%),
-    radial-gradient(circle at 70% 90%,rgba(217,139,156,.24),transparent 30%),
-    linear-gradient(120deg,#fbecef,#fffaf7 60%,#f5e7df);
+  background:linear-gradient(135deg,#ffe8f0,#fff4ef);
+  padding:45px 28px;
   display:flex;
   align-items:center;
-  padding:65px;
 }
 
 .hero-content{
   position:relative;
   z-index:3;
-  max-width:620px;
+  max-width:570px;
 }
 
-.hero-small{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  color:var(--pink-dark);
-  font-size:11px;
+.eyebrow{
+  color:#b65a7d;
   font-weight:700;
+  letter-spacing:2px;
   text-transform:uppercase;
-  letter-spacing:2.5px;
-  margin-bottom:20px;
-}
-
-.hero-small:before{
-  content:"";
-  width:28px;
-  height:1px;
-  background:var(--pink-dark);
+  font-size:12px;
+  margin-bottom:12px;
 }
 
 .hero h1{
   font-family:"Playfair Display",serif;
-  font-size:clamp(48px,7vw,78px);
+  font-size:clamp(42px,8vw,75px);
   line-height:.98;
-  letter-spacing:-2px;
-  max-width:620px;
+  color:var(--deep);
+  margin-bottom:20px;
 }
 
-.hero h1 em{
-  color:var(--pink-dark);
-  font-style:italic;
-  font-weight:500;
+.hero p{
+  color:#745e67;
+  max-width:480px;
+  line-height:1.7;
+  margin-bottom:25px;
 }
 
-.hero-text{
-  max-width:500px;
-  color:var(--muted);
-  line-height:1.8;
-  margin:22px 0 30px;
-  font-size:15px;
-}
-
-.hero-buttons{
-  display:flex;
-  gap:11px;
-  flex-wrap:wrap;
-}
-
-.primary-btn{
-  padding:15px 23px;
-  background:var(--black);
+.shop-btn{
+  border:0;
+  background:var(--deep);
   color:white;
-  border-radius:14px;
-  font-weight:700;
-  box-shadow:0 8px 20px rgba(33,28,31,.15);
-}
-
-.secondary-btn{
   padding:15px 23px;
-  background:rgba(255,255,255,.65);
-  border:1px solid var(--line);
-  color:var(--text);
-  border-radius:14px;
+  border-radius:30px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
   font-weight:700;
-}
-
-.hero-art{
-  position:absolute;
-  right:4%;
-  bottom:-70px;
-  width:420px;
-  height:520px;
-  z-index:2;
 }
 
 .hero-circle{
   position:absolute;
-  width:370px;
-  height:370px;
-  right:15px;
-  top:60px;
   border-radius:50%;
-  border:1px solid rgba(185,150,98,.3);
+  filter:blur(1px);
 }
 
-.hero-circle:after{
-  content:"";
+.circle1{
+  width:300px;
+  height:300px;
+  background:#f7b7cc;
+  right:-60px;
+  top:-80px;
+}
+
+.circle2{
+  width:220px;
+  height:220px;
+  background:#fff;
+  right:120px;
+  bottom:-100px;
+}
+
+.floating-flower{
   position:absolute;
-  inset:25px;
-  border:1px solid rgba(185,150,98,.2);
-  border-radius:50%;
+  right:35px;
+  top:35px;
+  width:95px;
+  height:95px;
+  color:#b65a7d;
+  animation:float 4s ease-in-out infinite;
 }
 
-.bottle{
-  position:absolute;
-  right:100px;
-  bottom:80px;
-  width:125px;
-  height:250px;
-  background:linear-gradient(100deg,#f0d4da,#fff7f4,#e4bbc4);
-  border-radius:25px 25px 20px 20px;
-  box-shadow:20px 30px 50px rgba(120,60,70,.18);
-  border:1px solid rgba(255,255,255,.8);
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(0)}
+  50%{transform:translateY(-12px) rotate(5deg)}
 }
 
-.bottle:before{
-  content:"";
-  position:absolute;
-  width:58px;
-  height:48px;
-  left:33px;
-  top:-45px;
-  border-radius:8px 8px 2px 2px;
-  background:#c5a06b;
+/* CATEGORIES */
+
+.section{
+  max-width:1200px;
+  margin:auto;
+  padding:35px 18px;
 }
 
-.bottle:after{
-  content:"LUXE";
-  position:absolute;
-  left:22px;
-  right:22px;
-  top:100px;
-  padding:11px 2px;
-  text-align:center;
-  font-family:"Playfair Display",serif;
-  color:#8d6d42;
-  border-top:1px solid rgba(141,109,66,.25);
-  border-bottom:1px solid rgba(141,109,66,.25);
-  font-size:14px;
-}
-
-.flower{
-  position:absolute;
-  left:15px;
-  bottom:20px;
-  width:110px;
-  height:110px;
-  color:rgba(185,150,98,.55);
-}
-
-
-/* =========================
-   SEARCH
-========================= */
-
-.search-area{
-  max-width:1250px;
-  margin:25px auto 0;
-  padding:0 22px;
-}
-
-.search{
-  height:57px;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:0 18px;
+.section-title{
   display:flex;
-  align-items:center;
-  gap:11px;
-  box-shadow:0 5px 18px rgba(80,40,50,.03);
+  justify-content:space-between;
+  align-items:end;
+  margin-bottom:20px;
 }
 
-.search svg{
-  width:20px;
-  color:#a49398;
+.section-title h2{
+  font-family:"Playfair Display",serif;
+  color:var(--deep);
+  font-size:30px;
 }
-
-.search input{
-  border:0;
-  outline:0;
-  background:transparent;
-  color:var(--text);
-  width:100%;
-}
-
-.search input::placeholder{
-  color:#aaa0a3;
-}
-
-
-/* =========================
-   CATEGORY
-========================= */
 
 .categories{
-  max-width:1250px;
-  margin:18px auto 0;
-  padding:0 22px;
   display:flex;
-  gap:9px;
+  gap:10px;
   overflow-x:auto;
-  scrollbar-width:none;
+  padding-bottom:8px;
 }
 
-.categories::-webkit-scrollbar{
-  display:none;
-}
+.categories::-webkit-scrollbar{display:none}
 
 .category{
-  background:white;
-  border:1px solid var(--line);
-  padding:11px 18px;
-  border-radius:100px;
   white-space:nowrap;
-  color:var(--muted);
-  font-size:12px;
-  font-weight:600;
+  padding:11px 18px;
+  border-radius:30px;
+  border:1px solid var(--line);
+  background:white;
+  color:#654d58;
 }
 
 .category.active{
-  background:var(--pink-dark);
-  border-color:var(--pink-dark);
+  background:var(--deep);
   color:white;
+  border-color:var(--deep);
 }
 
-
-/* =========================
-   SECTION
-========================= */
-
-.section{
-  max-width:1250px;
-  margin:50px auto 100px;
-  padding:0 22px;
-}
-
-.section-head{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  margin-bottom:23px;
-}
-
-.section-kicker{
-  color:var(--pink-dark);
-  font-size:10px;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:2.5px;
-  margin-bottom:5px;
-}
-
-.section-head h2{
-  font-family:"Playfair Display",serif;
-  font-size:34px;
-}
-
-.product-count{
-  color:var(--muted);
-  font-size:12px;
-}
-
-
-/* =========================
-   PRODUCTS
-========================= */
+/* PRODUCTS */
 
 .products{
   display:grid;
@@ -486,387 +244,258 @@ header{
   border:1px solid var(--line);
   border-radius:22px;
   overflow:hidden;
-  transition:.3s;
-}
-
-.product:hover{
-  transform:translateY(-5px);
   box-shadow:var(--shadow);
+  position:relative;
 }
 
 .product-image{
-  height:285px;
-  background:
-    radial-gradient(circle at 50% 20%,#fff,#f8e8eb 65%,#f0d8dc);
+  height:245px;
+  background:#f8e9ee;
   position:relative;
-  display:grid;
-  place-items:center;
   overflow:hidden;
-}
-
-.product-image:after{
-  content:"";
-  position:absolute;
-  width:170px;
-  height:170px;
-  border-radius:50%;
-  border:1px solid rgba(185,150,98,.18);
-}
-
-.product-image svg{
-  position:relative;
-  z-index:2;
-  width:120px;
-  height:120px;
-  color:#ba8792;
 }
 
 .product-image img{
   width:100%;
   height:100%;
   object-fit:cover;
-  position:relative;
-  z-index:3;
 }
 
-.badge{
+.stock-badge{
   position:absolute;
-  left:12px;
   top:12px;
-  z-index:5;
-  background:var(--black);
-  color:white;
-  border-radius:8px;
-  padding:6px 9px;
-  font-size:9px;
-  letter-spacing:.5px;
+  left:12px;
+  padding:7px 10px;
+  border-radius:20px;
+  background:white;
+  font-size:11px;
   font-weight:800;
+  box-shadow:0 5px 18px rgba(0,0,0,.08);
 }
 
-.favorite{
-  position:absolute;
-  right:11px;
-  top:11px;
-  z-index:5;
-  width:38px;
-  height:38px;
-  background:rgba(255,255,255,.9);
-  border:1px solid rgba(255,255,255,.8);
-  border-radius:50%;
-  display:grid;
-  place-items:center;
+.stock-badge.low{
+  color:#b54855;
 }
 
-.favorite svg{
-  width:18px;
-  height:18px;
-  color:#7e7074;
+.stock-badge.sold{
+  color:white;
+  background:#6c5860;
 }
 
-.product-info{
-  padding:17px;
+.product-body{
+  padding:16px;
 }
 
 .product-category{
-  color:var(--pink-dark);
+  font-size:11px;
+  color:#ad7289;
+  font-weight:700;
   text-transform:uppercase;
-  font-size:9px;
-  letter-spacing:1.5px;
-  font-weight:800;
+  letter-spacing:1px;
 }
 
 .product-name{
-  margin-top:6px;
-  font-size:14px;
+  margin:7px 0;
   font-weight:700;
+  color:var(--deep);
+  font-size:17px;
+}
+
+.product-description{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+  min-height:38px;
 }
 
 .product-bottom{
-  margin-top:15px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:15px;
 }
 
 .price{
-  font-size:14px;
   font-weight:800;
+  color:var(--deep);
 }
 
-.add{
-  width:40px;
-  height:40px;
-  border-radius:13px;
-  background:var(--pink-light);
-  color:var(--pink-dark);
+.add-btn{
+  border:0;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:var(--deep);
+  color:white;
   display:grid;
   place-items:center;
-  transition:.2s;
 }
 
-.add:hover{
-  background:var(--pink-dark);
-  color:white;
+.add-btn:disabled{
+  background:#ddd;
+  color:#999;
+  cursor:not-allowed;
 }
 
-.add svg{
-  width:18px;
-}
+/* LOADING */
 
-
-/* =========================
-   EMPTY
-========================= */
-
-.empty{
-  display:none;
+.loading{
   text-align:center;
-  padding:70px 20px;
+  padding:50px 20px;
   color:var(--muted);
 }
 
-.empty-icon{
-  margin:auto auto 15px;
-  width:60px;
-  height:60px;
+/* FLOATING UI */
+
+.floating-cart{
+  position:fixed;
+  right:18px;
+  bottom:90px;
+  z-index:200;
+  width:58px;
+  height:58px;
   border-radius:50%;
-  background:var(--pink-light);
+  border:0;
+  background:var(--deep);
+  color:white;
+  box-shadow:0 12px 30px rgba(60,22,40,.25);
   display:grid;
   place-items:center;
 }
 
-.empty-icon svg{
-  width:27px;
-}
-
-
-/* =========================
-   PROMO STRIP
-========================= */
-
-.promo{
-  max-width:1250px;
-  margin:-40px auto 80px;
-  padding:0 22px;
-}
-
-.promo-box{
-  background:var(--black);
-  color:white;
-  border-radius:24px;
-  padding:27px 30px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.promo h3{
-  font-family:"Playfair Display",serif;
-  font-size:25px;
-}
-
-.promo p{
-  color:#bdb4b6;
-  font-size:12px;
-  margin-top:5px;
-}
-
-.promo button{
-  background:#f7e4e8;
-  color:#8f5362;
-  padding:12px 18px;
-  border-radius:12px;
+.cart-count{
+  position:absolute;
+  right:-3px;
+  top:-4px;
+  min-width:21px;
+  height:21px;
+  padding:0 5px;
+  background:#ef6d98;
+  border:2px solid white;
+  border-radius:20px;
+  font-size:10px;
   font-weight:800;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-  background:#211c1f;
-  color:white;
-  padding:55px 22px 90px;
-}
-
-.footer{
-  max-width:1250px;
-  margin:auto;
   display:grid;
-  grid-template-columns:1.5fr 1fr 1fr;
-  gap:40px;
+  place-items:center;
 }
 
-.footer-brand{
-  font-family:"Playfair Display",serif;
-  font-size:30px;
-}
-
-.footer-brand em{
-  color:#e2aab6;
-}
-
-.footer-text{
-  max-width:380px;
-  color:#aaa0a3;
-  line-height:1.7;
-  margin-top:12px;
-  font-size:13px;
-}
-
-.footer h4{
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:1.5px;
-  margin-bottom:15px;
-  color:#e8d1d5;
-}
-
-.footer-links{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  color:#aaa0a3;
-  font-size:13px;
-}
-
-
-/* =========================
-   CART
-========================= */
-
-.overlay{
+.whatsapp{
   position:fixed;
-  inset:0;
-  background:rgba(30,20,23,.45);
-  z-index:300;
-  opacity:0;
-  visibility:hidden;
-  transition:.25s;
+  left:18px;
+  bottom:25px;
+  z-index:200;
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  background:#25d366;
+  color:white;
+  display:grid;
+  place-items:center;
+  box-shadow:0 10px 25px rgba(37,211,102,.25);
 }
 
-.overlay.show{
-  opacity:1;
-  visibility:visible;
-}
-
-.cart{
+.floating-label{
   position:fixed;
-  top:0;
-  right:0;
-  bottom:0;
-  width:min(440px,100%);
+  right:18px;
+  bottom:160px;
+  z-index:190;
   background:white;
-  z-index:301;
-  transform:translateX(100%);
-  transition:.3s;
-  display:flex;
-  flex-direction:column;
-  box-shadow:-15px 0 45px rgba(0,0,0,.12);
+  color:var(--deep);
+  border:1px solid var(--line);
+  padding:9px 13px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:700;
+  box-shadow:var(--shadow);
+  animation:float 4s ease-in-out infinite;
 }
 
-.cart.show{
+/* CART */
+
+.cart-panel{
+  position:fixed;
+  right:0;
+  top:0;
+  width:min(420px,100%);
+  height:100%;
+  background:white;
+  z-index:500;
+  transform:translateX(100%);
+  transition:.3s ease;
+  box-shadow:-15px 0 45px rgba(0,0,0,.12);
+  display:flex;
+  flex-direction:column;
+}
+
+.cart-panel.open{
   transform:translateX(0);
 }
 
-.cart-header{
-  padding:21px;
-  border-bottom:1px solid var(--line);
+.cart-head{
+  padding:22px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid var(--line);
 }
 
-.cart-header h3{
+.cart-head h3{
   font-family:"Playfair Display",serif;
-  font-size:26px;
-}
-
-.close{
-  width:39px;
-  height:39px;
-  border-radius:50%;
-  background:var(--pink-light);
-  color:var(--pink-dark);
-  display:grid;
-  place-items:center;
-}
-
-.close svg{
-  width:18px;
+  font-size:25px;
+  color:var(--deep);
 }
 
 .cart-items{
   flex:1;
   overflow:auto;
-  padding:20px;
+  padding:18px;
 }
 
 .cart-item{
   display:flex;
   gap:12px;
-  padding-bottom:17px;
-  margin-bottom:17px;
+  padding:12px 0;
   border-bottom:1px solid var(--line);
 }
 
-.cart-img{
-  width:75px;
-  height:75px;
-  border-radius:13px;
-  background:var(--pink-light);
-  display:grid;
-  place-items:center;
-  overflow:hidden;
-  flex-shrink:0;
-}
-
-.cart-img img{
-  width:100%;
-  height:100%;
+.cart-item img{
+  width:65px;
+  height:65px;
   object-fit:cover;
+  border-radius:14px;
 }
 
-.cart-info{
-  flex:1;
-}
+.cart-item-info{flex:1}
 
-.cart-name{
+.cart-item-name{
   font-weight:700;
-  font-size:13px;
+  color:var(--deep);
+  font-size:14px;
 }
 
-.cart-price{
-  margin-top:4px;
-  font-weight:800;
+.cart-item-price{
   font-size:13px;
+  color:var(--muted);
+  margin-top:4px;
 }
 
 .qty{
   display:flex;
   align-items:center;
   gap:8px;
-  margin-top:8px;
+  margin-top:7px;
 }
 
 .qty button{
-  width:27px;
-  height:27px;
-  border-radius:8px;
-  background:var(--pink-light);
-  color:var(--pink-dark);
+  border:1px solid var(--line);
+  background:white;
+  width:25px;
+  height:25px;
+  border-radius:50%;
 }
 
-.remove{
-  margin-top:6px;
-  color:var(--danger);
-  background:none;
-  font-size:10px;
-}
-
-.cart-footer{
+.cart-foot{
   padding:20px;
   border-top:1px solid var(--line);
 }
@@ -874,1899 +503,618 @@ footer{
 .total{
   display:flex;
   justify-content:space-between;
-  font-size:18px;
+  margin-bottom:15px;
   font-weight:800;
-  margin-bottom:14px;
+  color:var(--deep);
 }
 
 .checkout{
   width:100%;
-  background:var(--black);
-  color:white;
-  padding:16px;
-  border-radius:14px;
-  font-weight:800;
-}
-
-
-/* =========================
-   CHECKOUT MODAL
-========================= */
-
-.modal-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(25,18,20,.58);
-  z-index:500;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-}
-
-.modal-overlay.show{
-  display:flex;
-}
-
-.modal{
-  width:min(510px,100%);
-  max-height:92vh;
-  overflow:auto;
-  background:white;
-  border-radius:25px;
-  padding:25px;
-}
-
-.modal-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:20px;
-}
-
-.modal-head h3{
-  font-family:"Playfair Display",serif;
-  font-size:28px;
-}
-
-.form-group{
-  margin-bottom:14px;
-}
-
-.form-group label{
-  display:block;
-  font-size:10px;
-  font-weight:800;
-  letter-spacing:1px;
-  margin-bottom:7px;
-  color:#756b6e;
-}
-
-.form-group input,
-.form-group textarea{
-  width:100%;
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:13px;
-  outline:none;
-  color:var(--text);
-  background:#fff;
-}
-
-.form-group input:focus,
-.form-group textarea:focus{
-  border-color:var(--pink);
-}
-
-.form-group textarea{
-  min-height:80px;
-  resize:vertical;
-}
-
-.order-btn{
-  width:100%;
-  background:#25a05a;
-  color:white;
+  border:0;
   padding:15px;
-  border-radius:13px;
+  background:var(--deep);
+  color:white;
+  border-radius:15px;
   font-weight:800;
 }
 
+/* MOBILE */
 
-/* =========================
-   MOBILE NAV
-========================= */
-
-.mobile-nav{
-  display:none;
-}
-
-
-/* =========================
-   DARK MODE
-========================= */
-
-body.dark{
-  --cream:#110e10;
-  --white:#181416;
-  --text:#f7f1f3;
-  --muted:#aaa0a3;
-  --line:#30282b;
-  --soft:#211b1e;
-  --black:#f7f1f3;
-}
-
-body.dark .topbar{
-  background:#080708;
-}
-
-body.dark header{
-  background:rgba(17,14,16,.94);
-}
-
-body.dark .brand-name,
-body.dark .section-head h2,
-body.dark .cart-header h3,
-body.dark .modal-head h3{
-  color:#f7f1f3;
-}
-
-body.dark .icon-btn{
-  color:#f7f1f3;
-}
-
-body.dark .search,
-body.dark .category,
-body.dark .product,
-body.dark .modal,
-body.dark .cart{
-  background:#181416;
-}
-
-body.dark .primary-btn,
-body.dark .checkout{
-  background:#f7f1f3;
-  color:#211c1f;
-}
-
-body.dark .hero-box{
-  background:
-    radial-gradient(circle at 88% 20%,rgba(229,208,170,.12),transparent 25%),
-    linear-gradient(120deg,#241c20,#171416);
-}
-
-body.dark .secondary-btn{
-  background:#211b1e;
-  border-color:#382e31;
-  color:#f7f1f3;
-}
-
-body.dark .form-group input,
-body.dark .form-group textarea{
-  background:#211b1e;
-  color:#fff;
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:950px){
-
-  .products{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .hero-art{
-    right:-40px;
-    opacity:.55;
-  }
-
-  .footer{
-    grid-template-columns:1fr 1fr;
-  }
-}
-
-
-@media(max-width:650px){
-
-  .topbar{
-    font-size:9px;
-  }
-
-  .nav{
-    height:66px;
-    padding:0 15px;
-  }
-
-  .brand-name{
-    font-size:21px;
-  }
-
-  .brand-mark{
-    width:34px;
-    height:34px;
-  }
-
-  .hero{
-    padding:0 14px;
-    margin-top:14px;
-  }
-
-  .hero-box{
-    min-height:500px;
-    padding:38px 24px;
-    border-radius:25px;
-    align-items:flex-start;
-  }
-
-  .hero h1{
-    font-size:47px;
-    letter-spacing:-1.5px;
-  }
-
-  .hero-text{
-    font-size:13px;
-  }
-
-  .hero-art{
-    right:-90px;
-    bottom:-90px;
-    transform:scale(.8);
-    opacity:.7;
-  }
-
-  .search-area,
-  .categories,
-  .section,
-  .promo{
-    padding-left:15px;
-    padding-right:15px;
-  }
-
+@media(max-width:850px){
   .products{
     grid-template-columns:repeat(2,1fr);
-    gap:11px;
   }
 
   .product-image{
     height:210px;
   }
+}
 
-  .product-info{
-    padding:13px;
+@media(max-width:520px){
+  .nav{height:64px}
+
+  .logo{font-size:23px}
+
+  .hero{
+    padding-top:20px;
+  }
+
+  .hero-box{
+    min-height:430px;
+    padding:35px 23px;
+  }
+
+  .hero h1{
+    font-size:46px;
+  }
+
+  .hero p{
+    font-size:14px;
+  }
+
+  .products{
+    gap:11px;
+  }
+
+  .product{
+    border-radius:17px;
+  }
+
+  .product-image{
+    height:185px;
+  }
+
+  .product-body{
+    padding:12px;
   }
 
   .product-name{
-    font-size:13px;
+    font-size:14px;
+  }
+
+  .product-description{
+    font-size:11px;
   }
 
   .price{
     font-size:13px;
   }
-
-  .add{
-    width:36px;
-    height:36px;
-  }
-
-  .section{
-    margin-top:38px;
-    margin-bottom:75px;
-  }
-
-  .section-head h2{
-    font-size:28px;
-  }
-
-  .promo{
-    margin-top:-15px;
-    margin-bottom:55px;
-  }
-
-  .promo-box{
-    flex-direction:column;
-    align-items:flex-start;
-    padding:24px;
-  }
-
-  .footer{
-    grid-template-columns:1fr;
-    gap:28px;
-  }
-
-  .mobile-nav{
-    position:fixed;
-    left:0;
-    right:0;
-    bottom:0;
-    height:67px;
-    background:rgba(255,250,247,.96);
-    border-top:1px solid var(--line);
-    z-index:200;
-    display:flex;
-    align-items:center;
-    justify-content:space-around;
-    backdrop-filter:blur(16px);
-  }
-
-  body.dark .mobile-nav{
-    background:rgba(17,14,16,.96);
-  }
-
-  .mobile-nav button{
-    background:none;
-    color:var(--text);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:4px;
-    font-size:9px;
-  }
-
-  .mobile-nav svg{
-    width:21px;
-    height:21px;
-  }
-
-}
-
-
-/* =========================
-   REDUCED MOTION
-========================= */
-
-@media(prefers-reduced-motion:reduce){
-
-  *{
-    scroll-behavior:auto!important;
-    transition:none!important;
-  }
-
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     SVG SYMBOLS
-========================= -->
-
-<svg width="0" height="0" style="position:absolute">
-
-<symbol id="bag" viewBox="0 0 24 24">
-  <path d="M5 8h14l-1 12H6z"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1.8"/>
-  <path d="M9 8V6a3 3 0 0 1 6 0v2"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1.8"/>
-</symbol>
-
-<symbol id="search" viewBox="0 0 24 24">
-  <circle cx="11" cy="11" r="7"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.8"/>
-  <path d="M16.5 16.5L21 21"
-        stroke="currentColor"
-        stroke-width="1.8"/>
-</symbol>
-
-<symbol id="heart" viewBox="0 0 24 24">
-  <path d="M20.8 8.7c0 5.2-8.8 10-8.8 10s-8.8-4.8-8.8-10A4.7 4.7 0 0 1 12 6a4.7 4.7 0 0 1 8.8 2.7z"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1.8"/>
-</symbol>
-
-<symbol id="plus" viewBox="0 0 24 24">
-  <path d="M12 5v14M5 12h14"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"/>
-</symbol>
-
-<symbol id="close" viewBox="0 0 24 24">
-  <path d="M6 6l12 12M18 6L6 18"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"/>
-</symbol>
-
-<symbol id="moon" viewBox="0 0 24 24">
-  <path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5z"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1.8"/>
-</symbol>
-
-<symbol id="sun" viewBox="0 0 24 24">
-  <circle cx="12" cy="12" r="4"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.8"/>
-  <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"
-        stroke="currentColor"
-        stroke-width="1.8"/>
-</symbol>
-
-<symbol id="home" viewBox="0 0 24 24">
-  <path d="M3 11l9-8 9 8v9H5v-9z"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1.8"/>
-</symbol>
-
-<symbol id="user" viewBox="0 0 24 24">
-  <circle cx="12" cy="8" r="4"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.8"/>
-  <path d="M4 21c1-5 15-5 16 0"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1.8"/>
-</symbol>
-
-<symbol id="dress" viewBox="0 0 100 100">
-  <path d="M39 14h22l5 17 14 16-13 9-8-9 7 39H34l7-39-8 9-13-9 14-16z"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"
-        stroke-linejoin="round"/>
-</symbol>
-
-<symbol id="perfume" viewBox="0 0 100 100">
-  <rect x="31" y="29" width="38" height="56" rx="8"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"/>
-  <rect x="40" y="18" width="20" height="11" rx="3"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"/>
-  <path d="M43 49h14"
-        stroke="currentColor"
-        stroke-width="2"/>
-  <path d="M44 57h12"
-        stroke="currentColor"
-        stroke-width="2"/>
-</symbol>
-
-<symbol id="bagIcon" viewBox="0 0 100 100">
-  <path d="M18 35h64l-6 48H24z"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"/>
-  <path d="M34 35c0-18 32-18 32 0"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"/>
-</symbol>
-
-<symbol id="shoe" viewBox="0 0 100 100">
-  <path d="M13 67c17 0 23-18 27-34l12 7c4 3 7 8 13 12l20 13c7 5 4 13-5 13H17c-8 0-10-7-4-11z"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"/>
-</symbol>
-
-<symbol id="watch" viewBox="0 0 100 100">
-  <circle cx="50" cy="50" r="26"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"/>
-  <path d="M50 35v16l11 7"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"/>
-  <path d="M41 24h18M41 76h18"
-        stroke="currentColor"
-        stroke-width="5"/>
-</symbol>
-
-<symbol id="jewelry" viewBox="0 0 100 100">
-  <circle cx="50" cy="57" r="22"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"/>
-  <path d="M31 42c7-14 31-14 38 0"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"/>
-  <circle cx="50" cy="31" r="8"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"/>
-</symbol>
-
-</svg>
-
-
-<!-- =========================
-     TOP BAR
-========================= -->
-
-<div class="topbar">
-  ✦ FREE DELIVERY AVAILABLE ON SELECTED ORDERS
-  <span> • SHOP WITH US TODAY</span>
-</div>
-
-
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
+  <div class="nav">
+    <div class="logo">Luxe<span>Store</span></div>
 
-<div class="nav">
-
-  <a href="#" class="brand">
-
-    <div class="brand-mark">
-      <svg>
-        <use href="#bag"></use>
-      </svg>
+    <div class="nav-actions">
+      <button class="icon-btn" onclick="scrollToProducts()" aria-label="Shop">
+        <svg viewBox="0 0 24 24">
+          <circle cx="9" cy="20" r="1"></circle>
+          <circle cx="18" cy="20" r="1"></circle>
+          <path d="M3 4h2l2.5 11h10L20 7H6"></path>
+        </svg>
+      </button>
     </div>
-
-    <div class="brand-name">
-      Luxe<em>Store</em>
-    </div>
-
-  </a>
-
-
-  <div class="nav-actions">
-
-    <button class="icon-btn"
-            onclick="toggleTheme()"
-            aria-label="Theme">
-
-      <svg id="themeIcon">
-        <use href="#moon"></use>
-      </svg>
-
-    </button>
-
-
-    <button class="icon-btn"
-            onclick="openCart()"
-            aria-label="Shopping bag">
-
-      <svg>
-        <use href="#bag"></use>
-      </svg>
-
-      <span class="cart-count"
-            id="cartCount">
-        0
-      </span>
-
-    </button>
-
   </div>
-
-</div>
-
 </header>
 
-
-<!-- =========================
-     HERO
-========================= -->
+<main>
 
 <section class="hero">
+  <div class="hero-box">
 
-<div class="hero-box">
+    <div class="hero-circle circle1"></div>
+    <div class="hero-circle circle2"></div>
 
-  <div class="hero-content">
+    <svg class="floating-flower" viewBox="0 0 100 100">
+      <path d="M50 50c-22-8-30-24-18-34 9-7 20 1 18 17 2-16 14-24 23-17 12 10 4 26-18 34 22-8 38-1 35 12-3 12-18 12-35-4 17 16 17 31 5 35-13 4-20-12-15-35-5 23-18 39-29 34-12-5-8-20 9-34-17 14-32 14-35 2-3-13 13-20 35-12z"></path>
+      <circle cx="50" cy="50" r="5"></circle>
+    </svg>
 
-    <div class="hero-small">
-      New Season
-    </div>
+    <div class="hero-content">
+      <div class="eyebrow">Curated for her</div>
+      <h1>Elegance<br>in every detail.</h1>
+      <p>
+        Discover beautiful fashion, perfumes, bags, shoes,
+        jewelry and accessories made to elevate your everyday style.
+      </p>
 
-    <h1>
-      Your style,
-      <br>
-      your <em>signature.</em>
-    </h1>
-
-    <p class="hero-text">
-      Discover beautiful fashion, irresistible fragrances,
-      handbags, jewelry and accessories carefully selected
-      for the woman who loves to stand out.
-    </p>
-
-    <div class="hero-buttons">
-
-      <button class="primary-btn"
-              onclick="scrollToProducts()">
-        Shop Collection
+      <button class="shop-btn" onclick="scrollToProducts()">
+        Shop collection
+        <svg viewBox="0 0 24 24">
+          <path d="M5 12h14"></path>
+          <path d="m13 6 6 6-6 6"></path>
+        </svg>
       </button>
-
-      <button class="secondary-btn"
-              onclick="selectCategory('Perfumes')">
-        Explore Perfumes
-      </button>
-
     </div>
+  </div>
+</section>
 
+<section class="section" id="shop">
+
+  <div class="section-title">
+    <h2>Shop collection</h2>
   </div>
 
-
-  <div class="hero-art">
-
-    <div class="hero-circle"></div>
-
-    <div class="bottle"></div>
-
-    <svg class="flower"
-         viewBox="0 0 100 100">
-
-      <path d="M50 90C45 65 35 45 15 35"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1"/>
-
-      <path d="M49 70C60 53 75 47 88 50"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1"/>
-
-      <circle cx="15" cy="35" r="8"
-              fill="none"
-              stroke="currentColor"/>
-
-      <circle cx="88" cy="50" r="8"
-              fill="none"
-              stroke="currentColor"/>
-
-    </svg>
-
+  <div class="categories">
+    <button class="category active" onclick="filterCategory('All',this)">All</button>
+    <button class="category" onclick="filterCategory('Clothing',this)">Clothing</button>
+    <button class="category" onclick="filterCategory('Perfumes',this)">Perfumes</button>
+    <button class="category" onclick="filterCategory('Bags',this)">Bags</button>
+    <button class="category" onclick="filterCategory('Shoes',this)">Shoes</button>
+    <button class="category" onclick="filterCategory('Jewelry',this)">Jewelry</button>
+    <button class="category" onclick="filterCategory('Watches',this)">Watches</button>
+    <button class="category" onclick="filterCategory('Accessories',this)">Accessories</button>
   </div>
 
-</div>
+  <div id="products" class="products">
+    <div class="loading">Loading collection...</div>
+  </div>
 
 </section>
 
+</main>
 
-<!-- =========================
-     SEARCH
-========================= -->
+<!-- FLOATING UI -->
 
-<div class="search-area">
+<div class="floating-label">✨ New arrivals</div>
 
-  <div class="search">
+<button class="floating-cart" onclick="openCart()" aria-label="Cart">
+  <svg viewBox="0 0 24 24">
+    <circle cx="9" cy="20" r="1"></circle>
+    <circle cx="18" cy="20" r="1"></circle>
+    <path d="M3 4h2l2.5 11h10L20 7H6"></path>
+  </svg>
+  <span class="cart-count" id="cartCount">0</span>
+</button>
 
-    <svg>
-      <use href="#search"></use>
-    </svg>
+<a class="whatsapp"
+   href="https://wa.me/2340000000000?text=Hello%20LuxeStore%20%F0%9F%8C%B8"
+   aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24">
+    <path d="M20 11.5a8.5 8.5 0 0 1-12.7 7.4L3 20l1.2-4.1A8.5 8.5 0 1 1 20 11.5z"></path>
+    <path d="M8.5 8.5c.4 2.4 2.1 4.6 4.5 5.5"></path>
+  </svg>
+</a>
 
-    <input
-      id="searchInput"
-      type="search"
-      placeholder="Search for dresses, perfumes, bags..."
-      oninput="renderProducts()"
-    >
+<!-- CART -->
 
-  </div>
+<div class="cart-panel" id="cartPanel">
 
-</div>
+  <div class="cart-head">
+    <h3>Your bag</h3>
 
-
-<!-- =========================
-     CATEGORIES
-========================= -->
-
-<div class="categories"
-     id="categories">
-</div>
-
-
-<!-- =========================
-     PRODUCTS
-========================= -->
-
-<section class="section"
-         id="shop">
-
-  <div class="section-head">
-
-    <div>
-
-      <div class="section-kicker">
-        Curated for you
-      </div>
-
-      <h2>
-        Shop the collection
-      </h2>
-
-    </div>
-
-    <div class="product-count"
-         id="productCount">
-    </div>
-
-  </div>
-
-
-  <div class="products"
-       id="products">
-  </div>
-
-
-  <div class="empty"
-       id="empty">
-
-    <div class="empty-icon">
-
-      <svg>
-        <use href="#search"></use>
+    <button class="icon-btn" onclick="closeCart()">
+      <svg viewBox="0 0 24 24">
+        <path d="m6 6 12 12"></path>
+        <path d="m18 6-12 12"></path>
       </svg>
-
-    </div>
-
-    <h3>
-      Nothing found
-    </h3>
-
-    <p>
-      Try searching for another product.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     PROMO
-========================= -->
-
-<section class="promo">
-
-<div class="promo-box">
-
-  <div>
-
-    <h3>
-      A little luxury never hurts. ✨
-    </h3>
-
-    <p>
-      Find something beautiful for yourself or someone special.
-    </p>
-
-  </div>
-
-  <button onclick="scrollToProducts()">
-    Shop Now
-  </button>
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-<div class="footer">
-
-  <div>
-
-    <div class="footer-brand">
-      Luxe<em>Store</em>
-    </div>
-
-    <p class="footer-text">
-      Fashion, beauty and fragrance for women who love
-      effortless elegance and personal style.
-    </p>
-
-  </div>
-
-
-  <div>
-
-    <h4>
-      Shop
-    </h4>
-
-    <div class="footer-links">
-
-      <a href="#shop">
-        Clothing
-      </a>
-
-      <a href="#shop">
-        Perfumes
-      </a>
-
-      <a href="#shop">
-        Bags
-      </a>
-
-      <a href="#shop">
-        Accessories
-      </a>
-
-    </div>
-
-  </div>
-
-
-  <div>
-
-    <h4>
-      Connect
-    </h4>
-
-    <div class="footer-links">
-
-      <a href="#">
-        Instagram
-      </a>
-
-      <a href="#">
-        WhatsApp
-      </a>
-
-      <a href="#">
-        Contact Us
-      </a>
-
-    </div>
-
-  </div>
-
-</div>
-
-</footer>
-
-
-<!-- =========================
-     MOBILE NAV
-========================= -->
-
-<div class="mobile-nav">
-
-  <button onclick="scrollToTop()">
-
-    <svg>
-      <use href="#home"></use>
-    </svg>
-
-    Home
-
-  </button>
-
-
-  <button onclick="scrollToProducts()">
-
-    <svg>
-      <use href="#bag"></use>
-    </svg>
-
-    Shop
-
-  </button>
-
-
-  <button onclick="openCart()">
-
-    <svg>
-      <use href="#bag"></use>
-    </svg>
-
-    Bag
-
-  </button>
-
-
-  <button onclick="toggleTheme()">
-
-    <svg>
-      <use href="#moon"></use>
-    </svg>
-
-    Theme
-
-  </button>
-
-</div>
-
-
-<!-- =========================
-     CART
-========================= -->
-
-<div class="overlay"
-     id="overlay"
-     onclick="closeCart()">
-</div>
-
-
-<div class="cart"
-     id="cart">
-
-  <div class="cart-header">
-
-    <h3>
-      Your Bag
-    </h3>
-
-    <button class="close"
-            onclick="closeCart()">
-
-      <svg>
-        <use href="#close"></use>
-      </svg>
-
     </button>
-
   </div>
 
-
-  <div class="cart-items"
-       id="cartItems">
+  <div class="cart-items" id="cartItems">
+    <p style="color:#999;text-align:center;padding:30px">
+      Your bag is empty.
+    </p>
   </div>
 
-
-  <div class="cart-footer">
+  <div class="cart-foot">
 
     <div class="total">
-
-      <span>
-        Total
-      </span>
-
-      <span id="cartTotal">
-        ₦0
-      </span>
-
+      <span>Total</span>
+      <span id="cartTotal">₦0</span>
     </div>
 
-    <button class="checkout"
-            onclick="openCheckout()">
-
-      Continue to Checkout
-
+    <button class="checkout" onclick="checkout()">
+      Checkout on WhatsApp
     </button>
 
   </div>
 
 </div>
 
+<script type="module">
 
-<!-- =========================
-     CHECKOUT
-========================= -->
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
 
-<div class="modal-overlay"
-     id="checkoutModal">
+import {
+  getFirestore,
+  collection,
+  onSnapshot
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
-  <div class="modal">
-
-    <div class="modal-head">
-
-      <h3>
-        Complete Order
-      </h3>
-
-      <button class="close"
-              onclick="closeCheckout()">
-
-        <svg>
-          <use href="#close"></use>
-        </svg>
-
-      </button>
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>
-        FULL NAME
-      </label>
-
-      <input
-        id="customerName"
-        placeholder="Your full name"
-      >
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>
-        PHONE NUMBER
-      </label>
-
-      <input
-        id="customerPhone"
-        placeholder="08012345678"
-      >
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>
-        DELIVERY ADDRESS
-      </label>
-
-      <textarea
-        id="customerAddress"
-        placeholder="Enter your delivery address">
-      </textarea>
-
-    </div>
-
-
-    <div class="form-group">
-
-      <label>
-        SIZE / COLOUR / SPECIAL REQUEST
-      </label>
-
-      <textarea
-        id="customerNote"
-        placeholder="Example: Medium, pink...">
-      </textarea>
-
-    </div>
-
-
-    <button class="order-btn"
-            onclick="sendWhatsAppOrder()">
-
-      Order via WhatsApp
-
-    </button>
-
-  </div>
-
-</div>
-
-
-<script>
-
-/* ========================================
-   STORE SETTINGS
-   CHANGE THESE FOR EACH CLIENT
-======================================== */
-
-const STORE = {
-
-  name:"LuxeStore",
-
-  whatsapp:"2348000000000",
-
-  currency:"₦"
-
+const firebaseConfig = {
+  apiKey: "AIzaSyBLx6RK5sRIduaKiDSTAGlKPmfUH7iDSBM",
+  authDomain: "shop-3d56c.firebaseapp.com",
+  projectId: "shop-3d56c",
+  storageBucket: "shop-3d56c.firebasestorage.app",
+  messagingSenderId: "285039032126",
+  appId: "1:285039032126:web:c2226d1aeb02a555c35e6f"
 };
 
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-/* ========================================
-   PRODUCTS
-======================================== */
-
-const products = [
-
-  {
-    id:1,
-    name:"Elegant Satin Dress",
-    category:"Clothing",
-    price:45000,
-    badge:"NEW",
-    icon:"dress",
-    image:""
-  },
-
-  {
-    id:2,
-    name:"Classic Pink Handbag",
-    category:"Bags",
-    price:55000,
-    badge:"POPULAR",
-    icon:"bagIcon",
-    image:""
-  },
-
-  {
-    id:3,
-    name:"Signature Rose Perfume",
-    category:"Perfumes",
-    price:30000,
-    badge:"BEST SELLER",
-    icon:"perfume",
-    image:""
-  },
-
-  {
-    id:4,
-    name:"Gold Elegance Watch",
-    category:"Watches",
-    price:65000,
-    badge:"",
-    icon:"watch",
-    image:""
-  },
-
-  {
-    id:5,
-    name:"Luxury Pearl Necklace",
-    category:"Jewelry",
-    price:28000,
-    badge:"NEW",
-    icon:"jewelry",
-    image:""
-  },
-
-  {
-    id:6,
-    name:"Classic White Sneakers",
-    category:"Shoes",
-    price:60000,
-    badge:"",
-    icon:"shoe",
-    image:""
-  },
-
-  {
-    id:7,
-    name:"Vanilla Glow Perfume",
-    category:"Perfumes",
-    price:28000,
-    badge:"HOT",
-    icon:"perfume",
-    image:""
-  },
-
-  {
-    id:8,
-    name:"Soft Luxury Blouse",
-    category:"Clothing",
-    price:32000,
-    badge:"",
-    icon:"dress",
-    image:""
-  },
-
-  {
-    id:9,
-    name:"Mini Shoulder Bag",
-    category:"Bags",
-    price:42000,
-    badge:"",
-    icon:"bagIcon",
-    image:""
-  },
-
-  {
-    id:10,
-    name:"Delicate Gold Bracelet",
-    category:"Jewelry",
-    price:18000,
-    badge:"",
-    icon:"jewelry",
-    image:""
-  },
-
-  {
-    id:11,
-    name:"Everyday Chic Watch",
-    category:"Watches",
-    price:38000,
-    badge:"",
-    icon:"watch",
-    image:""
-  },
-
-  {
-    id:12,
-    name:"Premium Nude Heels",
-    category:"Shoes",
-    price:48000,
-    badge:"NEW",
-    icon:"shoe",
-    image:""
-  }
-
-];
-
-
-/* ========================================
-   STATE
-======================================== */
-
-let selectedCategory="All";
-
-let cart=JSON.parse(
-  localStorage.getItem("luxestoreCart") || "[]"
-);
-
-
-/* ========================================
-   MONEY
-======================================== */
+let products = [];
+let cart = [];
+let currentCategory = "All";
 
 function money(value){
-
-  return STORE.currency +
-    Number(value).toLocaleString("en-NG");
-
+  return "₦" + Number(value || 0).toLocaleString();
 }
 
+function stockLabel(stock){
 
-/* ========================================
-   CATEGORIES
-======================================== */
+  stock = Number(stock || 0);
 
-function renderCategories(){
+  if(stock <= 0){
+    return {
+      text:"Sold out",
+      className:"sold"
+    };
+  }
 
-  const categories=[
-    "All",
-    ...new Set(products.map(p=>p.category))
-  ];
+  if(stock === 1){
+    return {
+      text:"⚡ Last one",
+      className:"low"
+    };
+  }
 
-  document.getElementById("categories").innerHTML=
-    categories.map(category=>`
+  if(stock <= 3){
+    return {
+      text:`🔥 Only ${stock} left`,
+      className:"low"
+    };
+  }
 
-      <button
-        class="category ${category===selectedCategory?"active":""}"
-        onclick="selectCategory('${category}')"
-      >
-        ${category}
-      </button>
+  if(stock <= 5){
+    return {
+      text:`Only ${stock} left`,
+      className:"low"
+    };
+  }
 
-    `).join("");
-
+  return {
+    text:`${stock} left`,
+    className:""
+  };
 }
-
-
-function selectCategory(category){
-
-  selectedCategory=category;
-
-  renderCategories();
-
-  renderProducts();
-
-  scrollToProducts();
-
-}
-
-
-/* ========================================
-   PRODUCTS
-======================================== */
 
 function renderProducts(){
 
-  const search=
-    document.getElementById("searchInput")
-    .value
-    .toLowerCase()
-    .trim();
+  const container = document.getElementById("products");
 
+  let list = products;
 
-  const filtered=products.filter(product=>{
-
-    const categoryMatch=
-      selectedCategory==="All" ||
-      product.category===selectedCategory;
-
-    const searchMatch=
-      product.name.toLowerCase().includes(search) ||
-      product.category.toLowerCase().includes(search);
-
-    return categoryMatch && searchMatch;
-
-  });
-
-
-  document.getElementById("productCount").textContent=
-    filtered.length+" items";
-
-
-  const box=
-    document.getElementById("products");
-
-  const empty=
-    document.getElementById("empty");
-
-
-  if(filtered.length===0){
-
-    box.innerHTML="";
-
-    empty.style.display="block";
-
-    return;
-
+  if(currentCategory !== "All"){
+    list = products.filter(
+      p => String(p.category || "").toLowerCase() === currentCategory.toLowerCase()
+    );
   }
 
-
-  empty.style.display="none";
-
-
-  box.innerHTML=filtered.map(product=>`
-
-    <article class="product">
-
-      <div class="product-image">
-
-        ${
-          product.image
-
-          ?
-
-          `<img
-             src="${product.image}"
-             alt="${product.name}"
-           >`
-
-          :
-
-          `<svg>
-             <use href="#${product.icon}"></use>
-           </svg>`
-        }
-
-
-        ${
-          product.badge
-          ?
-          `<span class="badge">${product.badge}</span>`
-          :
-          ""
-        }
-
-
-        <button
-          class="favorite"
-          onclick="favoriteProduct('${product.name}')"
-        >
-
-          <svg>
-            <use href="#heart"></use>
-          </svg>
-
-        </button>
-
+  if(!list.length){
+    container.innerHTML = `
+      <div class="loading" style="grid-column:1/-1">
+        No products available in this category yet.
       </div>
+    `;
+    return;
+  }
 
+  container.innerHTML = list.map(p => {
 
-      <div class="product-info">
+    const stock = Number(p.stock || 0);
+    const badge = stockLabel(stock);
 
-        <div class="product-category">
-          ${product.category}
-        </div>
+    return `
+      <article class="product">
 
-        <div class="product-name">
-          ${product.name}
-        </div>
+        <div class="product-image">
 
-
-        <div class="product-bottom">
-
-          <div class="price">
-            ${money(product.price)}
-          </div>
-
-
-          <button
-            class="add"
-            onclick="addToCart(${product.id})"
+          <img
+            src="${p.image || 'https://placehold.co/600x700/f8e9ee/6c4657?text=LuxeStore'}"
+            alt="${escapeHtml(p.name || 'Product')}"
           >
 
-            <svg>
-              <use href="#plus"></use>
-            </svg>
-
-          </button>
-
-        </div>
-
-      </div>
-
-    </article>
-
-  `).join("");
-
-}
-
-
-/* ========================================
-   CART
-======================================== */
-
-function addToCart(id){
-
-  const product=
-    products.find(p=>p.id===id);
-
-  if(!product)return;
-
-
-  const existing=
-    cart.find(item=>item.id===id);
-
-
-  if(existing){
-
-    existing.qty++;
-
-  }else{
-
-    cart.push({
-
-      id:product.id,
-
-      name:product.name,
-
-      price:product.price,
-
-      image:product.image,
-
-      icon:product.icon,
-
-      qty:1
-
-    });
-
-  }
-
-
-  saveCart();
-
-  updateCart();
-
-  openCart();
-
-}
-
-
-function updateQuantity(id,change){
-
-  const item=
-    cart.find(i=>i.id===id);
-
-  if(!item)return;
-
-
-  item.qty+=change;
-
-
-  if(item.qty<=0){
-
-    cart=
-      cart.filter(i=>i.id!==id);
-
-  }
-
-
-  saveCart();
-
-  updateCart();
-
-}
-
-
-function removeItem(id){
-
-  cart=
-    cart.filter(i=>i.id!==id);
-
-  saveCart();
-
-  updateCart();
-
-}
-
-
-function saveCart(){
-
-  localStorage.setItem(
-    "luxestoreCart",
-    JSON.stringify(cart)
-  );
-
-}
-
-
-function updateCart(){
-
-  const count=
-    cart.reduce(
-      (sum,item)=>sum+item.qty,
-      0
-    );
-
-
-  document.getElementById("cartCount")
-    .textContent=count;
-
-
-  const box=
-    document.getElementById("cartItems");
-
-
-  if(cart.length===0){
-
-    box.innerHTML=`
-
-      <div style="
-        text-align:center;
-        padding:70px 15px;
-        color:#92878b;
-      ">
-
-        <div style="
-          width:65px;
-          height:65px;
-          margin:auto auto 15px;
-          border-radius:50%;
-          background:#fbecef;
-          display:grid;
-          place-items:center;
-          font-size:27px;
-        ">
-          ♡
-        </div>
-
-        <h3>
-          Your bag is empty
-        </h3>
-
-        <p style="
-          margin-top:7px;
-          font-size:13px;
-        ">
-          Add something beautiful.
-        </p>
-
-      </div>
-
-    `;
-
-  }else{
-
-    box.innerHTML=
-      cart.map(item=>`
-
-        <div class="cart-item">
-
-          <div class="cart-img">
-
-            ${
-              item.image
-
-              ?
-
-              `<img
-                src="${item.image}"
-                alt=""
-              >`
-
-              :
-
-              `<svg style="
-                width:45px;
-                height:45px;
-                color:#c18491;
-              ">
-                <use href="#${item.icon || "bag"}"></use>
-              </svg>`
-            }
-
+          <div class="stock-badge ${badge.className}">
+            ${badge.text}
           </div>
 
+        </div>
 
-          <div class="cart-info">
+        <div class="product-body">
 
-            <div class="cart-name">
-              ${item.name}
+          <div class="product-category">
+            ${escapeHtml(p.category || "Collection")}
+          </div>
+
+          <div class="product-name">
+            ${escapeHtml(p.name || "Untitled product")}
+          </div>
+
+          <div class="product-description">
+            ${escapeHtml(p.description || "Beautifully selected for you.")}
+          </div>
+
+          <div class="product-bottom">
+
+            <div class="price">
+              ${money(p.price)}
             </div>
-
-            <div class="cart-price">
-              ${money(item.price)}
-            </div>
-
-
-            <div class="qty">
-
-              <button
-                onclick="updateQuantity(${item.id},-1)"
-              >
-                −
-              </button>
-
-              <strong>
-                ${item.qty}
-              </strong>
-
-              <button
-                onclick="updateQuantity(${item.id},1)"
-              >
-                +
-              </button>
-
-            </div>
-
 
             <button
-              class="remove"
-              onclick="removeItem(${item.id})"
+              class="add-btn"
+              ${stock <= 0 ? "disabled" : ""}
+              onclick="addToCart('${p.id}')"
+              aria-label="Add to cart"
             >
-              Remove
+              <svg viewBox="0 0 24 24">
+                <path d="M12 5v14"></path>
+                <path d="M5 12h14"></path>
+              </svg>
             </button>
 
           </div>
 
         </div>
 
-      `).join("");
+      </article>
+    `;
+
+  }).join("");
+}
+
+function escapeHtml(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+onSnapshot(
+  collection(db,"products"),
+  snapshot => {
+
+    products = snapshot.docs.map(d => ({
+      id:d.id,
+      ...d.data()
+    }));
+
+    renderProducts();
+    renderCart();
+
+  },
+  error => {
+
+    console.error(error);
+
+    document.getElementById("products").innerHTML = `
+      <div class="loading" style="grid-column:1/-1">
+        Unable to load products.<br>
+        Please check your Firebase Firestore rules.
+      </div>
+    `;
+
+  }
+);
+
+window.filterCategory = function(category,button){
+
+  currentCategory = category;
+
+  document.querySelectorAll(".category")
+    .forEach(x => x.classList.remove("active"));
+
+  button.classList.add("active");
+
+  renderProducts();
+
+};
+
+window.addToCart = function(id){
+
+  const product = products.find(p => p.id === id);
+
+  if(!product) return;
+
+  const stock = Number(product.stock || 0);
+
+  if(stock <= 0){
+    alert("This product is sold out.");
+    return;
+  }
+
+  const existing = cart.find(x => x.id === id);
+
+  if(existing){
+
+    if(existing.quantity >= stock){
+      alert(`Only ${stock} left in stock.`);
+      return;
+    }
+
+    existing.quantity++;
+
+  }else{
+
+    cart.push({
+      id,
+      name:product.name,
+      price:Number(product.price || 0),
+      image:product.image || "",
+      quantity:1
+    });
 
   }
 
+  renderCart();
 
-  const total=
-    cart.reduce(
-      (sum,item)=>
-        sum+(item.price*item.qty),
-      0
-    );
+  document.getElementById("cartPanel").classList.add("open");
 
+};
 
-  document.getElementById("cartTotal")
-    .textContent=money(total);
+window.changeQuantity = function(id,change){
+
+  const item = cart.find(x => x.id === id);
+
+  const product = products.find(x => x.id === id);
+
+  if(!item || !product) return;
+
+  const stock = Number(product.stock || 0);
+
+  item.quantity += change;
+
+  if(item.quantity > stock){
+    item.quantity = stock;
+    alert(`Only ${stock} left in stock.`);
+  }
+
+  if(item.quantity <= 0){
+    cart = cart.filter(x => x.id !== id);
+  }
+
+  renderCart();
+
+};
+
+function renderCart(){
+
+  const container = document.getElementById("cartItems");
+  const count = document.getElementById("cartCount");
+  const totalEl = document.getElementById("cartTotal");
+
+  const totalQuantity = cart.reduce(
+    (sum,item) => sum + item.quantity,
+    0
+  );
+
+  count.textContent = totalQuantity;
+
+  if(!cart.length){
+
+    container.innerHTML = `
+      <p style="color:#999;text-align:center;padding:30px">
+        Your bag is empty.
+      </p>
+    `;
+
+    totalEl.textContent = "₦0";
+
+    return;
+  }
+
+  let total = 0;
+
+  container.innerHTML = cart.map(item => {
+
+    const product = products.find(p => p.id === item.id);
+
+    if(!product) return "";
+
+    const stock = Number(product.stock || 0);
+
+    const itemTotal = item.price * item.quantity;
+
+    total += itemTotal;
+
+    return `
+      <div class="cart-item">
+
+        <img
+          src="${item.image || 'https://placehold.co/100x100/f8e9ee/6c4657?text=Luxe'}"
+          alt=""
+        >
+
+        <div class="cart-item-info">
+
+          <div class="cart-item-name">
+            ${escapeHtml(item.name)}
+          </div>
+
+          <div class="cart-item-price">
+            ${money(item.price)}
+          </div>
+
+          <div class="qty">
+
+            <button onclick="changeQuantity('${item.id}',-1)">
+              −
+            </button>
+
+            <strong>${item.quantity}</strong>
+
+            <button
+              onclick="changeQuantity('${item.id}',1)"
+              ${item.quantity >= stock ? "disabled" : ""}
+            >
+              +
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    `;
+
+  }).join("");
+
+  totalEl.textContent = money(total);
 
 }
 
+window.openCart = function(){
+  document.getElementById("cartPanel").classList.add("open");
+};
 
-function openCart(){
+window.closeCart = function(){
+  document.getElementById("cartPanel").classList.remove("open");
+};
 
-  document.getElementById("cart")
-    .classList.add("show");
+window.scrollToProducts = function(){
+  document.getElementById("shop").scrollIntoView({
+    behavior:"smooth"
+  });
+};
 
-  document.getElementById("overlay")
-    .classList.add("show");
+window.checkout = function(){
 
-}
-
-
-function closeCart(){
-
-  document.getElementById("cart")
-    .classList.remove("show");
-
-  document.getElementById("overlay")
-    .classList.remove("show");
-
-}
-
-
-/* ========================================
-   CHECKOUT
-======================================== */
-
-function openCheckout(){
-
-  if(cart.length===0){
-
+  if(!cart.length){
     alert("Your bag is empty.");
-
     return;
-
   }
 
+  let message = "Hello LuxeStore 🌸%0A%0AI would like to order:%0A%0A";
 
-  closeCart();
+  cart.forEach(item => {
 
-  document.getElementById("checkoutModal")
-    .classList.add("show");
-
-}
-
-
-function closeCheckout(){
-
-  document.getElementById("checkoutModal")
-    .classList.remove("show");
-
-}
-
-
-function sendWhatsAppOrder(){
-
-  const name=
-    document.getElementById("customerName")
-    .value.trim();
-
-  const phone=
-    document.getElementById("customerPhone")
-    .value.trim();
-
-  const address=
-    document.getElementById("customerAddress")
-    .value.trim();
-
-  const note=
-    document.getElementById("customerNote")
-    .value.trim();
-
-
-  if(!name || !phone || !address){
-
-    alert(
-      "Please enter your name, phone number and address."
-    );
-
-    return;
-
-  }
-
-
-  let message=
-    `Hello ${STORE.name}! 👋%0A%0A`;
-
-  message+=
-    `I'd like to place an order:%0A%0A`;
-
-
-  cart.forEach(item=>{
-
-    message+=
-      `• ${item.name} x${item.qty} — ${money(item.price*item.qty)}%0A`;
+    message += `• ${encodeURIComponent(item.name)} x${item.quantity} — ${encodeURIComponent(money(item.price * item.quantity))}%0A`;
 
   });
 
+  const total = cart.reduce(
+    (sum,item) => sum + item.price * item.quantity,
+    0
+  );
 
-  const total=
-    cart.reduce(
-      (sum,item)=>
-        sum+(item.price*item.qty),
-      0
-    );
-
-
-  message+=
-    `%0A*Total: ${money(total)}*%0A%0A`;
-
-  message+=
-    `Name: ${name}%0A`;
-
-  message+=
-    `Phone: ${phone}%0A`;
-
-  message+=
-    `Address: ${address}%0A`;
-
-  message+=
-    `Request: ${note || "None"}`;
-
+  message += `%0ATotal: ${encodeURIComponent(money(total))}%0A%0A`;
+  message += "Please confirm availability and delivery details.";
 
   window.open(
-    `https://wa.me/${STORE.whatsapp}?text=${message}`,
+    `https://wa.me/2340000000000?text=${message}`,
     "_blank"
   );
 
-}
-
-
-/* ========================================
-   FAVORITE
-======================================== */
-
-function favoriteProduct(name){
-
-  alert(
-    `${name} added to your wishlist ♡`
-  );
-
-}
-
-
-/* ========================================
-   THEME
-======================================== */
-
-function toggleTheme(){
-
-  document.body.classList.toggle("dark");
-
-
-  const dark=
-    document.body.classList.contains("dark");
-
-
-  localStorage.setItem(
-    "luxestoreDark",
-    dark ? "1" : "0"
-  );
-
-
-  document.getElementById("themeIcon")
-    .innerHTML=
-      dark
-      ?
-      '<use href="#sun"></use>'
-      :
-      '<use href="#moon"></use>';
-
-}
-
-
-function loadTheme(){
-
-  const dark=
-    localStorage.getItem("luxestoreDark")==="1";
-
-
-  if(dark){
-
-    document.body.classList.add("dark");
-
-    document.getElementById("themeIcon")
-      .innerHTML=
-        '<use href="#sun"></use>';
-
-  }
-
-}
-
-
-/* ========================================
-   NAVIGATION
-======================================== */
-
-function scrollToProducts(){
-
-  document.getElementById("shop")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
-}
-
-
-function scrollToTop(){
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* ========================================
-   START
-======================================== */
-
-renderCategories();
-
-renderProducts();
-
-updateCart();
-
-loadTheme();
+};
 
 </script>
 
