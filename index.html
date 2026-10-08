@@ -4,1824 +4,603 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#fff4f8">
-
 <title>LuxeStore — Fashion, Beauty & Accessories</title>
 
 <style>
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
 :root{
   --pink:#e83e8c;
-  --pink2:#ff6fae;
-  --soft:#fff4f8;
-  --cream:#fffaf7;
-  --dark:#21151b;
-  --muted:#776b71;
-  --white:#fff;
+  --pink2:#ff72b6;
+  --dark:#241b21;
+  --muted:#82747c;
+  --bg:#fff8fb;
+  --card:#fff;
   --line:#f0dfe7;
-  --green:#18a66b;
+  --green:#198754;
   --red:#dc3545;
-  --orange:#c76b00;
-  --shadow:0 12px 35px rgba(70,25,45,.10);
+  --shadow:0 15px 40px rgba(60,20,45,.08);
 }
-
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  background:var(--soft);
+  font-family:Arial,sans-serif;
+  background:var(--bg);
   color:var(--dark);
-  min-height:100vh;
 }
+button,input,textarea,select{font:inherit}
+button{cursor:pointer;border:0}
+svg{width:22px;height:22px}
+.hidden{display:none!important}
 
-body.locked{
-  overflow:hidden;
-}
-
-button,
-input,
-textarea,
-select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-  border:0;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-/* =========================
-   NAV
-========================= */
-
-.nav{
+header{
   position:sticky;
   top:0;
-  z-index:100;
-  background:rgba(255,255,255,.95);
-  backdrop-filter:blur(18px);
+  z-index:50;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(15px);
   border-bottom:1px solid var(--line);
 }
-
-.nav-inner{
-  max-width:1200px;
+.nav{
+  max-width:1150px;
   margin:auto;
-  min-height:70px;
-  padding:12px 18px;
+  padding:14px 18px;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:12px;
 }
-
 .logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
+  font-size:24px;
   font-weight:900;
-  font-size:20px;
+  letter-spacing:-1px;
 }
-
-.logo-icon{
-  width:42px;
-  height:42px;
-  border-radius:14px;
-  background:linear-gradient(135deg,#ff8abc,#e83e8c);
-  display:grid;
-  place-items:center;
-  color:#fff;
-  box-shadow:0 8px 20px rgba(232,62,140,.25);
-}
-
-.logo-icon svg{
-  width:24px;
-  height:24px;
-}
-
-.nav-actions{
+.logo span{color:var(--pink)}
+.navBtns{
   display:flex;
-  align-items:center;
   gap:8px;
 }
-
-.account-nav,
-.cart-nav{
-  width:44px;
-  height:44px;
-  border-radius:14px;
-  background:#fff;
-  border:1px solid var(--line);
+.iconBtn{
+  width:43px;
+  height:43px;
+  border-radius:50%;
+  background:#fff0f6;
+  color:var(--pink);
   display:grid;
   place-items:center;
   position:relative;
 }
-
-.account-nav svg,
-.cart-nav svg{
-  width:21px;
-  height:21px;
-}
-
-.cart-count{
+.badge{
   position:absolute;
-  top:-5px;
-  right:-5px;
-  min-width:20px;
-  height:20px;
+  right:-2px;
+  top:-3px;
+  min-width:19px;
+  height:19px;
+  padding:2px 5px;
   border-radius:20px;
   background:var(--pink);
-  color:#fff;
+  color:white;
   font-size:11px;
-  font-weight:800;
-  display:grid;
-  place-items:center;
-  padding:0 5px;
+  font-weight:bold;
 }
-
-/* =========================
-   HERO
-========================= */
 
 .hero{
-  position:relative;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 10% 20%,rgba(255,111,174,.18),transparent 30%),
-    radial-gradient(circle at 90% 80%,rgba(232,62,140,.14),transparent 30%),
-    linear-gradient(135deg,#fff8fb,#fff);
-}
-
-.hero-inner{
-  max-width:1200px;
+  max-width:1150px;
   margin:auto;
-  padding:52px 20px 45px;
+  padding:35px 18px 15px;
+}
+.heroBox{
+  min-height:390px;
+  border-radius:30px;
+  padding:35px 25px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
   position:relative;
+  background:
+    radial-gradient(circle at 90% 15%,#ffd4e8 0 12%,transparent 13%),
+    linear-gradient(135deg,#ffe6f1,#fff7fb 55%,#ffd8e9);
 }
-
-.hero h1{
-  font-size:clamp(38px,9vw,76px);
-  line-height:.98;
-  letter-spacing:-3px;
-  max-width:750px;
+.heroText{
+  position:relative;
+  z-index:2;
+  max-width:570px;
 }
-
-.hero h1 span{
+.eyebrow{
   color:var(--pink);
+  font-weight:800;
+  margin-bottom:12px;
 }
-
+.hero h1{
+  font-size:clamp(38px,8vw,68px);
+  line-height:.95;
+  margin-bottom:18px;
+}
 .hero p{
   color:var(--muted);
-  max-width:560px;
-  line-height:1.7;
-  margin:20px 0 25px;
-  font-size:15px;
+  line-height:1.6;
+  max-width:480px;
 }
-
-.hero-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  background:var(--dark);
-  color:#fff;
-  padding:15px 21px;
+.heroCircle{
+  position:absolute;
+  width:330px;
+  height:330px;
+  border-radius:50%;
+  right:-80px;
+  bottom:-90px;
+  border:35px solid rgba(232,62,140,.12);
+}
+.shopBtn{
+  margin-top:25px;
+  background:var(--pink);
+  color:white;
+  padding:15px 23px;
   border-radius:16px;
   font-weight:800;
+  box-shadow:0 10px 25px rgba(232,62,140,.25);
 }
-
-.hero-btn svg{
-  width:18px;
-  height:18px;
-}
-
-.hero-decor{
-  position:absolute;
-  right:-40px;
-  bottom:-70px;
-  width:230px;
-  height:230px;
-  opacity:.6;
-}
-
-/* =========================
-   CATEGORIES
-========================= */
-
-.categories{
-  max-width:1200px;
-  margin:auto;
-  padding:20px;
-}
-
-.category-scroll{
-  display:flex;
-  gap:9px;
-  overflow-x:auto;
-  scrollbar-width:none;
-}
-
-.category-scroll::-webkit-scrollbar{
-  display:none;
-}
-
-.cat{
-  white-space:nowrap;
-  padding:11px 16px;
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:30px;
-  color:#665960;
-  font-size:13px;
-  font-weight:750;
-}
-
-.cat.active{
-  background:var(--pink);
-  color:#fff;
-  border-color:var(--pink);
-}
-
-/* =========================
-   PRODUCTS
-========================= */
 
 .section{
-  max-width:1200px;
+  max-width:1150px;
   margin:auto;
-  padding:10px 20px 110px;
+  padding:25px 18px;
 }
-
-.section-head{
-  margin:12px 0 18px;
+.sectionHead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:17px;
 }
-
-.section-head h2{
-  font-size:25px;
+.sectionHead h2{font-size:23px}
+.categories{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding-bottom:7px;
 }
-
-.section-head p{
-  color:var(--muted);
-  font-size:13px;
-  margin-top:4px;
+.cat{
+  white-space:nowrap;
+  padding:11px 15px;
+  border-radius:30px;
+  border:1px solid var(--line);
+  background:white;
+  color:var(--dark);
+}
+.cat.active{
+  background:var(--pink);
+  color:white;
+  border-color:var(--pink);
 }
 
 .products{
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-columns:repeat(2,1fr);
   gap:13px;
 }
-
-.card{
-  background:#fff;
+.product{
+  background:var(--card);
   border:1px solid var(--line);
   border-radius:20px;
   overflow:hidden;
-  box-shadow:0 8px 25px rgba(60,25,40,.05);
-  position:relative;
+  box-shadow:var(--shadow);
 }
-
-.product-image{
-  height:210px;
-  background:#f9e9ef;
-  position:relative;
-  overflow:hidden;
-}
-
-.product-image img{
+.productImg{
   width:100%;
-  height:100%;
+  aspect-ratio:1/1;
+  background:#f8edf2;
   object-fit:cover;
-  display:block;
 }
-
-.new-badge{
-  position:absolute;
-  top:10px;
-  left:10px;
-  padding:6px 9px;
-  border-radius:20px;
-  background:#fff;
-  color:var(--pink);
-  font-size:10px;
-  font-weight:900;
+.productInfo{padding:13px}
+.productName{
+  font-weight:800;
+  margin-bottom:6px;
 }
-
-.stock-badge{
-  position:absolute;
-  bottom:10px;
-  left:10px;
-  padding:7px 10px;
-  border-radius:20px;
-  background:rgba(255,255,255,.94);
-  color:#3e363a;
-  font-size:10px;
-  font-weight:850;
-}
-
-.stock-badge.low{
-  color:var(--orange);
-}
-
-.stock-badge.sold{
-  color:var(--red);
-}
-
-.card-body{
-  padding:13px;
-}
-
-.category-name{
-  color:var(--pink);
-  font-size:10px;
-  font-weight:850;
-  text-transform:uppercase;
-  letter-spacing:.7px;
-}
-
-.card h3{
-  font-size:14px;
-  margin:5px 0;
-  line-height:1.3;
-}
-
-.description{
+.category{
   color:var(--muted);
-  font-size:11px;
-  line-height:1.5;
-  height:33px;
-  overflow:hidden;
+  font-size:12px;
+  margin-bottom:7px;
 }
-
-.price-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-top:12px;
-}
-
 .price{
-  font-size:16px;
   font-weight:900;
+  color:var(--pink);
+  font-size:18px;
 }
-
-.add-btn{
-  width:38px;
-  height:38px;
-  border-radius:13px;
-  background:var(--pink);
-  color:#fff;
-  display:grid;
-  place-items:center;
+.stock{
+  margin-top:7px;
+  font-size:12px;
+  font-weight:800;
 }
-
-.add-btn:disabled{
+.stock.low{color:#d97706}
+.stock.sold{color:var(--red)}
+.addBtn{
+  width:100%;
+  margin-top:10px;
+  padding:11px;
+  border-radius:12px;
+  background:#251d22;
+  color:white;
+  font-weight:bold;
+}
+.addBtn:disabled{
   background:#ddd;
-  cursor:not-allowed;
+  color:#888;
 }
-
-.add-btn svg{
-  width:18px;
-}
-
-/* =========================
-   EMPTY / LOADING
-========================= */
 
 .empty{
-  grid-column:1/-1;
-  text-align:center;
-  padding:60px 20px;
-  background:#fff;
-  border:1px dashed var(--line);
-  border-radius:20px;
-  color:var(--muted);
-}
-
-.empty svg{
-  width:55px;
-  height:55px;
-  margin-bottom:12px;
-}
-
-.loading{
-  grid-column:1/-1;
-  padding:50px;
+  padding:35px 15px;
   text-align:center;
   color:var(--muted);
 }
-
-.spinner{
-  width:34px;
-  height:34px;
-  border:3px solid #f1dce6;
-  border-top-color:var(--pink);
-  border-radius:50%;
-  animation:spin .8s linear infinite;
-  margin:0 auto 12px;
-}
-
-@keyframes spin{
-  to{transform:rotate(360deg)}
-}
-
-/* =========================
-   FLOATING BUTTONS
-========================= */
-
-.floating-cart{
-  position:fixed;
-  right:18px;
-  bottom:85px;
-  width:58px;
-  height:58px;
-  border-radius:20px;
-  background:var(--dark);
-  color:#fff;
-  display:grid;
-  place-items:center;
-  z-index:90;
-  box-shadow:0 14px 30px rgba(33,21,27,.25);
-}
-
-.floating-cart svg{
-  width:24px;
-}
-
-.float-count{
-  position:absolute;
-  top:-5px;
-  right:-5px;
-  min-width:22px;
-  height:22px;
-  border-radius:50%;
-  background:var(--pink);
-  font-size:11px;
-  font-weight:900;
-  display:grid;
-  place-items:center;
-}
-
-.whatsapp-float{
-  position:fixed;
-  left:18px;
-  bottom:22px;
-  width:55px;
-  height:55px;
-  border-radius:50%;
-  background:#25d366;
-  color:#fff;
-  display:grid;
-  place-items:center;
-  z-index:90;
-}
-
-.whatsapp-float svg{
-  width:27px;
-}
-
-/* =========================
-   OVERLAY
-========================= */
 
 .overlay{
   position:fixed;
   inset:0;
-  background:rgba(20,10,15,.45);
-  backdrop-filter:blur(4px);
-  z-index:200;
+  background:rgba(20,10,15,.5);
+  z-index:100;
   display:none;
 }
+.overlay.show{display:block}
 
-.overlay.show{
-  display:block;
-}
-
-/* =========================
-   CART
-========================= */
-
-.cart-panel{
+.sheet{
   position:fixed;
+  z-index:101;
+  left:0;
   right:0;
-  top:0;
   bottom:0;
-  width:min(430px,100%);
-  background:#fff;
-  z-index:210;
-  transform:translateX(100%);
-  transition:.28s ease;
-  display:flex;
-  flex-direction:column;
-}
-
-.cart-panel.show{
-  transform:translateX(0);
-}
-
-.cart-head{
-  padding:20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  border-bottom:1px solid var(--line);
-}
-
-.cart-head h2{
-  font-size:21px;
-}
-
-.close{
-  width:40px;
-  height:40px;
-  border-radius:13px;
-  background:#f8edf2;
-  display:grid;
-  place-items:center;
-}
-
-.close svg{
-  width:18px;
-}
-
-.cart-items{
-  flex:1;
+  max-height:92vh;
   overflow:auto;
-  padding:15px;
+  background:white;
+  border-radius:28px 28px 0 0;
+  padding:22px;
+  transform:translateY(100%);
+  transition:.25s;
+}
+.sheet.show{transform:translateY(0)}
+
+@media(min-width:700px){
+  .products{grid-template-columns:repeat(4,1fr)}
+  .sheet{
+    width:520px;
+    left:50%;
+    right:auto;
+    transform:translate(-50%,100%);
+  }
+  .sheet.show{transform:translate(-50%,0)}
 }
 
-.cart-item{
+.sheetTop{
   display:flex;
-  gap:11px;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+.close{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:#f7edf2;
+}
+
+.form{
+  display:grid;
+  gap:12px;
+}
+.form input,.form textarea,.form select{
+  width:100%;
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  outline:none;
+  background:white;
+}
+.form input:focus,.form textarea:focus{
+  border-color:var(--pink);
+}
+.primary{
+  padding:14px;
+  background:var(--pink);
+  color:white;
+  border-radius:13px;
+  font-weight:800;
+}
+.secondary{
+  padding:14px;
+  background:#f8edf2;
+  color:var(--dark);
+  border-radius:13px;
+  font-weight:800;
+}
+
+.authTabs{
+  display:flex;
+  background:#f8edf2;
+  padding:4px;
+  border-radius:13px;
+  margin-bottom:15px;
+}
+.authTabs button{
+  flex:1;
+  padding:11px;
+  background:transparent;
+  border-radius:10px;
+}
+.authTabs button.active{
+  background:white;
+  color:var(--pink);
+  font-weight:800;
+}
+
+.cartItem{
+  display:flex;
+  gap:10px;
   padding:12px 0;
   border-bottom:1px solid var(--line);
 }
-
-.cart-item-img{
+.cartItem img{
   width:65px;
   height:65px;
-  border-radius:14px;
-  overflow:hidden;
-  background:#f8e8ef;
-  flex-shrink:0;
-}
-
-.cart-item-img img{
-  width:100%;
-  height:100%;
+  border-radius:12px;
   object-fit:cover;
 }
-
-.cart-item-info{
-  flex:1;
-}
-
-.cart-item-name{
-  font-size:13px;
-  font-weight:800;
-}
-
-.cart-item-price{
-  font-size:12px;
-  color:var(--pink);
-  font-weight:800;
-  margin-top:4px;
-}
-
+.cartMain{flex:1}
 .qty{
   display:flex;
   align-items:center;
   gap:8px;
-  margin-top:8px;
+  margin-top:7px;
 }
-
 .qty button{
   width:27px;
   height:27px;
-  border-radius:9px;
+  border-radius:50%;
   background:#f8edf2;
-  font-weight:900;
 }
-
-.qty span{
-  min-width:18px;
-  text-align:center;
-  font-size:12px;
-}
-
-.remove{
-  color:var(--red);
-  background:none;
-  font-size:11px;
-  margin-top:8px;
-  font-weight:700;
-}
-
-.cart-bottom{
-  padding:18px;
-  border-top:1px solid var(--line);
-}
-
-.total-row{
-  display:flex;
-  justify-content:space-between;
-  font-weight:900;
-  font-size:18px;
-  margin-bottom:13px;
-}
-
-.checkout-btn{
-  width:100%;
-  padding:16px;
-  border-radius:16px;
-  background:var(--pink);
-  color:#fff;
-  font-weight:900;
-}
-
-.checkout-btn:disabled{
-  opacity:.55;
-}
-
-/* =========================
-   MODALS
-========================= */
-
-.modal-wrap{
-  position:fixed;
-  inset:0;
-  background:rgba(20,10,15,.55);
-  backdrop-filter:blur(6px);
-  z-index:500;
-  display:none;
-  align-items:flex-end;
-  justify-content:center;
-  padding:12px;
-}
-
-.modal-wrap.show{
-  display:flex;
-}
-
-.modal{
-  width:min(560px,100%);
-  background:#fff;
-  border-radius:27px 27px 18px 18px;
-  padding:23px;
-  max-height:92vh;
-  overflow:auto;
-  box-shadow:0 -20px 70px rgba(0,0,0,.22);
-}
-
-.modal-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:18px;
-}
-
-.modal h2{
-  font-size:22px;
-}
-
-/* =========================
-   AUTH
-========================= */
-
-.auth-modal{
-  width:min(480px,100%);
-}
-
-.auth-logo{
-  width:70px;
-  height:70px;
-  margin:5px auto 15px;
-  border-radius:22px;
-  background:linear-gradient(135deg,#ff8abc,#e83e8c);
-  color:#fff;
-  display:grid;
-  place-items:center;
-  box-shadow:0 12px 28px rgba(232,62,140,.25);
-}
-
-.auth-logo svg{
-  width:35px;
-}
-
-.auth-title{
-  text-align:center;
-}
-
-.auth-title h2{
-  font-size:25px;
-}
-
-.auth-title p{
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.6;
-  margin-top:7px;
-}
-
-.auth-tabs{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:6px;
-  background:#fff4f8;
-  padding:5px;
-  border-radius:14px;
-  margin:20px 0;
-}
-
-.auth-tab{
-  padding:11px;
-  border-radius:11px;
-  background:transparent;
-  font-weight:800;
-  color:var(--muted);
-}
-
-.auth-tab.active{
-  background:#fff;
-  color:var(--pink);
-  box-shadow:0 4px 12px rgba(0,0,0,.06);
-}
-
-.form-group{
-  margin-bottom:13px;
-}
-
-.form-group label{
-  display:block;
-  font-size:12px;
-  font-weight:800;
-  margin-bottom:7px;
-}
-
-.form-group input,
-.form-group textarea{
-  width:100%;
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:13px 14px;
-  outline:none;
-  background:#fff;
-}
-
-.form-group input:focus,
-.form-group textarea:focus{
-  border-color:var(--pink);
-  box-shadow:0 0 0 3px rgba(232,62,140,.08);
-}
-
-.auth-btn{
-  width:100%;
+.totalBox{
+  margin-top:18px;
   padding:15px;
-  border-radius:16px;
-  background:var(--pink);
-  color:#fff;
-  font-weight:900;
-  margin-top:5px;
+  border-radius:15px;
+  background:#fff3f8;
 }
-
-.auth-btn:disabled{
-  opacity:.55;
-}
-
-.auth-error{
-  display:none;
-  background:#fff0f2;
-  border:1px solid #ffd4da;
-  color:#b42332;
-  padding:11px;
-  border-radius:13px;
-  font-size:12px;
-  line-height:1.5;
-  margin-bottom:13px;
-}
-
-.auth-error.show{
-  display:block;
-}
-
-/* =========================
-   ACCOUNT
-========================= */
-
-.account-card{
-  background:linear-gradient(135deg,#fff4f8,#fff);
-  border:1px solid var(--line);
-  border-radius:20px;
-  padding:18px;
-  margin-bottom:18px;
-}
-
-.account-user{
+.totalRow{
   display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.avatar{
-  width:48px;
-  height:48px;
-  border-radius:16px;
-  background:var(--pink);
-  color:#fff;
-  display:grid;
-  place-items:center;
+  justify-content:space-between;
   font-weight:900;
+  font-size:20px;
 }
 
-.account-email{
-  font-size:13px;
-  font-weight:800;
-  word-break:break-all;
-}
-
-.account-small{
-  color:var(--muted);
-  font-size:11px;
-  margin-top:3px;
-}
-
-.logout-btn{
-  width:100%;
-  padding:13px;
-  border-radius:14px;
-  background:#fff;
+.orderCard{
   border:1px solid var(--line);
-  color:var(--red);
-  font-weight:800;
-  margin-top:14px;
-}
-
-.order-card{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:18px;
+  border-radius:17px;
   padding:15px;
   margin-bottom:12px;
-  box-shadow:0 5px 18px rgba(60,25,40,.04);
 }
-
-.order-top{
+.orderTop{
   display:flex;
   justify-content:space-between;
   gap:10px;
-  align-items:flex-start;
 }
-
-.order-id-small{
-  font-size:10px;
-  color:var(--muted);
-  word-break:break-all;
-  margin-top:3px;
-}
-
 .status{
-  padding:7px 10px;
+  display:inline-block;
+  padding:6px 10px;
   border-radius:20px;
-  font-size:10px;
+  font-size:11px;
   font-weight:900;
+  text-transform:capitalize;
+}
+.status.pending{background:#fff3cd;color:#856404}
+.status.confirmed{background:#d1e7dd;color:#0f5132}
+.status.delivered{background:#cfe2ff;color:#084298}
+.status.cancelled{background:#f8d7da;color:#842029}
+
+.notice{
+  position:fixed;
+  top:75px;
+  left:15px;
+  right:15px;
+  z-index:200;
+  padding:14px 16px;
+  border-radius:15px;
+  background:#251d22;
+  color:white;
+  box-shadow:var(--shadow);
+  display:none;
+}
+.notice.show{display:block}
+.notice.success{background:#198754}
+.notice.error{background:#dc3545}
+
+.accountName{
+  font-size:13px;
+  color:var(--muted);
+  max-width:100px;
+  overflow:hidden;
+  text-overflow:ellipsis;
   white-space:nowrap;
 }
-
-.status.pending{
-  background:#fff5dc;
-  color:#a56800;
-}
-
-.status.confirmed{
-  background:#e8fff3;
-  color:#128153;
-}
-
-.status.cancelled{
-  background:#fff0f2;
-  color:#c3293a;
-}
-
-.status.delivered{
-  background:#eeeaff;
-  color:#6345c6;
-}
-
-.order-items{
-  border-top:1px solid var(--line);
-  margin-top:12px;
-  padding-top:10px;
-}
-
-.order-line{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  padding:5px 0;
-  font-size:12px;
-}
-
-.order-total{
-  border-top:1px solid var(--line);
-  margin-top:8px;
-  padding-top:10px;
-  display:flex;
-  justify-content:space-between;
-  font-weight:900;
-}
-
-.order-date{
-  color:var(--muted);
-  font-size:10px;
-  margin-top:8px;
-}
-
-.confirmed-message{
-  background:#e8fff3;
-  color:#12794f;
-  border-radius:13px;
-  padding:11px;
-  margin-top:11px;
-  font-size:12px;
-  font-weight:800;
-  line-height:1.5;
-}
-
-.cancelled-message{
-  background:#fff0f2;
-  color:#b42332;
-  border-radius:13px;
-  padding:11px;
-  margin-top:11px;
-  font-size:12px;
-  font-weight:800;
-}
-
-/* =========================
-   CHECKOUT
-========================= */
-
-.checkout-summary{
-  background:#fff6f9;
-  border-radius:16px;
-  padding:13px;
-  margin:15px 0;
-}
-
-.summary-row{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  padding:5px 0;
-  font-size:12px;
-}
-
-.summary-total{
-  border-top:1px solid var(--line);
-  margin-top:7px;
-  padding-top:10px;
-  font-size:16px;
-  font-weight:900;
-}
-
-.confirm-btn{
-  width:100%;
-  padding:16px;
-  border-radius:16px;
-  background:var(--dark);
-  color:#fff;
-  font-weight:900;
-}
-
-.confirm-btn:disabled{
-  opacity:.5;
-}
-
-/* =========================
-   SUCCESS
-========================= */
-
-.success{
-  text-align:center;
-  padding:15px 4px;
-}
-
-.success-icon{
-  width:75px;
-  height:75px;
-  margin:5px auto 15px;
-  border-radius:50%;
-  background:#e8fff3;
-  color:var(--green);
-  display:grid;
-  place-items:center;
-}
-
-.success-icon svg{
-  width:37px;
-}
-
-.success p{
-  color:var(--muted);
-  line-height:1.6;
-  font-size:13px;
-}
-
-.order-id{
-  background:#fff4f8;
-  padding:11px;
-  border-radius:13px;
-  margin:15px 0;
-  font-size:12px;
-  font-weight:900;
-  word-break:break-all;
-}
-
-.whatsapp-btn{
-  width:100%;
-  padding:15px;
-  border-radius:15px;
-  background:#25d366;
-  color:#fff;
-  font-weight:900;
-}
-
-.done-btn{
-  width:100%;
-  padding:14px;
-  border-radius:15px;
-  background:#f5edf1;
-  font-weight:800;
-  margin-top:9px;
-}
-
-/* =========================
-   TOAST
-========================= */
-
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:22px;
-  transform:translate(-50%,30px);
-  width:min(390px,calc(100% - 30px));
-  background:#21151b;
-  color:#fff;
-  border-radius:16px;
-  padding:14px 16px;
-  z-index:1000;
-  opacity:0;
-  pointer-events:none;
-  transition:.3s ease;
-  box-shadow:0 15px 35px rgba(0,0,0,.22);
-  font-size:12px;
-  line-height:1.5;
-}
-
-.toast.show{
-  opacity:1;
-  transform:translate(-50%,0);
-}
-
-.toast.success-toast{
-  background:#14875a;
-}
-
-.toast.error-toast{
-  background:#c3293a;
-}
-
-/* =========================
-   DESKTOP
-========================= */
-
-@media(min-width:700px){
-
-  .products{
-    grid-template-columns:repeat(3,minmax(0,1fr));
-  }
-
-  .product-image{
-    height:270px;
-  }
-
-  .modal-wrap{
-    align-items:center;
-  }
-
-  .modal{
-    border-radius:25px;
-  }
-
-}
-
-@media(min-width:1050px){
-
-  .products{
-    grid-template-columns:repeat(4,minmax(0,1fr));
-  }
-
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     NAV
-========================= -->
+<div id="notice" class="notice"></div>
 
-<header class="nav">
+<header>
+  <div class="nav">
+    <div class="logo">Luxe<span>Store</span></div>
 
-  <div class="nav-inner">
+    <div class="navBtns">
+      <div id="accountName" class="accountName"></div>
 
-    <a href="#" class="logo">
-
-      <span class="logo-icon">
-
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-
-          <path d="M6 8h12l-1 12H7L6 8Z"/>
-          <path d="M9 8a3 3 0 0 1 6 0"/>
-
-        </svg>
-
-      </span>
-
-      <span>LuxeStore</span>
-
-    </a>
-
-    <div class="nav-actions">
-
-      <button
-        class="account-nav"
-        onclick="openAccount()"
-        aria-label="Account"
-      >
-
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-
+      <button class="iconBtn" onclick="openAccount()" aria-label="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="8" r="4"/>
-
-          <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/>
-
+          <path d="M4 21c1-5 4-7 8-7s7 2 8 7"/>
         </svg>
-
       </button>
 
-      <button
-        class="cart-nav"
-        onclick="openCart()"
-        aria-label="Open cart"
-      >
+      <button class="iconBtn" onclick="openOrders()" aria-label="Orders">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 3h12l2 5v13H4V8l2-5z"/>
+          <path d="M4 8h16M9 12h6"/>
+        </svg>
+      </button>
 
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-
-          <path d="M4 5h2l2 11h9l2-8H7"/>
-
+      <button class="iconBtn" onclick="openCart()" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 4h2l2 12h11l3-9H7"/>
           <circle cx="10" cy="20" r="1"/>
-          <circle cx="17" cy="20" r="1"/>
-
+          <circle cx="18" cy="20" r="1"/>
         </svg>
-
-        <span class="cart-count" id="navCartCount">0</span>
-
+        <span id="cartBadge" class="badge">0</span>
       </button>
-
     </div>
-
   </div>
-
 </header>
 
-
-<!-- =========================
-     HERO
-========================= -->
-
 <section class="hero">
-
-  <div class="hero-inner">
-
-    <svg class="hero-decor" viewBox="0 0 240 240" fill="none">
-
-      <circle
-        cx="120"
-        cy="120"
-        r="92"
-        stroke="#e83e8c"
-        stroke-width="1"
-      />
-
-      <circle
-        cx="120"
-        cy="120"
-        r="65"
-        stroke="#ff6fae"
-        stroke-width="1"
-      />
-
-      <path
-        d="M120 20C170 55 205 100 120 220C35 100 70 55 120 20Z"
-        stroke="#e83e8c"
-        stroke-width="1"
-      />
-
-    </svg>
-
-    <div style="position:relative;z-index:2">
-
-      <h1>
-        Style that feels<br>
-        <span>luxurious.</span>
-      </h1>
-
+  <div class="heroBox">
+    <div class="heroText">
+      <div class="eyebrow">NEW SEASON • LUXURY ESSENTIALS</div>
+      <h1>Style that feels like you.</h1>
       <p>
-        Discover beautiful fashion, fragrances, bags, shoes,
-        jewelry and accessories selected to make every day feel special.
+        Discover beautiful fashion, perfumes, bags, shoes, jewelry,
+        watches and accessories selected for your everyday luxury.
       </p>
+      <button class="shopBtn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
+        Shop Collection
+      </button>
+    </div>
+    <div class="heroCircle"></div>
+  </div>
+</section>
 
-      <a href="#shop" class="hero-btn">
+<section id="shop" class="section">
+  <div class="sectionHead">
+    <h2>Shop Collection</h2>
+  </div>
 
-        Shop collection
+  <div id="categories" class="categories"></div>
+</section>
 
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<section class="section">
+  <div class="sectionHead">
+    <h2>Latest Collection ✨</h2>
+  </div>
 
-          <path d="M5 12h14"/>
-          <path d="m13 6 6 6-6 6"/>
+  <div id="products" class="products">
+    <div class="empty">Loading products...</div>
+  </div>
+</section>
 
-        </svg>
+<div id="overlay" class="overlay" onclick="closeAllSheets()"></div>
 
-      </a>
+<!-- ACCOUNT -->
+<div id="accountSheet" class="sheet">
+  <div class="sheetTop">
+    <h2>My Account</h2>
+    <button class="close" onclick="closeAllSheets()">×</button>
+  </div>
 
+  <div id="accountLoggedOut">
+    <div class="authTabs">
+      <button id="loginTab" class="active" onclick="showAuth('login')">Login</button>
+      <button id="signupTab" onclick="showAuth('signup')">Create Account</button>
     </div>
 
-  </div>
+    <form id="authForm" class="form">
+      <input id="authName" placeholder="Full name" class="hidden">
+      <input id="authEmail" type="email" placeholder="Email address" required>
+      <input id="authPassword" type="password" placeholder="Password" required minlength="6">
+      <button class="primary" id="authSubmit">Login</button>
+    </form>
 
-</section>
-
-
-<!-- =========================
-     CATEGORIES
-========================= -->
-
-<section class="categories">
-
-  <div class="category-scroll" id="categories">
-
-    <button class="cat active" onclick="filterCategory('All',this)">
-      All
-    </button>
-
-    <button class="cat" onclick="filterCategory('Clothing',this)">
-      Clothing
-    </button>
-
-    <button class="cat" onclick="filterCategory('Perfumes',this)">
-      Perfumes
-    </button>
-
-    <button class="cat" onclick="filterCategory('Bags',this)">
-      Bags
-    </button>
-
-    <button class="cat" onclick="filterCategory('Shoes',this)">
-      Shoes
-    </button>
-
-    <button class="cat" onclick="filterCategory('Jewelry',this)">
-      Jewelry
-    </button>
-
-    <button class="cat" onclick="filterCategory('Watches',this)">
-      Watches
-    </button>
-
-    <button class="cat" onclick="filterCategory('Accessories',this)">
-      Accessories
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     PRODUCTS
-========================= -->
-
-<section class="section" id="shop">
-
-  <div class="section-head">
-
-    <h2>Our collection</h2>
-
-    <p>
-      Fresh pieces selected for you ✨
+    <p style="text-align:center;color:#82747c;font-size:13px;margin-top:12px">
+      Create an account to place orders and track your order status.
     </p>
-
   </div>
 
-  <div class="products" id="products">
-
-    <div class="loading">
-
-      <div class="spinner"></div>
-
-      Loading products...
-
+  <div id="accountLoggedIn" class="hidden">
+    <div style="padding:16px;background:#fff3f8;border-radius:16px;margin-bottom:15px">
+      <strong id="profileName"></strong>
+      <div id="profileEmail" style="color:#82747c;font-size:13px;margin-top:4px"></div>
     </div>
 
-  </div>
-
-</section>
-
-
-<!-- =========================
-     FLOATING CART
-========================= -->
-
-<button class="floating-cart" onclick="openCart()">
-
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-
-    <path d="M4 5h2l2 11h9l2-8H7"/>
-
-    <circle cx="10" cy="20" r="1"/>
-    <circle cx="17" cy="20" r="1"/>
-
-  </svg>
-
-  <span class="float-count" id="floatCartCount">
-    0
-  </span>
-
-</button>
-
-
-<!-- =========================
-     WHATSAPP
-========================= -->
-
-<a
-  class="whatsapp-float"
-  href="https://wa.me/2347067087764"
-  target="_blank"
-  aria-label="WhatsApp"
->
-
-  <svg viewBox="0 0 24 24" fill="currentColor">
-
-    <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.2 1.6 6L.2 24l6.3-1.6a11.8 11.8 0 0 0 5.6 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.2-3.5-8.5ZM12.1 21.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-3.7.9 1-3.6-.2-.4a9.9 9.9 0 0 1-1.5-5.3c0-5.5 4.5-10 10-10 2.7 0 5.2 1 7.1 2.9 1.9 1.9 2.9 4.4 2.9 7.1-.1 5.5-4.6 10-10.1 10Zm5.5-7.5c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.3-.6.1-1.6-.8-2.7-1.4-3.8-3.2-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5-.1-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2 3.1 4.8 4.3.7.3 1.2.5 1.6.6.7-.1 1.3-.1 1.8-.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3Z"/>
-
-  </svg>
-
-</a>
-
-
-<!-- =========================
-     OVERLAY
-========================= -->
-
-<div
-  class="overlay"
-  id="overlay"
-  onclick="closeCart()"
-></div>
-
-
-<!-- =========================
-     CART
-========================= -->
-
-<aside
-  class="cart-panel"
-  id="cartPanel"
->
-
-  <div class="cart-head">
-
-    <h2>Your cart</h2>
-
-    <button
-      class="close"
-      onclick="closeCart()"
-    >
-
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-
-        <path d="m6 6 12 12"/>
-        <path d="m18 6-12 12"/>
-
-      </svg>
-
+    <button class="primary" style="width:100%;margin-bottom:10px" onclick="openOrders()">
+      My Orders
     </button>
 
-  </div>
-
-  <div
-    class="cart-items"
-    id="cartItems"
-  ></div>
-
-  <div class="cart-bottom">
-
-    <div class="total-row">
-
-      <span>Total</span>
-
-      <span id="cartTotal">
-        ₦0
-      </span>
-
-    </div>
-
-    <button
-      class="checkout-btn"
-      id="checkoutButton"
-      onclick="openCheckout()"
-    >
-      Continue to checkout
+    <button class="secondary" style="width:100%" onclick="logoutUser()">
+      Logout
     </button>
-
   </div>
-
-</aside>
-
-
-<!-- =========================
-     AUTH MODAL
-========================= -->
-
-<div
-  class="modal-wrap"
-  id="authModal"
->
-
-  <div class="modal auth-modal">
-
-    <div class="auth-logo">
-
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-
-        <path d="M6 8h12l-1 12H7L6 8Z"/>
-        <path d="M9 8a3 3 0 0 1 6 0"/>
-
-      </svg>
-
-    </div>
-
-    <div class="auth-title">
-
-      <h2 id="authTitle">
-        Welcome to LuxeStore
-      </h2>
-
-      <p id="authSubtitle">
-        Create an account to shop and track your orders.
-      </p>
-
-    </div>
-
-    <div class="auth-tabs">
-
-      <button
-        class="auth-tab active"
-        id="loginTab"
-        onclick="switchAuth('login')"
-      >
-        Login
-      </button>
-
-      <button
-        class="auth-tab"
-        id="signupTab"
-        onclick="switchAuth('signup')"
-      >
-        Create account
-      </button>
-
-    </div>
-
-    <div
-      class="auth-error"
-      id="authError"
-    ></div>
-
-    <form id="authForm">
-
-      <div
-        class="form-group"
-        id="signupNameGroup"
-        style="display:none"
-      >
-
-        <label>
-          Full name
-        </label>
-
-        <input
-          id="signupName"
-          type="text"
-          placeholder="Your full name"
-        >
-
-      </div>
-
-      <div class="form-group">
-
-        <label>
-          Email address
-        </label>
-
-        <input
-          id="authEmail"
-          type="email"
-          required
-          placeholder="you@example.com"
-          autocomplete="email"
-        >
-
-      </div>
-
-      <div class="form-group">
-
-        <label>
-          Password
-        </label>
-
-        <input
-          id="authPassword"
-          type="password"
-          required
-          minlength="6"
-          placeholder="At least 6 characters"
-          autocomplete="current-password"
-        >
-
-      </div>
-
-      <button
-        class="auth-btn"
-        id="authSubmit"
-        type="submit"
-      >
-        Login
-      </button>
-
-    </form>
-
-  </div>
-
 </div>
 
-
-<!-- =========================
-     ACCOUNT MODAL
-========================= -->
-
-<div
-  class="modal-wrap"
-  id="accountModal"
->
-
-  <div class="modal">
-
-    <div class="modal-top">
-
-      <h2>
-        My account
-      </h2>
-
-      <button
-        class="close"
-        onclick="closeAccount()"
-      >
-
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-
-          <path d="m6 6 12 12"/>
-          <path d="m18 6-12 12"/>
-
-        </svg>
-
-      </button>
-
-    </div>
-
-    <div id="accountContent"></div>
-
+<!-- CART -->
+<div id="cartSheet" class="sheet">
+  <div class="sheetTop">
+    <h2>Your Cart 🛍️</h2>
+    <button class="close" onclick="closeAllSheets()">×</button>
   </div>
 
-</div>
+  <div id="cartItems"></div>
 
-
-<!-- =========================
-     CHECKOUT
-========================= -->
-
-<div
-  class="modal-wrap"
-  id="checkoutModal"
->
-
-  <div class="modal">
-
-    <div class="modal-top">
-
-      <h2>
-        Checkout
-      </h2>
-
-      <button
-        class="close"
-        onclick="closeCheckout()"
-      >
-
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-
-          <path d="m6 6 12 12"/>
-          <path d="m18 6-12 12"/>
-
-        </svg>
-
-      </button>
-
+  <div id="cartFooter" class="hidden">
+    <div class="totalBox">
+      <div class="totalRow">
+        <span>Total</span>
+        <span id="cartTotal">₦0</span>
+      </div>
     </div>
 
-    <form id="checkoutForm">
-
-      <div class="form-group">
-
-        <label>
-          Full name
-        </label>
-
-        <input
-          id="customerName"
-          type="text"
-          required
-          placeholder="Your full name"
-        >
-
-      </div>
-
-      <div class="form-group">
-
-        <label>
-          Phone number
-        </label>
-
-        <input
-          id="customerPhone"
-          type="tel"
-          required
-          placeholder="08012345678"
-        >
-
-      </div>
-
-      <div class="form-group">
-
-        <label>
-          Delivery address
-        </label>
-
-        <textarea
-          id="customerAddress"
-          required
-          placeholder="Enter your delivery address"
-        ></textarea>
-
-      </div>
-
-      <div class="form-group">
-
-        <label>
-          Order note
-        </label>
-
-        <textarea
-          id="customerNote"
-          placeholder="Size, colour or anything else..."
-        ></textarea>
-
-      </div>
-
-      <div
-        class="checkout-summary"
-        id="checkoutSummary"
-      ></div>
-
-      <button
-        class="confirm-btn"
-        id="confirmOrderBtn"
-        type="submit"
-      >
-        Place order
-      </button>
-
-    </form>
-
+    <button class="primary" style="width:100%;margin-top:12px" onclick="openCheckout()">
+      Checkout
+    </button>
   </div>
-
 </div>
 
+<!-- CHECKOUT -->
+<div id="checkoutSheet" class="sheet">
+  <div class="sheetTop">
+    <h2>Checkout</h2>
+    <button class="close" onclick="closeAllSheets()">×</button>
+  </div>
 
-<!-- =========================
-     SUCCESS
-========================= -->
+  <form id="checkoutForm" class="form">
+    <input id="customerName" placeholder="Full name" required>
+    <input id="customerPhone" placeholder="Phone number" required>
+    <textarea id="customerAddress" placeholder="Delivery address" rows="3" required></textarea>
+    <textarea id="customerNote" placeholder="Order note (optional)" rows="2"></textarea>
 
-<div
-  class="modal-wrap"
-  id="successModal"
->
-
-  <div class="modal">
-
-    <div class="success">
-
-      <div class="success-icon">
-
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
-
-          <path d="m5 12 4 4L19 6"/>
-
-        </svg>
-
+    <div class="totalBox">
+      <div class="totalRow">
+        <span>Total</span>
+        <span id="checkoutTotal">₦0</span>
       </div>
-
-      <h2>
-        Order received! 🎉
-      </h2>
-
-      <p>
-        Your order has been created successfully.
-        You can track your order from your LuxeStore account.
-      </p>
-
-      <div class="order-id">
-
-        Order ID:
-        <span id="successOrderId"></span>
-
-      </div>
-
-      <button
-        class="whatsapp-btn"
-        onclick="sendOrderWhatsApp()"
-      >
-        💬 Send order on WhatsApp
-      </button>
-
-      <button
-        class="done-btn"
-        onclick="closeSuccess()"
-      >
-        Done
-      </button>
-
     </div>
 
-  </div>
-
+    <button class="primary" id="placeOrderBtn">
+      Place Order
+    </button>
+  </form>
 </div>
 
+<!-- ORDERS -->
+<div id="ordersSheet" class="sheet">
+  <div class="sheetTop">
+    <h2>My Orders</h2>
+    <button class="close" onclick="closeAllSheets()">×</button>
+  </div>
 
-<!-- =========================
-     TOAST
-========================= -->
-
-<div
-  class="toast"
-  id="toast"
-></div>
-
+  <div id="ordersList"></div>
+</div>
 
 <script type="module">
 
-/* =========================================
-   FIREBASE IMPORTS
-========================================= */
-
-import {
-  initializeApp
-} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
 
 import {
   getFirestore,
   collection,
   onSnapshot,
-  runTransaction,
   doc,
+  runTransaction,
   serverTimestamp,
   query,
   where,
@@ -1830,810 +609,459 @@ import {
 
 import {
   getAuth,
-  onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut
+  onAuthStateChanged,
+  signOut,
+  updateProfile
 } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
 
-
-/* =========================================
-   FIREBASE
-========================================= */
-
 const firebaseConfig = {
-
-  apiKey:
-    "AIzaSyBLx6RK5sRIduaKiDSTAlgkFUH7iDSBM",
-
-  authDomain:
-    "shop-3d56c.firebaseapp.com",
-
-  projectId:
-    "shop-3d56c",
-
-  storageBucket:
-    "shop-3d56c.firebasestorage.app",
-
-  messagingSenderId:
-    "285039032126",
-
-  appId:
-    "1:285039032126:web:c2226d1aeb02a555c35e6f"
-
+  apiKey: "AIzaSyBLx6RK5sRIduaKiDSTAlgkFUH7iDSBM",
+  authDomain: "shop-3d56c.firebaseapp.com",
+  projectId: "shop-3d56c",
+  storageBucket: "shop-3d56c.firebasestorage.app",
+  messagingSenderId: "285039032126",
+  appId: "1:285039032126:web:c2226d1aeb02a555c35e6f"
 };
 
-const app =
-  initializeApp(firebaseConfig);
-
-const db =
-  getFirestore(app);
-
-const auth =
-  getAuth(app);
-
-
-/* =========================================
-   WHATSAPP
-========================================= */
-
-const WHATSAPP_NUMBER =
-  "2347067087764";
-
-
-/* =========================================
-   STATE
-========================================= */
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
 
 let products = [];
-
-let cart =
-  JSON.parse(
-    localStorage.getItem("luxestore_cart") || "[]"
-  );
-
-let activeCategory = "All";
-
-let latestOrderId = "";
-
-let latestOrderData = null;
-
-let currentUser = null;
-
+let cart = [];
+let selectedCategory = "All";
 let authMode = "login";
-
+let currentUser = null;
 let unsubscribeOrders = null;
 
-let previousOrderStatuses = {};
+const money = n => "₦" + Number(n || 0).toLocaleString();
 
-
-/* =========================================
-   ELEMENTS
-========================================= */
-
-const productsEl =
-  document.getElementById("products");
-
-const cartItemsEl =
-  document.getElementById("cartItems");
-
-const cartTotalEl =
-  document.getElementById("cartTotal");
-
-const navCartCount =
-  document.getElementById("navCartCount");
-
-const floatCartCount =
-  document.getElementById("floatCartCount");
-
-const checkoutSummary =
-  document.getElementById("checkoutSummary");
-
-const checkoutButton =
-  document.getElementById("checkoutButton");
-
-const toast =
-  document.getElementById("toast");
-
-
-/* =========================================
-   MONEY
-========================================= */
-
-function money(value){
-
-  return new Intl.NumberFormat(
-    "en-NG",
-    {
-      style:"currency",
-      currency:"NGN",
-      maximumFractionDigits:0
-    }
-  ).format(
-    Number(value || 0)
-  );
-
+function showNotice(message,type=""){
+  const el=document.getElementById("notice");
+  el.textContent=message;
+  el.className="notice show "+type;
+  setTimeout(()=>el.className="notice",3500);
 }
 
+window.showAuth = function(mode){
+  authMode=mode;
 
-/* =========================================
-   ESCAPE
-========================================= */
+  document.getElementById("loginTab").classList.toggle("active",mode==="login");
+  document.getElementById("signupTab").classList.toggle("active",mode==="signup");
 
-function escapeHTML(value){
+  document.getElementById("authName").classList.toggle("hidden",mode==="login");
+  document.getElementById("authName").required=mode==="signup";
 
-  return String(value ?? "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-
-}
-
-
-/* =========================================
-   TOAST
-========================================= */
-
-function showToast(
-  message,
-  type="normal"
-){
-
-  toast.textContent = message;
-
-  toast.className =
-    "toast show " +
-    (
-      type === "success"
-      ? "success-toast"
-      : type === "error"
-      ? "error-toast"
-      : ""
-    );
-
-  setTimeout(()=>{
-
-    toast.classList.remove("show");
-
-  },4500);
-
-}
-
-
-/* =========================================
-   STOCK
-========================================= */
-
-function stockLabel(stock){
-
-  stock =
-    Number(stock || 0);
-
-  if(stock <= 0){
-
-    return {
-      text:"Sold out",
-      className:"sold"
-    };
-
-  }
-
-  if(stock === 1){
-
-    return {
-      text:"⚡ Last one",
-      className:"low"
-    };
-
-  }
-
-  if(stock <= 3){
-
-    return {
-      text:`🔥 Only ${stock} left`,
-      className:"low"
-    };
-
-  }
-
-  if(stock <= 5){
-
-    return {
-      text:`Only ${stock} left`,
-      className:"low"
-    };
-
-  }
-
-  return {
-    text:`${stock} left`,
-    className:""
-  };
-
-}
-
-
-/* =========================================
-   SAVE CART
-========================================= */
-
-function saveCart(){
-
-  localStorage.setItem(
-    "luxestore_cart",
-    JSON.stringify(cart)
-  );
-
-  updateCartUI();
-
-}
-
-
-/* =========================================
-   CART COUNT
-========================================= */
-
-function cartCount(){
-
-  return cart.reduce(
-    (total,item)=>
-      total + Number(item.quantity || 0),
-    0
-  );
-
-}
-
-
-/* =========================================
-   CART TOTAL
-========================================= */
-
-function cartTotal(){
-
-  return cart.reduce(
-    (total,item)=>
-      total +
-      Number(item.price || 0) *
-      Number(item.quantity || 0),
-    0
-  );
-
-}
-
-
-/* =========================================
-   CART UI
-========================================= */
-
-function updateCartUI(){
-
-  const count =
-    cartCount();
-
-  navCartCount.textContent =
-    count;
-
-  floatCartCount.textContent =
-    count;
-
-  cartTotalEl.textContent =
-    money(cartTotal());
-
-  checkoutButton.disabled =
-    cart.length === 0;
-
-  renderCart();
-
-}
-
-
-/* =========================================
-   AUTH STATE
-========================================= */
-
-onAuthStateChanged(
-  auth,
-  user=>{
-
-    currentUser =
-      user || null;
-
-    if(user){
-
-      closeAuth();
-
-      loadCustomerOrders();
-
-    }else{
-
-      if(unsubscribeOrders){
-
-        unsubscribeOrders();
-
-        unsubscribeOrders =
-          null;
-
-      }
-
-      openAuth();
-
-    }
-
-    updateAccountButton();
-
-  }
-);
-
-
-/* =========================================
-   ACCOUNT BUTTON
-========================================= */
-
-function updateAccountButton(){
-
-  const button =
-    document.querySelector(".account-nav");
-
-  if(!button){
-    return;
-  }
-
-  button.title =
-    currentUser
-      ? "My account"
-      : "Login / Create account";
-
-}
-
-
-/* =========================================
-   AUTH OPEN
-========================================= */
-
-function openAuth(){
-
-  document
-    .getElementById("authModal")
-    .classList.add("show");
-
-  document.body.classList.add("locked");
-
-}
-
-
-/* =========================================
-   AUTH CLOSE
-========================================= */
-
-function closeAuth(){
-
-  document
-    .getElementById("authModal")
-    .classList.remove("show");
-
-  document.body.classList.remove("locked");
-
-}
-
-
-/* =========================================
-   AUTH SWITCH
-========================================= */
-
-window.switchAuth =
-function(mode){
-
-  authMode =
-    mode;
-
-  const loginTab =
-    document.getElementById("loginTab");
-
-  const signupTab =
-    document.getElementById("signupTab");
-
-  const nameGroup =
-    document.getElementById("signupNameGroup");
-
-  const submit =
-    document.getElementById("authSubmit");
-
-  const title =
-    document.getElementById("authTitle");
-
-  const subtitle =
-    document.getElementById("authSubtitle");
-
-  const password =
-    document.getElementById("authPassword");
-
-  document
-    .getElementById("authError")
-    .classList.remove("show");
-
-  if(mode === "signup"){
-
-    signupTab.classList.add("active");
-    loginTab.classList.remove("active");
-
-    nameGroup.style.display =
-      "block";
-
-    submit.textContent =
-      "Create account";
-
-    title.textContent =
-      "Create your LuxeStore account";
-
-    subtitle.textContent =
-      "Create an account to shop and track every order.";
-
-    password.autocomplete =
-      "new-password";
-
-  }else{
-
-    loginTab.classList.add("active");
-    signupTab.classList.remove("active");
-
-    nameGroup.style.display =
-      "none";
-
-    submit.textContent =
-      "Login";
-
-    title.textContent =
-      "Welcome back";
-
-    subtitle.textContent =
-      "Login to shop and track your orders.";
-
-    password.autocomplete =
-      "current-password";
-
-  }
-
+  document.getElementById("authSubmit").textContent =
+    mode==="login" ? "Login" : "Create Account";
 };
 
+document.getElementById("authForm").addEventListener("submit",async e=>{
+  e.preventDefault();
 
-/* =========================================
-   AUTH FORM
-========================================= */
-
-document
-  .getElementById("authForm")
-  .addEventListener(
-    "submit",
-    async event=>{
-
-      event.preventDefault();
-
-      const email =
-        document
-          .getElementById("authEmail")
-          .value
-          .trim();
-
-      const password =
-        document
-          .getElementById("authPassword")
-          .value;
-
-      const name =
-        document
-          .getElementById("signupName")
-          .value
-          .trim();
-
-      const errorEl =
-        document.getElementById("authError");
-
-      const button =
-        document.getElementById("authSubmit");
-
-      errorEl.classList.remove("show");
-
-      if(
-        authMode === "signup" &&
-        !name
-      ){
-
-        errorEl.textContent =
-          "Please enter your full name.";
-
-        errorEl.classList.add("show");
-
-        return;
-
-      }
-
-      button.disabled =
-        true;
-
-      button.textContent =
-        authMode === "signup"
-          ? "Creating account..."
-          : "Logging in...";
-
-      try{
-
-        if(authMode === "signup"){
-
-          const result =
-            await createUserWithEmailAndPassword(
-              auth,
-              email,
-              password
-            );
-
-          await saveCustomerProfile(
-            result.user,
-            name
-          );
-
-          showToast(
-            "Account created successfully! 🛍️",
-            "success"
-          );
-
-        }else{
-
-          await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-          );
-
-          showToast(
-            "Welcome back! ✨",
-            "success"
-          );
-
-        }
-
-      }catch(error){
-
-        console.error(error);
-
-        let message =
-          "Something went wrong. Please try again.";
-
-        if(
-          error.code ===
-          "auth/email-already-in-use"
-        ){
-
-          message =
-            "An account with this email already exists.";
-
-        }else if(
-          error.code ===
-          "auth/invalid-email"
-        ){
-
-          message =
-            "Please enter a valid email address.";
-
-        }else if(
-          error.code ===
-          "auth/weak-password"
-        ){
-
-          message =
-            "Your password must be at least 6 characters.";
-
-        }else if(
-          error.code ===
-          "auth/invalid-credential" ||
-          error.code ===
-          "auth/wrong-password"
-        ){
-
-          message =
-            "Incorrect email or password.";
-
-        }else if(
-          error.code ===
-          "auth/user-not-found"
-        ){
-
-          message =
-            "No account was found with this email.";
-
-        }
-
-        errorEl.textContent =
-          message;
-
-        errorEl.classList.add("show");
-
-      }finally{
-
-        button.disabled =
-          false;
-
-        button.textContent =
-          authMode === "signup"
-            ? "Create account"
-            : "Login";
-
-      }
-
-    }
-  );
-
-
-/* =========================================
-   CUSTOMER PROFILE
-========================================= */
-
-async function saveCustomerProfile(
-  user,
-  name
-){
+  const name=document.getElementById("authName").value.trim();
+  const email=document.getElementById("authEmail").value.trim();
+  const password=document.getElementById("authPassword").value;
 
   try{
+    if(authMode==="signup"){
+      const result=await createUserWithEmailAndPassword(auth,email,password);
 
-    const profileRef =
-      doc(
-        db,
-        "customers",
-        user.uid
-      );
+      await updateProfile(result.user,{displayName:name});
 
-    await runTransaction(
-      db,
-      async transaction=>{
+      showNotice("Account created successfully 🎉","success");
+    }else{
+      await signInWithEmailAndPassword(auth,email,password);
 
-        transaction.set(
-          profileRef,
-          {
-            name:name,
-            email:user.email || "",
-            createdAt:serverTimestamp(),
-            updatedAt:serverTimestamp()
-          },
-          {merge:true}
-        );
+      showNotice("Welcome back ❤️","success");
+    }
 
-      }
-    );
+    closeAllSheets();
 
   }catch(error){
+    console.error(error);
 
-    console.error(
-      "Profile save failed:",
-      error
-    );
+    let msg="Something went wrong.";
 
+    if(error.code==="auth/email-already-in-use")
+      msg="This email already has an account.";
+
+    if(error.code==="auth/invalid-credential")
+      msg="Incorrect email or password.";
+
+    if(error.code==="auth/weak-password")
+      msg="Password must be at least 6 characters.";
+
+    if(error.code==="auth/invalid-email")
+      msg="Please enter a valid email.";
+
+    showNotice(msg,"error");
   }
+});
 
+onAuthStateChanged(auth,user=>{
+  currentUser=user;
+
+  const loggedOut=document.getElementById("accountLoggedOut");
+  const loggedIn=document.getElementById("accountLoggedIn");
+  const accountName=document.getElementById("accountName");
+
+  if(user){
+    loggedOut.classList.add("hidden");
+    loggedIn.classList.remove("hidden");
+
+    document.getElementById("profileName").textContent =
+      user.displayName || "LuxeStore Customer";
+
+    document.getElementById("profileEmail").textContent =
+      user.email || "";
+
+    accountName.textContent=user.displayName || "Account";
+
+    loadOrders();
+  }else{
+    loggedOut.classList.remove("hidden");
+    loggedIn.classList.add("hidden");
+    accountName.textContent="";
+
+    if(unsubscribeOrders){
+      unsubscribeOrders();
+      unsubscribeOrders=null;
+    }
+  }
+});
+
+window.logoutUser=async function(){
+  await signOut(auth);
+  closeAllSheets();
+  showNotice("You have been logged out.");
+};
+
+onSnapshot(collection(db,"products"),snapshot=>{
+  products=snapshot.docs.map(d=>({
+    id:d.id,
+    ...d.data()
+  }));
+
+  renderCategories();
+  renderProducts();
+});
+
+function renderCategories(){
+  const cats=["All",...new Set(products.map(p=>p.category).filter(Boolean))];
+
+  document.getElementById("categories").innerHTML=cats.map(c=>`
+    <button
+      class="cat ${selectedCategory===c?"active":""}"
+      onclick="selectCategory(${JSON.stringify(c)})">
+      ${escapeHtml(c)}
+    </button>
+  `).join("");
 }
 
-
-/* =========================================
-   ACCOUNT
-========================================= */
-
-window.openAccount =
-function(){
-
-  if(!currentUser){
-
-    openAuth();
-
-    return;
-
-  }
-
-  renderAccount();
-
-  document
-    .getElementById("accountModal")
-    .classList.add("show");
-
+window.selectCategory=function(category){
+  selectedCategory=category;
+  renderCategories();
+  renderProducts();
 };
 
+function renderProducts(){
+  const list=selectedCategory==="All"
+    ? products
+    : products.filter(p=>p.category===selectedCategory);
 
-window.closeAccount =
-function(){
+  const box=document.getElementById("products");
 
-  document
-    .getElementById("accountModal")
-    .classList.remove("show");
-
-};
-
-
-/* =========================================
-   ACCOUNT CONTENT
-========================================= */
-
-function renderAccount(){
-
-  if(!currentUser){
-
+  if(!list.length){
+    box.innerHTML=`<div class="empty">No products available yet.</div>`;
     return;
-
   }
 
-  const email =
-    currentUser.email || "";
+  box.innerHTML=list.map(p=>{
+    const stock=Number(p.stock||0);
 
-  const initial =
-    email
-      .charAt(0)
-      .toUpperCase();
+    let stockText="";
+    let stockClass="";
 
-  document
-    .getElementById("accountContent")
-    .innerHTML = `
+    if(stock<=0){
+      stockText="Sold out";
+      stockClass="sold";
+    }else if(stock===1){
+      stockText="⚡ Last one";
+      stockClass="low";
+    }else if(stock<=3){
+      stockText=`🔥 Only ${stock} left`;
+      stockClass="low";
+    }else if(stock<=5){
+      stockText=`Only ${stock} left`;
+      stockClass="low";
+    }else{
+      stockText=`${stock} left`;
+    }
 
-      <div class="account-card">
+    return `
+      <article class="product">
+        ${
+          p.image
+          ? `<img class="productImg" src="${p.image}" alt="${escapeHtml(p.name||"Product")}">`
+          : `<div class="productImg"></div>`
+        }
 
-        <div class="account-user">
+        <div class="productInfo">
+          <div class="category">${escapeHtml(p.category||"Collection")}</div>
+          <div class="productName">${escapeHtml(p.name||"Product")}</div>
+          <div class="price">${money(p.price)}</div>
 
-          <div class="avatar">
-            ${escapeHTML(initial)}
+          <div class="stock ${stockClass}">
+            ${stockText}
           </div>
 
-          <div>
-
-            <div class="account-email">
-              ${escapeHTML(email)}
-            </div>
-
-            <div class="account-small">
-              LuxeStore customer account
-            </div>
-
-          </div>
-
+          <button
+            class="addBtn"
+            ${stock<=0?"disabled":""}
+            onclick="addToCart('${p.id}')">
+            ${stock<=0?"Sold Out":"Add to Cart"}
+          </button>
         </div>
-
-        <button
-          class="logout-btn"
-          onclick="logoutCustomer()"
-        >
-          🚪 Log out
-        </button>
-
-      </div>
-
-      <h3 style="margin-bottom:12px">
-        My Orders 📦
-      </h3>
-
-      <div id="customerOrders">
-        <div class="loading" style="padding:30px">
-          Loading orders...
-        </div>
-      </div>
-
+      </article>
     `;
-
-  renderCustomerOrders();
-
+  }).join("");
 }
 
+window.addToCart=function(id){
+  const product=products.find(p=>p.id===id);
+  if(!product) return;
 
-/* =========================================
-   LOGOUT
-========================================= */
+  const stock=Number(product.stock||0);
 
-window.logoutCustomer =
-async function(){
+  if(stock<=0){
+    showNotice("This product is sold out.","error");
+    return;
+  }
+
+  const existing=cart.find(i=>i.productId===id);
+
+  if(existing){
+    if(existing.quantity>=stock){
+      showNotice("You cannot add more than the available stock.","error");
+      return;
+    }
+
+    existing.quantity++;
+  }else{
+    cart.push({
+      productId:id,
+      name:product.name,
+      price:Number(product.price||0),
+      quantity:1,
+      image:product.image||""
+    });
+  }
+
+  renderCart();
+  showNotice("Added to cart 🛍️","success");
+};
+
+function renderCart(){
+  const box=document.getElementById("cartItems");
+  const footer=document.getElementById("cartFooter");
+
+  const count=cart.reduce((a,b)=>a+b.quantity,0);
+
+  document.getElementById("cartBadge").textContent=count;
+
+  if(!cart.length){
+    box.innerHTML=`<div class="empty">Your cart is empty 🛍️</div>`;
+    footer.classList.add("hidden");
+    return;
+  }
+
+  footer.classList.remove("hidden");
+
+  box.innerHTML=cart.map((item,index)=>`
+    <div class="cartItem">
+      ${
+        item.image
+        ? `<img src="${item.image}" alt="">`
+        : `<div style="width:65px;height:65px;background:#f8edf2;border-radius:12px"></div>`
+      }
+
+      <div class="cartMain">
+        <strong>${escapeHtml(item.name)}</strong>
+        <div style="color:#e83e8c;font-weight:800;margin-top:4px">
+          ${money(item.price)}
+        </div>
+
+        <div class="qty">
+          <button onclick="changeQty(${index},-1)">−</button>
+          <b>${item.quantity}</b>
+          <button onclick="changeQty(${index},1)">+</button>
+          <button onclick="removeCart(${index})" style="margin-left:auto">×</button>
+        </div>
+      </div>
+    </div>
+  `).join("");
+
+  const total=cart.reduce((sum,item)=>sum+(item.price*item.quantity),0);
+
+  document.getElementById("cartTotal").textContent=money(total);
+  document.getElementById("checkoutTotal").textContent=money(total);
+}
+
+window.changeQty=function(index,amount){
+  const item=cart[index];
+  if(!item)return;
+
+  const product=products.find(p=>p.id===item.productId);
+  const stock=Number(product?.stock||0);
+
+  item.quantity+=amount;
+
+  if(item.quantity<=0){
+    cart.splice(index,1);
+  }
+
+  if(item.quantity>stock){
+    item.quantity=stock;
+    showNotice("You reached the available stock.","error");
+  }
+
+  renderCart();
+};
+
+window.removeCart=function(index){
+  cart.splice(index,1);
+  renderCart();
+};
+
+window.openCart=function(){
+  closeAllSheets();
+  document.getElementById("overlay").classList.add("show");
+  document.getElementById("cartSheet").classList.add("show");
+};
+
+window.openAccount=function(){
+  closeAllSheets();
+  document.getElementById("overlay").classList.add("show");
+  document.getElementById("accountSheet").classList.add("show");
+};
+
+window.openCheckout=function(){
+  if(!currentUser){
+    closeAllSheets();
+    openAccount();
+    showNotice("Please create an account or login before ordering.","error");
+    return;
+  }
+
+  if(!cart.length){
+    showNotice("Your cart is empty.","error");
+    return;
+  }
+
+  closeAllSheets();
+
+  document.getElementById("customerName").value=currentUser.displayName||"";
+  document.getElementById("overlay").classList.add("show");
+  document.getElementById("checkoutSheet").classList.add("show");
+};
+
+document.getElementById("checkoutForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+
+  if(!currentUser){
+    showNotice("Please login first.","error");
+    return;
+  }
+
+  if(!cart.length){
+    showNotice("Your cart is empty.","error");
+    return;
+  }
+
+  const button=document.getElementById("placeOrderBtn");
+  button.disabled=true;
+  button.textContent="Placing Order...";
 
   try{
 
-    await signOut(auth);
+    const orderItems=cart.map(item=>({...item}));
 
-    closeAccount();
+    const total=orderItems.reduce(
+      (sum,item)=>sum+(Number(item.price)*Number(item.quantity)),
+      0
+    );
 
-    showToast(
-      "You have been logged out.",
+    const customer={
+      name:document.getElementById("customerName").value.trim(),
+      phone:document.getElementById("customerPhone").value.trim(),
+      address:document.getElementById("customerAddress").value.trim(),
+      note:document.getElementById("customerNote").value.trim()
+    };
+
+    const orderRef=doc(collection(db,"orders"));
+
+    await runTransaction(db,async transaction=>{
+
+      for(const item of orderItems){
+
+        const productRef=doc(db,"products",item.productId);
+        const productSnap=await transaction.get(productRef);
+
+        if(!productSnap.exists()){
+          throw new Error(`${item.name} is no longer available.`);
+        }
+
+        const data=productSnap.data();
+        const currentStock=Number(data.stock||0);
+
+        if(currentStock<item.quantity){
+          throw new Error(
+            `${item.name} only has ${currentStock} left.`
+          );
+        }
+
+        transaction.update(productRef,{
+          stock:currentStock-item.quantity,
+          updatedAt:serverTimestamp()
+        });
+      }
+
+      transaction.set(orderRef,{
+        userId:currentUser.uid,
+
+        customer:{
+          name:customer.name,
+          phone:customer.phone,
+          address:customer.address,
+          note:customer.note
+        },
+
+        items:orderItems,
+
+        total:total,
+
+        status:"pending",
+
+        stockReserved:true,
+
+        createdAt:serverTimestamp(),
+        updatedAt:serverTimestamp()
+      });
+    });
+
+    cart=[];
+
+    renderCart();
+
+    document.getElementById("checkoutForm").reset();
+
+    closeAllSheets();
+
+    showNotice(
+      "Order placed successfully 🎉 Check My Orders for updates.",
       "success"
     );
 
@@ -2641,1582 +1069,174 @@ async function(){
 
     console.error(error);
 
+    showNotice(
+      error.message || "Unable to place order.",
+      "error"
+    );
+
+  }finally{
+    button.disabled=false;
+    button.textContent="Place Order";
   }
+});
 
-};
-
-
-/* =========================================
-   CUSTOMER ORDERS
-========================================= */
-
-let customerOrders = [];
-
-
-function loadCustomerOrders(){
+window.openOrders=function(){
 
   if(!currentUser){
+    closeAllSheets();
+    openAccount();
+
+    showNotice(
+      "Please login to see your orders.",
+      "error"
+    );
 
     return;
-
   }
+
+  closeAllSheets();
+
+  document.getElementById("overlay").classList.add("show");
+  document.getElementById("ordersSheet").classList.add("show");
+};
+
+function loadOrders(){
+
+  if(!currentUser)return;
 
   if(unsubscribeOrders){
-
     unsubscribeOrders();
-
   }
 
-  const ordersQuery =
-    query(
-      collection(db,"orders"),
-      where(
-        "customerId",
-        "==",
-        currentUser.uid
-      ),
-      orderBy(
-        "createdAt",
-        "desc"
-      )
-    );
-
-  unsubscribeOrders =
-    onSnapshot(
-      ordersQuery,
-      snapshot=>{
-
-        const changed =
-          [];
-
-        snapshot.docChanges()
-          .forEach(change=>{
-
-            if(
-              change.type === "added" &&
-              previousOrderStatuses[
-                change.doc.id
-              ] !== undefined
-            ){
-
-              changed.push({
-                id:change.doc.id,
-                data:change.doc.data()
-              });
-
-            }
-
-            if(
-              change.type === "modified"
-            ){
-
-              changed.push({
-                id:change.doc.id,
-                data:change.doc.data()
-              });
-
-            }
-
-          });
-
-        customerOrders =
-          snapshot.docs.map(
-            item=>({
-              id:item.id,
-              ...item.data()
-            })
-          );
-
-        snapshot.docs.forEach(item=>{
-
-          previousOrderStatuses[
-            item.id
-          ] =
-            item.data().status || "pending";
-
-        });
-
-        renderCustomerOrders();
-
-        /*
-          Check for status changes.
-        */
-
-        changed.forEach(order=>{
-
-          const newStatus =
-            order.data.status || "pending";
-
-          const oldStatus =
-            previousOrderStatuses[
-              order.id
-            ];
-
-          if(
-            oldStatus &&
-            oldStatus !== newStatus
-          ){
-
-            if(newStatus === "confirmed"){
-
-              showToast(
-                "🎉 Your order has been confirmed!",
-                "success"
-              );
-
-            }
-
-            if(newStatus === "cancelled"){
-
-              showToast(
-                "Your order has been cancelled.",
-                "error"
-              );
-
-            }
-
-            if(newStatus === "delivered"){
-
-              showToast(
-                "🎉 Your order has been delivered!",
-                "success"
-              );
-
-            }
-
-          }
-
-        });
-
-      },
-      error=>{
-
-        console.error(
-          "Orders listener error:",
-          error
-        );
-
-        const container =
-          document.getElementById(
-            "customerOrders"
-          );
-
-        if(container){
-
-          container.innerHTML = `
-
-            <div class="empty" style="padding:30px">
-
-              <p>
-                Unable to load your orders.
-              </p>
-
-            </div>
-
-          `;
-
-        }
-
-      }
-    );
-
-}
-
-
-function renderCustomerOrders(){
-
-  const container =
-    document.getElementById(
-      "customerOrders"
-    );
-
-  if(!container){
-
-    return;
-
-  }
-
-  if(customerOrders.length === 0){
-
-    container.innerHTML = `
-
-      <div class="empty" style="padding:35px 15px">
-
-        <div style="font-size:35px;margin-bottom:10px">
-          🛍️
-        </div>
-
-        <h3>
-          No orders yet
-        </h3>
-
-        <p style="margin-top:6px;font-size:12px">
-          Your orders will appear here.
-        </p>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-  container.innerHTML =
-    customerOrders.map(
-      order=>{
-
-        const status =
-          String(
-            order.status || "pending"
-          ).toLowerCase();
-
-        const statusText =
-          status.charAt(0).toUpperCase() +
-          status.slice(1);
-
-        let message = "";
-
-        if(status === "confirmed"){
-
-          message = `
-
-            <div class="confirmed-message">
-
-              ✅ Your order has been confirmed!
-              <br>
-              <span style="font-weight:600">
-                LuxeStore has confirmed your order and will process your delivery.
-              </span>
-
-            </div>
-
-          `;
-
-        }
-
-        if(status === "cancelled"){
-
-          message = `
-
-            <div class="cancelled-message">
-
-              ❌ This order has been cancelled.
-
-            </div>
-
-          `;
-
-        }
-
-        if(status === "delivered"){
-
-          message = `
-
-            <div class="confirmed-message">
-
-              🎉 Your order has been delivered.
-              <br>
-              <span style="font-weight:600">
-                Thank you for shopping with LuxeStore ❤️
-              </span>
-
-            </div>
-
-          `;
-
-        }
-
-        let dateText =
-          "";
-
-        if(
-          order.createdAt &&
-          order.createdAt.toDate
-        ){
-
-          dateText =
-            order.createdAt
-              .toDate()
-              .toLocaleString(
-                "en-NG",
-                {
-                  dateStyle:"medium",
-                  timeStyle:"short"
-                }
-              );
-
-        }
-
-        const items =
-          Array.isArray(order.items)
-            ? order.items
-            : [];
-
-        return `
-
-          <div class="order-card">
-
-            <div class="order-top">
-
-              <div>
-
-                <strong>
-                  Order
-                </strong>
-
-                <div class="order-id-small">
-                  ${escapeHTML(order.id)}
-                </div>
-
-              </div>
-
-              <span class="status ${escapeHTML(status)}">
-                ${escapeHTML(statusText)}
-              </span>
-
-            </div>
-
-            <div class="order-items">
-
-              ${
-                items.map(item=>`
-
-                  <div class="order-line">
-
-                    <span>
-                      ${escapeHTML(item.name)}
-                      × ${Number(item.quantity || 0)}
-                    </span>
-
-                    <strong>
-                      ${money(
-                        Number(item.price || 0) *
-                        Number(item.quantity || 0)
-                      )}
-                    </strong>
-
-                  </div>
-
-                `).join("")
-              }
-
-            </div>
-
-            <div class="order-total">
-
-              <span>
-                Total
-              </span>
-
-              <span>
-                ${money(order.total)}
-              </span>
-
-            </div>
-
-            ${
-              dateText
-              ? `
-                <div class="order-date">
-                  ${escapeHTML(dateText)}
-                </div>
-              `
-              : ""
-            }
-
-            ${message}
-
-          </div>
-
-        `;
-
-      }
-    ).join("");
-
-}
-
-
-/* =========================================
-   PRODUCTS
-========================================= */
-
-onSnapshot(
-  collection(db,"products"),
-  snapshot=>{
-
-    products =
-      snapshot.docs.map(
-        item=>({
-
-          id:item.id,
-          ...item.data()
-
-        })
-      );
-
-    cart =
-      cart
-        .map(item=>{
-
-          const product =
-            products.find(
-              p=>p.id === item.productId
-            );
-
-          if(!product){
-            return null;
-          }
-
-          const stock =
-            Number(product.stock || 0);
-
-          if(stock <= 0){
-            return null;
-          }
-
-          return {
-
-            ...item,
-
-            name:
-              product.name,
-
-            price:
-              Number(product.price || 0),
-
-            image:
-              product.image || "",
-
-            maxStock:
-              stock
-
-          };
-
-        })
-        .filter(Boolean);
-
-    cart.forEach(item=>{
-
-      if(
-        item.quantity >
-        item.maxStock
-      ){
-
-        item.quantity =
-          item.maxStock;
-
-      }
-
+  const q=query(
+    collection(db,"orders"),
+    where("userId","==",currentUser.uid)
+  );
+
+  unsubscribeOrders=onSnapshot(q,snapshot=>{
+
+    const orders=snapshot.docs.map(d=>({
+      id:d.id,
+      ...d.data()
+    }));
+
+    orders.sort((a,b)=>{
+      const ta=a.createdAt?.seconds||0;
+      const tb=b.createdAt?.seconds||0;
+      return tb-ta;
     });
 
-    saveCart();
+    renderOrders(orders);
 
-    renderProducts();
-
-  },
-  error=>{
-
+  },error=>{
     console.error(error);
-
-    productsEl.innerHTML = `
-
-      <div class="empty">
-
-        <p>
-          Unable to load products right now.
-        </p>
-
-        <p style="margin-top:7px;font-size:12px">
-          Please refresh the page.
-        </p>
-
-      </div>
-
-    `;
-
-  }
-);
-
-
-/* =========================================
-   RENDER PRODUCTS
-========================================= */
-
-function renderProducts(){
-
-  const filtered =
-    products.filter(
-      product=>{
-
-        if(
-          activeCategory === "All"
-        ){
-
-          return true;
-
-        }
-
-        return String(
-          product.category || ""
-        ).toLowerCase()
-        ===
-        activeCategory.toLowerCase();
-
-      }
-    );
-
-  if(filtered.length === 0){
-
-    productsEl.innerHTML = `
-
-      <div class="empty">
-
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.5"
-        >
-
-          <path d="M6 8h12l-1 12H7L6 8Z"/>
-          <path d="M9 8a3 3 0 0 1 6 0"/>
-
-        </svg>
-
-        <h3>
-          No products yet
-        </h3>
-
-        <p style="margin-top:7px">
-          New products will appear here soon.
-        </p>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-  productsEl.innerHTML =
-    filtered.map(
-      product=>{
-
-        const stock =
-          Number(product.stock || 0);
-
-        const stockInfo =
-          stockLabel(stock);
-
-        const image =
-          product.image
-          ? `
-
-            <img
-              src="${product.image}"
-              alt="${escapeHTML(product.name)}"
-              loading="lazy"
-            >
-
-          `
-          : `
-
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#d88aa8"
-              stroke-width="1.2"
-              style="
-                width:65px;
-                height:65px;
-                position:absolute;
-                left:50%;
-                top:50%;
-                transform:translate(-50%,-50%)
-              "
-            >
-
-              <path d="M6 8h12l-1 12H7L6 8Z"/>
-              <path d="M9 8a3 3 0 0 1 6 0"/>
-
-            </svg>
-
-          `;
-
-        return `
-
-          <article class="card">
-
-            <div class="product-image">
-
-              ${image}
-
-              <span class="new-badge">
-                NEW
-              </span>
-
-              <span class="stock-badge ${stockInfo.className}">
-                ${stockInfo.text}
-              </span>
-
-            </div>
-
-            <div class="card-body">
-
-              <div class="category-name">
-                ${escapeHTML(
-                  product.category ||
-                  "Collection"
-                )}
-              </div>
-
-              <h3>
-                ${escapeHTML(
-                  product.name ||
-                  "LuxeStore Product"
-                )}
-              </h3>
-
-              <div class="description">
-                ${escapeHTML(
-                  product.description ||
-                  "Beautifully selected for you."
-                )}
-              </div>
-
-              <div class="price-row">
-
-                <span class="price">
-                  ${money(product.price)}
-                </span>
-
-                <button
-                  class="add-btn"
-                  onclick="addToCart('${product.id}')"
-                  ${stock <= 0 ? "disabled" : ""}
-                >
-
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-
-                    <path d="M12 5v14"/>
-                    <path d="M5 12h14"/>
-
-                  </svg>
-
-                </button>
-
-              </div>
-
-            </div>
-
-          </article>
-
-        `;
-
-      }
-    ).join("");
-
+    document.getElementById("ordersList").innerHTML=
+      `<div class="empty">Unable to load orders.</div>`;
+  });
 }
 
+function renderOrders(orders){
 
-/* =========================================
-   FILTER
-========================================= */
+  const box=document.getElementById("ordersList");
 
-window.filterCategory =
-function(
-  category,
-  button
-){
-
-  activeCategory =
-    category;
-
-  document
-    .querySelectorAll(".cat")
-    .forEach(
-      item=>
-        item.classList.remove("active")
-    );
-
-  button.classList.add("active");
-
-  renderProducts();
-
-};
-
-
-/* =========================================
-   ADD CART
-========================================= */
-
-window.addToCart =
-function(productId){
-
-  if(!currentUser){
-
-    openAuth();
-
-    showToast(
-      "Please create an account or login first."
-    );
-
-    return;
-
-  }
-
-  const product =
-    products.find(
-      item=>item.id === productId
-    );
-
-  if(!product){
+  if(!orders.length){
+    box.innerHTML=`
+      <div class="empty">
+        You have not placed any orders yet.
+        <br><br>
+        Start shopping ✨
+      </div>
+    `;
     return;
   }
 
-  const stock =
-    Number(product.stock || 0);
+  box.innerHTML=orders.map(order=>{
 
-  if(stock <= 0){
+    const status=order.status||"pending";
 
-    alert(
-      "Sorry, this item is sold out."
-    );
+    const date=order.createdAt?.toDate
+      ? order.createdAt.toDate().toLocaleString()
+      : "Just now";
 
-    return;
+    const items=(order.items||[]).map(item=>`
+      <div style="font-size:13px;margin-top:5px">
+        ${escapeHtml(item.name)} × ${item.quantity}
+      </div>
+    `).join("");
 
-  }
+    let message="Your order has been received.";
 
-  const existing =
-    cart.find(
-      item=>
-        item.productId === productId
-    );
+    if(status==="confirmed")
+      message="Your order has been confirmed ✅";
 
-  if(existing){
+    if(status==="delivered")
+      message="Your order has been delivered 🎉";
 
-    if(
-      existing.quantity >= stock
-    ){
+    if(status==="cancelled")
+      message="Your order has been cancelled.";
 
-      alert(
-        `Only ${stock} left in stock.`
-      );
+    return `
+      <div class="orderCard">
 
-      return;
+        <div class="orderTop">
+          <div>
+            <strong>Order #${order.id.slice(0,8)}</strong>
+            <div style="font-size:11px;color:#82747c;margin-top:4px">
+              ${date}
+            </div>
+          </div>
 
-    }
-
-    existing.quantity += 1;
-
-    existing.maxStock =
-      stock;
-
-  }else{
-
-    cart.push({
-
-      productId:
-        product.id,
-
-      name:
-        product.name,
-
-      price:
-        Number(product.price || 0),
-
-      quantity:
-        1,
-
-      image:
-        product.image || "",
-
-      maxStock:
-        stock
-
-    });
-
-  }
-
-  saveCart();
-
-  openCart();
-
-};
-
-
-/* =========================================
-   CART
-========================================= */
-
-function renderCart(){
-
-  if(cart.length === 0){
-
-    cartItemsEl.innerHTML = `
-
-      <div
-        style="
-          text-align:center;
-          padding:60px 20px;
-          color:#776b71
-        "
-      >
-
-        <div style="font-size:45px">
-          🛍️
+          <span class="status ${status}">
+            ${status}
+          </span>
         </div>
 
-        <h3 style="color:#21151b">
-          Your cart is empty
-        </h3>
-
-        <p style="margin-top:6px;font-size:13px">
-          Add something beautiful ✨
-        </p>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-  cartItemsEl.innerHTML =
-    cart.map(
-      (item,index)=>`
-
-        <div class="cart-item">
-
-          <div class="cart-item-img">
-
-            ${
-              item.image
-              ? `
-                <img
-                  src="${item.image}"
-                  alt="${escapeHTML(item.name)}"
-                >
-              `
-              : ""
-            }
-
-          </div>
-
-          <div class="cart-item-info">
-
-            <div class="cart-item-name">
-              ${escapeHTML(item.name)}
-            </div>
-
-            <div class="cart-item-price">
-              ${money(item.price)}
-            </div>
-
-            <div class="qty">
-
-              <button
-                onclick="changeQty(${index},-1)"
-              >
-                −
-              </button>
-
-              <span>
-                ${item.quantity}
-              </span>
-
-              <button
-                onclick="changeQty(${index},1)"
-              >
-                +
-              </button>
-
-            </div>
-
-            <button
-              class="remove"
-              onclick="removeCartItem(${index})"
-            >
-              Remove
-            </button>
-
-          </div>
-
+        <div style="margin-top:13px">
+          ${items}
         </div>
 
-      `
-    ).join("");
+        <div style="margin-top:13px;font-weight:900">
+          Total: ${money(order.total)}
+        </div>
 
+        <div style="
+          margin-top:12px;
+          padding:11px;
+          border-radius:12px;
+          background:#fff3f8;
+          font-size:13px;
+          font-weight:700;
+        ">
+          ${message}
+        </div>
+
+      </div>
+    `;
+
+  }).join("");
+};
+
+function closeAllSheets(){
+  document.getElementById("overlay").classList.remove("show");
+
+  document.querySelectorAll(".sheet").forEach(
+    el=>el.classList.remove("show")
+  );
 }
 
-
-/* =========================================
-   QUANTITY
-========================================= */
-
-window.changeQty =
-function(
-  index,
-  change
-){
-
-  const item =
-    cart[index];
-
-  if(!item){
-    return;
-  }
-
-  const product =
-    products.find(
-      product=>
-        product.id ===
-        item.productId
-    );
-
-  if(!product){
-
-    cart.splice(index,1);
-
-    saveCart();
-
-    return;
-
-  }
-
-  const stock =
-    Number(product.stock || 0);
-
-  const newQuantity =
-    item.quantity +
-    change;
-
-  if(newQuantity <= 0){
-
-    cart.splice(index,1);
-
-    saveCart();
-
-    return;
-
-  }
-
-  if(newQuantity > stock){
-
-    alert(
-      `Only ${stock} left in stock.`
-    );
-
-    return;
-
-  }
-
-  item.quantity =
-    newQuantity;
-
-  item.maxStock =
-    stock;
-
-  saveCart();
-
-};
-
-
-/* =========================================
-   REMOVE
-========================================= */
-
-window.removeCartItem =
-function(index){
-
-  cart.splice(
-    index,
-    1
-  );
-
-  saveCart();
-
-};
-
-
-/* =========================================
-   CART OPEN/CLOSE
-========================================= */
-
-window.openCart =
-function(){
-
-  if(!currentUser){
-
-    openAuth();
-
-    return;
-
-  }
-
-  document
-    .getElementById("cartPanel")
-    .classList.add("show");
-
-  document
-    .getElementById("overlay")
-    .classList.add("show");
-
-};
-
-
-window.closeCart =
-function(){
-
-  document
-    .getElementById("cartPanel")
-    .classList.remove("show");
-
-  document
-    .getElementById("overlay")
-    .classList.remove("show");
-
-};
-
-
-/* =========================================
-   CHECKOUT
-========================================= */
-
-window.openCheckout =
-function(){
-
-  if(!currentUser){
-
-    openAuth();
-
-    return;
-
-  }
-
-  if(cart.length === 0){
-    return;
-  }
-
-  renderCheckoutSummary();
-
-  document
-    .getElementById("checkoutModal")
-    .classList.add("show");
-
-};
-
-
-window.closeCheckout =
-function(){
-
-  document
-    .getElementById("checkoutModal")
-    .classList.remove("show");
-
-};
-
-
-/* =========================================
-   CHECKOUT SUMMARY
-========================================= */
-
-function renderCheckoutSummary(){
-
-  checkoutSummary.innerHTML = `
-
-    ${
-      cart.map(
-        item=>`
-
-          <div class="summary-row">
-
-            <span>
-              ${escapeHTML(item.name)}
-              × ${item.quantity}
-            </span>
-
-            <strong>
-              ${money(
-                item.price *
-                item.quantity
-              )}
-            </strong>
-
-          </div>
-
-        `
-      ).join("")
-    }
-
-    <div class="summary-row summary-total">
-
-      <span>
-        Total
-      </span>
-
-      <span>
-        ${money(cartTotal())}
-      </span>
-
-    </div>
-
-  `;
-
+window.closeAllSheets=closeAllSheets;
+
+function escapeHtml(value){
+  return String(value??"")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 }
 
-
-/* =========================================
-   PLACE ORDER
-========================================= */
-
-document
-  .getElementById("checkoutForm")
-  .addEventListener(
-    "submit",
-    async event=>{
-
-      event.preventDefault();
-
-      if(!currentUser){
-
-        closeCheckout();
-
-        openAuth();
-
-        return;
-
-      }
-
-      const name =
-        document
-          .getElementById("customerName")
-          .value
-          .trim();
-
-      const phone =
-        document
-          .getElementById("customerPhone")
-          .value
-          .trim();
-
-      const address =
-        document
-          .getElementById("customerAddress")
-          .value
-          .trim();
-
-      const note =
-        document
-          .getElementById("customerNote")
-          .value
-          .trim();
-
-      if(
-        !name ||
-        !phone ||
-        !address
-      ){
-
-        alert(
-          "Please fill in your name, phone number and delivery address."
-        );
-
-        return;
-
-      }
-
-      const button =
-        document.getElementById(
-          "confirmOrderBtn"
-        );
-
-      button.disabled =
-        true;
-
-      button.textContent =
-        "Processing order...";
-
-      try{
-
-        const orderResult =
-          await runTransaction(
-            db,
-            async transaction=>{
-
-              const productRefs =
-                cart.map(
-                  item=>
-                    doc(
-                      db,
-                      "products",
-                      item.productId
-                    )
-                );
-
-              const productSnapshots =
-                [];
-
-              for(
-                const ref of productRefs
-              ){
-
-                const snapshot =
-                  await transaction.get(
-                    ref
-                  );
-
-                productSnapshots.push(
-                  snapshot
-                );
-
-              }
-
-              const finalItems =
-                [];
-
-              let total =
-                0;
-
-              for(
-                let i=0;
-                i<cart.length;
-                i++
-              ){
-
-                const cartItem =
-                  cart[i];
-
-                const snapshot =
-                  productSnapshots[i];
-
-                if(
-                  !snapshot.exists()
-                ){
-
-                  throw new Error(
-                    `${cartItem.name} is no longer available.`
-                  );
-
-                }
-
-                const data =
-                  snapshot.data();
-
-                const currentStock =
-                  Number(
-                    data.stock || 0
-                  );
-
-                const requested =
-                  Number(
-                    cartItem.quantity || 0
-                  );
-
-                if(
-                  currentStock <
-                  requested
-                ){
-
-                  throw new Error(
-                    `Not enough stock for ${cartItem.name}. Only ${currentStock} left.`
-                  );
-
-                }
-
-                const newStock =
-                  currentStock -
-                  requested;
-
-                transaction.update(
-                  productRefs[i],
-                  {
-                    stock:newStock,
-                    updatedAt:
-                      serverTimestamp()
-                  }
-                );
-
-                const itemTotal =
-                  Number(
-                    data.price || 0
-                  ) *
-                  requested;
-
-                total +=
-                  itemTotal;
-
-                finalItems.push({
-
-                  productId:
-                    snapshot.id,
-
-                  name:
-                    data.name ||
-                    cartItem.name,
-
-                  price:
-                    Number(
-                      data.price || 0
-                    ),
-
-                  quantity:
-                    requested,
-
-                  image:
-                    data.image || ""
-
-                });
-
-              }
-
-              const orderRef =
-                doc(
-                  collection(
-                    db,
-                    "orders"
-                  )
-                );
-
-              transaction.set(
-                orderRef,
-                {
-
-                  customerId:
-                    currentUser.uid,
-
-                  customer:{
-
-                    name,
-
-                    phone,
-
-                    address,
-
-                    note
-
-                  },
-
-                  items:
-                    finalItems,
-
-                  total,
-
-                  status:
-                    "pending",
-
-                  stockReserved:
-                    true,
-
-                  createdAt:
-                    serverTimestamp(),
-
-                  updatedAt:
-                    serverTimestamp()
-
-                }
-              );
-
-              return {
-
-                id:
-                  orderRef.id,
-
-                total,
-
-                items:
-                  finalItems
-
-              };
-
-            }
-          );
-
-        latestOrderId =
-          orderResult.id;
-
-        latestOrderData = {
-
-          id:
-            orderResult.id,
-
-          customer:{
-
-            name,
-
-            phone,
-
-            address,
-
-            note
-
-          },
-
-          items:
-            orderResult.items,
-
-          total:
-            orderResult.total
-
-        };
-
-        cart = [];
-
-        saveCart();
-
-        closeCheckout();
-
-        closeCart();
-
-        document
-          .getElementById(
-            "successOrderId"
-          )
-          .textContent =
-            latestOrderId;
-
-        document
-          .getElementById(
-            "successModal"
-          )
-          .classList.add("show");
-
-        document
-          .getElementById(
-            "checkoutForm"
-          )
-          .reset();
-
-      }catch(error){
-
-        console.error(error);
-
-        alert(
-          error?.message ||
-          "We couldn't place your order. Please try again."
-        );
-
-      }finally{
-
-        button.disabled =
-          false;
-
-        button.textContent =
-          "Place order";
-
-      }
-
-    }
-  );
-
-
-/* =========================================
-   WHATSAPP
-========================================= */
-
-window.sendOrderWhatsApp =
-function(){
-
-  if(!latestOrderData){
-    return;
-  }
-
-  const order =
-    latestOrderData;
-
-  let message =
-`🛍️ *LUXESTORE ORDER*
-
-Order ID: ${order.id}
-
-👤 Customer: ${order.customer.name}
-📱 Phone: ${order.customer.phone}
-
-📍 Delivery Address:
-${order.customer.address}
-
-`;
-
-  if(order.customer.note){
-
-    message +=
-`📝 Note:
-${order.customer.note}
-
-`;
-
-  }
-
-  message +=
-`🛒 *Items:*
-
-`;
-
-  order.items.forEach(
-    item=>{
-
-      message +=
-`• ${item.name}
-  Qty: ${item.quantity}
-  Price: ${money(
-    item.price *
-    item.quantity
-  )}
-
-`;
-
-    }
-  );
-
-  message +=
-`💰 *TOTAL: ${money(order.total)}*
-
-Please confirm my order. Thank you ❤️`;
-
-  const url =
-    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-
-  window.open(
-    url,
-    "_blank"
-  );
-
-};
-
-
-/* =========================================
-   SUCCESS CLOSE
-========================================= */
-
-window.closeSuccess =
-function(){
-
-  document
-    .getElementById(
-      "successModal"
-    )
-    .classList.remove("show");
-
-};
-
-
-/* =========================================
-   INITIAL
-========================================= */
-
-updateCartUI();
-
-switchAuth("login");
+renderCart();
 
 </script>
-
 </body>
 </html>
