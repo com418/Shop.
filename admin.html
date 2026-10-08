@@ -2,75 +2,148 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#fff4f8">
-
 <title>LuxeStore Admin</title>
 
 <style>
+*{box-sizing:border-box;margin:0;padding:0}
+
 :root{
-  --pink:#e83e73;
-  --pink2:#ff6f9d;
-  --bg:#fffafc;
+  --pink:#e83e8c;
+  --pink2:#ff72b6;
+  --dark:#251d22;
+  --muted:#82747c;
+  --bg:#fff8fb;
   --card:#fff;
-  --text:#241c20;
-  --muted:#7c7076;
-  --border:#f0dfe6;
-  --green:#16a36a;
-  --red:#e53950;
-  --orange:#d98513;
-  --shadow:0 15px 45px rgba(100,30,60,.08);
+  --line:#f0dfe7;
+  --green:#198754;
+  --red:#dc3545;
+  --orange:#d97706;
+  --shadow:0 15px 40px rgba(60,20,45,.08);
 }
 
-*{box-sizing:border-box}
-
 body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+  font-family:Arial,sans-serif;
   background:var(--bg);
-  color:var(--text);
+  color:var(--dark);
 }
 
 button,input,textarea,select{font:inherit}
-button{cursor:pointer;border:0}
+button{border:0;cursor:pointer}
 
-.container{
-  width:min(1200px,92%);
-  margin:auto;
+.hidden{display:none!important}
+
+.login{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:
+    radial-gradient(circle at 20% 10%,#ffd5e8,transparent 30%),
+    #fff8fb;
 }
 
-header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:rgba(255,250,252,.92);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--border);
-}
-
-.nav{
-  min-height:72px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
+.loginBox{
+  width:100%;
+  max-width:430px;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:28px;
+  box-shadow:var(--shadow);
 }
 
 .logo{
+  font-size:30px;
+  font-weight:900;
+  text-align:center;
+  margin-bottom:7px;
+}
+
+.logo span{color:var(--pink)}
+
+.loginBox p{
+  color:var(--muted);
+  text-align:center;
+  margin-bottom:23px;
+}
+
+.form{
+  display:grid;
+  gap:12px;
+}
+
+.form input,
+.form textarea,
+.form select{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:14px;
+  outline:none;
+  background:white;
+}
+
+.form input:focus,
+.form textarea:focus,
+.form select:focus{
+  border-color:var(--pink);
+}
+
+.primary{
+  background:var(--pink);
+  color:white;
+  padding:14px;
+  border-radius:13px;
+  font-weight:900;
+}
+
+.secondary{
+  background:#f8edf2;
+  color:var(--dark);
+  padding:12px;
+  border-radius:12px;
+  font-weight:800;
+}
+
+.danger{
+  background:#f8d7da;
+  color:#842029;
+  padding:10px 12px;
+  border-radius:10px;
+  font-weight:800;
+}
+
+.app{
+  display:none;
+}
+
+.top{
+  position:sticky;
+  top:0;
+  z-index:30;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--line);
+}
+
+.topInner{
+  max-width:1250px;
+  margin:auto;
+  padding:14px 18px;
   display:flex;
   align-items:center;
+  justify-content:space-between;
   gap:10px;
+}
+
+.topTitle{
   font-size:21px;
-  font-weight:950;
-  color:var(--pink);
+  font-weight:900;
 }
 
-.logo svg{
-  width:35px;
-  height:35px;
-}
-
-.actions{
+.topActions{
   display:flex;
   gap:8px;
 }
@@ -78,28 +151,28 @@ header{
 .iconBtn{
   width:42px;
   height:42px;
-  border-radius:14px;
-  background:white;
-  border:1px solid var(--border);
+  border-radius:50%;
+  background:#fff0f6;
+  color:var(--pink);
 }
 
-.iconBtn svg{
-  width:20px;
-  height:20px;
-}
-
-.page{
-  padding:30px 0 100px;
+.main{
+  max-width:1250px;
+  margin:auto;
+  padding:20px 18px 100px;
 }
 
 .welcome{
-  margin-bottom:25px;
+  padding:24px;
+  border-radius:25px;
+  background:linear-gradient(135deg,#ffe1ee,#fff8fb);
+  border:1px solid var(--line);
+  margin-bottom:18px;
 }
 
 .welcome h1{
-  margin:0;
-  font-size:34px;
-  letter-spacing:-1px;
+  font-size:30px;
+  margin-bottom:7px;
 }
 
 .welcome p{
@@ -108,723 +181,532 @@ header{
 
 .stats{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-  margin-bottom:25px;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-bottom:20px;
 }
 
 .stat{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:23px;
-  padding:20px;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:17px;
   box-shadow:var(--shadow);
 }
 
-.statTop{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.statIcon{
-  width:42px;
-  height:42px;
-  border-radius:14px;
-  background:#fff0f5;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--pink);
-}
-
-.statIcon svg{
-  width:22px;
-  height:22px;
+.stat small{
+  color:var(--muted);
 }
 
 .stat strong{
   display:block;
-  font-size:26px;
-  margin-top:15px;
-}
-
-.stat span{
-  color:var(--muted);
-  font-size:12px;
-  font-weight:700;
-}
-
-.tabs{
-  display:flex;
-  gap:8px;
-  margin-bottom:18px;
-}
-
-.tab{
-  padding:12px 17px;
-  border-radius:14px;
-  background:white;
-  border:1px solid var(--border);
-  font-weight:900;
-}
-
-.tab.active{
-  background:var(--pink);
-  color:white;
-  border-color:var(--pink);
+  font-size:25px;
+  margin-top:5px;
 }
 
 .panel{
   background:white;
-  border:1px solid var(--border);
-  border-radius:25px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:17px;
+  margin-bottom:18px;
   box-shadow:var(--shadow);
-  overflow:hidden;
 }
 
 .panelHead{
-  padding:20px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  gap:15px;
-  border-bottom:1px solid var(--border);
+  align-items:center;
+  gap:10px;
+  margin-bottom:15px;
 }
 
 .panelHead h2{
-  margin:0;
-}
-
-.search{
-  width:260px;
-  max-width:100%;
-  padding:12px 14px;
-  border-radius:13px;
-  border:1px solid var(--border);
-  outline:none;
+  font-size:20px;
 }
 
 .products{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  padding:20px;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
 }
 
 .product{
-  border:1px solid var(--border);
-  border-radius:21px;
+  border:1px solid var(--line);
+  border-radius:17px;
   overflow:hidden;
-  background:#fff;
 }
 
-.productImage{
-  height:210px;
-  background:#fff0f5;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.productImage img{
+.product img{
   width:100%;
-  height:100%;
+  aspect-ratio:1;
   object-fit:cover;
-}
-
-.productImage svg{
-  width:70px;
+  background:#f8edf2;
 }
 
 .productBody{
-  padding:16px;
+  padding:12px;
 }
 
-.category{
-  font-size:10px;
-  color:var(--pink);
-  text-transform:uppercase;
-  font-weight:950;
-  letter-spacing:1px;
+.productName{
+  font-weight:900;
 }
 
-.productBody h3{
-  margin:6px 0;
-}
-
-.productBody p{
+.productMeta{
   color:var(--muted);
   font-size:12px;
-}
-
-.price{
-  font-size:18px;
-  font-weight:950;
-}
-
-.stock{
-  display:inline-block;
-  padding:7px 10px;
-  background:#ecfbf4;
-  color:var(--green);
-  border-radius:999px;
-  font-size:11px;
-  font-weight:950;
-  margin:10px 0;
-}
-
-.stock.low{
-  background:#fff0f1;
-  color:var(--red);
-}
-
-.stock.sold{
-  background:#eee;
-  color:#777;
-}
-
-.cardActions{
-  display:flex;
-  gap:8px;
-}
-
-.edit{
-  flex:1;
-  padding:12px;
-  border-radius:13px;
-  background:#fff0f5;
-  color:var(--pink);
-  font-weight:900;
-}
-
-.delete{
-  padding:12px 15px;
-  border-radius:13px;
-  background:#fff0f1;
-  color:var(--red);
-  font-weight:900;
-}
-
-.orders{
-  padding:20px;
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
-
-.order{
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:17px;
-}
-
-.orderTop{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:15px;
-}
-
-.orderId{
-  font-weight:950;
-}
-
-.orderDate{
-  font-size:11px;
-  color:var(--muted);
   margin-top:4px;
 }
 
+.productPrice{
+  color:var(--pink);
+  font-weight:900;
+  margin-top:6px;
+}
+
+.productButtons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+  margin-top:10px;
+}
+
+.order{
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:15px;
+  margin-bottom:12px;
+}
+
+.orderHeader{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
 .status{
-  padding:7px 11px;
-  border-radius:999px;
-  font-size:10px;
-  font-weight:950;
-  text-transform:uppercase;
+  padding:6px 9px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:900;
+  text-transform:capitalize;
 }
 
 .pending{
-  background:#fff4df;
-  color:#a86c09;
+  background:#fff3cd;
+  color:#856404;
 }
 
 .confirmed{
-  background:#eaf4ff;
-  color:#2471c8;
+  background:#d1e7dd;
+  color:#0f5132;
 }
 
 .delivered{
-  background:#eafbf2;
-  color:#168b5d;
+  background:#cfe2ff;
+  color:#084298;
 }
 
 .cancelled{
-  background:#fff0f1;
-  color:#d9364c;
+  background:#f8d7da;
+  color:#842029;
 }
 
-.orderCustomer{
-  margin:15px 0;
-  padding:14px;
-  border-radius:15px;
-  background:#fff8fa;
+.customer{
+  margin-top:12px;
+  padding:12px;
+  border-radius:13px;
+  background:#fff8fb;
+}
+
+.customer div{
+  margin-top:4px;
   font-size:13px;
-  line-height:1.7;
 }
 
 .orderItems{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
+  margin-top:12px;
 }
 
 .orderItem{
   display:flex;
   justify-content:space-between;
-  gap:15px;
+  gap:10px;
+  padding:7px 0;
+  border-bottom:1px solid var(--line);
   font-size:13px;
 }
 
 .orderTotal{
-  margin-top:14px;
-  padding-top:14px;
-  border-top:1px solid var(--border);
-  display:flex;
-  justify-content:space-between;
-  font-weight:950;
+  text-align:right;
+  font-size:18px;
+  font-weight:900;
+  margin-top:12px;
 }
 
 .orderActions{
   display:flex;
+  flex-wrap:wrap;
   gap:8px;
-  margin-top:14px;
+  margin-top:13px;
 }
 
 .orderActions button{
-  flex:1;
-  padding:11px;
+  padding:10px 12px;
+  border-radius:10px;
+  font-weight:800;
+}
+
+.confirm{
+  background:#d1e7dd;
+  color:#0f5132;
+}
+
+.deliver{
+  background:#cfe2ff;
+  color:#084298;
+}
+
+.cancel{
+  background:#f8d7da;
+  color:#842029;
+}
+
+.search{
+  width:100%;
+  padding:13px;
+  border:1px solid var(--line);
   border-radius:12px;
-  font-weight:900;
+  margin-bottom:13px;
 }
 
-.confirmBtn{
-  background:#eaf4ff;
-  color:#2471c8;
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(20,10,15,.5);
+  z-index:90;
+  display:none;
 }
 
-.deliverBtn{
-  background:#eafbf2;
-  color:#168b5d;
-}
-
-.cancelBtn{
-  background:#fff0f1;
-  color:#d9364c;
-}
+.overlay.show{display:block}
 
 .modal{
   position:fixed;
-  inset:0;
-  z-index:300;
-  background:rgba(20,10,15,.55);
-  backdrop-filter:blur(8px);
-  display:none;
-  align-items:flex-end;
-  justify-content:center;
-}
-
-.modal.show{display:flex}
-
-.modalBox{
-  width:min(650px,100%);
-  max-height:94vh;
+  z-index:100;
+  left:50%;
+  top:50%;
+  width:calc(100% - 30px);
+  max-width:520px;
+  max-height:90vh;
   overflow:auto;
+  transform:translate(-50%,-45%);
   background:white;
-  border-radius:30px 30px 0 0;
-  padding:25px;
+  border-radius:25px;
+  padding:20px;
+  display:none;
 }
+
+.modal.show{display:block}
 
 .modalHead{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:20px;
+  margin-bottom:15px;
 }
-
-.modalHead h2{margin:0}
 
 .close{
-  width:40px;
-  height:40px;
+  width:38px;
+  height:38px;
   border-radius:50%;
-  background:#f5eef1;
-}
-
-.field{
-  margin-bottom:14px;
-}
-
-.field label{
-  display:block;
-  font-size:11px;
-  font-weight:950;
-  margin-bottom:6px;
-}
-
-.field input,
-.field textarea,
-.field select{
-  width:100%;
-  padding:14px;
-  border-radius:14px;
-  border:1px solid var(--border);
-  outline:none;
-  background:white;
-}
-
-.field textarea{
-  min-height:90px;
-}
-
-.primary{
-  width:100%;
-  padding:15px;
-  background:linear-gradient(135deg,var(--pink),var(--pink2));
-  color:white;
-  border-radius:15px;
-  font-weight:950;
-}
-
-.photo{
-  border:2px dashed #f0c8d6;
-  border-radius:18px;
-  padding:20px;
-  text-align:center;
-  color:var(--muted);
+  background:#f8edf2;
 }
 
 .preview{
-  display:none;
   width:100%;
-  height:220px;
+  max-height:230px;
   object-fit:cover;
-  border-radius:16px;
-  margin-top:10px;
+  border-radius:15px;
+  margin-top:8px;
+  display:none;
 }
 
-.empty{
-  padding:50px 20px;
-  text-align:center;
-  color:var(--muted);
-}
-
-.floatingAdd{
+.bottomAdd{
   position:fixed;
   right:20px;
-  bottom:22px;
-  width:62px;
-  height:62px;
+  bottom:20px;
+  width:58px;
+  height:58px;
   border-radius:50%;
   background:var(--pink);
   color:white;
-  z-index:150;
-  box-shadow:0 15px 30px rgba(232,62,115,.3);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  font-size:30px;
+  box-shadow:0 12px 30px rgba(232,62,140,.3);
+  z-index:50;
 }
 
-.floatingAdd svg{
-  width:27px;
-  height:27px;
+.empty{
+  text-align:center;
+  color:var(--muted);
+  padding:25px;
 }
 
-.spark{
+.notice{
   position:fixed;
-  z-index:-1;
-  opacity:.5;
-  pointer-events:none;
+  top:18px;
+  left:15px;
+  right:15px;
+  z-index:200;
+  background:#251d22;
+  color:white;
+  padding:14px;
+  border-radius:14px;
+  display:none;
 }
 
-.spark.one{
-  top:100px;
-  left:5%;
-}
+.notice.show{display:block}
+.notice.success{background:#198754}
+.notice.error{background:#dc3545}
 
-.spark.two{
-  bottom:120px;
-  right:8%;
-}
+@media(min-width:700px){
+  .stats{
+    grid-template-columns:repeat(4,1fr);
+  }
 
-@media(max-width:900px){
-  .stats{grid-template-columns:repeat(2,1fr)}
-  .products{grid-template-columns:repeat(2,1fr)}
-}
-
-@media(max-width:600px){
-  .page{padding-top:20px}
-  .stats{gap:10px}
-  .stat{padding:15px}
-  .stat strong{font-size:21px}
-  .products{grid-template-columns:1fr;padding:12px}
-  .panelHead{align-items:stretch;flex-direction:column}
-  .search{width:100%}
-  .tabs{overflow-x:auto}
-  .tab{white-space:nowrap}
-  .orderTop{flex-direction:column}
+  .products{
+    grid-template-columns:repeat(4,1fr);
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="container nav">
+<div id="notice" class="notice"></div>
+
+<!-- ADMIN LOGIN -->
+<section id="loginScreen" class="login">
+
+  <div class="loginBox">
 
     <div class="logo">
-      <svg viewBox="0 0 64 64" fill="none">
-        <path d="M32 55C20 45 9 37 9 23C9 15 15 9 23 9c5 0 8 3 9 6 1-3 4-6 9-6 8 0 14 6 14 14 0 14-11 22-23 32Z" fill="#e83e73"/>
-        <path d="M20 27c7-3 17-3 24 0" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
-      </svg>
-
-      LuxeStore Admin
+      Luxe<span>Store</span>
     </div>
 
-    <div class="actions">
-      <button class="iconBtn" onclick="toggleDark()" title="Theme">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z" stroke="currentColor" stroke-width="2"/>
-        </svg>
+    <p>Admin Dashboard</p>
+
+    <form id="loginForm" class="form">
+
+      <input
+        id="adminEmail"
+        type="email"
+        placeholder="Admin email"
+        required
+      >
+
+      <input
+        id="adminPassword"
+        type="password"
+        placeholder="Password"
+        required
+      >
+
+      <button class="primary">
+        Login to Dashboard
       </button>
 
-      <button class="iconBtn" onclick="openProductModal()" title="Add">
-        +
-      </button>
-    </div>
-
-  </div>
-</header>
-
-<main class="page">
-
-<div class="container">
-
-  <div class="welcome">
-    <h1>Good evening ✨</h1>
-    <p>Manage your LuxeStore products and orders.</p>
-  </div>
-
-  <div class="stats">
-
-    <div class="stat">
-      <div class="statTop">
-        <span>Products</span>
-        <div class="statIcon">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="m4 7 8-4 8 4-8 4-8-4Z" stroke="currentColor" stroke-width="2"/>
-            <path d="M4 7v10l8 4 8-4V7" stroke="currentColor" stroke-width="2"/>
-          </svg>
-        </div>
-      </div>
-      <strong id="statProducts">0</strong>
-      <span>Total products</span>
-    </div>
-
-    <div class="stat">
-      <div class="statTop">
-        <span>Stock</span>
-        <div class="statIcon">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M4 7h16M7 4h10v16H7z" stroke="currentColor" stroke-width="2"/>
-          </svg>
-        </div>
-      </div>
-      <strong id="statStock">0</strong>
-      <span>Items available</span>
-    </div>
-
-    <div class="stat">
-      <div class="statTop">
-        <span>Orders</span>
-        <div class="statIcon">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M4 6h16v14H4zM8 6V4h8v2" stroke="currentColor" stroke-width="2"/>
-          </svg>
-        </div>
-      </div>
-      <strong id="statOrders">0</strong>
-      <span>Total orders</span>
-    </div>
-
-    <div class="stat">
-      <div class="statTop">
-        <span>Sales</span>
-        <div class="statIcon">
-          ₦
-        </div>
-      </div>
-      <strong id="statSales">₦0</strong>
-      <span>Delivered/confirmed</span>
-    </div>
+    </form>
 
   </div>
 
-  <div class="tabs">
+</section>
 
-    <button class="tab active" onclick="showTab('products',this)">
-      Products
-    </button>
+<!-- ADMIN APP -->
+<section id="adminApp" class="app">
 
-    <button class="tab" onclick="showTab('orders',this)">
-      Orders
-    </button>
+  <header class="top">
 
-  </div>
+    <div class="topInner">
 
-  <!-- PRODUCTS -->
-  <section class="panel" id="productsPanel">
+      <div class="topTitle">
+        LuxeStore Admin
+      </div>
 
-    <div class="panelHead">
-      <div>
+      <div class="topActions">
+
+        <button
+          class="iconBtn"
+          onclick="enableNotifications()"
+          title="Notifications">
+          🔔
+        </button>
+
+        <button
+          class="iconBtn"
+          onclick="logoutAdmin()"
+          title="Logout">
+          ↪
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main class="main">
+
+    <div class="welcome">
+      <h1>Welcome back 👋</h1>
+      <p>Manage your LuxeStore products and customer orders.</p>
+    </div>
+
+    <section class="stats">
+
+      <div class="stat">
+        <small>Products</small>
+        <strong id="statProducts">0</strong>
+      </div>
+
+      <div class="stat">
+        <small>Total Stock</small>
+        <strong id="statStock">0</strong>
+      </div>
+
+      <div class="stat">
+        <small>Orders</small>
+        <strong id="statOrders">0</strong>
+      </div>
+
+      <div class="stat">
+        <small>Sales</small>
+        <strong id="statSales">₦0</strong>
+      </div>
+
+    </section>
+
+    <!-- PRODUCTS -->
+
+    <section class="panel">
+
+      <div class="panelHead">
+
         <h2>Products</h2>
-        <small style="color:#7c7076">
-          Add, edit and remove products.
-        </small>
+
+        <button class="primary" onclick="openProductModal()">
+          + Add Product
+        </button>
+
       </div>
 
       <input
+        id="productSearch"
         class="search"
-        id="search"
         placeholder="Search products..."
         oninput="renderProducts()"
       >
-    </div>
 
-    <div class="products" id="products">
-      <div class="empty">Loading…</div>
-    </div>
-
-  </section>
-
-  <!-- ORDERS -->
-  <section class="panel" id="ordersPanel" style="display:none">
-
-    <div class="panelHead">
-      <div>
-        <h2>Orders</h2>
-        <small style="color:#7c7076">
-          Manage customer orders and stock reservations.
-        </small>
+      <div id="products" class="products">
+        <div class="empty">Loading...</div>
       </div>
-    </div>
 
-    <div class="orders" id="orders">
-      <div class="empty">Loading orders…</div>
-    </div>
+    </section>
 
-  </section>
+    <!-- ORDERS -->
 
-</div>
+    <section class="panel">
 
-</main>
+      <div class="panelHead">
 
-<!-- FLOATING ADD -->
-<button class="floatingAdd" onclick="openProductModal()">
-  <svg viewBox="0 0 24 24" fill="none">
-    <path d="M12 5v14M5 12h14" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-  </svg>
-</button>
+        <h2>Customer Orders</h2>
 
-<!-- DECORATIVE SVG -->
-<svg class="spark one" width="100" height="100" viewBox="0 0 100 100">
-  <path d="M50 5l5 40 40 5-40 5-5 40-5-40-40-5 40-5 5-40Z" fill="#ffd4e2"/>
-</svg>
+      </div>
 
-<svg class="spark two" width="80" height="80" viewBox="0 0 100 100">
-  <circle cx="50" cy="50" r="35" fill="#ffe5ef"/>
-</svg>
+      <input
+        id="orderSearch"
+        class="search"
+        placeholder="Search customer or order..."
+        oninput="renderOrders()"
+      >
+
+      <div id="orders">
+        <div class="empty">Loading orders...</div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <button class="bottomAdd" onclick="openProductModal()">+</button>
+
+</section>
+
+<!-- OVERLAY -->
+
+<div id="overlay" class="overlay" onclick="closeProductModal()"></div>
 
 <!-- PRODUCT MODAL -->
-<div class="modal" id="productModal">
 
-  <div class="modalBox">
+<div id="productModal" class="modal">
 
-    <div class="modalHead">
+  <div class="modalHead">
 
-      <h2 id="modalTitle">Add product</h2>
+    <h2 id="modalTitle">Add Product</h2>
 
-      <button class="close" onclick="closeProductModal()">
-        ✕
-      </button>
-
-    </div>
-
-    <input type="hidden" id="editingId">
-
-    <div class="field">
-      <label>PRODUCT NAME</label>
-      <input id="name" placeholder="e.g. Luxury Rose Perfume">
-    </div>
-
-    <div class="field">
-      <label>CATEGORY</label>
-
-      <select id="category">
-        <option>Clothing</option>
-        <option>Perfumes</option>
-        <option>Bags</option>
-        <option>Shoes</option>
-        <option>Jewelry</option>
-        <option>Watches</option>
-        <option>Accessories</option>
-      </select>
-
-    </div>
-
-    <div class="field">
-      <label>PRICE</label>
-      <input id="price" type="number" placeholder="25000">
-    </div>
-
-    <div class="field">
-      <label>STOCK QUANTITY</label>
-      <input id="stock" type="number" min="0" placeholder="10">
-    </div>
-
-    <div class="field">
-      <label>DESCRIPTION</label>
-      <textarea id="description" placeholder="Short product description"></textarea>
-    </div>
-
-    <div class="field">
-
-      <label>PRODUCT PHOTO</label>
-
-      <div class="photo">
-
-        <input
-          id="imageInput"
-          type="file"
-          accept="image/*"
-          onchange="previewImage(event)"
-        >
-
-        <div style="font-size:12px;margin-top:8px">
-          Choose a photo from your iPhone.
-        </div>
-
-        <img id="preview" class="preview">
-
-      </div>
-
-    </div>
-
-    <button class="primary" onclick="saveProduct()" id="saveBtn">
-      Save product
-    </button>
+    <button class="close" onclick="closeProductModal()">×</button>
 
   </div>
+
+  <form id="productForm" class="form">
+
+    <input id="productName" placeholder="Product name" required>
+
+    <select id="productCategory" required>
+      <option value="">Choose category</option>
+      <option>Clothing</option>
+      <option>Perfumes</option>
+      <option>Bags</option>
+      <option>Shoes</option>
+      <option>Jewelry</option>
+      <option>Watches</option>
+      <option>Accessories</option>
+    </select>
+
+    <input
+      id="productPrice"
+      type="number"
+      placeholder="Price ₦"
+      min="0"
+      required
+    >
+
+    <input
+      id="productStock"
+      type="number"
+      placeholder="Stock quantity"
+      min="0"
+      required
+    >
+
+    <textarea
+      id="productDescription"
+      rows="3"
+      placeholder="Product description"
+    ></textarea>
+
+    <input
+      id="productImage"
+      type="file"
+      accept="image/*"
+    >
+
+    <img id="imagePreview" class="preview">
+
+    <button class="primary" id="saveProductBtn">
+      Save Product
+    </button>
+
+  </form>
 
 </div>
 
@@ -835,17 +717,27 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebas
 import {
   getFirestore,
   collection,
-  doc,
   addDoc,
   updateDoc,
   deleteDoc,
+  doc,
   onSnapshot,
+  query,
+  where,
+  getDocs,
   runTransaction,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBLx6RK5sRIduaKiDSTAGlKPmfUH7iDSBM",
+  apiKey: "AIzaSyBLx6RK5sRIduaKiDSTAlgkFUH7iDSBM",
   authDomain: "shop-3d56c.firebaseapp.com",
   projectId: "shop-3d56c",
   storageBucket: "shop-3d56c.firebasestorage.app",
@@ -853,44 +745,145 @@ const firebaseConfig = {
   appId: "1:285039032126:web:c2226d1aeb02a555c35e6f"
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const app=initializeApp(firebaseConfig);
+const db=getFirestore(app);
+const auth=getAuth(app);
 
-let products = [];
-let orders = [];
-let selectedImage = "";
-let editingId = null;
+let products=[];
+let orders=[];
+let editingProductId=null;
+let editingImage="";
+let adminReady=false;
 
-const money = value =>
-  "₦" + Number(value || 0).toLocaleString("en-NG");
+const money=n=>"₦"+Number(n||0).toLocaleString();
 
-function escapeHTML(value){
-  return String(value ?? "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+function notice(message,type=""){
+  const el=document.getElementById("notice");
+
+  el.textContent=message;
+  el.className="notice show "+type;
+
+  setTimeout(()=>{
+    el.className="notice";
+  },3500);
 }
 
-function placeholderSVG(){
+document.getElementById("loginForm").addEventListener("submit",async e=>{
 
-  return `
-  <svg viewBox="0 0 100 100" fill="none">
-    <circle cx="50" cy="50" r="45" fill="#ffe0ea"/>
-    <path d="M28 62c10-18 34-18 44 0" stroke="#e83e73" stroke-width="5"/>
-    <circle cx="39" cy="42" r="5" fill="#e83e73"/>
-    <circle cx="61" cy="42" r="5" fill="#e83e73"/>
-  </svg>`;
-}
+  e.preventDefault();
 
-/* LIVE PRODUCTS */
+  const email=document.getElementById("adminEmail").value.trim();
+  const password=document.getElementById("adminPassword").value;
 
-onSnapshot(
-  collection(db,"products"),
-  snapshot=>{
+  try{
 
-    products = snapshot.docs.map(d=>({
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+  }catch(error){
+
+    console.error(error);
+
+    notice(
+      "Invalid admin email or password.",
+      "error"
+    );
+  }
+});
+
+onAuthStateChanged(auth,async user=>{
+
+  if(!user){
+    adminReady=false;
+
+    document.getElementById("loginScreen").style.display="grid";
+    document.getElementById("adminApp").style.display="none";
+
+    return;
+  }
+
+  try{
+
+    /*
+      SECURITY:
+      Your Firebase Auth admin user's UID must have:
+
+      admins/{UID}
+
+      with:
+
+      email = admin email
+      role = "admin"
+      active = true
+    */
+
+    const adminRef=doc(db,"admins",user.uid);
+
+    const adminSnap=await getDocs(
+      query(
+        collection(db,"admins"),
+        where("__name__","==",user.uid)
+      )
+    );
+
+    if(adminSnap.empty){
+
+      await signOut(auth);
+
+      notice(
+        "This account is not registered as an admin.",
+        "error"
+      );
+
+      return;
+    }
+
+    const adminData=adminSnap.docs[0].data();
+
+    if(
+      adminData.role!=="admin" ||
+      adminData.active!==true
+    ){
+
+      await signOut(auth);
+
+      notice(
+        "Admin access is disabled.",
+        "error"
+      );
+
+      return;
+    }
+
+    adminReady=true;
+
+    document.getElementById("loginScreen").style.display="none";
+    document.getElementById("adminApp").style.display="block";
+
+    startListeners();
+
+  }catch(error){
+
+    console.error(error);
+
+    await signOut(auth);
+
+    notice(
+      "Unable to verify admin account.",
+      "error"
+    );
+  }
+
+});
+
+function startListeners(){
+
+  onSnapshot(collection(db,"products"),snapshot=>{
+
+    products=snapshot.docs.map(d=>({
       id:d.id,
       ...d.data()
     }));
@@ -898,172 +891,118 @@ onSnapshot(
     renderProducts();
     updateStats();
 
-  },
-  error=>{
+  });
 
-    console.error(error);
+  onSnapshot(collection(db,"orders"),snapshot=>{
 
-    document.getElementById("products").innerHTML = `
-      <div class="empty">
-        Could not load products.<br>
-        Check Firestore permissions.
-      </div>`;
-  }
-);
-
-/* LIVE ORDERS */
-
-onSnapshot(
-  collection(db,"orders"),
-  snapshot=>{
-
-    orders = snapshot.docs.map(d=>({
+    orders=snapshot.docs.map(d=>({
       id:d.id,
       ...d.data()
     }));
 
     orders.sort((a,b)=>{
 
-      const aTime =
-        a.createdAt?.seconds || 0;
+      const ta=a.createdAt?.seconds||0;
+      const tb=b.createdAt?.seconds||0;
 
-      const bTime =
-        b.createdAt?.seconds || 0;
-
-      return bTime-aTime;
-
+      return tb-ta;
     });
 
     renderOrders();
     updateStats();
 
-  },
-  error=>{
+  });
 
-    console.error(error);
-
-    document.getElementById("orders").innerHTML = `
-      <div class="empty">
-        Could not load orders.<br>
-        Check Firestore permissions.
-      </div>`;
-  }
-);
+}
 
 function updateStats(){
 
-  document.getElementById("statProducts")
-    .textContent = products.length;
+  const totalStock=products.reduce(
+    (sum,p)=>sum+Number(p.stock||0),
+    0
+  );
 
-  const stock =
-    products.reduce(
-      (sum,p)=>sum + Number(p.stock || 0),
+  const sales=orders
+    .filter(o=>o.status==="confirmed" || o.status==="delivered")
+    .reduce(
+      (sum,o)=>sum+Number(o.total||0),
       0
     );
 
-  document.getElementById("statStock")
-    .textContent = stock;
+  document.getElementById("statProducts").textContent=
+    products.length;
 
-  document.getElementById("statOrders")
-    .textContent = orders.length;
+  document.getElementById("statStock").textContent=
+    totalStock;
 
-  const sales =
-    orders
-      .filter(o=>o.status==="confirmed" || o.status==="delivered")
-      .reduce(
-        (sum,o)=>sum + Number(o.total || 0),
-        0
-      );
+  document.getElementById("statOrders").textContent=
+    orders.length;
 
-  document.getElementById("statSales")
-    .textContent = money(sales);
+  document.getElementById("statSales").textContent=
+    money(sales);
 }
 
-function stockBadge(stock){
+function renderProducts(){
 
-  stock = Number(stock || 0);
+  const box=document.getElementById("products");
 
-  if(stock <= 0)
-    return `<span class="stock sold">Sold out</span>`;
-
-  if(stock <= 3)
-    return `<span class="stock low">Only ${stock} left</span>`;
-
-  return `<span class="stock">${stock} in stock</span>`;
-}
-
-window.renderProducts = function(){
-
-  const box = document.getElementById("products");
-
-  const search =
-    document.getElementById("search")
+  const search=
+    document.getElementById("productSearch")
       .value
-      .toLowerCase()
-      .trim();
+      .toLowerCase();
 
-  const list = products.filter(p=>
-    String(p.name || "").toLowerCase().includes(search) ||
-    String(p.category || "").toLowerCase().includes(search)
+  const list=products.filter(p=>
+    String(p.name||"").toLowerCase().includes(search) ||
+    String(p.category||"").toLowerCase().includes(search)
   );
 
   if(!list.length){
 
-    box.innerHTML = `
-      <div class="empty">
-        No products found.
-      </div>`;
+    box.innerHTML=
+      `<div class="empty">No products found.</div>`;
 
     return;
   }
 
-  box.innerHTML = list.map(p=>`
+  box.innerHTML=list.map(p=>`
 
     <article class="product">
 
-      <div class="productImage">
-
-        ${
-          p.image
-          ? `<img src="${p.image}" alt="${escapeHTML(p.name)}">`
-          : placeholderSVG()
-        }
-
-      </div>
+      ${
+        p.image
+        ? `<img src="${p.image}" alt="">`
+        : `<div style="aspect-ratio:1;background:#f8edf2"></div>`
+      }
 
       <div class="productBody">
 
-        <div class="category">
-          ${escapeHTML(p.category || "Collection")}
+        <div class="productName">
+          ${escapeHtml(p.name||"Product")}
         </div>
 
-        <h3>
-          ${escapeHTML(p.name || "Product")}
-        </h3>
+        <div class="productMeta">
+          ${escapeHtml(p.category||"")}
+        </div>
 
-        <p>
-          ${escapeHTML(p.description || "")}
-        </p>
-
-        <div class="price">
+        <div class="productPrice">
           ${money(p.price)}
         </div>
 
-        ${stockBadge(p.stock)}
+        <div class="productMeta">
+          Stock: <strong>${Number(p.stock||0)}</strong>
+        </div>
 
-        <div class="cardActions">
+        <div class="productButtons">
 
           <button
-            class="edit"
-            onclick="editProduct('${p.id}')"
-          >
+            class="secondary"
+            onclick="editProduct('${p.id}')">
             Edit
           </button>
 
           <button
-            class="delete"
-            onclick="deleteProduct('${p.id}')"
-          >
+            class="danger"
+            onclick="deleteProduct('${p.id}')">
             Delete
           </button>
 
@@ -1074,180 +1013,156 @@ window.renderProducts = function(){
     </article>
 
   `).join("");
-};
+}
 
-window.openProductModal = function(){
+window.openProductModal=function(product=null){
 
-  editingId = null;
-  selectedImage = "";
+  document.getElementById("overlay").classList.add("show");
+  document.getElementById("productModal").classList.add("show");
 
-  document.getElementById("editingId").value = "";
-  document.getElementById("modalTitle").textContent = "Add product";
+  if(product){
 
-  document.getElementById("name").value = "";
-  document.getElementById("category").value = "Clothing";
-  document.getElementById("price").value = "";
-  document.getElementById("stock").value = "";
-  document.getElementById("description").value = "";
+    editingProductId=product.id;
+    editingImage=product.image||"";
 
-  document.getElementById("imageInput").value = "";
+    document.getElementById("modalTitle").textContent=
+      "Edit Product";
 
-  const preview =
-    document.getElementById("preview");
+    document.getElementById("productName").value=
+      product.name||"";
 
-  preview.style.display = "none";
-  preview.src = "";
+    document.getElementById("productCategory").value=
+      product.category||"";
 
-  document.getElementById("productModal")
-    .classList.add("show");
-};
+    document.getElementById("productPrice").value=
+      product.price||0;
 
-window.closeProductModal = function(){
+    document.getElementById("productStock").value=
+      product.stock||0;
 
-  document.getElementById("productModal")
-    .classList.remove("show");
-};
+    document.getElementById("productDescription").value=
+      product.description||"";
 
-window.previewImage = function(event){
+    if(editingImage){
 
-  const file = event.target.files[0];
+      const preview=document.getElementById("imagePreview");
 
-  if(!file) return;
-
-  const reader = new FileReader();
-
-  reader.onload = function(e){
-
-    selectedImage = e.target.result;
-
-    const preview =
-      document.getElementById("preview");
-
-    preview.src = selectedImage;
-    preview.style.display = "block";
-  };
-
-  reader.readAsDataURL(file);
-};
-
-window.editProduct = function(id){
-
-  const product =
-    products.find(p=>p.id===id);
-
-  if(!product) return;
-
-  editingId = id;
-
-  document.getElementById("modalTitle")
-    .textContent = "Edit product";
-
-  document.getElementById("name").value =
-    product.name || "";
-
-  document.getElementById("category").value =
-    product.category || "Clothing";
-
-  document.getElementById("price").value =
-    product.price || "";
-
-  document.getElementById("stock").value =
-    product.stock ?? 0;
-
-  document.getElementById("description").value =
-    product.description || "";
-
-  selectedImage =
-    product.image || "";
-
-  const preview =
-    document.getElementById("preview");
-
-  if(selectedImage){
-
-    preview.src = selectedImage;
-    preview.style.display = "block";
+      preview.src=editingImage;
+      preview.style.display="block";
+    }
 
   }else{
 
-    preview.src = "";
-    preview.style.display = "none";
+    editingProductId=null;
+    editingImage="";
 
+    document.getElementById("modalTitle").textContent=
+      "Add Product";
+
+    document.getElementById("productForm").reset();
+
+    document.getElementById("imagePreview").style.display=
+      "none";
   }
-
-  document.getElementById("productModal")
-    .classList.add("show");
 };
 
-window.saveProduct = async function(){
+window.closeProductModal=function(){
 
-  const name =
-    document.getElementById("name").value.trim();
+  document.getElementById("overlay").classList.remove("show");
+  document.getElementById("productModal").classList.remove("show");
 
-  const category =
-    document.getElementById("category").value;
+};
 
-  const price =
-    Number(document.getElementById("price").value);
+document.getElementById("productImage").addEventListener("change",e=>{
 
-  const stock =
-    Number(document.getElementById("stock").value);
+  const file=e.target.files[0];
 
-  const description =
-    document.getElementById("description").value.trim();
+  if(!file)return;
 
-  if(!name){
+  const reader=new FileReader();
 
-    alert("Enter a product name.");
-    return;
-  }
+  reader.onload=event=>{
 
-  if(price < 0 || Number.isNaN(price)){
+    const preview=document.getElementById("imagePreview");
 
-    alert("Enter a valid price.");
-    return;
-  }
+    preview.src=event.target.result;
+    preview.style.display="block";
 
-  if(stock < 0 || Number.isNaN(stock)){
+  };
 
-    alert("Enter a valid stock quantity.");
-    return;
-  }
+  reader.readAsDataURL(file);
 
-  const btn =
-    document.getElementById("saveBtn");
+});
 
-  btn.disabled = true;
-  btn.textContent = "Saving…";
+document.getElementById("productForm").addEventListener("submit",async e=>{
+
+  e.preventDefault();
+
+  const button=document.getElementById("saveProductBtn");
+
+  button.disabled=true;
+  button.textContent="Saving...";
 
   try{
 
-    const data = {
+    let image=editingImage;
 
-      name,
-      category,
-      price,
-      stock,
-      description,
-      image:selectedImage || "",
+    const file=document.getElementById("productImage").files[0];
+
+    if(file){
+
+      image=await fileToBase64(file);
+    }
+
+    const data={
+
+      name:document.getElementById("productName").value.trim(),
+
+      category:
+        document.getElementById("productCategory").value,
+
+      price:Number(
+        document.getElementById("productPrice").value
+      ),
+
+      stock:Number(
+        document.getElementById("productStock").value
+      ),
+
+      description:
+        document.getElementById("productDescription").value.trim(),
+
+      image:image||"",
+
       updatedAt:serverTimestamp()
 
     };
 
-    if(editingId){
+    if(editingProductId){
 
       await updateDoc(
-        doc(db,"products",editingId),
+        doc(db,"products",editingProductId),
         data
+      );
+
+      notice(
+        "Product updated successfully.",
+        "success"
       );
 
     }else{
 
-      data.createdAt = serverTimestamp();
-
       await addDoc(
         collection(db,"products"),
-        data
+        {
+          ...data,
+          createdAt:serverTimestamp()
+        }
+      );
+
+      notice(
+        "Product added successfully 🎉",
+        "success"
       );
     }
 
@@ -1257,32 +1172,54 @@ window.saveProduct = async function(){
 
     console.error(error);
 
-    alert(
-      "Could not save product.\n\n" +
-      error.message
+    notice(
+      "Could not save product.",
+      "error"
     );
 
   }finally{
 
-    btn.disabled = false;
-    btn.textContent = "Save product";
+    button.disabled=false;
+    button.textContent="Save Product";
 
   }
+
+});
+
+function fileToBase64(file){
+
+  return new Promise((resolve,reject)=>{
+
+    const reader=new FileReader();
+
+    reader.onload=()=>resolve(reader.result);
+    reader.onerror=reject;
+
+    reader.readAsDataURL(file);
+
+  });
+
+}
+
+window.editProduct=function(id){
+
+  const product=products.find(p=>p.id===id);
+
+  if(product){
+    openProductModal(product);
+  }
+
 };
 
-window.deleteProduct = async function(id){
+window.deleteProduct=async function(id){
 
-  const product =
-    products.find(p=>p.id===id);
+  const product=products.find(p=>p.id===id);
 
-  if(!product) return;
+  if(!product)return;
 
-  const ok =
-    confirm(
-      `Delete "${product.name}"?\n\nThis cannot be undone.`
-    );
-
-  if(!ok) return;
+  if(!confirm(
+    `Delete "${product.name}"?`
+  ))return;
 
   try{
 
@@ -1290,200 +1227,189 @@ window.deleteProduct = async function(id){
       doc(db,"products",id)
     );
 
+    notice(
+      "Product deleted.",
+      "success"
+    );
+
   }catch(error){
 
     console.error(error);
 
-    alert(
-      "Could not delete product.\n\n" +
-      error.message
+    notice(
+      "Could not delete product.",
+      "error"
     );
   }
+
 };
-
-/* ORDERS */
-
-function formatDate(timestamp){
-
-  if(!timestamp) return "Just now";
-
-  try{
-
-    return new Date(
-      timestamp.seconds * 1000
-    ).toLocaleString("en-NG",{
-      dateStyle:"medium",
-      timeStyle:"short"
-    });
-
-  }catch{
-
-    return "Date unavailable";
-  }
-}
-
-function statusClass(status){
-
-  if(status==="confirmed") return "confirmed";
-  if(status==="delivered") return "delivered";
-  if(status==="cancelled") return "cancelled";
-
-  return "pending";
-}
 
 function renderOrders(){
 
-  const box =
-    document.getElementById("orders");
+  const box=document.getElementById("orders");
 
-  if(!orders.length){
+  const search=
+    document.getElementById("orderSearch")
+      .value
+      .toLowerCase();
 
-    box.innerHTML = `
-      <div class="empty">
-        No orders yet 🛍️
-      </div>`;
+  const list=orders.filter(order=>{
+
+    const name=
+      String(order.customer?.name||"").toLowerCase();
+
+    const phone=
+      String(order.customer?.phone||"").toLowerCase();
+
+    const id=
+      String(order.id||"").toLowerCase();
+
+    return(
+      name.includes(search) ||
+      phone.includes(search) ||
+      id.includes(search)
+    );
+
+  });
+
+  if(!list.length){
+
+    box.innerHTML=
+      `<div class="empty">No orders found.</div>`;
 
     return;
   }
 
-  box.innerHTML = orders.map(order=>{
+  box.innerHTML=list.map(order=>{
 
-    const customer =
-      order.customer || {};
+    const status=order.status||"pending";
 
-    const items =
-      Array.isArray(order.items)
-      ? order.items
-      : [];
+    const date=order.createdAt?.toDate
+      ? order.createdAt.toDate().toLocaleString()
+      : "Just now";
+
+    const customer=order.customer||{};
+
+    const items=(order.items||[]).map(item=>`
+
+      <div class="orderItem">
+
+        <span>
+          ${escapeHtml(item.name||"Product")}
+          × ${item.quantity}
+        </span>
+
+        <strong>
+          ${money(
+            Number(item.price||0)*
+            Number(item.quantity||0)
+          )}
+        </strong>
+
+      </div>
+
+    `).join("");
 
     return `
 
       <article class="order">
 
-        <div class="orderTop">
+        <div class="orderHeader">
 
           <div>
 
-            <div class="orderId">
-              #${order.id.slice(0,8).toUpperCase()}
-            </div>
+            <strong>
+              Order #${order.id.slice(0,8)}
+            </strong>
 
-            <div class="orderDate">
-              ${formatDate(order.createdAt)}
+            <div style="font-size:11px;color:#82747c;margin-top:4px">
+              ${date}
             </div>
 
           </div>
 
-          <span class="status ${statusClass(order.status)}">
-            ${escapeHTML(order.status || "pending")}
+          <span class="status ${status}">
+            ${status}
           </span>
 
         </div>
 
-        <div class="orderCustomer">
+        <div class="customer">
 
-          <strong>
-            ${escapeHTML(customer.name || "Customer")}
-          </strong>
+          <strong>Customer</strong>
 
-          <br>
+          <div>
+            Name: ${escapeHtml(customer.name||"")}
+          </div>
 
-          📞 ${escapeHTML(customer.phone || "No phone")}
+          <div>
+            Phone: ${escapeHtml(customer.phone||"")}
+          </div>
 
-          <br>
-
-          📍 ${escapeHTML(customer.address || "No address")}
+          <div>
+            Address: ${escapeHtml(customer.address||"")}
+          </div>
 
           ${
             customer.note
-            ? `<br>📝 ${escapeHTML(customer.note)}`
-            : ""
+            ? `<div>Note: ${escapeHtml(customer.note)}</div>`
+            :""
           }
 
         </div>
 
         <div class="orderItems">
 
-          ${items.map(item=>`
-
-            <div class="orderItem">
-
-              <span>
-                ${escapeHTML(item.name)}
-                × ${Number(item.quantity || 0)}
-              </span>
-
-              <strong>
-                ${money(
-                  Number(item.price || 0) *
-                  Number(item.quantity || 0)
-                )}
-              </strong>
-
-            </div>
-
-          `).join("")}
+          ${items}
 
         </div>
 
         <div class="orderTotal">
-
-          <span>Total</span>
-
-          <span>
-            ${money(order.total)}
-          </span>
-
+          Total: ${money(order.total)}
         </div>
 
         ${
-          order.status !== "cancelled"
+          status==="pending"
           ? `
-          <div class="orderActions">
+            <div class="orderActions">
 
-            ${
-              order.status === "pending"
-              ? `
               <button
-                class="confirmBtn"
-                onclick="changeOrderStatus('${order.id}','confirmed')"
-              >
-                Confirm
+                class="confirm"
+                onclick="changeOrderStatus('${order.id}','confirmed')">
+                ✓ Confirm Order
               </button>
-              `
-              : ""
-            }
 
-            ${
-              order.status === "confirmed"
-              ? `
               <button
-                class="deliverBtn"
-                onclick="changeOrderStatus('${order.id}','delivered')"
-              >
-                Delivered
-              </button>
-              `
-              : ""
-            }
-
-            ${
-              order.status === "pending" ||
-              order.status === "confirmed"
-              ? `
-              <button
-                class="cancelBtn"
-                onclick="cancelOrder('${order.id}')"
-              >
+                class="cancel"
+                onclick="changeOrderStatus('${order.id}','cancelled')">
                 Cancel
               </button>
-              `
-              : ""
-            }
 
-          </div>
+            </div>
           `
-          : ""
+          :""
+        }
+
+        ${
+          status==="confirmed"
+          ? `
+            <div class="orderActions">
+
+              <button
+                class="deliver"
+                onclick="changeOrderStatus('${order.id}','delivered')">
+                ✓ Mark Delivered
+              </button>
+
+              <button
+                class="cancel"
+                onclick="changeOrderStatus('${order.id}','cancelled')">
+                Cancel
+              </button>
+
+            </div>
+          `
+          :""
         }
 
       </article>
@@ -1493,112 +1419,76 @@ function renderOrders(){
   }).join("");
 }
 
-window.changeOrderStatus = async function(id,status){
+window.changeOrderStatus=async function(orderId,newStatus){
 
-  try{
+  const order=orders.find(o=>o.id===orderId);
 
-    await updateDoc(
-      doc(db,"orders",id),
-      {
-        status,
-        updatedAt:serverTimestamp()
-      }
-    );
+  if(!order)return;
 
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Could not update order.\n\n" +
-      error.message
-    );
-  }
-};
-
-/*
-  CANCEL ORDER
-
-  If stock was reserved by this order,
-  cancelling it puts the quantities back.
-*/
-
-window.cancelOrder = async function(id){
-
-  const order =
-    orders.find(o=>o.id===id);
-
-  if(!order) return;
-
-  if(order.status === "cancelled"){
+  if(
+    newStatus==="cancelled" &&
+    !confirm(
+      "Cancel this order and return the items to stock?"
+    )
+  ){
     return;
   }
 
-  const ok =
-    confirm(
-      "Cancel this order and return its reserved stock?"
-    );
-
-  if(!ok) return;
-
   try{
 
-    await runTransaction(
-      db,
-      async(transaction)=>{
+    const orderRef=doc(db,"orders",orderId);
 
-        const orderRef =
-          doc(db,"orders",id);
+    await runTransaction(db,async transaction=>{
 
-        const orderSnap =
-          await transaction.get(orderRef);
+      const orderSnap=await transaction.get(orderRef);
 
-        if(!orderSnap.exists()){
-          throw new Error("Order no longer exists.");
-        }
+      if(!orderSnap.exists()){
+        throw new Error("Order no longer exists.");
+      }
 
-        const currentOrder =
-          orderSnap.data();
+      const current=orderSnap.data();
 
-        if(currentOrder.status === "cancelled"){
-          return;
-        }
+      if(
+        current.status==="cancelled" ||
+        current.status==="delivered"
+      ){
+        throw new Error(
+          "This order can no longer be changed."
+        );
+      }
 
-        const items =
-          Array.isArray(currentOrder.items)
-          ? currentOrder.items
-          : [];
+      /*
+        If cancelling an order whose stock was reserved,
+        restore each product quantity.
+      */
 
-        const productRefs = [];
+      if(
+        newStatus==="cancelled" &&
+        current.stockReserved===true
+      ){
 
-        for(const item of items){
+        for(const item of current.items||[]){
 
-          const ref =
+          const productRef=
             doc(db,"products",item.productId);
 
-          const snap =
-            await transaction.get(ref);
+          const productSnap=
+            await transaction.get(productRef);
 
-          productRefs.push({
-            ref,
-            snap,
-            quantity:Number(item.quantity || 0)
-          });
-        }
+          if(productSnap.exists()){
 
-        for(const product of productRefs){
+            const productData=
+              productSnap.data();
 
-          if(product.snap.exists()){
-
-            const currentStock =
-              Number(product.snap.data().stock || 0);
+            const oldStock=
+              Number(productData.stock||0);
 
             transaction.update(
-              product.ref,
+              productRef,
               {
                 stock:
-                  currentStock +
-                  product.quantity,
+                  oldStock+
+                  Number(item.quantity||0),
 
                 updatedAt:
                   serverTimestamp()
@@ -1612,101 +1502,70 @@ window.cancelOrder = async function(id){
           {
             status:"cancelled",
             stockReserved:false,
-            cancelledAt:serverTimestamp(),
             updatedAt:serverTimestamp()
           }
         );
 
-      }
-    );
+      }else{
 
-    alert("Order cancelled and stock restored.");
+        transaction.update(
+          orderRef,
+          {
+            status:newStatus,
+            updatedAt:serverTimestamp()
+          }
+        );
+      }
+
+    });
+
+    notice(
+      newStatus==="confirmed"
+        ? "Order confirmed ✅"
+        : newStatus==="delivered"
+          ? "Order marked as delivered 🎉"
+          : "Order cancelled and stock restored.",
+      "success"
+    );
 
   }catch(error){
 
     console.error(error);
 
-    alert(
-      "Could not cancel order.\n\n" +
-      error.message
+    notice(
+      error.message||"Could not update order.",
+      "error"
     );
+
   }
+
 };
 
-window.showTab = function(tab,button){
+window.logoutAdmin=async function(){
 
-  document.querySelectorAll(".tab")
-    .forEach(x=>x.classList.remove("active"));
+  await signOut(auth);
 
-  button.classList.add("active");
-
-  if(tab==="products"){
-
-    document.getElementById("productsPanel")
-      .style.display = "block";
-
-    document.getElementById("ordersPanel")
-      .style.display = "none";
-
-  }else{
-
-    document.getElementById("productsPanel")
-      .style.display = "none";
-
-    document.getElementById("ordersPanel")
-      .style.display = "block";
-  }
 };
 
-window.toggleDark = function(){
+window.enableNotifications=function(){
 
-  document.body.classList.toggle("dark");
+  notice(
+    "Push notifications require the Firebase messaging setup already added to your project.",
+    "success"
+  );
 
-  if(document.body.classList.contains("dark")){
-
-    document.documentElement.style.setProperty(
-      "--bg","#171316"
-    );
-
-    document.documentElement.style.setProperty(
-      "--card","#211a1e"
-    );
-
-    document.documentElement.style.setProperty(
-      "--text","#fff"
-    );
-
-    document.documentElement.style.setProperty(
-      "--muted","#bcaeb4"
-    );
-
-    document.documentElement.style.setProperty(
-      "--border","#3a2d33"
-    );
-
-  }else{
-
-    document.documentElement.style.setProperty(
-      "--bg","#fffafc"
-    );
-
-    document.documentElement.style.setProperty(
-      "--card","#fff"
-    );
-
-    document.documentElement.style.setProperty(
-      "--text","#241c20"
-    );
-
-    document.documentElement.style.setProperty(
-      "--muted","#7c7076"
-    );
-
-    document.documentElement.style.setProperty(
-      "--border","#f0dfe6"
-    );
-  }
 };
+
+function escapeHtml(value){
+
+  return String(value??"")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
 
 </script>
 
