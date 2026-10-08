@@ -4,9 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#fff4f8">
+
 <title>LuxeStore — Fashion, Beauty & Accessories</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -24,6 +26,7 @@
   --line:#f0dfe7;
   --green:#18a66b;
   --red:#dc3545;
+  --orange:#c76b00;
   --shadow:0 12px 35px rgba(70,25,45,.10);
 }
 
@@ -34,7 +37,14 @@ body{
   min-height:100vh;
 }
 
-button,input,textarea,select{
+body.locked{
+  overflow:hidden;
+}
+
+button,
+input,
+textarea,
+select{
   font:inherit;
 }
 
@@ -48,13 +58,15 @@ a{
   color:inherit;
 }
 
-/* NAVIGATION */
+/* =========================
+   NAV
+========================= */
 
 .nav{
   position:sticky;
   top:0;
   z-index:100;
-  background:rgba(255,255,255,.94);
+  background:rgba(255,255,255,.95);
   backdrop-filter:blur(18px);
   border-bottom:1px solid var(--line);
 }
@@ -67,7 +79,7 @@ a{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:15px;
+  gap:12px;
 }
 
 .logo{
@@ -75,7 +87,6 @@ a{
   align-items:center;
   gap:10px;
   font-weight:900;
-  letter-spacing:-.5px;
   font-size:20px;
 }
 
@@ -95,21 +106,28 @@ a{
   height:24px;
 }
 
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.account-nav,
 .cart-nav{
-  width:46px;
-  height:46px;
-  border-radius:15px;
+  width:44px;
+  height:44px;
+  border-radius:14px;
   background:#fff;
   border:1px solid var(--line);
   display:grid;
   place-items:center;
   position:relative;
-  box-shadow:0 5px 15px rgba(0,0,0,.04);
 }
 
+.account-nav svg,
 .cart-nav svg{
-  width:22px;
-  height:22px;
+  width:21px;
+  height:21px;
 }
 
 .cart-count{
@@ -128,7 +146,9 @@ a{
   padding:0 5px;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
   position:relative;
@@ -174,7 +194,6 @@ a{
   padding:15px 21px;
   border-radius:16px;
   font-weight:800;
-  box-shadow:0 12px 25px rgba(33,21,27,.18);
 }
 
 .hero-btn svg{
@@ -191,7 +210,9 @@ a{
   opacity:.6;
 }
 
-/* CATEGORIES */
+/* =========================
+   CATEGORIES
+========================= */
 
 .categories{
   max-width:1200px;
@@ -227,25 +248,22 @@ a{
   border-color:var(--pink);
 }
 
-/* PRODUCTS */
+/* =========================
+   PRODUCTS
+========================= */
 
 .section{
   max-width:1200px;
   margin:auto;
-  padding:10px 20px 100px;
+  padding:10px 20px 110px;
 }
 
 .section-head{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  gap:15px;
   margin:12px 0 18px;
 }
 
 .section-head h2{
   font-size:25px;
-  letter-spacing:-1px;
 }
 
 .section-head p{
@@ -293,7 +311,6 @@ a{
   color:var(--pink);
   font-size:10px;
   font-weight:900;
-  box-shadow:0 6px 15px rgba(0,0,0,.08);
 }
 
 .stock-badge{
@@ -306,11 +323,10 @@ a{
   color:#3e363a;
   font-size:10px;
   font-weight:850;
-  box-shadow:0 6px 15px rgba(0,0,0,.08);
 }
 
 .stock-badge.low{
-  color:#c76b00;
+  color:var(--orange);
 }
 
 .stock-badge.sold{
@@ -347,7 +363,6 @@ a{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:7px;
   margin-top:12px;
 }
 
@@ -364,21 +379,20 @@ a{
   color:#fff;
   display:grid;
   place-items:center;
-  box-shadow:0 7px 17px rgba(232,62,140,.25);
 }
 
 .add-btn:disabled{
   background:#ddd;
-  box-shadow:none;
   cursor:not-allowed;
 }
 
 .add-btn svg{
   width:18px;
-  height:18px;
 }
 
-/* EMPTY */
+/* =========================
+   EMPTY / LOADING
+========================= */
 
 .empty{
   grid-column:1/-1;
@@ -394,10 +408,32 @@ a{
   width:55px;
   height:55px;
   margin-bottom:12px;
-  color:var(--pink);
 }
 
-/* FLOATING BUTTONS */
+.loading{
+  grid-column:1/-1;
+  padding:50px;
+  text-align:center;
+  color:var(--muted);
+}
+
+.spinner{
+  width:34px;
+  height:34px;
+  border:3px solid #f1dce6;
+  border-top-color:var(--pink);
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+  margin:0 auto 12px;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+/* =========================
+   FLOATING BUTTONS
+========================= */
 
 .floating-cart{
   position:fixed;
@@ -416,7 +452,6 @@ a{
 
 .floating-cart svg{
   width:24px;
-  height:24px;
 }
 
 .float-count{
@@ -445,15 +480,15 @@ a{
   display:grid;
   place-items:center;
   z-index:90;
-  box-shadow:0 12px 28px rgba(37,211,102,.25);
 }
 
 .whatsapp-float svg{
   width:27px;
-  height:27px;
 }
 
-/* CART PANEL */
+/* =========================
+   OVERLAY
+========================= */
 
 .overlay{
   position:fixed;
@@ -468,6 +503,10 @@ a{
   display:block;
 }
 
+/* =========================
+   CART
+========================= */
+
 .cart-panel{
   position:fixed;
   right:0;
@@ -480,7 +519,6 @@ a{
   transition:.28s ease;
   display:flex;
   flex-direction:column;
-  box-shadow:-20px 0 60px rgba(0,0,0,.15);
 }
 
 .cart-panel.show{
@@ -510,7 +548,6 @@ a{
 
 .close svg{
   width:18px;
-  height:18px;
 }
 
 .cart-items{
@@ -543,13 +580,11 @@ a{
 
 .cart-item-info{
   flex:1;
-  min-width:0;
 }
 
 .cart-item-name{
   font-size:13px;
   font-weight:800;
-  line-height:1.3;
 }
 
 .cart-item-price{
@@ -578,7 +613,6 @@ a{
   min-width:18px;
   text-align:center;
   font-size:12px;
-  font-weight:800;
 }
 
 .remove{
@@ -592,12 +626,10 @@ a{
 .cart-bottom{
   padding:18px;
   border-top:1px solid var(--line);
-  background:#fff;
 }
 
 .total-row{
   display:flex;
-  align-items:center;
   justify-content:space-between;
   font-weight:900;
   font-size:18px;
@@ -611,20 +643,21 @@ a{
   background:var(--pink);
   color:#fff;
   font-weight:900;
-  box-shadow:0 10px 24px rgba(232,62,140,.22);
 }
 
 .checkout-btn:disabled{
   opacity:.55;
 }
 
-/* MODAL */
+/* =========================
+   MODALS
+========================= */
 
 .modal-wrap{
   position:fixed;
   inset:0;
-  background:rgba(20,10,15,.52);
-  backdrop-filter:blur(5px);
+  background:rgba(20,10,15,.55);
+  backdrop-filter:blur(6px);
   z-index:500;
   display:none;
   align-items:flex-end;
@@ -657,6 +690,69 @@ a{
   font-size:22px;
 }
 
+/* =========================
+   AUTH
+========================= */
+
+.auth-modal{
+  width:min(480px,100%);
+}
+
+.auth-logo{
+  width:70px;
+  height:70px;
+  margin:5px auto 15px;
+  border-radius:22px;
+  background:linear-gradient(135deg,#ff8abc,#e83e8c);
+  color:#fff;
+  display:grid;
+  place-items:center;
+  box-shadow:0 12px 28px rgba(232,62,140,.25);
+}
+
+.auth-logo svg{
+  width:35px;
+}
+
+.auth-title{
+  text-align:center;
+}
+
+.auth-title h2{
+  font-size:25px;
+}
+
+.auth-title p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+  margin-top:7px;
+}
+
+.auth-tabs{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+  background:#fff4f8;
+  padding:5px;
+  border-radius:14px;
+  margin:20px 0;
+}
+
+.auth-tab{
+  padding:11px;
+  border-radius:11px;
+  background:transparent;
+  font-weight:800;
+  color:var(--muted);
+}
+
+.auth-tab.active{
+  background:#fff;
+  color:var(--pink);
+  box-shadow:0 4px 12px rgba(0,0,0,.06);
+}
+
 .form-group{
   margin-bottom:13px;
 }
@@ -684,10 +780,192 @@ a{
   box-shadow:0 0 0 3px rgba(232,62,140,.08);
 }
 
-.form-group textarea{
-  min-height:80px;
-  resize:vertical;
+.auth-btn{
+  width:100%;
+  padding:15px;
+  border-radius:16px;
+  background:var(--pink);
+  color:#fff;
+  font-weight:900;
+  margin-top:5px;
 }
+
+.auth-btn:disabled{
+  opacity:.55;
+}
+
+.auth-error{
+  display:none;
+  background:#fff0f2;
+  border:1px solid #ffd4da;
+  color:#b42332;
+  padding:11px;
+  border-radius:13px;
+  font-size:12px;
+  line-height:1.5;
+  margin-bottom:13px;
+}
+
+.auth-error.show{
+  display:block;
+}
+
+/* =========================
+   ACCOUNT
+========================= */
+
+.account-card{
+  background:linear-gradient(135deg,#fff4f8,#fff);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:18px;
+  margin-bottom:18px;
+}
+
+.account-user{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.avatar{
+  width:48px;
+  height:48px;
+  border-radius:16px;
+  background:var(--pink);
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+}
+
+.account-email{
+  font-size:13px;
+  font-weight:800;
+  word-break:break-all;
+}
+
+.account-small{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:3px;
+}
+
+.logout-btn{
+  width:100%;
+  padding:13px;
+  border-radius:14px;
+  background:#fff;
+  border:1px solid var(--line);
+  color:var(--red);
+  font-weight:800;
+  margin-top:14px;
+}
+
+.order-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:15px;
+  margin-bottom:12px;
+  box-shadow:0 5px 18px rgba(60,25,40,.04);
+}
+
+.order-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:flex-start;
+}
+
+.order-id-small{
+  font-size:10px;
+  color:var(--muted);
+  word-break:break-all;
+  margin-top:3px;
+}
+
+.status{
+  padding:7px 10px;
+  border-radius:20px;
+  font-size:10px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.status.pending{
+  background:#fff5dc;
+  color:#a56800;
+}
+
+.status.confirmed{
+  background:#e8fff3;
+  color:#128153;
+}
+
+.status.cancelled{
+  background:#fff0f2;
+  color:#c3293a;
+}
+
+.status.delivered{
+  background:#eeeaff;
+  color:#6345c6;
+}
+
+.order-items{
+  border-top:1px solid var(--line);
+  margin-top:12px;
+  padding-top:10px;
+}
+
+.order-line{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:5px 0;
+  font-size:12px;
+}
+
+.order-total{
+  border-top:1px solid var(--line);
+  margin-top:8px;
+  padding-top:10px;
+  display:flex;
+  justify-content:space-between;
+  font-weight:900;
+}
+
+.order-date{
+  color:var(--muted);
+  font-size:10px;
+  margin-top:8px;
+}
+
+.confirmed-message{
+  background:#e8fff3;
+  color:#12794f;
+  border-radius:13px;
+  padding:11px;
+  margin-top:11px;
+  font-size:12px;
+  font-weight:800;
+  line-height:1.5;
+}
+
+.cancelled-message{
+  background:#fff0f2;
+  color:#b42332;
+  border-radius:13px;
+  padding:11px;
+  margin-top:11px;
+  font-size:12px;
+  font-weight:800;
+}
+
+/* =========================
+   CHECKOUT
+========================= */
 
 .checkout-summary{
   background:#fff6f9;
@@ -725,6 +1003,10 @@ a{
   opacity:.5;
 }
 
+/* =========================
+   SUCCESS
+========================= */
+
 .success{
   text-align:center;
   padding:15px 4px;
@@ -743,11 +1025,6 @@ a{
 
 .success-icon svg{
   width:37px;
-  height:37px;
-}
-
-.success h2{
-  margin-bottom:8px;
 }
 
 .success p{
@@ -773,7 +1050,6 @@ a{
   background:#25d366;
   color:#fff;
   font-weight:900;
-  margin-top:8px;
 }
 
 .done-btn{
@@ -785,32 +1061,48 @@ a{
   margin-top:9px;
 }
 
-/* LOADING */
+/* =========================
+   TOAST
+========================= */
 
-.loading{
-  grid-column:1/-1;
-  padding:50px;
-  text-align:center;
-  color:var(--muted);
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:22px;
+  transform:translate(-50%,30px);
+  width:min(390px,calc(100% - 30px));
+  background:#21151b;
+  color:#fff;
+  border-radius:16px;
+  padding:14px 16px;
+  z-index:1000;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s ease;
+  box-shadow:0 15px 35px rgba(0,0,0,.22);
+  font-size:12px;
+  line-height:1.5;
 }
 
-.spinner{
-  width:34px;
-  height:34px;
-  border:3px solid #f1dce6;
-  border-top-color:var(--pink);
-  border-radius:50%;
-  animation:spin .8s linear infinite;
-  margin:0 auto 12px;
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
 }
 
-@keyframes spin{
-  to{transform:rotate(360deg)}
+.toast.success-toast{
+  background:#14875a;
 }
 
-/* DESKTOP */
+.toast.error-toast{
+  background:#c3293a;
+}
+
+/* =========================
+   DESKTOP
+========================= */
 
 @media(min-width:700px){
+
   .products{
     grid-template-columns:repeat(3,minmax(0,1fr));
   }
@@ -826,57 +1118,131 @@ a{
   .modal{
     border-radius:25px;
   }
+
 }
 
 @media(min-width:1050px){
+
   .products{
     grid-template-columns:repeat(4,minmax(0,1fr));
   }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
+<!-- =========================
+     NAV
+========================= -->
+
 <header class="nav">
+
   <div class="nav-inner">
 
     <a href="#" class="logo">
+
       <span class="logo-icon">
+
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+
           <path d="M6 8h12l-1 12H7L6 8Z"/>
           <path d="M9 8a3 3 0 0 1 6 0"/>
+
         </svg>
+
       </span>
+
       <span>LuxeStore</span>
+
     </a>
 
-    <button class="cart-nav" onclick="openCart()" aria-label="Open cart">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-        <path d="M4 5h2l2 11h9l2-8H7"/>
-        <circle cx="10" cy="20" r="1"/>
-        <circle cx="17" cy="20" r="1"/>
-      </svg>
-      <span class="cart-count" id="navCartCount">0</span>
-    </button>
+    <div class="nav-actions">
+
+      <button
+        class="account-nav"
+        onclick="openAccount()"
+        aria-label="Account"
+      >
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+
+          <circle cx="12" cy="8" r="4"/>
+
+          <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/>
+
+        </svg>
+
+      </button>
+
+      <button
+        class="cart-nav"
+        onclick="openCart()"
+        aria-label="Open cart"
+      >
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+
+          <path d="M4 5h2l2 11h9l2-8H7"/>
+
+          <circle cx="10" cy="20" r="1"/>
+          <circle cx="17" cy="20" r="1"/>
+
+        </svg>
+
+        <span class="cart-count" id="navCartCount">0</span>
+
+      </button>
+
+    </div>
 
   </div>
+
 </header>
 
-<!-- HERO -->
+
+<!-- =========================
+     HERO
+========================= -->
+
 <section class="hero">
+
   <div class="hero-inner">
 
     <svg class="hero-decor" viewBox="0 0 240 240" fill="none">
-      <circle cx="120" cy="120" r="92" stroke="#e83e8c" stroke-width="1"/>
-      <circle cx="120" cy="120" r="65" stroke="#ff6fae" stroke-width="1"/>
-      <path d="M120 20C170 55 205 100 120 220C35 100 70 55 120 20Z"
-            stroke="#e83e8c" stroke-width="1"/>
+
+      <circle
+        cx="120"
+        cy="120"
+        r="92"
+        stroke="#e83e8c"
+        stroke-width="1"
+      />
+
+      <circle
+        cx="120"
+        cy="120"
+        r="65"
+        stroke="#ff6fae"
+        stroke-width="1"
+      />
+
+      <path
+        d="M120 20C170 55 205 100 120 220C35 100 70 55 120 20Z"
+        stroke="#e83e8c"
+        stroke-width="1"
+      />
+
     </svg>
 
     <div style="position:relative;z-index:2">
-      <h1>Style that feels<br><span>luxurious.</span></h1>
+
+      <h1>
+        Style that feels<br>
+        <span>luxurious.</span>
+      </h1>
 
       <p>
         Discover beautiful fashion, fragrances, bags, shoes,
@@ -884,103 +1250,205 @@ a{
       </p>
 
       <a href="#shop" class="hero-btn">
+
         Shop collection
+
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
           <path d="M5 12h14"/>
           <path d="m13 6 6 6-6 6"/>
+
         </svg>
+
       </a>
+
     </div>
 
   </div>
+
 </section>
 
-<!-- CATEGORIES -->
+
+<!-- =========================
+     CATEGORIES
+========================= -->
+
 <section class="categories">
+
   <div class="category-scroll" id="categories">
 
-    <button class="cat active" onclick="filterCategory('All',this)">All</button>
-    <button class="cat" onclick="filterCategory('Clothing',this)">Clothing</button>
-    <button class="cat" onclick="filterCategory('Perfumes',this)">Perfumes</button>
-    <button class="cat" onclick="filterCategory('Bags',this)">Bags</button>
-    <button class="cat" onclick="filterCategory('Shoes',this)">Shoes</button>
-    <button class="cat" onclick="filterCategory('Jewelry',this)">Jewelry</button>
-    <button class="cat" onclick="filterCategory('Watches',this)">Watches</button>
-    <button class="cat" onclick="filterCategory('Accessories',this)">Accessories</button>
+    <button class="cat active" onclick="filterCategory('All',this)">
+      All
+    </button>
+
+    <button class="cat" onclick="filterCategory('Clothing',this)">
+      Clothing
+    </button>
+
+    <button class="cat" onclick="filterCategory('Perfumes',this)">
+      Perfumes
+    </button>
+
+    <button class="cat" onclick="filterCategory('Bags',this)">
+      Bags
+    </button>
+
+    <button class="cat" onclick="filterCategory('Shoes',this)">
+      Shoes
+    </button>
+
+    <button class="cat" onclick="filterCategory('Jewelry',this)">
+      Jewelry
+    </button>
+
+    <button class="cat" onclick="filterCategory('Watches',this)">
+      Watches
+    </button>
+
+    <button class="cat" onclick="filterCategory('Accessories',this)">
+      Accessories
+    </button>
 
   </div>
+
 </section>
 
-<!-- PRODUCTS -->
+
+<!-- =========================
+     PRODUCTS
+========================= -->
+
 <section class="section" id="shop">
 
   <div class="section-head">
-    <div>
-      <h2>Our collection</h2>
-      <p>Fresh pieces selected for you ✨</p>
-    </div>
+
+    <h2>Our collection</h2>
+
+    <p>
+      Fresh pieces selected for you ✨
+    </p>
+
   </div>
 
   <div class="products" id="products">
 
     <div class="loading">
+
       <div class="spinner"></div>
+
       Loading products...
+
     </div>
 
   </div>
 
 </section>
 
-<!-- FLOATING CART -->
+
+<!-- =========================
+     FLOATING CART
+========================= -->
+
 <button class="floating-cart" onclick="openCart()">
+
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+
     <path d="M4 5h2l2 11h9l2-8H7"/>
+
     <circle cx="10" cy="20" r="1"/>
     <circle cx="17" cy="20" r="1"/>
+
   </svg>
-  <span class="float-count" id="floatCartCount">0</span>
+
+  <span class="float-count" id="floatCartCount">
+    0
+  </span>
+
 </button>
 
-<!-- WHATSAPP -->
+
+<!-- =========================
+     WHATSAPP
+========================= -->
+
 <a
   class="whatsapp-float"
   href="https://wa.me/2347067087764"
   target="_blank"
   aria-label="WhatsApp"
 >
+
   <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.2 1.6 6L.2 24l6.3-1.6a11.8 11.8 0 0 0 5.6 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.2-3.5-8.5ZM12.1 21.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-3.7.9 1-3.6-.2-.4a9.9 9.9 0 0 1-1.5-5.3c0-5.5 4.5-10 10-10 2.7 0 5.2 1 7.1 2.9 1.9 1.9 2.9 4.4 2.9 7.1-.1 5.5-4.6 10-10.1 10Zm5.5-7.5c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.3-.6.1-1.6-.8-2.7-1.4-3.8-3.2-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5-.1-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2 3.1 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3Z"/>
+
+    <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.2 1.6 6L.2 24l6.3-1.6a11.8 11.8 0 0 0 5.6 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.2-3.5-8.5ZM12.1 21.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-3.7.9 1-3.6-.2-.4a9.9 9.9 0 0 1-1.5-5.3c0-5.5 4.5-10 10-10 2.7 0 5.2 1 7.1 2.9 1.9 1.9 2.9 4.4 2.9 7.1-.1 5.5-4.6 10-10.1 10Zm5.5-7.5c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.3-.6.1-1.6-.8-2.7-1.4-3.8-3.2-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5-.1-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2 3.1 4.8 4.3.7.3 1.2.5 1.6.6.7-.1 1.3-.1 1.8-.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3Z"/>
+
   </svg>
+
 </a>
 
-<!-- OVERLAY -->
-<div class="overlay" id="overlay" onclick="closeCart()"></div>
 
-<!-- CART -->
-<aside class="cart-panel" id="cartPanel">
+<!-- =========================
+     OVERLAY
+========================= -->
+
+<div
+  class="overlay"
+  id="overlay"
+  onclick="closeCart()"
+></div>
+
+
+<!-- =========================
+     CART
+========================= -->
+
+<aside
+  class="cart-panel"
+  id="cartPanel"
+>
 
   <div class="cart-head">
+
     <h2>Your cart</h2>
 
-    <button class="close" onclick="closeCart()">
+    <button
+      class="close"
+      onclick="closeCart()"
+    >
+
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
         <path d="m6 6 12 12"/>
         <path d="m18 6-12 12"/>
+
       </svg>
+
     </button>
+
   </div>
 
-  <div class="cart-items" id="cartItems"></div>
+  <div
+    class="cart-items"
+    id="cartItems"
+  ></div>
 
   <div class="cart-bottom">
 
     <div class="total-row">
+
       <span>Total</span>
-      <span id="cartTotal">₦0</span>
+
+      <span id="cartTotal">
+        ₦0
+      </span>
+
     </div>
 
-    <button class="checkout-btn" id="checkoutButton" onclick="openCheckout()">
+    <button
+      class="checkout-btn"
+      id="checkoutButton"
+      onclick="openCheckout()"
+    >
       Continue to checkout
     </button>
 
@@ -988,47 +1456,276 @@ a{
 
 </aside>
 
-<!-- CHECKOUT MODAL -->
-<div class="modal-wrap" id="checkoutModal">
+
+<!-- =========================
+     AUTH MODAL
+========================= -->
+
+<div
+  class="modal-wrap"
+  id="authModal"
+>
+
+  <div class="modal auth-modal">
+
+    <div class="auth-logo">
+
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+
+        <path d="M6 8h12l-1 12H7L6 8Z"/>
+        <path d="M9 8a3 3 0 0 1 6 0"/>
+
+      </svg>
+
+    </div>
+
+    <div class="auth-title">
+
+      <h2 id="authTitle">
+        Welcome to LuxeStore
+      </h2>
+
+      <p id="authSubtitle">
+        Create an account to shop and track your orders.
+      </p>
+
+    </div>
+
+    <div class="auth-tabs">
+
+      <button
+        class="auth-tab active"
+        id="loginTab"
+        onclick="switchAuth('login')"
+      >
+        Login
+      </button>
+
+      <button
+        class="auth-tab"
+        id="signupTab"
+        onclick="switchAuth('signup')"
+      >
+        Create account
+      </button>
+
+    </div>
+
+    <div
+      class="auth-error"
+      id="authError"
+    ></div>
+
+    <form id="authForm">
+
+      <div
+        class="form-group"
+        id="signupNameGroup"
+        style="display:none"
+      >
+
+        <label>
+          Full name
+        </label>
+
+        <input
+          id="signupName"
+          type="text"
+          placeholder="Your full name"
+        >
+
+      </div>
+
+      <div class="form-group">
+
+        <label>
+          Email address
+        </label>
+
+        <input
+          id="authEmail"
+          type="email"
+          required
+          placeholder="you@example.com"
+          autocomplete="email"
+        >
+
+      </div>
+
+      <div class="form-group">
+
+        <label>
+          Password
+        </label>
+
+        <input
+          id="authPassword"
+          type="password"
+          required
+          minlength="6"
+          placeholder="At least 6 characters"
+          autocomplete="current-password"
+        >
+
+      </div>
+
+      <button
+        class="auth-btn"
+        id="authSubmit"
+        type="submit"
+      >
+        Login
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     ACCOUNT MODAL
+========================= -->
+
+<div
+  class="modal-wrap"
+  id="accountModal"
+>
 
   <div class="modal">
 
     <div class="modal-top">
-      <h2>Checkout</h2>
 
-      <button class="close" onclick="closeCheckout()">
+      <h2>
+        My account
+      </h2>
+
+      <button
+        class="close"
+        onclick="closeAccount()"
+      >
+
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
           <path d="m6 6 12 12"/>
           <path d="m18 6-12 12"/>
+
         </svg>
+
       </button>
+
+    </div>
+
+    <div id="accountContent"></div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     CHECKOUT
+========================= -->
+
+<div
+  class="modal-wrap"
+  id="checkoutModal"
+>
+
+  <div class="modal">
+
+    <div class="modal-top">
+
+      <h2>
+        Checkout
+      </h2>
+
+      <button
+        class="close"
+        onclick="closeCheckout()"
+      >
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+          <path d="m6 6 12 12"/>
+          <path d="m18 6-12 12"/>
+
+        </svg>
+
+      </button>
+
     </div>
 
     <form id="checkoutForm">
 
       <div class="form-group">
-        <label>Full name</label>
-        <input id="customerName" type="text" required placeholder="Your full name">
+
+        <label>
+          Full name
+        </label>
+
+        <input
+          id="customerName"
+          type="text"
+          required
+          placeholder="Your full name"
+        >
+
       </div>
 
       <div class="form-group">
-        <label>Phone number</label>
-        <input id="customerPhone" type="tel" required placeholder="08012345678">
+
+        <label>
+          Phone number
+        </label>
+
+        <input
+          id="customerPhone"
+          type="tel"
+          required
+          placeholder="08012345678"
+        >
+
       </div>
 
       <div class="form-group">
-        <label>Delivery address</label>
-        <textarea id="customerAddress" required placeholder="Enter your delivery address"></textarea>
+
+        <label>
+          Delivery address
+        </label>
+
+        <textarea
+          id="customerAddress"
+          required
+          placeholder="Enter your delivery address"
+        ></textarea>
+
       </div>
 
       <div class="form-group">
-        <label>Order note (optional)</label>
-        <textarea id="customerNote" placeholder="Size, colour or anything else..."></textarea>
+
+        <label>
+          Order note
+        </label>
+
+        <textarea
+          id="customerNote"
+          placeholder="Size, colour or anything else..."
+        ></textarea>
+
       </div>
 
-      <div class="checkout-summary" id="checkoutSummary"></div>
+      <div
+        class="checkout-summary"
+        id="checkoutSummary"
+      ></div>
 
-      <button class="confirm-btn" id="confirmOrderBtn" type="submit">
+      <button
+        class="confirm-btn"
+        id="confirmOrderBtn"
+        type="submit"
+      >
         Place order
       </button>
 
@@ -1038,35 +1735,57 @@ a{
 
 </div>
 
-<!-- SUCCESS MODAL -->
-<div class="modal-wrap" id="successModal">
+
+<!-- =========================
+     SUCCESS
+========================= -->
+
+<div
+  class="modal-wrap"
+  id="successModal"
+>
 
   <div class="modal">
 
     <div class="success">
 
       <div class="success-icon">
+
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+
           <path d="m5 12 4 4L19 6"/>
+
         </svg>
+
       </div>
 
-      <h2>Order received! 🎉</h2>
+      <h2>
+        Order received! 🎉
+      </h2>
 
       <p>
         Your order has been created successfully.
-        Send the order details to LuxeStore on WhatsApp so we can confirm your delivery.
+        You can track your order from your LuxeStore account.
       </p>
 
       <div class="order-id">
-        Order ID: <span id="successOrderId"></span>
+
+        Order ID:
+        <span id="successOrderId"></span>
+
       </div>
 
-      <button class="whatsapp-btn" onclick="sendOrderWhatsApp()">
+      <button
+        class="whatsapp-btn"
+        onclick="sendOrderWhatsApp()"
+      >
         💬 Send order on WhatsApp
       </button>
 
-      <button class="done-btn" onclick="closeSuccess()">
+      <button
+        class="done-btn"
+        onclick="closeSuccess()"
+      >
         Done
       </button>
 
@@ -1076,9 +1795,26 @@ a{
 
 </div>
 
+
+<!-- =========================
+     TOAST
+========================= -->
+
+<div
+  class="toast"
+  id="toast"
+></div>
+
+
 <script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+/* =========================================
+   FIREBASE IMPORTS
+========================================= */
+
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
 
 import {
   getFirestore,
@@ -1086,52 +1822,119 @@ import {
   onSnapshot,
   runTransaction,
   doc,
-  serverTimestamp
+  serverTimestamp,
+  query,
+  where,
+  orderBy
 } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+import {
+  getAuth,
+  onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
 
 /* =========================================
    FIREBASE
 ========================================= */
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBLx6RK5sRIduaKiDSTAlgkFUH7iDSBM",
-  authDomain: "shop-3d56c.firebaseapp.com",
-  projectId: "shop-3d56c",
-  storageBucket: "shop-3d56c.firebasestorage.app",
-  messagingSenderId: "285039032126",
-  appId: "1:285039032126:web:c2226d1aeb02a555c35e6f"
+
+  apiKey:
+    "AIzaSyBLx6RK5sRIduaKiDSTAlgkFUH7iDSBM",
+
+  authDomain:
+    "shop-3d56c.firebaseapp.com",
+
+  projectId:
+    "shop-3d56c",
+
+  storageBucket:
+    "shop-3d56c.firebasestorage.app",
+
+  messagingSenderId:
+    "285039032126",
+
+  appId:
+    "1:285039032126:web:c2226d1aeb02a555c35e6f"
+
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const app =
+  initializeApp(firebaseConfig);
+
+const db =
+  getFirestore(app);
+
+const auth =
+  getAuth(app);
+
 
 /* =========================================
-   YOUR WHATSAPP NUMBER
+   WHATSAPP
 ========================================= */
 
-const WHATSAPP_NUMBER = "2347067087764";
+const WHATSAPP_NUMBER =
+  "2347067087764";
+
 
 /* =========================================
    STATE
 ========================================= */
 
 let products = [];
-let cart = JSON.parse(localStorage.getItem("luxestore_cart") || "[]");
+
+let cart =
+  JSON.parse(
+    localStorage.getItem("luxestore_cart") || "[]"
+  );
+
 let activeCategory = "All";
+
 let latestOrderId = "";
+
 let latestOrderData = null;
+
+let currentUser = null;
+
+let authMode = "login";
+
+let unsubscribeOrders = null;
+
+let previousOrderStatuses = {};
+
 
 /* =========================================
    ELEMENTS
 ========================================= */
 
-const productsEl = document.getElementById("products");
-const cartItemsEl = document.getElementById("cartItems");
-const cartTotalEl = document.getElementById("cartTotal");
-const navCartCount = document.getElementById("navCartCount");
-const floatCartCount = document.getElementById("floatCartCount");
-const checkoutSummary = document.getElementById("checkoutSummary");
-const checkoutButton = document.getElementById("checkoutButton");
+const productsEl =
+  document.getElementById("products");
+
+const cartItemsEl =
+  document.getElementById("cartItems");
+
+const cartTotalEl =
+  document.getElementById("cartTotal");
+
+const navCartCount =
+  document.getElementById("navCartCount");
+
+const floatCartCount =
+  document.getElementById("floatCartCount");
+
+const checkoutSummary =
+  document.getElementById("checkoutSummary");
+
+const checkoutButton =
+  document.getElementById("checkoutButton");
+
+const toast =
+  document.getElementById("toast");
+
 
 /* =========================================
    MONEY
@@ -1139,16 +1942,22 @@ const checkoutButton = document.getElementById("checkoutButton");
 
 function money(value){
 
-  return new Intl.NumberFormat("en-NG",{
-    style:"currency",
-    currency:"NGN",
-    maximumFractionDigits:0
-  }).format(Number(value || 0));
+  return new Intl.NumberFormat(
+    "en-NG",
+    {
+      style:"currency",
+      currency:"NGN",
+      maximumFractionDigits:0
+    }
+  ).format(
+    Number(value || 0)
+  );
 
 }
 
+
 /* =========================================
-   ESCAPE HTML
+   ESCAPE
 ========================================= */
 
 function escapeHTML(value){
@@ -1162,13 +1971,45 @@ function escapeHTML(value){
 
 }
 
+
 /* =========================================
-   STOCK LABEL
+   TOAST
+========================================= */
+
+function showToast(
+  message,
+  type="normal"
+){
+
+  toast.textContent = message;
+
+  toast.className =
+    "toast show " +
+    (
+      type === "success"
+      ? "success-toast"
+      : type === "error"
+      ? "error-toast"
+      : ""
+    );
+
+  setTimeout(()=>{
+
+    toast.classList.remove("show");
+
+  },4500);
+
+}
+
+
+/* =========================================
+   STOCK
 ========================================= */
 
 function stockLabel(stock){
 
-  stock = Number(stock || 0);
+  stock =
+    Number(stock || 0);
 
   if(stock <= 0){
 
@@ -1213,6 +2054,7 @@ function stockLabel(stock){
 
 }
 
+
 /* =========================================
    SAVE CART
 ========================================= */
@@ -1228,6 +2070,7 @@ function saveCart(){
 
 }
 
+
 /* =========================================
    CART COUNT
 ========================================= */
@@ -1235,11 +2078,13 @@ function saveCart(){
 function cartCount(){
 
   return cart.reduce(
-    (total,item)=>total + Number(item.quantity || 0),
+    (total,item)=>
+      total + Number(item.quantity || 0),
     0
   );
 
 }
+
 
 /* =========================================
    CART TOTAL
@@ -1248,90 +2093,1018 @@ function cartCount(){
 function cartTotal(){
 
   return cart.reduce(
-    (total,item)=>total + Number(item.price || 0) * Number(item.quantity || 0),
+    (total,item)=>
+      total +
+      Number(item.price || 0) *
+      Number(item.quantity || 0),
     0
   );
 
 }
 
+
 /* =========================================
-   UPDATE CART UI
+   CART UI
 ========================================= */
 
 function updateCartUI(){
 
-  const count = cartCount();
+  const count =
+    cartCount();
 
-  navCartCount.textContent = count;
-  floatCartCount.textContent = count;
+  navCartCount.textContent =
+    count;
 
-  cartTotalEl.textContent = money(cartTotal());
+  floatCartCount.textContent =
+    count;
 
-  checkoutButton.disabled = cart.length === 0;
+  cartTotalEl.textContent =
+    money(cartTotal());
+
+  checkoutButton.disabled =
+    cart.length === 0;
 
   renderCart();
 
 }
 
+
 /* =========================================
-   LIVE PRODUCTS
+   AUTH STATE
+========================================= */
+
+onAuthStateChanged(
+  auth,
+  user=>{
+
+    currentUser =
+      user || null;
+
+    if(user){
+
+      closeAuth();
+
+      loadCustomerOrders();
+
+    }else{
+
+      if(unsubscribeOrders){
+
+        unsubscribeOrders();
+
+        unsubscribeOrders =
+          null;
+
+      }
+
+      openAuth();
+
+    }
+
+    updateAccountButton();
+
+  }
+);
+
+
+/* =========================================
+   ACCOUNT BUTTON
+========================================= */
+
+function updateAccountButton(){
+
+  const button =
+    document.querySelector(".account-nav");
+
+  if(!button){
+    return;
+  }
+
+  button.title =
+    currentUser
+      ? "My account"
+      : "Login / Create account";
+
+}
+
+
+/* =========================================
+   AUTH OPEN
+========================================= */
+
+function openAuth(){
+
+  document
+    .getElementById("authModal")
+    .classList.add("show");
+
+  document.body.classList.add("locked");
+
+}
+
+
+/* =========================================
+   AUTH CLOSE
+========================================= */
+
+function closeAuth(){
+
+  document
+    .getElementById("authModal")
+    .classList.remove("show");
+
+  document.body.classList.remove("locked");
+
+}
+
+
+/* =========================================
+   AUTH SWITCH
+========================================= */
+
+window.switchAuth =
+function(mode){
+
+  authMode =
+    mode;
+
+  const loginTab =
+    document.getElementById("loginTab");
+
+  const signupTab =
+    document.getElementById("signupTab");
+
+  const nameGroup =
+    document.getElementById("signupNameGroup");
+
+  const submit =
+    document.getElementById("authSubmit");
+
+  const title =
+    document.getElementById("authTitle");
+
+  const subtitle =
+    document.getElementById("authSubtitle");
+
+  const password =
+    document.getElementById("authPassword");
+
+  document
+    .getElementById("authError")
+    .classList.remove("show");
+
+  if(mode === "signup"){
+
+    signupTab.classList.add("active");
+    loginTab.classList.remove("active");
+
+    nameGroup.style.display =
+      "block";
+
+    submit.textContent =
+      "Create account";
+
+    title.textContent =
+      "Create your LuxeStore account";
+
+    subtitle.textContent =
+      "Create an account to shop and track every order.";
+
+    password.autocomplete =
+      "new-password";
+
+  }else{
+
+    loginTab.classList.add("active");
+    signupTab.classList.remove("active");
+
+    nameGroup.style.display =
+      "none";
+
+    submit.textContent =
+      "Login";
+
+    title.textContent =
+      "Welcome back";
+
+    subtitle.textContent =
+      "Login to shop and track your orders.";
+
+    password.autocomplete =
+      "current-password";
+
+  }
+
+};
+
+
+/* =========================================
+   AUTH FORM
+========================================= */
+
+document
+  .getElementById("authForm")
+  .addEventListener(
+    "submit",
+    async event=>{
+
+      event.preventDefault();
+
+      const email =
+        document
+          .getElementById("authEmail")
+          .value
+          .trim();
+
+      const password =
+        document
+          .getElementById("authPassword")
+          .value;
+
+      const name =
+        document
+          .getElementById("signupName")
+          .value
+          .trim();
+
+      const errorEl =
+        document.getElementById("authError");
+
+      const button =
+        document.getElementById("authSubmit");
+
+      errorEl.classList.remove("show");
+
+      if(
+        authMode === "signup" &&
+        !name
+      ){
+
+        errorEl.textContent =
+          "Please enter your full name.";
+
+        errorEl.classList.add("show");
+
+        return;
+
+      }
+
+      button.disabled =
+        true;
+
+      button.textContent =
+        authMode === "signup"
+          ? "Creating account..."
+          : "Logging in...";
+
+      try{
+
+        if(authMode === "signup"){
+
+          const result =
+            await createUserWithEmailAndPassword(
+              auth,
+              email,
+              password
+            );
+
+          await saveCustomerProfile(
+            result.user,
+            name
+          );
+
+          showToast(
+            "Account created successfully! 🛍️",
+            "success"
+          );
+
+        }else{
+
+          await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+
+          showToast(
+            "Welcome back! ✨",
+            "success"
+          );
+
+        }
+
+      }catch(error){
+
+        console.error(error);
+
+        let message =
+          "Something went wrong. Please try again.";
+
+        if(
+          error.code ===
+          "auth/email-already-in-use"
+        ){
+
+          message =
+            "An account with this email already exists.";
+
+        }else if(
+          error.code ===
+          "auth/invalid-email"
+        ){
+
+          message =
+            "Please enter a valid email address.";
+
+        }else if(
+          error.code ===
+          "auth/weak-password"
+        ){
+
+          message =
+            "Your password must be at least 6 characters.";
+
+        }else if(
+          error.code ===
+          "auth/invalid-credential" ||
+          error.code ===
+          "auth/wrong-password"
+        ){
+
+          message =
+            "Incorrect email or password.";
+
+        }else if(
+          error.code ===
+          "auth/user-not-found"
+        ){
+
+          message =
+            "No account was found with this email.";
+
+        }
+
+        errorEl.textContent =
+          message;
+
+        errorEl.classList.add("show");
+
+      }finally{
+
+        button.disabled =
+          false;
+
+        button.textContent =
+          authMode === "signup"
+            ? "Create account"
+            : "Login";
+
+      }
+
+    }
+  );
+
+
+/* =========================================
+   CUSTOMER PROFILE
+========================================= */
+
+async function saveCustomerProfile(
+  user,
+  name
+){
+
+  try{
+
+    const profileRef =
+      doc(
+        db,
+        "customers",
+        user.uid
+      );
+
+    await runTransaction(
+      db,
+      async transaction=>{
+
+        transaction.set(
+          profileRef,
+          {
+            name:name,
+            email:user.email || "",
+            createdAt:serverTimestamp(),
+            updatedAt:serverTimestamp()
+          },
+          {merge:true}
+        );
+
+      }
+    );
+
+  }catch(error){
+
+    console.error(
+      "Profile save failed:",
+      error
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   ACCOUNT
+========================================= */
+
+window.openAccount =
+function(){
+
+  if(!currentUser){
+
+    openAuth();
+
+    return;
+
+  }
+
+  renderAccount();
+
+  document
+    .getElementById("accountModal")
+    .classList.add("show");
+
+};
+
+
+window.closeAccount =
+function(){
+
+  document
+    .getElementById("accountModal")
+    .classList.remove("show");
+
+};
+
+
+/* =========================================
+   ACCOUNT CONTENT
+========================================= */
+
+function renderAccount(){
+
+  if(!currentUser){
+
+    return;
+
+  }
+
+  const email =
+    currentUser.email || "";
+
+  const initial =
+    email
+      .charAt(0)
+      .toUpperCase();
+
+  document
+    .getElementById("accountContent")
+    .innerHTML = `
+
+      <div class="account-card">
+
+        <div class="account-user">
+
+          <div class="avatar">
+            ${escapeHTML(initial)}
+          </div>
+
+          <div>
+
+            <div class="account-email">
+              ${escapeHTML(email)}
+            </div>
+
+            <div class="account-small">
+              LuxeStore customer account
+            </div>
+
+          </div>
+
+        </div>
+
+        <button
+          class="logout-btn"
+          onclick="logoutCustomer()"
+        >
+          🚪 Log out
+        </button>
+
+      </div>
+
+      <h3 style="margin-bottom:12px">
+        My Orders 📦
+      </h3>
+
+      <div id="customerOrders">
+        <div class="loading" style="padding:30px">
+          Loading orders...
+        </div>
+      </div>
+
+    `;
+
+  renderCustomerOrders();
+
+}
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+window.logoutCustomer =
+async function(){
+
+  try{
+
+    await signOut(auth);
+
+    closeAccount();
+
+    showToast(
+      "You have been logged out.",
+      "success"
+    );
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+
+};
+
+
+/* =========================================
+   CUSTOMER ORDERS
+========================================= */
+
+let customerOrders = [];
+
+
+function loadCustomerOrders(){
+
+  if(!currentUser){
+
+    return;
+
+  }
+
+  if(unsubscribeOrders){
+
+    unsubscribeOrders();
+
+  }
+
+  const ordersQuery =
+    query(
+      collection(db,"orders"),
+      where(
+        "customerId",
+        "==",
+        currentUser.uid
+      ),
+      orderBy(
+        "createdAt",
+        "desc"
+      )
+    );
+
+  unsubscribeOrders =
+    onSnapshot(
+      ordersQuery,
+      snapshot=>{
+
+        const changed =
+          [];
+
+        snapshot.docChanges()
+          .forEach(change=>{
+
+            if(
+              change.type === "added" &&
+              previousOrderStatuses[
+                change.doc.id
+              ] !== undefined
+            ){
+
+              changed.push({
+                id:change.doc.id,
+                data:change.doc.data()
+              });
+
+            }
+
+            if(
+              change.type === "modified"
+            ){
+
+              changed.push({
+                id:change.doc.id,
+                data:change.doc.data()
+              });
+
+            }
+
+          });
+
+        customerOrders =
+          snapshot.docs.map(
+            item=>({
+              id:item.id,
+              ...item.data()
+            })
+          );
+
+        snapshot.docs.forEach(item=>{
+
+          previousOrderStatuses[
+            item.id
+          ] =
+            item.data().status || "pending";
+
+        });
+
+        renderCustomerOrders();
+
+        /*
+          Check for status changes.
+        */
+
+        changed.forEach(order=>{
+
+          const newStatus =
+            order.data.status || "pending";
+
+          const oldStatus =
+            previousOrderStatuses[
+              order.id
+            ];
+
+          if(
+            oldStatus &&
+            oldStatus !== newStatus
+          ){
+
+            if(newStatus === "confirmed"){
+
+              showToast(
+                "🎉 Your order has been confirmed!",
+                "success"
+              );
+
+            }
+
+            if(newStatus === "cancelled"){
+
+              showToast(
+                "Your order has been cancelled.",
+                "error"
+              );
+
+            }
+
+            if(newStatus === "delivered"){
+
+              showToast(
+                "🎉 Your order has been delivered!",
+                "success"
+              );
+
+            }
+
+          }
+
+        });
+
+      },
+      error=>{
+
+        console.error(
+          "Orders listener error:",
+          error
+        );
+
+        const container =
+          document.getElementById(
+            "customerOrders"
+          );
+
+        if(container){
+
+          container.innerHTML = `
+
+            <div class="empty" style="padding:30px">
+
+              <p>
+                Unable to load your orders.
+              </p>
+
+            </div>
+
+          `;
+
+        }
+
+      }
+    );
+
+}
+
+
+function renderCustomerOrders(){
+
+  const container =
+    document.getElementById(
+      "customerOrders"
+    );
+
+  if(!container){
+
+    return;
+
+  }
+
+  if(customerOrders.length === 0){
+
+    container.innerHTML = `
+
+      <div class="empty" style="padding:35px 15px">
+
+        <div style="font-size:35px;margin-bottom:10px">
+          🛍️
+        </div>
+
+        <h3>
+          No orders yet
+        </h3>
+
+        <p style="margin-top:6px;font-size:12px">
+          Your orders will appear here.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+  container.innerHTML =
+    customerOrders.map(
+      order=>{
+
+        const status =
+          String(
+            order.status || "pending"
+          ).toLowerCase();
+
+        const statusText =
+          status.charAt(0).toUpperCase() +
+          status.slice(1);
+
+        let message = "";
+
+        if(status === "confirmed"){
+
+          message = `
+
+            <div class="confirmed-message">
+
+              ✅ Your order has been confirmed!
+              <br>
+              <span style="font-weight:600">
+                LuxeStore has confirmed your order and will process your delivery.
+              </span>
+
+            </div>
+
+          `;
+
+        }
+
+        if(status === "cancelled"){
+
+          message = `
+
+            <div class="cancelled-message">
+
+              ❌ This order has been cancelled.
+
+            </div>
+
+          `;
+
+        }
+
+        if(status === "delivered"){
+
+          message = `
+
+            <div class="confirmed-message">
+
+              🎉 Your order has been delivered.
+              <br>
+              <span style="font-weight:600">
+                Thank you for shopping with LuxeStore ❤️
+              </span>
+
+            </div>
+
+          `;
+
+        }
+
+        let dateText =
+          "";
+
+        if(
+          order.createdAt &&
+          order.createdAt.toDate
+        ){
+
+          dateText =
+            order.createdAt
+              .toDate()
+              .toLocaleString(
+                "en-NG",
+                {
+                  dateStyle:"medium",
+                  timeStyle:"short"
+                }
+              );
+
+        }
+
+        const items =
+          Array.isArray(order.items)
+            ? order.items
+            : [];
+
+        return `
+
+          <div class="order-card">
+
+            <div class="order-top">
+
+              <div>
+
+                <strong>
+                  Order
+                </strong>
+
+                <div class="order-id-small">
+                  ${escapeHTML(order.id)}
+                </div>
+
+              </div>
+
+              <span class="status ${escapeHTML(status)}">
+                ${escapeHTML(statusText)}
+              </span>
+
+            </div>
+
+            <div class="order-items">
+
+              ${
+                items.map(item=>`
+
+                  <div class="order-line">
+
+                    <span>
+                      ${escapeHTML(item.name)}
+                      × ${Number(item.quantity || 0)}
+                    </span>
+
+                    <strong>
+                      ${money(
+                        Number(item.price || 0) *
+                        Number(item.quantity || 0)
+                      )}
+                    </strong>
+
+                  </div>
+
+                `).join("")
+              }
+
+            </div>
+
+            <div class="order-total">
+
+              <span>
+                Total
+              </span>
+
+              <span>
+                ${money(order.total)}
+              </span>
+
+            </div>
+
+            ${
+              dateText
+              ? `
+                <div class="order-date">
+                  ${escapeHTML(dateText)}
+                </div>
+              `
+              : ""
+            }
+
+            ${message}
+
+          </div>
+
+        `;
+
+      }
+    ).join("");
+
+}
+
+
+/* =========================================
+   PRODUCTS
 ========================================= */
 
 onSnapshot(
   collection(db,"products"),
   snapshot=>{
 
-    products = snapshot.docs.map(item=>({
+    products =
+      snapshot.docs.map(
+        item=>({
 
-      id:item.id,
-      ...item.data()
+          id:item.id,
+          ...item.data()
 
-    }));
+        })
+      );
 
-    /*
-      Keep cart synchronized with current stock.
-      If an item was deleted or becomes unavailable,
-      it will be removed from the cart.
-    */
+    cart =
+      cart
+        .map(item=>{
 
-    cart = cart
-      .map(item=>{
+          const product =
+            products.find(
+              p=>p.id === item.productId
+            );
 
-        const product = products.find(
-          p=>p.id === item.productId
-        );
+          if(!product){
+            return null;
+          }
 
-        if(!product){
-          return null;
-        }
+          const stock =
+            Number(product.stock || 0);
 
-        const stock = Number(product.stock || 0);
+          if(stock <= 0){
+            return null;
+          }
 
-        if(stock <= 0){
-          return null;
-        }
+          return {
 
-        return {
-          ...item,
-          name:product.name,
-          price:Number(product.price || 0),
-          image:product.image || "",
-          maxStock:stock
-        };
+            ...item,
 
-      })
-      .filter(Boolean);
+            name:
+              product.name,
 
-    /*
-      Make sure quantity does not exceed
-      the current live stock.
-    */
+            price:
+              Number(product.price || 0),
+
+            image:
+              product.image || "",
+
+            maxStock:
+              stock
+
+          };
+
+        })
+        .filter(Boolean);
 
     cart.forEach(item=>{
 
-      if(item.quantity > item.maxStock){
+      if(
+        item.quantity >
+        item.maxStock
+      ){
 
-        item.quantity = item.maxStock;
+        item.quantity =
+          item.maxStock;
 
       }
 
@@ -1347,16 +3120,24 @@ onSnapshot(
     console.error(error);
 
     productsEl.innerHTML = `
+
       <div class="empty">
-        <p>Unable to load products right now.</p>
+
+        <p>
+          Unable to load products right now.
+        </p>
+
         <p style="margin-top:7px;font-size:12px">
           Please refresh the page.
         </p>
+
       </div>
+
     `;
 
   }
 );
+
 
 /* =========================================
    RENDER PRODUCTS
@@ -1364,134 +3145,206 @@ onSnapshot(
 
 function renderProducts(){
 
-  const filtered = products.filter(product=>{
+  const filtered =
+    products.filter(
+      product=>{
 
-    if(activeCategory === "All"){
-      return true;
-    }
+        if(
+          activeCategory === "All"
+        ){
 
-    return String(product.category || "").toLowerCase()
-      === activeCategory.toLowerCase();
+          return true;
 
-  });
+        }
+
+        return String(
+          product.category || ""
+        ).toLowerCase()
+        ===
+        activeCategory.toLowerCase();
+
+      }
+    );
 
   if(filtered.length === 0){
 
     productsEl.innerHTML = `
+
       <div class="empty">
 
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+        >
+
           <path d="M6 8h12l-1 12H7L6 8Z"/>
           <path d="M9 8a3 3 0 0 1 6 0"/>
+
         </svg>
 
-        <h3>No products yet</h3>
+        <h3>
+          No products yet
+        </h3>
 
         <p style="margin-top:7px">
           New products will appear here soon.
         </p>
 
       </div>
+
     `;
 
     return;
+
   }
 
-  productsEl.innerHTML = filtered.map(product=>{
+  productsEl.innerHTML =
+    filtered.map(
+      product=>{
 
-    const stock = Number(product.stock || 0);
-    const stockInfo = stockLabel(stock);
+        const stock =
+          Number(product.stock || 0);
 
-    const image = product.image
-      ? `
-        <img
-          src="${product.image}"
-          alt="${escapeHTML(product.name)}"
-          loading="lazy"
-        >
-      `
-      : `
-        <svg viewBox="0 0 24 24" fill="none" stroke="#d88aa8" stroke-width="1.2"
-             style="width:65px;height:65px;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)">
-          <path d="M6 8h12l-1 12H7L6 8Z"/>
-          <path d="M9 8a3 3 0 0 1 6 0"/>
-        </svg>
-      `;
+        const stockInfo =
+          stockLabel(stock);
 
-    return `
+        const image =
+          product.image
+          ? `
 
-      <article class="card">
-
-        <div class="product-image">
-
-          ${image}
-
-          <span class="new-badge">
-            NEW
-          </span>
-
-          <span class="stock-badge ${stockInfo.className}">
-            ${stockInfo.text}
-          </span>
-
-        </div>
-
-        <div class="card-body">
-
-          <div class="category-name">
-            ${escapeHTML(product.category || "Collection")}
-          </div>
-
-          <h3>
-            ${escapeHTML(product.name || "LuxeStore Product")}
-          </h3>
-
-          <div class="description">
-            ${escapeHTML(product.description || "Beautifully selected for you.")}
-          </div>
-
-          <div class="price-row">
-
-            <span class="price">
-              ${money(product.price)}
-            </span>
-
-            <button
-              class="add-btn"
-              onclick="addToCart('${product.id}')"
-              ${stock <= 0 ? "disabled" : ""}
-              aria-label="Add to cart"
+            <img
+              src="${product.image}"
+              alt="${escapeHTML(product.name)}"
+              loading="lazy"
             >
 
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 5v14"/>
-                <path d="M5 12h14"/>
-              </svg>
+          `
+          : `
 
-            </button>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#d88aa8"
+              stroke-width="1.2"
+              style="
+                width:65px;
+                height:65px;
+                position:absolute;
+                left:50%;
+                top:50%;
+                transform:translate(-50%,-50%)
+              "
+            >
 
-          </div>
+              <path d="M6 8h12l-1 12H7L6 8Z"/>
+              <path d="M9 8a3 3 0 0 1 6 0"/>
 
-        </div>
+            </svg>
 
-      </article>
+          `;
 
-    `;
+        return `
 
-  }).join("");
+          <article class="card">
+
+            <div class="product-image">
+
+              ${image}
+
+              <span class="new-badge">
+                NEW
+              </span>
+
+              <span class="stock-badge ${stockInfo.className}">
+                ${stockInfo.text}
+              </span>
+
+            </div>
+
+            <div class="card-body">
+
+              <div class="category-name">
+                ${escapeHTML(
+                  product.category ||
+                  "Collection"
+                )}
+              </div>
+
+              <h3>
+                ${escapeHTML(
+                  product.name ||
+                  "LuxeStore Product"
+                )}
+              </h3>
+
+              <div class="description">
+                ${escapeHTML(
+                  product.description ||
+                  "Beautifully selected for you."
+                )}
+              </div>
+
+              <div class="price-row">
+
+                <span class="price">
+                  ${money(product.price)}
+                </span>
+
+                <button
+                  class="add-btn"
+                  onclick="addToCart('${product.id}')"
+                  ${stock <= 0 ? "disabled" : ""}
+                >
+
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+
+                    <path d="M12 5v14"/>
+                    <path d="M5 12h14"/>
+
+                  </svg>
+
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        `;
+
+      }
+    ).join("");
 
 }
+
 
 /* =========================================
    FILTER
 ========================================= */
 
-window.filterCategory = function(category,button){
+window.filterCategory =
+function(
+  category,
+  button
+){
 
-  activeCategory = category;
+  activeCategory =
+    category;
 
-  document.querySelectorAll(".cat")
-    .forEach(item=>item.classList.remove("active"));
+  document
+    .querySelectorAll(".cat")
+    .forEach(
+      item=>
+        item.classList.remove("active")
+    );
 
   button.classList.add("active");
 
@@ -1499,55 +3352,94 @@ window.filterCategory = function(category,button){
 
 };
 
+
 /* =========================================
-   ADD TO CART
+   ADD CART
 ========================================= */
 
-window.addToCart = function(productId){
+window.addToCart =
+function(productId){
 
-  const product = products.find(
-    item=>item.id === productId
-  );
+  if(!currentUser){
+
+    openAuth();
+
+    showToast(
+      "Please create an account or login first."
+    );
+
+    return;
+
+  }
+
+  const product =
+    products.find(
+      item=>item.id === productId
+    );
 
   if(!product){
     return;
   }
 
-  const stock = Number(product.stock || 0);
+  const stock =
+    Number(product.stock || 0);
 
   if(stock <= 0){
 
-    alert("Sorry, this item is sold out.");
+    alert(
+      "Sorry, this item is sold out."
+    );
 
     return;
+
   }
 
-  const existing = cart.find(
-    item=>item.productId === productId
-  );
+  const existing =
+    cart.find(
+      item=>
+        item.productId === productId
+    );
 
   if(existing){
 
-    if(existing.quantity >= stock){
+    if(
+      existing.quantity >= stock
+    ){
 
-      alert(`Only ${stock} left in stock.`);
+      alert(
+        `Only ${stock} left in stock.`
+      );
 
       return;
+
     }
 
     existing.quantity += 1;
-    existing.maxStock = stock;
+
+    existing.maxStock =
+      stock;
 
   }else{
 
     cart.push({
 
-      productId:product.id,
-      name:product.name,
-      price:Number(product.price || 0),
-      quantity:1,
-      image:product.image || "",
-      maxStock:stock
+      productId:
+        product.id,
+
+      name:
+        product.name,
+
+      price:
+        Number(product.price || 0),
+
+      quantity:
+        1,
+
+      image:
+        product.image || "",
+
+      maxStock:
+        stock
 
     });
 
@@ -1559,8 +3451,9 @@ window.addToCart = function(productId){
 
 };
 
+
 /* =========================================
-   RENDER CART
+   CART
 ========================================= */
 
 function renderCart(){
@@ -1569,17 +3462,17 @@ function renderCart(){
 
     cartItemsEl.innerHTML = `
 
-      <div style="text-align:center;padding:60px 20px;color:#776b71">
+      <div
+        style="
+          text-align:center;
+          padding:60px 20px;
+          color:#776b71
+        "
+      >
 
-        <svg viewBox="0 0 24 24" fill="none" stroke="#e83e8c" stroke-width="1.4"
-             style="width:55px;height:55px;margin-bottom:12px">
-
-          <path d="M4 5h2l2 11h9l2-8H7"/>
-
-          <circle cx="10" cy="20" r="1"/>
-          <circle cx="17" cy="20" r="1"/>
-
-        </svg>
+        <div style="font-size:45px">
+          🛍️
+        </div>
 
         <h3 style="color:#21151b">
           Your cart is empty
@@ -1594,82 +3487,100 @@ function renderCart(){
     `;
 
     return;
+
   }
 
-  cartItemsEl.innerHTML = cart.map((item,index)=>{
+  cartItemsEl.innerHTML =
+    cart.map(
+      (item,index)=>`
 
-    return `
+        <div class="cart-item">
 
-      <div class="cart-item">
+          <div class="cart-item-img">
 
-        <div class="cart-item-img">
+            ${
+              item.image
+              ? `
+                <img
+                  src="${item.image}"
+                  alt="${escapeHTML(item.name)}"
+                >
+              `
+              : ""
+            }
 
-          ${
-            item.image
-            ? `<img src="${item.image}" alt="${escapeHTML(item.name)}">`
-            : ""
-          }
+          </div>
+
+          <div class="cart-item-info">
+
+            <div class="cart-item-name">
+              ${escapeHTML(item.name)}
+            </div>
+
+            <div class="cart-item-price">
+              ${money(item.price)}
+            </div>
+
+            <div class="qty">
+
+              <button
+                onclick="changeQty(${index},-1)"
+              >
+                −
+              </button>
+
+              <span>
+                ${item.quantity}
+              </span>
+
+              <button
+                onclick="changeQty(${index},1)"
+              >
+                +
+              </button>
+
+            </div>
+
+            <button
+              class="remove"
+              onclick="removeCartItem(${index})"
+            >
+              Remove
+            </button>
+
+          </div>
 
         </div>
 
-        <div class="cart-item-info">
-
-          <div class="cart-item-name">
-            ${escapeHTML(item.name)}
-          </div>
-
-          <div class="cart-item-price">
-            ${money(item.price)}
-          </div>
-
-          <div class="qty">
-
-            <button onclick="changeQty(${index},-1)">
-              −
-            </button>
-
-            <span>
-              ${item.quantity}
-            </span>
-
-            <button onclick="changeQty(${index},1)">
-              +
-            </button>
-
-          </div>
-
-          <button
-            class="remove"
-            onclick="removeCartItem(${index})"
-          >
-            Remove
-          </button>
-
-        </div>
-
-      </div>
-
-    `;
-
-  }).join("");
+      `
+    ).join("");
 
 }
 
+
 /* =========================================
-   CHANGE QUANTITY
+   QUANTITY
 ========================================= */
 
-window.changeQty = function(index,change){
+window.changeQty =
+function(
+  index,
+  change
+){
 
-  const item = cart[index];
+  const item =
+    cart[index];
 
   if(!item){
     return;
   }
 
-  const product = products.find(
-    product=>product.id === item.productId
-  );
+  const product =
+    products.find(
+      product=>
+        product.id ===
+        item.productId
+    );
 
   if(!product){
 
@@ -1678,11 +3589,15 @@ window.changeQty = function(index,change){
     saveCart();
 
     return;
+
   }
 
-  const stock = Number(product.stock || 0);
+  const stock =
+    Number(product.stock || 0);
 
-  const newQuantity = item.quantity + change;
+  const newQuantity =
+    item.quantity +
+    change;
 
   if(newQuantity <= 0){
 
@@ -1691,67 +3606,101 @@ window.changeQty = function(index,change){
     saveCart();
 
     return;
+
   }
 
   if(newQuantity > stock){
 
-    alert(`Only ${stock} left in stock.`);
+    alert(
+      `Only ${stock} left in stock.`
+    );
 
     return;
+
   }
 
-  item.quantity = newQuantity;
-  item.maxStock = stock;
+  item.quantity =
+    newQuantity;
+
+  item.maxStock =
+    stock;
 
   saveCart();
 
 };
+
 
 /* =========================================
    REMOVE
 ========================================= */
 
-window.removeCartItem = function(index){
+window.removeCartItem =
+function(index){
 
-  cart.splice(index,1);
+  cart.splice(
+    index,
+    1
+  );
 
   saveCart();
 
 };
 
+
 /* =========================================
-   OPEN CART
+   CART OPEN/CLOSE
 ========================================= */
 
-window.openCart = function(){
+window.openCart =
+function(){
 
-  document.getElementById("cartPanel")
+  if(!currentUser){
+
+    openAuth();
+
+    return;
+
+  }
+
+  document
+    .getElementById("cartPanel")
     .classList.add("show");
 
-  document.getElementById("overlay")
+  document
+    .getElementById("overlay")
     .classList.add("show");
 
 };
 
-/* =========================================
-   CLOSE CART
-========================================= */
 
-window.closeCart = function(){
+window.closeCart =
+function(){
 
-  document.getElementById("cartPanel")
+  document
+    .getElementById("cartPanel")
     .classList.remove("show");
 
-  document.getElementById("overlay")
+  document
+    .getElementById("overlay")
     .classList.remove("show");
 
 };
+
 
 /* =========================================
    CHECKOUT
 ========================================= */
 
-window.openCheckout = function(){
+window.openCheckout =
+function(){
+
+  if(!currentUser){
+
+    openAuth();
+
+    return;
+
+  }
 
   if(cart.length === 0){
     return;
@@ -1759,17 +3708,22 @@ window.openCheckout = function(){
 
   renderCheckoutSummary();
 
-  document.getElementById("checkoutModal")
+  document
+    .getElementById("checkoutModal")
     .classList.add("show");
 
 };
 
-window.closeCheckout = function(){
 
-  document.getElementById("checkoutModal")
+window.closeCheckout =
+function(){
+
+  document
+    .getElementById("checkoutModal")
     .classList.remove("show");
 
 };
+
 
 /* =========================================
    CHECKOUT SUMMARY
@@ -1779,27 +3733,39 @@ function renderCheckoutSummary(){
 
   checkoutSummary.innerHTML = `
 
-    ${cart.map(item=>`
+    ${
+      cart.map(
+        item=>`
 
-      <div class="summary-row">
+          <div class="summary-row">
 
-        <span>
-          ${escapeHTML(item.name)} × ${item.quantity}
-        </span>
+            <span>
+              ${escapeHTML(item.name)}
+              × ${item.quantity}
+            </span>
 
-        <strong>
-          ${money(item.price * item.quantity)}
-        </strong>
+            <strong>
+              ${money(
+                item.price *
+                item.quantity
+              )}
+            </strong>
 
-      </div>
+          </div>
 
-    `).join("")}
+        `
+      ).join("")
+    }
 
     <div class="summary-row summary-total">
 
-      <span>Total</span>
+      <span>
+        Total
+      </span>
 
-      <span>${money(cartTotal())}</span>
+      <span>
+        ${money(cartTotal())}
+      </span>
 
     </div>
 
@@ -1807,256 +3773,364 @@ function renderCheckoutSummary(){
 
 }
 
+
 /* =========================================
    PLACE ORDER
 ========================================= */
 
-document.getElementById("checkoutForm")
-.addEventListener("submit",async event=>{
+document
+  .getElementById("checkoutForm")
+  .addEventListener(
+    "submit",
+    async event=>{
 
-  event.preventDefault();
+      event.preventDefault();
 
-  const name =
-    document.getElementById("customerName")
-      .value.trim();
+      if(!currentUser){
 
-  const phone =
-    document.getElementById("customerPhone")
-      .value.trim();
+        closeCheckout();
 
-  const address =
-    document.getElementById("customerAddress")
-      .value.trim();
+        openAuth();
 
-  const note =
-    document.getElementById("customerNote")
-      .value.trim();
+        return;
 
-  if(!name || !phone || !address){
+      }
 
-    alert("Please fill in your name, phone number and delivery address.");
+      const name =
+        document
+          .getElementById("customerName")
+          .value
+          .trim();
 
-    return;
-  }
+      const phone =
+        document
+          .getElementById("customerPhone")
+          .value
+          .trim();
 
-  const button =
-    document.getElementById("confirmOrderBtn");
+      const address =
+        document
+          .getElementById("customerAddress")
+          .value
+          .trim();
 
-  button.disabled = true;
-  button.textContent = "Processing order...";
+      const note =
+        document
+          .getElementById("customerNote")
+          .value
+          .trim();
 
-  try{
+      if(
+        !name ||
+        !phone ||
+        !address
+      ){
 
-    const orderResult = await runTransaction(
-      db,
-      async transaction=>{
-
-        /*
-          IMPORTANT:
-          Read every product first.
-          Firestore transactions require reads
-          before writes.
-        */
-
-        const productRefs = cart.map(
-          item=>doc(db,"products",item.productId)
+        alert(
+          "Please fill in your name, phone number and delivery address."
         );
 
-        const productSnapshots = [];
+        return;
 
-        for(const ref of productRefs){
+      }
 
-          const snapshot =
-            await transaction.get(ref);
+      const button =
+        document.getElementById(
+          "confirmOrderBtn"
+        );
 
-          productSnapshots.push(snapshot);
+      button.disabled =
+        true;
 
-        }
+      button.textContent =
+        "Processing order...";
 
-        const finalItems = [];
-        let total = 0;
+      try{
 
-        /*
-          Check every product's CURRENT stock.
-        */
+        const orderResult =
+          await runTransaction(
+            db,
+            async transaction=>{
 
-        for(let i=0;i<cart.length;i++){
+              const productRefs =
+                cart.map(
+                  item=>
+                    doc(
+                      db,
+                      "products",
+                      item.productId
+                    )
+                );
 
-          const cartItem = cart[i];
-          const snapshot = productSnapshots[i];
+              const productSnapshots =
+                [];
 
-          if(!snapshot.exists()){
+              for(
+                const ref of productRefs
+              ){
 
-            throw new Error(
-              `${cartItem.name} is no longer available.`
-            );
+                const snapshot =
+                  await transaction.get(
+                    ref
+                  );
 
-          }
+                productSnapshots.push(
+                  snapshot
+                );
 
-          const data = snapshot.data();
+              }
 
-          const currentStock =
-            Number(data.stock || 0);
+              const finalItems =
+                [];
 
-          const requested =
-            Number(cartItem.quantity || 0);
+              let total =
+                0;
 
-          if(currentStock < requested){
+              for(
+                let i=0;
+                i<cart.length;
+                i++
+              ){
 
-            throw new Error(
-              `Not enough stock for ${cartItem.name}. Only ${currentStock} left.`
-            );
+                const cartItem =
+                  cart[i];
 
-          }
+                const snapshot =
+                  productSnapshots[i];
 
-          const newStock =
-            currentStock - requested;
+                if(
+                  !snapshot.exists()
+                ){
 
-          transaction.update(
-            productRefs[i],
-            {
-              stock:newStock,
-              updatedAt:serverTimestamp()
+                  throw new Error(
+                    `${cartItem.name} is no longer available.`
+                  );
+
+                }
+
+                const data =
+                  snapshot.data();
+
+                const currentStock =
+                  Number(
+                    data.stock || 0
+                  );
+
+                const requested =
+                  Number(
+                    cartItem.quantity || 0
+                  );
+
+                if(
+                  currentStock <
+                  requested
+                ){
+
+                  throw new Error(
+                    `Not enough stock for ${cartItem.name}. Only ${currentStock} left.`
+                  );
+
+                }
+
+                const newStock =
+                  currentStock -
+                  requested;
+
+                transaction.update(
+                  productRefs[i],
+                  {
+                    stock:newStock,
+                    updatedAt:
+                      serverTimestamp()
+                  }
+                );
+
+                const itemTotal =
+                  Number(
+                    data.price || 0
+                  ) *
+                  requested;
+
+                total +=
+                  itemTotal;
+
+                finalItems.push({
+
+                  productId:
+                    snapshot.id,
+
+                  name:
+                    data.name ||
+                    cartItem.name,
+
+                  price:
+                    Number(
+                      data.price || 0
+                    ),
+
+                  quantity:
+                    requested,
+
+                  image:
+                    data.image || ""
+
+                });
+
+              }
+
+              const orderRef =
+                doc(
+                  collection(
+                    db,
+                    "orders"
+                  )
+                );
+
+              transaction.set(
+                orderRef,
+                {
+
+                  customerId:
+                    currentUser.uid,
+
+                  customer:{
+
+                    name,
+
+                    phone,
+
+                    address,
+
+                    note
+
+                  },
+
+                  items:
+                    finalItems,
+
+                  total,
+
+                  status:
+                    "pending",
+
+                  stockReserved:
+                    true,
+
+                  createdAt:
+                    serverTimestamp(),
+
+                  updatedAt:
+                    serverTimestamp()
+
+                }
+              );
+
+              return {
+
+                id:
+                  orderRef.id,
+
+                total,
+
+                items:
+                  finalItems
+
+              };
+
             }
           );
 
-          const itemTotal =
-            Number(data.price || 0) * requested;
+        latestOrderId =
+          orderResult.id;
 
-          total += itemTotal;
+        latestOrderData = {
 
-          finalItems.push({
+          id:
+            orderResult.id,
 
-            productId:snapshot.id,
+          customer:{
 
-            name:data.name || cartItem.name,
+            name,
 
-            price:Number(data.price || 0),
+            phone,
 
-            quantity:requested,
+            address,
 
-            image:data.image || ""
+            note
 
-          });
+          },
 
-        }
+          items:
+            orderResult.items,
 
-        /*
-          Create the order.
-        */
+          total:
+            orderResult.total
 
-        const orderRef =
-          doc(collection(db,"orders"));
-
-        transaction.set(
-          orderRef,
-          {
-
-            customer:{
-              name,
-              phone,
-              address,
-              note
-            },
-
-            items:finalItems,
-
-            total,
-
-            status:"pending",
-
-            stockReserved:true,
-
-            createdAt:serverTimestamp(),
-
-            updatedAt:serverTimestamp()
-
-          }
-        );
-
-        return {
-          id:orderRef.id,
-          total,
-          items:finalItems
         };
 
+        cart = [];
+
+        saveCart();
+
+        closeCheckout();
+
+        closeCart();
+
+        document
+          .getElementById(
+            "successOrderId"
+          )
+          .textContent =
+            latestOrderId;
+
+        document
+          .getElementById(
+            "successModal"
+          )
+          .classList.add("show");
+
+        document
+          .getElementById(
+            "checkoutForm"
+          )
+          .reset();
+
+      }catch(error){
+
+        console.error(error);
+
+        alert(
+          error?.message ||
+          "We couldn't place your order. Please try again."
+        );
+
+      }finally{
+
+        button.disabled =
+          false;
+
+        button.textContent =
+          "Place order";
+
       }
-    );
 
-    /*
-      Order successful.
-    */
+    }
+  );
 
-    latestOrderId = orderResult.id;
-
-    latestOrderData = {
-
-      id:orderResult.id,
-
-      customer:{
-        name,
-        phone,
-        address,
-        note
-      },
-
-      items:orderResult.items,
-
-      total:orderResult.total
-
-    };
-
-    /*
-      Clear cart AFTER successful transaction.
-    */
-
-    cart = [];
-
-    saveCart();
-
-    closeCheckout();
-
-    closeCart();
-
-    document.getElementById("successOrderId")
-      .textContent = latestOrderId;
-
-    document.getElementById("successModal")
-      .classList.add("show");
-
-    document.getElementById("checkoutForm")
-      .reset();
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      error?.message ||
-      "We couldn't place your order. Please try again."
-    );
-
-  }finally{
-
-    button.disabled = false;
-
-    button.textContent = "Place order";
-
-  }
-
-});
 
 /* =========================================
-   WHATSAPP ORDER
+   WHATSAPP
 ========================================= */
 
-window.sendOrderWhatsApp = function(){
+window.sendOrderWhatsApp =
+function(){
 
   if(!latestOrderData){
     return;
   }
 
-  const order = latestOrderData;
+  const order =
+    latestOrderData;
 
   let message =
 `🛍️ *LUXESTORE ORDER*
@@ -2081,20 +4155,26 @@ ${order.customer.note}
 
   }
 
-  message += `🛒 *Items:*
+  message +=
+`🛒 *Items:*
 
 `;
 
-  order.items.forEach(item=>{
+  order.items.forEach(
+    item=>{
 
-    message +=
+      message +=
 `• ${item.name}
   Qty: ${item.quantity}
-  Price: ${money(item.price * item.quantity)}
+  Price: ${money(
+    item.price *
+    item.quantity
+  )}
 
 `;
 
-  });
+    }
+  );
 
   message +=
 `💰 *TOTAL: ${money(order.total)}*
@@ -2104,26 +4184,37 @@ Please confirm my order. Thank you ❤️`;
   const url =
     `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
-  window.open(url,"_blank");
+  window.open(
+    url,
+    "_blank"
+  );
 
 };
 
+
 /* =========================================
-   CLOSE SUCCESS
+   SUCCESS CLOSE
 ========================================= */
 
-window.closeSuccess = function(){
+window.closeSuccess =
+function(){
 
-  document.getElementById("successModal")
+  document
+    .getElementById(
+      "successModal"
+    )
     .classList.remove("show");
 
 };
 
+
 /* =========================================
-   INITIAL UI
+   INITIAL
 ========================================= */
 
 updateCartUI();
+
+switchAuth("login");
 
 </script>
 
