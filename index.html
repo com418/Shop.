@@ -42,6 +42,41 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
  .icon-btn svg{width:15px;height:15px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* CINEMATIC EDITORIAL MOTION UPDATE */
+@keyframes cinematicRise{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+@keyframes roseDrift{0%,100%{transform:translate3d(0,0,0) rotate(-5deg)}50%{transform:translate3d(12px,-20px,0) rotate(4deg)}}
+@keyframes bottleFloat{0%,100%{transform:translateY(0) rotateY(-7deg) rotateZ(-1deg)}50%{transform:translateY(-15px) rotateY(7deg) rotateZ(1deg)}}
+@keyframes lightSweep{0%{transform:translateX(-120%) skewX(-18deg);opacity:0}20%{opacity:.45}65%{opacity:.08}100%{transform:translateX(220%) skewX(-18deg);opacity:0}}
+@keyframes ringTurn{from{transform:translate(-50%,-50%) rotateX(68deg) rotateZ(0)}to{transform:translate(-50%,-50%) rotateX(68deg) rotateZ(360deg)}}
+.hero:before{animation:ringTurn 28s linear infinite}
+.hero:after{animation:ringTurn 36s linear infinite reverse}
+.hero-text{animation:cinematicRise .9s ease both}
+.hero-stage .product-float{animation:bottleFloat 6s ease-in-out infinite}
+.hero-stage .product-float.watch{animation-delay:-2s}
+.hero-stage .product-float.bag{animation-delay:-4s}
+.editorial-film{position:relative;overflow:hidden;background:#11100f;color:#f8f1e6;isolation:isolate}
+.editorial-film:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,8,8,.88),rgba(8,8,8,.24) 58%,rgba(8,8,8,.15)),url('https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1800&q=90') center/cover;opacity:.8;z-index:-2;transform:scale(1.04);animation:filmZoom 22s ease-in-out infinite alternate}
+@keyframes filmZoom{from{transform:scale(1.02)}to{transform:scale(1.13)}}
+.editorial-film:after{content:"";position:absolute;top:-10%;bottom:-10%;left:0;width:25%;background:linear-gradient(90deg,transparent,rgba(255,232,190,.17),transparent);animation:lightSweep 8s ease-in-out infinite;pointer-events:none}
+.film-inner{max-width:1280px;margin:auto;min-height:520px;padding:85px 6%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:35px}
+.film-copy{max-width:500px;animation:cinematicRise 1s ease both}
+.film-kicker{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#e2c18a;font-weight:800}
+.film-copy h2{font-size:clamp(42px,6vw,78px);line-height:.98;letter-spacing:-.04em;font-weight:400;margin:18px 0}
+.film-copy h2 em{color:#e4c28c;font-weight:400}
+.film-copy p{max-width:400px;color:#d0c9bf;line-height:1.9;font-size:14px}
+.film-visual{height:380px;position:relative;display:grid;place-items:center;perspective:900px}
+.film-bottle{width:min(62%,250px);height:290px;object-fit:cover;border-radius:44% 44% 22px 22px;box-shadow:0 30px 90px #0009;border:1px solid #d4b47755;animation:bottleFloat 7s ease-in-out infinite;filter:saturate(.82)}
+.film-rose{position:absolute;width:clamp(95px,17vw,180px);right:4%;top:2%;filter:drop-shadow(0 18px 25px #0009);animation:roseDrift 8s ease-in-out infinite}
+.film-caption{position:absolute;bottom:12px;left:4%;font-family:Georgia,serif;font-size:12px;letter-spacing:.15em;color:#dfc18c;text-transform:uppercase}
+.editorial-strip{background:#191713;color:#f6f0e6;padding:34px 5%;display:grid;grid-template-columns:repeat(3,1fr);gap:1px}
+.editorial-note{text-align:center;padding:20px;border-right:1px solid #c6a56b33}
+.editorial-note:last-child{border-right:0}
+.editorial-note strong{display:block;font-family:Georgia,serif;font-weight:400;font-size:22px;color:#e7cb98;margin-bottom:7px}
+.editorial-note span{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#c8c0b4}
+@media(max-width:700px){.film-inner{min-height:auto;grid-template-columns:1fr;padding:58px 7% 45px;gap:10px}.film-copy h2{font-size:clamp(42px,12vw,62px)}.film-visual{height:300px}.film-bottle{height:235px;width:58%}.film-rose{right:5%;top:0}.editorial-strip{grid-template-columns:1fr;padding:14px 7%}.editorial-note{border-right:0;border-bottom:1px solid #c6a56b33;padding:17px}.editorial-note:last-child{border-bottom:0}}
+@media(prefers-reduced-motion:reduce){.hero:before,.hero:after,.hero-text,.hero-stage .product-float,.editorial-film:before,.editorial-film:after,.film-copy,.film-bottle,.film-rose{animation:none!important}}
+
 </style>
 </head>
 <body>
@@ -82,6 +117,28 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
   </div>
 </section>
 <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>STYLE THAT SPEAKS <b>✦</b></span><span>EVERYDAY LUXURY <b>✦</b></span><span>THE DETAILS MATTER <b>✦</b></span><span>FIND YOUR SIGNATURE <b>✦</b></span><span>STYLE THAT SPEAKS <b>✦</b></span><span>EVERYDAY LUXURY <b>✦</b></span><span>THE DETAILS MATTER <b>✦</b></span><span>FIND YOUR SIGNATURE <b>✦</b></span></div></div>
+
+
+<section class="editorial-film" aria-label="G BUSINESS signature scent editorial">
+  <div class="film-inner">
+    <div class="film-copy">
+      <div class="film-kicker">G BUSINESS · The fragrance edit</div>
+      <h2>Where<br><em>your story</em><br>leaves a trace.</h2>
+      <p>Make an entrance without saying a word. Explore signature scents, considered accessories and pieces chosen to turn everyday moments into something memorable.</p>
+      <div class="hero-buttons"><a class="btn btn-gold" href="#shop">Discover the edit <span>↗</span></a><a class="btn btn-outline" href="#categories">Explore all styles</a></div>
+    </div>
+    <div class="film-visual" aria-label="Animated fragrance and rose display">
+      <img class="film-bottle" src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=700&q=90" alt="Luxury perfume bottle">
+      <img class="film-rose" src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?auto=format&fit=crop&w=500&q=85" alt="Red rose">
+      <div class="film-caption">A scent to remember · G</div>
+    </div>
+  </div>
+</section>
+<div class="editorial-strip" aria-label="Our shopping promises">
+  <div class="editorial-note"><strong>Curated with intention</strong><span>Style that feels personal</span></div>
+  <div class="editorial-note"><strong>Details matter</strong><span>From first look to final touch</span></div>
+  <div class="editorial-note"><strong>Your signature style</strong><span>Discover your next favourite</span></div>
+</div>
 
 <section class="section" id="categories">
   <div class="section-head"><div><div class="eyebrow">Find your thing</div><h2>Shop by category</h2><p>Little details. Big statement.</p></div><a class="text-link" href="#shop">Shop everything ↗</a></div>
